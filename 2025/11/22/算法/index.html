@@ -134,6 +134,58 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>多媒体</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>阅读</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -215,6 +267,61 @@
 			
 			关于
 		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			多媒体
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>阅读</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -395,7 +502,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>整数二分</h1>
+                <h1 id="整数二分"><a class="header-anchor" href="#整数二分"></a>整数二分</h1>
 <p>​	二分法用于在有序序列中快速查找，由于每次都会跳过一半的数据，所以时间复杂度为O(logn)。下面写一个通用的整数二分模板，该模板会返回序列中第一个<code>&gt;=</code>目标数<code>target</code>的数据的位置。</p>
 <p>​	所以这是一个万能模板，会返回序列中第一个<code>&gt;=</code>目标<code>target</code>的数的索引值，查找不到就返回数组长度。不论是找唯一数据的索引值、重复数据的左边界、大于<code>target</code>的第一个数的索引值（<code>target</code>不是数组的的某个值，但在数组的最大最小值之间），都可以直接用这个模板。</p>
 <table>
@@ -515,7 +622,7 @@ nums &#x3D; [1, 2, 5，5, 9, 11];
 lowerBound（nums, 6) - 1;
 &#x2F;&#x2F;target&#x3D;3，lowerBound(nums, 4)会找到nums[2]&#x3D;5的位置，该位置减一为1，就是最后一个小于target的数的索引
 lowerBound（nums, 4) - 1;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>最终结果取模</h1>
+<h1 id="最终结果取模"><a class="header-anchor" href="#最终结果取模"></a>最终结果取模</h1>
 <p>​	最终的各种计算时取模的代码如下：</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">MOD &#x3D; 1_000_000_007
 
@@ -536,17 +643,13 @@ a * b % MOD * c % MOD
 
 &#x2F;&#x2F; 除（MOD 是质数且 b 不是 MOD 的倍数），qpow是快速幂
 a * qpow(b, MOD - 2, MOD) % MOD<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>滑动窗口</h1>
+<h1 id="滑动窗口"><a class="header-anchor" href="#滑动窗口"></a>滑动窗口</h1>
 <p>滑动窗口使用前提：</p>
 <ol>
-<li class="lvl-3">
-<p><strong>连续</strong>子数组/子串。（注意<strong>不是子序列</strong>，必须是<strong>连续的子串或者子数组</strong>）</p>
-</li>
-<li class="lvl-3">
-<p>有<strong>单调性</strong>，即<strong>所求的目标会随着窗口的变化单调变化</strong>。例如正数数组，或者负数数组，窗口内数组的和会随着数组的大小变化单调变化；但是如果数组内有正有负的话，就不满足单调性了，就无法使用滑动窗口解决。</p>
-</li>
+<li><strong>连续</strong>子数组/子串。（注意<strong>不是子序列</strong>，必须是<strong>连续的子串或者子数组</strong>）</li>
+<li>有<strong>单调性</strong>，即<strong>所求的目标会随着窗口的变化单调变化</strong>。例如正数数组，或者负数数组，窗口内数组的和会随着数组的大小变化单调变化；但是如果数组内有正有负的话，就不满足单调性了，就无法使用滑动窗口解决。</li>
 </ol>
-<h2 id="定长窗口">定长窗口</h2>
+<h2 id="定长窗口"><a class="header-anchor" href="#定长窗口"></a>定长窗口</h2>
 <p>​	定长窗口的题目求解目标一般明确指出<strong>要求长度为k</strong>的<strong>符合要求</strong>的<strong>连续子数组或者子串</strong>。可以直接<strong>从0到n - 1枚举所有右端点</strong>，枚举所有以<strong>i位置为右端点</strong>的窗口，从中找到符合要求的答案。</p>
 <p>​	下面是算法模板：</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int solution(vector&lt;int&gt;&amp; nums, int k)
@@ -569,7 +672,7 @@ a * qpow(b, MOD - 2, MOD) % MOD<span aria-hidden="true" class="line-numbers-rows
     &#125;
     return ans;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="动长窗口">动长窗口</h2>
+<h2 id="动长窗口"><a class="header-anchor" href="#动长窗口"></a>动长窗口</h2>
 <p>​	动长窗口的题目一般不会对子数组或者子串的长度进行限制，<strong>一般会要求出满足某种限制条件的子数组或子序列</strong>，这种情况下窗口的大小就是不固定的。</p>
 <p>​	下面是算法模板：</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int solution(vector&lt;int&gt;&amp; nums, int k)
@@ -594,8 +697,8 @@ a * qpow(b, MOD - 2, MOD) % MOD<span aria-hidden="true" class="line-numbers-rows
     &#125;
     return ans;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>高精度</h1>
-<h2 id="高精度加">高精度加</h2>
+<h1 id="高精度"><a class="header-anchor" href="#高精度"></a>高精度</h1>
+<h2 id="高精度加"><a class="header-anchor" href="#高精度加"></a>高精度加</h2>
 <p>​	问题：两个长度为1000（或者更长，以至于无法用某一个类型表示它）的大正整数<strong>A和B</strong>相加，输出<strong>A+B</strong>的结果。</p>
 <p>​	显然这么多位的数字，我们无法用任何一个数值类型变量存储，所以就需要使用高精度加方法来模拟计算。高精度加就是使用一个数组存储大整数的每一位，然后模拟加法运算。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
@@ -634,9 +737,9 @@ int main()
     
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="高精度减">高精度减</h2>
-<h2 id="高精度乘">高精度乘</h2>
-<h2 id="高精度除">高精度除</h2>
+<h2 id="高精度减"><a class="header-anchor" href="#高精度减"></a>高精度减</h2>
+<h2 id="高精度乘"><a class="header-anchor" href="#高精度乘"></a>高精度乘</h2>
+<h2 id="高精度除"><a class="header-anchor" href="#高精度除"></a>高精度除</h2>
 
                 
             </div>
@@ -850,8 +953,8 @@ int main()
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // Set scroll toc fixed.

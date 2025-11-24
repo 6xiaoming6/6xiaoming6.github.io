@@ -134,6 +134,58 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>多媒体</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>阅读</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -215,6 +267,61 @@
 			
 			关于
 		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			多媒体
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>阅读</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -395,33 +502,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>OpenGL介绍</h1>
-<h2 id="图形API">图形API</h2>
+                <h1 id="OpenGL介绍"><a class="header-anchor" href="#OpenGL介绍"></a>OpenGL介绍</h1>
+<h2 id="图形API"><a class="header-anchor" href="#图形API"></a>图形API</h2>
 <p>OpenGL被认为是一个图形API(Application Programming Interface, 应用程序编程接口)，包含一系列可以操作图形、图像的函数。但是OpenGL实际上并不是一个供外界调用的API，它本质上是一个由<a target="_blank" rel="noopener" href="http://www.khronos.org/">Khronos组织</a>制定并维护的规范。</p>
 <p>OpenGL规定了每个函数的定义，输入和输出值，并不关心内部是如何实现的(类似java中的interface)。</p>
 <p>也因此OpenGL的实现基本是由各大显卡厂商完成，各厂商要遵守这个规范，一般写在显卡的驱动程序中。开发者使用OpenGL时调用指定的函数，即可使用在不同显卡的设备中运行同一段代码。</p>
 <p>在 OpenGL 中，<strong>默认的坐标系是右手坐标系</strong>，可以使用右手来判断坐标轴的正方向。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>右手定则</strong>：</p>
-<ul class="lvl-2">
-<li class="lvl-4">伸出右手，<strong>拇指 = X 轴（→）</strong>，<strong>食指 = Y 轴（↑）</strong>，<strong>中指 = Z 轴（☞ 屏幕外）</strong>。</li>
-<li class="lvl-4">这种定义下，<strong>摄像机默认看向 -Z 方向</strong>（即屏幕内）。</li>
+<ul>
+<li><strong>右手定则</strong>：
+<ul>
+<li>伸出右手，<strong>拇指 = X 轴（→）</strong>，<strong>食指 = Y 轴（↑）</strong>，<strong>中指 = Z 轴（☞ 屏幕外）</strong>。</li>
+<li>这种定义下，<strong>摄像机默认看向 -Z 方向</strong>（即屏幕内）。</li>
 </ul>
 </li>
 </ul>
-<h2 id="立即模式和核心模式">立即模式和核心模式</h2>
+<h2 id="立即模式和核心模式"><a class="header-anchor" href="#立即模式和核心模式"></a>立即模式和核心模式</h2>
 <p>早期的OpenGL使用<strong>立即渲染模式</strong>（Immediate mode，也就是固定渲染管线），这个模式下绘制图形很方便。OpenGL的大多数功能都被库隐藏起来，开发者很少有控制OpenGL如何进行计算的自由。</p>
 <p><strong>OpenGL3.2</strong>开始，规范文档开始废弃立即渲染模式，并鼓励开发者在OpenGL的<strong>核心模式</strong>(Core-profile)下进行开发，这个分支的规范完全移除了旧的特性。</p>
 <p>虽然OpenGL的新版本一直在更新，但是作为初学者从支持核心模式的旧版本开始学习也是没问题的。因为所有OpenGL的更高的版本都是在3.3的基础上，引入了额外的功能，并没有改动核心架构。新版本只是引入了一些更有效率或更有用的方式去完成同样的功能。因此，所有的概念和技术在现代OpenGL版本里都保持一致。当你的经验足够，你可以轻松使用来自更高版本OpenGL的新特性。</p>
-<h2 id="状态机">状态机</h2>
-<h2 id="渲染管线">渲染管线</h2>
+<h2 id="状态机"><a class="header-anchor" href="#状态机"></a>状态机</h2>
+<h2 id="渲染管线"><a class="header-anchor" href="#渲染管线"></a>渲染管线</h2>
 <p>OpenGL中<strong>默认</strong>规定三角形的三个顶点的连接顺序为<strong>逆时针</strong>，即将<strong>逆时针方向</strong>连接的三角形视为<strong>正面</strong>，但是对于正面判定也可以通过OpenGL中的函数进行修改。</p>
 <p>规定了三角形的正反面后，在后续进行渲染时，不会渲染反面三角形（反面三角形是被遮挡看不到的，跳过渲染节省计算量）。</p>
-<h1>CMake</h1>
+<h1 id="CMake"><a class="header-anchor" href="#CMake"></a>CMake</h1>
 <p>CMake 是个一个开源的跨平台自动化建构系统，用来管理软件建置的程序，并不依赖于某特定编译器，并可支持多层目录、多个应用程序与多个函数库。 CMake 本身不是构建工具，而是生成构建系统的工具，它生成的构建系统可以使用不同的编译器和工具链。</p>
 <p>CMake使用**CMakeLists.txt（文件名不可变）**文件作为配置文件，用于定义项目的构建规则、依赖关系、编译选项等。每个 CMake 项目通常包含一个或多个 CMakeLists.txt 文件。</p>
-<h2 id="简单的CMake项目工程">简单的CMake项目工程</h2>
+<h2 id="简单的CMake项目工程"><a class="header-anchor" href="#简单的CMake项目工程"></a>简单的CMake项目工程</h2>
 <p>下面是一个简单CMake项目示例，项目文件夹中只有一个main.cpp作为源文件。</p>
 <p>下面是该项目的CMakeLists.txt文件内容：</p>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token comment">#设置该CMake项目的最低CMake版本要求</span>
@@ -441,15 +547,13 @@
 <p>项目文件准备完成后，使用vs按照上图所示操作打开CMake项目，vs会根据配置文件生成对应的文件。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250411204540750.png" alt="image-20250411204540750" style="zoom:67%;" />
 <p>如上图所示，在项目根目录下会生成out文件夹，里面存放的就是生成的目标文件。因此在分享项目工程时，out文件夹和.vs文件夹可以删除，这些都是IDE自动生成的，而且比较大。在根目录下的out/build/x64-Debug目录下可以看到生成的可执行文件，名称和我们在CMakeLists.txt中定义的一样。</p>
-<h2 id="多源文件编译">多源文件编译</h2>
+<h2 id="多源文件编译"><a class="header-anchor" href="#多源文件编译"></a>多源文件编译</h2>
 <p>实际开发中，肯定不可能只有一个main.cpp文件，我们肯定会创建许多类，会有多个cpp文件。</p>
 <p>如下图所示，新建了func.h和func.cpp文件，在main.cpp文件中使用了func.cpp实现的add函数，此时如果直接运行代码会报错，因为我们并没有将func.cpp加入到CMake的编译目标中。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250411215637145.png" alt="image-20250411215637145" style="zoom:67%;" />
 <p>我们有两种解决方法：</p>
 <ol>
-<li class="lvl-3">
-<p>手动将所有的cpp文件加入到CMakeLists.txt中的源文件中</p>
-</li>
+<li>手动将所有的cpp文件加入到CMakeLists.txt中的源文件中</li>
 </ol>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token comment">#设置该CMake项目的最低CMake版本要求</span>
 <span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.17</span><span class="token punctuation">)</span>
@@ -463,9 +567,7 @@
 <span class="token comment">#指定要生成的可执行文件和其源文件（第一个参数是生成的可执行文件的名称，后面的参数是源文件）</span>
 <span class="token keyword">add_executable</span><span class="token punctuation">(</span>OpenGLStudy <span class="token string">"main.cpp"</span> <span class="token string">"func.cpp"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
-<li class="lvl-3">
-<p>将根目录下的所有cpp找到并定义为一个新变量，使用该变量代替所有的源文件</p>
-</li>
+<li>将根目录下的所有cpp找到并定义为一个新变量，使用该变量代替所有的源文件</li>
 </ol>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token comment">#设置该CMake项目的最低CMake版本要求</span>
 <span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.17</span><span class="token punctuation">)</span>
@@ -485,14 +587,12 @@
 <span class="token keyword">add_executable</span><span class="token punctuation">(</span>OpenGLStudy <span class="token punctuation">$&#123;</span>RES<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>第一种比较简单暴力，但是维护困难，不推荐。</p>
 <p>第二种效果和第一种是等价的，但是由CMake自动完成，快捷容易维护。</p>
-<h2 id="多文件夹编译">多文件夹编译</h2>
+<h2 id="多文件夹编译"><a class="header-anchor" href="#多文件夹编译"></a>多文件夹编译</h2>
 <p>开发中为了规范，不可能将所有的cpp文件都放在根目录下，因此我们会创建专门的文件夹存放对应的cpp文件。</p>
 <p>如下图所示，我们将func.cpp和func.h放在了funcs文件夹下，里面存放的都是我们自己实现的函数，但是这样一来CMake就会找不到func.cpp文件而报错。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412112710734.png" alt="image-20250412112710734" style="zoom: 67%;" />
 <ol>
-<li class="lvl-3">
-<p>首先我们先在funcs目录下新建一个CMakeLists.txt文件，编译时将该目录下的所有cpp文件编译为一个lib库</p>
-</li>
+<li>首先我们先在funcs目录下新建一个CMakeLists.txt文件，编译时将该目录下的所有cpp文件编译为一个lib库</li>
 </ol>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412114046837.png" alt="image-20250412114046837" style="zoom:67%;" />
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">
@@ -504,9 +604,7 @@
 <span class="token comment">#第一个参数是编译成的lib库的名字</span>
 <span class="token keyword">add_library</span><span class="token punctuation">(</span>MyFuncLib <span class="token punctuation">$&#123;</span>FUNCS<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
-<li class="lvl-3">
-<p>接下来只需要在根目录下的CMakeLists.txt文件中将生成的lib库连接到可执行文件即可</p>
-</li>
+<li>接下来只需要在根目录下的CMakeLists.txt文件中将生成的lib库连接到可执行文件即可</li>
 </ol>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token comment">#设置该CMake项目的最低CMake版本要求</span>
 <span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.17</span><span class="token punctuation">)</span>
@@ -532,7 +630,7 @@
 <span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>OpenGLStudy MyFuncLib<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412115430563.png" alt="image-20250412115430563" style="zoom:67%;" />
 <p>最后可以在生成的out目录下找到func文件夹，里面就是生成的lib库。</p>
-<h2 id="资源拷贝">资源拷贝</h2>
+<h2 id="资源拷贝"><a class="header-anchor" href="#资源拷贝"></a>资源拷贝</h2>
 <p>在进行OpenGL开发中，我们会经常使用各种各样的图片素材，或者其他第三方的dll库，我们开发中会在根目录下创建对应的文件夹存放我们的素材和第三方链接库。</p>
 <p>但是这些文件要放在最后生成的可执行文件同目录下才可以被正确的使用，但是CMake生成的可执行文件在out目录里。所以我们必须手动的将这些文件夹复制到可执行文件的同目录下，不仅麻烦而且容易出错。</p>
 <p>为了方便，我们可以使用CMake的资源拷贝功能，自动的将这些文件复制到可执行文件统计目录下，只需要每次添加新素材或者链接库时重新生成一下即可，CMake会自动拷贝这些文件。</p>
@@ -546,15 +644,15 @@
 <span class="token keyword">file</span><span class="token punctuation">(</span>COPY <span class="token punctuation">$&#123;</span>ASSETS<span class="token punctuation">&#125;</span> DESTINATION <span class="token punctuation">$&#123;</span><span class="token variable">CMAKE_BINARY_DIR</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412120621684.png" alt="image-20250412120621684" style="zoom:67%;" />
 <p>编写完成后在重新生成即可看到所需要的文件已经被拷贝到了可执行文件所在目录。</p>
-<h1>GLAD</h1>
+<h1 id="GLAD"><a class="header-anchor" href="#GLAD"></a>GLAD</h1>
 <p>GLAD是一个 <strong>OpenGL 函数加载库</strong>，用于动态加载 OpenGL 驱动程序的函数指针。因为OpenGL是一个规范，只对各个函数进行了定义，并没有具体实现，具体的实现在各个显卡的驱动程序里。所以我们想使用某个函数，就必须从驱动程序中拿到对应的函数指针。我们可以手动指定加载哪些函数的函数指针，但是函数有那么多，我们不可能每一个都手动加载进来。</p>
 <p>GLAD就帮我们完成了这一工程，只需要使用GLAD提供的几行代码，就可以完成对应函数指针的加载。</p>
-<h2 id="下载">下载</h2>
+<h2 id="下载"><a class="header-anchor" href="#下载"></a>下载</h2>
 <p>访问<a target="_blank" rel="noopener" href="https://glad.dav1d.de/%E5%8D%B3%E5%8F%AF%E6%89%BE%E5%88%B0glad%E7%9A%84%E4%B8%8B%E8%BD%BD%E7%95%8C%E9%9D%A2%EF%BC%8C%E8%BF%9B%E5%85%A5%E5%90%8E%E6%88%91%E4%BB%AC%E4%BC%9A%E7%9C%8B%E5%88%B0%E5%A6%82%E4%B8%8B%E5%86%85%E5%AE%B9%EF%BC%9A">https://glad.dav1d.de/即可找到glad的下载界面，进入后我们会看到如下内容：</a></p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412171016000.png" alt="image-20250412171016000" style="zoom: 50%;" />
 <p>我们只需选择对应的选项，再点击右下角的生成按钮，即可获得对应的代码。获取的文件如下图所示，我们可以获得对应的头文件和源代码。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412171141544.png" alt="image-20250412171141544" style="zoom:67%;" />
-<h2 id="配置">配置</h2>
+<h2 id="配置"><a class="header-anchor" href="#配置"></a>配置</h2>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412171614442.png" alt="image-20250412171614442" style="zoom:67%;" />
 <p>这里引入项目的方式和GLFW类似，直接将include里面的东西都复制到thirdParty目录下的include文件夹中，但由于直接提供了源码，为了方便起见，我们直接将源码glad.c放到和main.cpp同样的目录下。</p>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token comment">#CMakeLists.txt只需要修改这一句即可，将glad.c连接到可执行文件中</span>
@@ -569,7 +667,7 @@ int main()
 	std::cout&lt;&lt;&quot;Hello World&quot;&lt;&lt;std::endl;
 	return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="使用">使用</h2>
+<h2 id="使用"><a class="header-anchor" href="#使用"></a>使用</h2>
 <p>使用gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)代码即可完成加载，如果加载成功会返回true，加载失败返回false。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">if(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) )
 &#123;
@@ -579,10 +677,10 @@ else
 &#123;
     std::cout&lt;&lt;&quot;加载失败&quot;&lt;&lt;std::endl;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>GLFW</h1>
-<h2 id="介绍">介绍</h2>
+<h1 id="GLFW"><a class="header-anchor" href="#GLFW"></a>GLFW</h1>
+<h2 id="介绍"><a class="header-anchor" href="#介绍"></a>介绍</h2>
 <p>如果我们想进行图形学的编程，必然需要创建一个窗口展示效果，但是不同的操作系统创建一个窗口的方式天差地别且还需要考虑与OpenGL等图形学API的兼容性。GLFW是一个轻量级的 <strong>跨平台窗口和输入管理库</strong>，专门为 OpenGL/Vulkan 设计。其只负责创建窗口、处理用户输入（键盘/鼠标/手柄）、控制上下文（OpenGL 渲染环境）等操作，相当于为我们创建了一个画布，我们可以使用OpenGL规定的API在该窗口绘制图形。</p>
-<h2 id="配置-2">配置</h2>
+<h2 id="配置-k2"><a class="header-anchor" href="#配置-k2"></a>配置</h2>
 <p>到官网下载对应的库（下载源码自己编译或者下载已经编译好的库），这里使用官方提供的已经编译好的库。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412162250191.png" alt="image-20250412162250191" style="zoom:67%;" />
 <p>打开文件夹可以看到如上图所示的文件，include文件夹里存放的是我们要引用的头文件，下面lib开头的是各个版本的链接库，现在使用的是vs2019，所以选择lib-vc2019里面的库。</p>
@@ -620,7 +718,7 @@ int main()
 	std::cout&lt;&lt;&quot;Hello World&quot;&lt;&lt;std::endl;
 	return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="创建窗口">创建窗口</h2>
+<h2 id="创建窗口"><a class="header-anchor" href="#创建窗口"></a>创建窗口</h2>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 #include &lt;glad&#x2F;glad.h&gt;&#x2F;&#x2F;这个头文件引用要在glfw头文件引用上方
 #include &lt;GLFW&#x2F;glfw3.h&gt;
@@ -651,7 +749,7 @@ int main()
 
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="事件响应">事件响应</h2>
+<h2 id="事件响应"><a class="header-anchor" href="#事件响应"></a>事件响应</h2>
 <p>和其他框架一样，OpenGL也有一套事件监听系统，但是事件的回调函数需要我们自己根据定义自己实现，并且手动将窗口和事件回调函数绑定。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include &lt;glad&#x2F;glad.h&gt;&#x2F;&#x2F;这个头文件引用要在glfw头文件引用上方
@@ -709,7 +807,7 @@ int main()
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>因为事件会有很多，所以只列举开发中常用的事件：窗口大小改变事件，键盘事件，鼠标事件等。</p>
-<h3 id="窗口尺寸改变事件">窗口尺寸改变事件</h3>
+<h3 id="窗口尺寸改变事件"><a class="header-anchor" href="#窗口尺寸改变事件"></a>窗口尺寸改变事件</h3>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;定义一个窗口大小改变时的回调函数，与window窗口绑定
 &#x2F;*
 	width参数是新窗口的宽度
@@ -722,7 +820,7 @@ void frameBufferSizeCallBack(GLFWwindow* window, int width, int height)
 
 &#x2F;&#x2F;事件绑定
 glfwSetFramebufferSizeCallback(window, frameBufferSizeCallBack);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="键盘事件">键盘事件</h3>
+<h3 id="键盘事件"><a class="header-anchor" href="#键盘事件"></a>键盘事件</h3>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;键盘事件监听的回调函数
 &#x2F;*
 *  key是按下或者松开的键盘按键。
@@ -741,7 +839,7 @@ void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods
 
 glfwSetKeyCallback(window, keyCallBack);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在OpenGL中，用<strong>GLFW_KEY_XX</strong>格式的常量定义好了各种按键的值，各种模式、触发类型都有对应的常量表示，判断时直接使用即可。</p>
-<h3 id="鼠标事件">鼠标事件</h3>
+<h3 id="鼠标事件"><a class="header-anchor" href="#鼠标事件"></a>鼠标事件</h3>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;--------------------------------------鼠标按键事件
 &#x2F;*
 *  button是按下或者松开的键盘按键。GLFW_MOUSE_BUTTON_LEFT（鼠标左键），GLFW_MOUSE_BUTTON_RIGHT(鼠标右键)。
@@ -770,7 +868,7 @@ void MouseScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 
 glfwSetMouseButtonCallback(window, MouseButtonCallback);
 glfwSetScrollCallback(window, MouseScrollCallback);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>GLAD</h1>
+<h1 id="GLAD-k2"><a class="header-anchor" href="#GLAD-k2"></a>GLAD</h1>
 <p>我们下载的GLFW文件中只有<strong>glfw.h</strong>头文件和<strong>lib</strong>静态链接库文件供我们使用。但是OpenGL也只是一种规范，具体的实现由显卡厂商决定，所以我们必须要拿到驱动程序中厂家实现好的OpenGL的函数。glad可以帮助我们更好的<strong>从驱动程序加载这些函数</strong>，供我们使用。成功引入glad后，我们可以用以下代码加载函数。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include &lt;glad&#x2F;glad.h&gt;&#x2F;&#x2F;这个头文件引用要在glfw头文件引用上方
@@ -832,15 +930,15 @@ int main()
 
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>stb_image</h1>
-<h2 id="介绍-2">介绍</h2>
+<h1 id="stb-image"><a class="header-anchor" href="#stb-image"></a>stb_image</h1>
+<h2 id="介绍-k2"><a class="header-anchor" href="#介绍-k2"></a>介绍</h2>
 <p>为了在后面的学习中使用纹理，我们首先需要能够读取各种格式的图片。而stb_image就是一个提供各种格式图片数据读取的第三方库，我们只需要下载后引入对应的头文件，简单配置一下就能开始使用。</p>
-<h2 id="配置-3">配置</h2>
+<h2 id="配置-k3"><a class="header-anchor" href="#配置-k3"></a>配置</h2>
 <p>下载源文件后，可以发现每个功能都是一个单独的.h文件，所以我们只需要#include引入对应功能的.h文件即可。阅读文档可知我们读取图片需要引入stb_image.h头文件，并且要在引入前定义一个宏<strong>STB_IMAGE_IMPLEMENTATION</strong>才能正常使用。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define STB_IMAGE_IMPLEMENTATION
 #include &lt;stb_image&#x2F;stb_image.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>**注意：<strong>图片的原点是左上角，但是在opengl中原点为左下角，所以在读取图片前需要翻转图片的y轴。在stb_image中，只需要在读取图片前使用</strong>stbi_set_flip_vertically_on_load(true)**即可实现y轴翻转。</p>
-<h2 id="读取图片">读取图片</h2>
+<h2 id="读取图片"><a class="header-anchor" href="#读取图片"></a>读取图片</h2>
 <p>读取图片只需调用该函数即可，其中返回值为<strong>stbi_uc</strong>*，其实就是stb_image封装的**unsigned char ***数据类型。</p>
 <p>其中最后一个参数是我们期待的拿到的图片通道格式，比如我们的图片只有rgb三个通道，但是实际需要rgba四个通道的数据，那么stbimage就可以完成格式之间的转化，共有四个选项可以选择。</p>
 <p>STBI_grey ，STBI_grey_alpha，STBI_rgb，STBI_rgb_alpha。</p>
@@ -851,39 +949,23 @@ int main()
 stbi_set_flip_vertically_on_load(true);
 &#x2F;&#x2F;读取纹理图片的数据到内存
 unsigned char* data &#x3D; stbi_load(&quot;Assets&#x2F;Textures&#x2F;a.png&quot;, &amp;width, &amp;height, &amp;channel, STBI_rgb_alpha);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>GLM</h1>
-<h2 id="介绍-3">介绍</h2>
+<h1 id="GLM"><a class="header-anchor" href="#GLM"></a>GLM</h1>
+<h2 id="介绍-k3"><a class="header-anchor" href="#介绍-k3"></a>介绍</h2>
 <p>GLM（OpenGL Mathematics）是基于OpenGL着色语言（GLSL）规范的图形软件的头文件C ++数学库。</p>
 <p>GLM提供的类和函数使用与GLSL相同的命名约定和功能设计和实现，因此了解GLSL就可以C ++中使用GLM。</p>
 <p>OpenGL没有内建矩阵运算方法，经常使用第三方库GLM来进行矩阵运算。GLM作为一个header only库，只要包括了相应的头文件就可以使用它提供的类和函数。</p>
-<h2 id="常用数据类型">常用数据类型</h2>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>vec2 二维向量</p>
-</li>
-<li class="lvl-2">
-<p>vec3 三维向量</p>
-</li>
-<li class="lvl-2">
-<p>vec4 四维向量</p>
-</li>
-<li class="lvl-2">
-<p>quat 单精度四元数</p>
-</li>
-<li class="lvl-2">
-<p>dquat 双精度四元数</p>
-</li>
-<li class="lvl-2">
-<p>mat2 二阶矩阵(2x2方阵)</p>
-</li>
-<li class="lvl-2">
-<p>mat3 三阶矩阵(3x3方阵)</p>
-</li>
-<li class="lvl-2">
-<p>mat4 四阶方阵(4x4方阵)</p>
-</li>
+<h2 id="常用数据类型"><a class="header-anchor" href="#常用数据类型"></a>常用数据类型</h2>
+<ul>
+<li>vec2 二维向量</li>
+<li>vec3 三维向量</li>
+<li>vec4 四维向量</li>
+<li>quat 单精度四元数</li>
+<li>dquat 双精度四元数</li>
+<li>mat2 二阶矩阵(2x2方阵)</li>
+<li>mat3 三阶矩阵(3x3方阵)</li>
+<li>mat4 四阶方阵(4x4方阵)</li>
 </ul>
-<h2 id="头文件">头文件</h2>
+<h2 id="头文件"><a class="header-anchor" href="#头文件"></a>头文件</h2>
 <p>GLM对于矩阵数据类型的定义位于glm/glm.hpp头文件中。</p>
 <p>生成变换矩阵的函数位于glm/gtc/matrix_transform.hpp头文件中。</p>
 <p>将数组转换成矩阵的函数位于头文件glm/gtc/type_ptr.hpp中（glm::value_ptr函数在里面）。</p>
@@ -894,11 +976,9 @@ unsigned char* data &#x3D; stbi_load(&quot;Assets&#x2F;Textures&#x2F;a.png&quot;
 &#x2F;&#x2F;这个头文件重载了 &lt;&lt; 符号，可以用cout直接输出向量或者矩阵变量
 #define GLM_ENABLE_EXPERIMENTAL&#x2F;&#x2F;不加这个宏无法使用io.hpp头文件
 #include &lt;glm&#x2F;gtx&#x2F;io.hpp&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="常用函数">常用函数</h2>
+<h2 id="常用函数"><a class="header-anchor" href="#常用函数"></a>常用函数</h2>
 <ol>
-<li class="lvl-3">
-<p>默认构造函数(没有初始化的向量或矩阵无法正常使用)</p>
-</li>
+<li>默认构造函数(没有初始化的向量或矩阵无法正常使用)</li>
 </ol>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;glm1.0.0版本后必须显示初始化矩阵或向量
 glm::mat4 m;&#x2F;&#x2F;旧版本会默认创建全0矩阵，新版本则不会，必须显示初始化
@@ -925,9 +1005,7 @@ glm::vec4 m &#x3D; &#123;
     1.0, 2.0, 3.0, 4.0
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
-<li class="lvl-3">
-<p>向量运算</p>
-</li>
+<li>向量运算</li>
 </ol>
 <table>
 <thead>
@@ -1175,9 +1253,7 @@ glm::ortho(float left, float right, float bottom, float top, float zNear, float 
 &#x2F;&#x2F;透视投影矩阵。第一个参数为视锥上下面之间的夹角，第二个参数为视口宽高比，第三、四个参数分别为近平面和远平面的深度。
 glm::perspective(float fovy, float aspect, float zNear, float zFar);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
-<li class="lvl-3">
-<p>常用</p>
-</li>
+<li>常用</li>
 </ol>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;将角度值转为弧度值。传入角度，输出弧度，
 &#x2F;&#x2F;rotate函数中需要输入弧度值
@@ -1189,22 +1265,16 @@ float* val &#x3D; glm::value_ptr(m);
 &#x2F;&#x2F;第一个参数表示uniform变量的位置，第二个参数表示传递几个矩阵数据，第三个参数表示传入的矩阵是否需要转置，第四个参数就是获取到的矩阵的指针
 &#x2F;&#x2F;由于glm和glsl中矩阵都是列优先存储的，所以我们无需进行转置操作
 glUniformMatrix4fv(location, 1, GL_FALSE, val);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>ImGUI</h1>
-<h2 id="介绍-4">介绍</h2>
+<h1 id="ImGUI"><a class="header-anchor" href="#ImGUI"></a>ImGUI</h1>
+<h2 id="介绍-k4"><a class="header-anchor" href="#介绍-k4"></a>介绍</h2>
 <p>ImGUI（Immediate Mode GUI）是一种 <strong>即时模式</strong> 的图形用户界面设计方法，与传统的 <strong>保留模式 GUI</strong>（如 Qt、WinForms）不同。它的核心特点是：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>无持久化状态</strong>：每一帧都重新绘制整个 UI，而不是维护控件状态。</p>
-</li>
-<li class="lvl-2">
-<p><strong>轻量级</strong>：适合嵌入式、游戏、工具开发。</p>
-</li>
-<li class="lvl-2">
-<p><strong>快速原型设计</strong>：适合调试界面、编辑器插件等。</p>
-</li>
+<ul>
+<li><strong>无持久化状态</strong>：每一帧都重新绘制整个 UI，而不是维护控件状态。</li>
+<li><strong>轻量级</strong>：适合嵌入式、游戏、工具开发。</li>
+<li><strong>快速原型设计</strong>：适合调试界面、编辑器插件等。</li>
 </ul>
 <p>ImGUI非常适合简单场景中绘制轻量级UI空间，如果是较为复杂的场景或者大型软件，还要使用QT进行开发。</p>
-<h2 id="配置-4">配置</h2>
+<h2 id="配置-k4"><a class="header-anchor" href="#配置-k4"></a>配置</h2>
 <p>imgui是一个开源的库，可以直接从网上下载源码，加入到自己的项目中直接引用即可。</p>
 <p>除了需要引入根目录下这些<strong>必须的文件</strong>，还需要根据项目所使用的库引入不同的<strong>兼容性文件</strong>，这部分文件是imgui为了兼容其他第三方库而实现的。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717171621962.png" alt="image-20250717171621962" style="zoom:60%;" />
@@ -1212,18 +1282,12 @@ glUniformMatrix4fv(location, 1, GL_FALSE, val);<span aria-hidden="true" class="l
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717172008182.png" alt="image-20250717172008182" style="zoom:60%;" />
 <p>然后按照示例项目里面的引入文件引入到自己的项目即可。（示例项目里面的文件都引入之后，也有可能运行报错，这时候只需要根据报错信息引入对应的文件即可）</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717172125492.png" alt="image-20250717172125492" style="zoom:67%;" />
-<h2 id="使用-2">使用</h2>
+<h2 id="使用-k2"><a class="header-anchor" href="#使用-k2"></a>使用</h2>
 <p>在使用时，一共可分为三个步骤：</p>
 <ol>
-<li class="lvl-3">
-<p><strong>初始化</strong>imgui</p>
-</li>
-<li class="lvl-3">
-<p><strong>渲染</strong>imgui的ui</p>
-</li>
-<li class="lvl-3">
-<p><strong>退出程序前清理</strong>imgui</p>
-</li>
+<li><strong>初始化</strong>imgui</li>
+<li><strong>渲染</strong>imgui的ui</li>
+<li><strong>退出程序前清理</strong>imgui</li>
 </ol>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &quot;imgui&#x2F;imgui.h&quot;
 #include &quot;imgui&#x2F;imgui_impl_glfw.h&quot;
@@ -1268,8 +1332,8 @@ void renderIMGUI()
 ImGui_ImplOpenGL3_Shutdown();
 ImGui_ImplGlfw_Shutdown();
 ImGui::DestroyContext();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="各种控件">各种控件</h2>
-<h3 id="窗体区域">窗体区域</h3>
+<h2 id="各种控件"><a class="header-anchor" href="#各种控件"></a>各种控件</h2>
+<h3 id="窗体区域"><a class="header-anchor" href="#窗体区域"></a>窗体区域</h3>
 <p><strong>Begin</strong>函数会在屏幕上创建一块窗体区域，里面的参数是该窗体的名称。任何在Begin和End之间的控件都会在同一个窗体区域内，并且里面的<strong>控件</strong>都会<strong>随着窗体一起移动</strong>。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">ImGui::Begin(&quot;hello world&quot;);
 ImGui::Button(&quot;world&quot;, ImVec2(60, 40));
@@ -1298,64 +1362,50 @@ ImGui::Button(&quot;world&quot;, ImVec2(60, 40));
 ImGui::Button(&quot;c++&quot;, ImVec2(40, 40));
 ImGui::End();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717173401824.png" alt="image-20250717173401824" style="zoom:67%;" />
-<h1>Assimp</h1>
-<h2 id="介绍-5">介绍</h2>
+<h1 id="Assimp"><a class="header-anchor" href="#Assimp"></a>Assimp</h1>
+<h2 id="介绍-k5"><a class="header-anchor" href="#介绍-k5"></a>介绍</h2>
 <p><strong>Assimp</strong>（<strong>Open Asset Import Library</strong>）是一个开源的 <strong>3D 模型导入库</strong>，用于加载和处理多种 3D 文件格式。它广泛应用于游戏开发、计算机图形学、3D 建模工具等领域，能够解析模型数据（如网格、材质、动画等），并转换为统一的内部数据结构，方便在程序中使用。</p>
 <p>Assimp 可以读取多种常见的 3D 模型文件格式，包括：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>静态模型格式</strong>：OBJ, STL, PLY, FBX, DAE (Collada), 3DS, Blender (.blend)</p>
-</li>
-<li class="lvl-2">
-<p><strong>动画模型格式</strong>：FBX, DAE, GLTF/GLB, X (DirectX)</p>
-</li>
-<li class="lvl-2">
-<p><strong>游戏引擎格式</strong>：Unreal Engine (.ase), Quake (.mdl, .md2, .md3)</p>
-</li>
+<ul>
+<li><strong>静态模型格式</strong>：OBJ, STL, PLY, FBX, DAE (Collada), 3DS, Blender (.blend)</li>
+<li><strong>动画模型格式</strong>：FBX, DAE, GLTF/GLB, X (DirectX)</li>
+<li><strong>游戏引擎格式</strong>：Unreal Engine (.ase), Quake (.mdl, .md2, .md3)</li>
 </ul>
 <p>Assimp 解析 3D 文件后，可以提取以下数据：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>网格（Mesh）</strong>：顶点、法线、UV 坐标、三角形面片</p>
-</li>
-<li class="lvl-2">
-<p><strong>材质（Material）</strong>：漫反射/镜面反射/环境光颜色、纹理路径（漫反射贴图、法线贴图等）</p>
-</li>
-<li class="lvl-2">
-<p><strong>骨骼动画（Bone Animation）</strong>：骨骼层次结构、关键帧动画</p>
-</li>
-<li class="lvl-2">
-<p><strong>场景结构（Scene Graph）</strong>：节点层次结构（如父子关系）</p>
-</li>
+<ul>
+<li><strong>网格（Mesh）</strong>：顶点、法线、UV 坐标、三角形面片</li>
+<li><strong>材质（Material）</strong>：漫反射/镜面反射/环境光颜色、纹理路径（漫反射贴图、法线贴图等）</li>
+<li><strong>骨骼动画（Bone Animation）</strong>：骨骼层次结构、关键帧动画</li>
+<li><strong>场景结构（Scene Graph）</strong>：节点层次结构（如父子关系）</li>
 </ul>
 <p>具体使用流程如下：我们使用Assimp库导入一个3D模型文件，Assimp会解析文件数据并将其转换为Assimp规定的数据结构，我们拿到Assimp的数据结构后要根据自己的需求转换为自己可以使用的数据结构。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717221457130.png" alt="image-20250717221457130" style="zoom:50%;" />
-<h2 id="Assimp数据结构">Assimp数据结构</h2>
+<h2 id="Assimp数据结构"><a class="header-anchor" href="#Assimp数据结构"></a>Assimp数据结构</h2>
 <p>当使用Assimp导入一个模型的时候，它通常会将整个模型加载进一个<strong>场景</strong>(Scene)对象，它会包含导入的模型/场景中的所有数据。Assimp会将场景载入为一系列的节点(Node)，每个节点包含了场景对象中所储存数据的索引，每个节点都可以有任意数量的子节点。Assimp数据结构的（简化）模型如下：</p>
 <img src="https://learnopengl-cn.github.io/img/03/01/assimp_structure.png" alt="img" style="zoom: 80%;" />
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717222711536.png" alt="image-20250717222711536" style="zoom:50%;" />
-<ul class="lvl-0">
-<li class="lvl-2">
+<ul>
+<li>
 <p>aiScene中包含了该模型文件中的所有物体。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>aiScene.mMeshes数组包含了该场景中所有mesh的信息。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>aiMesh是存放mesh信息的，包含顶点信息(mVertices)、法线信息(mNormals)、uv坐标(mTextureCoords)、顶点索引(mFaces)、材质索引(mMaterialIndex)。其中材质可以根据材质索引去aiScene.mMaterials中获得指定的material。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>aiMesh.aiFace表示Mesh中一个三角形面元，aiFace.mIndices存放的是该三角形的顶点索引。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>aiScene.mMaterials数组包含了场景中所有material的信息。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>RootNode是场景的根节点，可以把每个Node当做一个空的Object（空Object当中父物体挂载其他mesh）。Node.mMeshes数组表示挂载在当前Node的物体的mesh，里面存放的是索引值，可以使用这个索引值去aiScene.mMeshes数组中获得指定的mesh；Node.mChildren表示挂载在当前Node的子Node。</p>
 </li>
 </ul>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717223840702.png" alt="image-20250717223840702" style="zoom:50%;" />
-<h2 id="使用-3">使用</h2>
+<h2 id="使用-k3"><a class="header-anchor" href="#使用-k3"></a>使用</h2>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;assimp&#x2F;Importer.hpp&gt;
 #include &lt;assimp&#x2F;scene.h&gt;
 #include &lt;assimp&#x2F;postprocess.h&gt;
@@ -1378,8 +1428,8 @@ if (!scene || scene-&gt;mFlags &amp; AI_SCENE_FLAGS_INCOMPLETE || !scene-&gt;mRo
 <p><em><em>importer.ReadFile(const char</em> path,  unsigned int flags)</em>*</p>
 <p>第一个参数<strong>path</strong>，是模型的读取路径；</p>
 <p>第二个参数<strong>flags</strong>，是读取模型的一些设置。<strong>aiProcess_Triangulate</strong>设置如果模型不是（全部）由三角形组成，它需要将模型所有的图元形状变换为三角形；<strong>aiProcess_GenNormals</strong>设置如果模型不包含法向量的话，就为每个顶点创建法线。</p>
-<h1>OpenGL初级</h1>
-<h2 id="初始程序">初始程序</h2>
+<h1 id="OpenGL初级"><a class="header-anchor" href="#OpenGL初级"></a>OpenGL初级</h1>
+<h2 id="初始程序"><a class="header-anchor" href="#初始程序"></a>初始程序</h2>
 <p>使用glfw创建窗口并使用glad加载函数成功后，我们先使用OpenGL API编写一个最基础程序。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 #include &lt;glad&#x2F;glad.h&gt;
@@ -1437,7 +1487,7 @@ int main()
     return 0;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="OpenGL函数错误处理">OpenGL函数错误处理</h2>
+<h2 id="OpenGL函数错误处理"><a class="header-anchor" href="#OpenGL函数错误处理"></a>OpenGL函数错误处理</h2>
 <p>OpenGL是一个相对稳定的状态机，不会因为我们给函数传入错误的参数而随便崩溃，这也就导致了我们在开发中更难观察到代码中的错误。</p>
 <p>以下面的代码为例：</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
@@ -1539,12 +1589,12 @@ void checkError()
 <p>由于每次调用checkError()函数都会消耗计算资源，每一行代码都调用一次会大大影响性能，所以使用条件编译的方式只在开发中使用（CMake中使用add_definitions(-DDEBUG)指令定义该宏表面开发模式）。我们的宏和检错函数定义好之后，在其他源文件引入之后，可以直接使用。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;每一条语句被GL_CALL包裹后会先只执行里面的语句，随后就执行我们的checkError函数，可以随时检查出错误所在
 GL_CALL(glClear(GL_COLOR_BUFFER_BIT));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="NDC-Normalized-Device-Coordinates">NDC(Normalized Device Coordinates)</h2>
+<h2 id="NDC-Normalized-Device-Coordinates"><a class="header-anchor" href="#NDC-Normalized-Device-Coordinates"></a>NDC(Normalized Device Coordinates)</h2>
 <p>把屏幕坐标划分为[-1,1]的范围，0表示中点位置，-1是左边界或下边界，1是右边界或上边界。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204164555512.png" alt="image-20240204164555512" style="zoom: 50%;" />
 <p>使用这种坐标的好出是在屏幕中显示的图像会随着屏幕的大小进行相应比例的缩放，最终我们在OpenGL中给出的坐标也都是NDC中的坐标。</p>
-<h2 id="VBO-Vertex-Buffer-Objects">VBO(Vertex Buffer Objects)</h2>
-<h3 id="创建">创建</h3>
+<h2 id="VBO-Vertex-Buffer-Objects"><a class="header-anchor" href="#VBO-Vertex-Buffer-Objects"></a>VBO(Vertex Buffer Objects)</h2>
+<h3 id="创建"><a class="header-anchor" href="#创建"></a>创建</h3>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204165607889.png" alt="image-20240204165607889" style="zoom:67%;" />
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204165839066.png" alt="image-20240204165839066" style="zoom:67%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">   &#x2F;&#x2F;在此过程中并未开辟显存
@@ -1562,7 +1612,7 @@ GL_CALL(glClear(GL_COLOR_BUFFER_BIT));<span aria-hidden="true" class="line-numbe
    glGenBuffers(n, vbo2);
    &#x2F;&#x2F;删除多个VBO
    glDeleteBuffers(n, vbo2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="绑定和数据填入">绑定和数据填入</h3>
+<h3 id="绑定和数据填入"><a class="header-anchor" href="#绑定和数据填入"></a>绑定和数据填入</h3>
 <p>使用glGenBuffers函数创建vbo时并不会开辟显存空间，<strong>填入数据</strong>时会真正的<strong>开辟显存空间</strong>。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250417172543086.png" alt="image-20250417172543086" style="zoom:33%;" />
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204173148411.png" alt="image-20240204173148411" style="zoom: 50%;" />
@@ -1582,9 +1632,9 @@ glBindBuffer(GL_ARRAY_BUFFER, vbo);
 glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 glDeleteBuffers(1, &amp;vbo);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="存储多属性数据">存储多属性数据</h3>
+<h3 id="存储多属性数据"><a class="header-anchor" href="#存储多属性数据"></a>存储多属性数据</h3>
 <p>对于一个三角形来说，其包含的数据不止有三个顶点的坐标信息，还有类似颜色、深度等的其他信息，也就是说明一个点是多属性数据，下面介绍两种vbo中存储多属性的策略。</p>
-<h4 id="single-buffer">single buffer</h4>
+<h4 id="single-buffer"><a class="header-anchor" href="#single-buffer"></a>single buffer</h4>
 <p>该策略是为每一个属性分配一个vbo对象存储，即创建多个vbo对象，每个vbo对象只负责记录所有点的某一个属性的信息。如下图所示，我们可以创建两个vbo对象，分别存储点的坐标信息和颜色信息。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204174550438.png" alt="image-20240204174550438" style="zoom: 50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void prepaerSingleBuffer() &#123;
@@ -1614,7 +1664,7 @@ glDeleteBuffers(1, &amp;vbo);<span aria-hidden="true" class="line-numbers-rows">
     &#x2F;&#x2F;传输数据
     glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="interleaved-buffer">interleaved buffer</h4>
+<h4 id="interleaved-buffer"><a class="header-anchor" href="#interleaved-buffer"></a>interleaved buffer</h4>
 <p>该策略是将所有的信息放到一个数组里，只创建一个vbo对象存储。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204192206098.png" alt="image-20240204192206098" style="zoom:67%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void prepaerInterleavedBuffer() &#123;
@@ -1629,7 +1679,7 @@ glDeleteBuffers(1, &amp;vbo);<span aria-hidden="true" class="line-numbers-rows">
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="VAO-Vertex-Array-Object">VAO(Vertex Array Object)</h2>
+<h2 id="VAO-Vertex-Array-Object"><a class="header-anchor" href="#VAO-Vertex-Array-Object"></a>VAO(Vertex Array Object)</h2>
 <p>VAO（Vertex Array Object）：顶点数组对象，用于存储一个Mesh网格所有的<strong>顶点属性描述信息</strong>。</p>
 <p>我们可以通过把信息存储在VBO中，然后VBO再传送到显存中，显卡得到了这些数据后只是一堆数据，并不知道如何操作。而VAO就是用来<strong>描述</strong>VBO中数据的存放的，比如数据的类型，几个数据为一组之类的信息，让显卡可以根据我们的定义存取数据。</p>
 <p>在OpenGL程序中，<strong>VBO</strong>可能会有多个，但<strong>VAO</strong>只有一个。</p>
@@ -1684,7 +1734,7 @@ float vertices[] &#x3D; &#123;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下面是具体的练习题：</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204203237223.png" alt="image-20240204203237223" style="zoom:67%;" />
-<h2 id="EBO-Element-Buffer-Object">EBO(Element Buffer Object)</h2>
+<h2 id="EBO-Element-Buffer-Object"><a class="header-anchor" href="#EBO-Element-Buffer-Object"></a>EBO(Element Buffer Object)</h2>
 <p>之前我们用VBO存储数据进行绘制多个点时，如果有两个三角形共用了一个或两个点，我们只能按顺序写6个点才能绘制成功，我们可以发现VBO的方式这些点<strong>不能复用</strong>，这就造成了<strong>空间的浪费</strong>。我们可以把用到的点的信息还是都放在VBO中，但是通过索引值获取到要绘制的点，在点的数量很多的情况下可以大大的减少空间的浪费，于是便有了EBO。</p>
 <p><strong>EBO：用于存储顶点绘制顺序索引号的GPU显存区域。</strong></p>
 <p>我们通过将EBO与VAO绑定，在绘制点的时候根据EBO中的索引序号再向VBO中获取到点。EBO的创建与VBO的也类似，只是模式参数不同。</p>
@@ -1770,13 +1820,13 @@ GLuint vao<span class="token punctuation">,</span> program<span class="token pun
     <span class="token function">glBindVertexArray</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="shader-着色器程序-入门">shader(着色器程序)入门</h2>
+<h2 id="shader-着色器程序-入门"><a class="header-anchor" href="#shader-着色器程序-入门"></a>shader(着色器程序)入门</h2>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240205161612785.png" alt="image-20240205161612785" style="zoom:67%;" />
-<h3 id="GLSL-Graphic-Library-Shader-Language">GLSL(Graphic Library Shader Language)</h3>
+<h3 id="GLSL-Graphic-Library-Shader-Language"><a class="header-anchor" href="#GLSL-Graphic-Library-Shader-Language"></a>GLSL(Graphic Library Shader Language)</h3>
 <p>着色器的编写要使用专门的语言来完成，这里使用的是GLSL，这是一种类C语言写成的，包含一些对向量和矩阵的操作的有用的特性。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240205161939253.png" alt="image-20240205161939253" style="zoom:67%;" />
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704180609917.png" alt="image-20250704180609917" style="zoom: 50%;" />
-<h4 id="简单数据类型">简单数据类型</h4>
+<h4 id="简单数据类型"><a class="header-anchor" href="#简单数据类型"></a>简单数据类型</h4>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206145951400.png" alt="image-20240206145951400" style="zoom: 50%;" />
 <p>在三维向量中，前三个数字可用xyz或者rgb分别表示。</p>
 <p>在四维向量中，前四个数字可用xyzw或者rgba分别表示。</p>
@@ -1794,7 +1844,7 @@ color<span class="token punctuation">.</span>z <span class="token operator">==</
 <span class="token keyword">vec4</span> v1<span class="token operator">=</span><span class="token keyword">vec4</span><span class="token punctuation">(</span>temp1<span class="token punctuation">,</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">vec4</span> v2<span class="token operator">=</span><span class="token keyword">vec4</span><span class="token punctuation">(</span>temp1<span class="token punctuation">.</span>xyz<span class="token punctuation">,</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">vec4</span> v3<span class="token operator">=</span><span class="token keyword">vec4</span><span class="token punctuation">(</span>temp1<span class="token punctuation">.</span>xy<span class="token punctuation">,</span><span class="token number">1.0</span><span class="token punctuation">,</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="Uniform">Uniform</h4>
+<h4 id="Uniform"><a class="header-anchor" href="#Uniform"></a>Uniform</h4>
 <p>Uniform变量可以被当前Shader运行的所有运算单元<strong>共享</strong>的变量，Uniform变量是<strong>全局</strong>的，因此每一个变量必须<strong>唯一</strong>。Uniform变量可以被着色器程序的任意着色器在任意阶段访问，无论把uniform值设置成什么，uniform会一直保存它们的数据，直到它们被重置或更新。</p>
 <p>由于uniform是全局变量，我们可以在任何着色器中定义它们，定义后可以在任何着色器中使用它们。</p>
 <p>下面的代码就是利用<strong>Uniform</strong>根据时间用正弦函数设置三角形的颜色周期性变化。</p>
@@ -1839,7 +1889,7 @@ GLfloat greenValue &#x3D; (sin(timeValue)+1)&#x2F;2;&#x2F;&#x2F;根据实际的�
 shader-&gt;setUniform3Float(&quot;uColor&quot;, 0.0f, greenValue, 0.0f);&#x2F;&#x2F;设置uniform变量的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到三角形的颜色会随时间进行周期性的变化。</p>
 <p>​                        <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206161838490.png" alt="image-20240206161838490" style="zoom:50%;" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206161857442.png" alt="image-20240206161857442" style="zoom:50%;" /></p>
-<h3 id="Vertex-Shader">Vertex Shader</h3>
+<h3 id="Vertex-Shader"><a class="header-anchor" href="#Vertex-Shader"></a>Vertex Shader</h3>
 <p>顶点着色器(Vertex Shader)是几个可编程着色器中的一个。如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。着色器的编写需要用到上面的GLSL来实现，下面是一个简单的实现。顶点着色器是将三维世界的左边转化成NDC坐标的，这里我们默认输入的数据就是NDC坐标，所以不用做任何处理，就实现了一个最简单的顶点着色器。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//opengl版本为4.6核心模式</span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">version</span> <span class="token expression"><span class="token number">460</span> core</span></span>
@@ -1859,24 +1909,16 @@ shader-&gt;setUniform3Float(&quot;uColor&quot;, 0.0f, greenValue, 0.0f);&#x2F;&#
     <span class="token comment">//输出变量赋值后向后传递</span>
     mColor <span class="token operator">=</span> color<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Fragment-Shader">Fragment Shader</h3>
+<h3 id="Fragment-Shader"><a class="header-anchor" href="#Fragment-Shader"></a>Fragment Shader</h3>
 <p>片段着色器(Fragment Shader)是第二个也是最后一个我们打算创建的用于渲染三角形的着色器。片段着色器计算每个像素最后的<strong>颜色输出</strong>。</p>
 <p>GLSL老版本中的FS有内置变量gl_FragColor表示输出，但在新版已经被废弃。</p>
 <p><strong>gl_FragCoord</strong>是 OpenGL <strong>片段着色器（Fragment Shader）</strong> 的内置变量，只能在FragmentShader中使用。</p>
 <p><code>gl_FragCoord</code> 是一个 <code>vec4</code> 类型的变量，表示当前片段的 <strong>窗口空间坐标</strong>，包含以下信息：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong><code>gl_FragCoord.x</code></strong>：当前片段的 x 坐标（像素位置，范围 <code>[0, viewportWidth]</code>）</p>
-</li>
-<li class="lvl-2">
-<p><strong><code>gl_FragCoord.y</code></strong>：当前片段的 y 坐标（像素位置，范围 <code>[0, viewportHeight]</code>）</p>
-</li>
-<li class="lvl-2">
-<p><strong><code>gl_FragCoord.z</code></strong>：当前片段的深度值（范围 <code>[0, 1]</code>，可用于深度测试）</p>
-</li>
-<li class="lvl-2">
-<p><strong><code>gl_FragCoord.w</code></strong>：<code>1 / gl_Position.w</code>（透视校正插值用）</p>
-</li>
+<ul>
+<li><strong><code>gl_FragCoord.x</code></strong>：当前片段的 x 坐标（像素位置，范围 <code>[0, viewportWidth]</code>）</li>
+<li><strong><code>gl_FragCoord.y</code></strong>：当前片段的 y 坐标（像素位置，范围 <code>[0, viewportHeight]</code>）</li>
+<li><strong><code>gl_FragCoord.z</code></strong>：当前片段的深度值（范围 <code>[0, 1]</code>，可用于深度测试）</li>
+<li><strong><code>gl_FragCoord.w</code></strong>：<code>1 / gl_Position.w</code>（透视校正插值用）</li>
 </ul>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">version</span> <span class="token expression"><span class="token number">460</span> core</span></span>
 <span class="token comment">//颜色用四维向量表示，分别是r,g,b,a的值， 表示每个像素最后的颜色输出</span>
@@ -1890,7 +1932,7 @@ shader-&gt;setUniform3Float(&quot;uColor&quot;, 0.0f, greenValue, 0.0f);&#x2F;&#
     color <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>mColor<span class="token punctuation">.</span>x<span class="token punctuation">,</span> mColor<span class="token punctuation">.</span>y<span class="token punctuation">,</span> mColor<span class="token punctuation">.</span>z<span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704155644324.png" alt="image-20250704155644324" style="zoom:50%;" />
-<h3 id="shader的编译">shader的编译</h3>
+<h3 id="shader的编译"><a class="header-anchor" href="#shader的编译"></a>shader的编译</h3>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240205164023977.png" alt="image-20240205164023977" style="zoom:67%;" />
 <p>因为shader的编写是使用一门语言完成的，我们需要在OpenGL中手动编译和链接。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token keyword">void</span> <span class="token function">prepaerShader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1941,7 +1983,7 @@ shader-&gt;setUniform3Float(&quot;uColor&quot;, 0.0f, greenValue, 0.0f);&#x2F;&#
     <span class="token punctuation">&#125;</span>
 
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="shader的链接">shader的链接</h3>
+<h3 id="shader的链接"><a class="header-anchor" href="#shader的链接"></a>shader的链接</h3>
 <p>编译完成后，我们需要创建一个Program(程序)，将编译生成的中间文件链接在一起，生成一个可执行的shader程序。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token keyword">void</span> <span class="token function">prepaerShader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">//shader源代码</span>
@@ -2008,7 +2050,7 @@ shader-&gt;setUniform3Float(&quot;uColor&quot;, 0.0f, greenValue, 0.0f);&#x2F;&#
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>shader经过编译和链接后就会形成一个程序(program)，可以有多个shader，使用函数glUseProgram(int programId)就可以选择我们绘制时所使用的shander了。</p>
-<h3 id="Shader类的封装">Shader类的封装</h3>
+<h3 id="Shader类的封装"><a class="header-anchor" href="#Shader类的封装"></a>Shader类的封装</h3>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;-------------------------------------------------shader.h文件
 #pragma once
 #include &quot;core.h&quot;
@@ -2175,7 +2217,7 @@ void Shader::setUniformMatrix4(const char* name, const float* val)
 	GLint location &#x3D; GL_CALL(glGetUniformLocation(mProgram, name));
 	GL_CALL(glUniformMatrix4fv(location, 1, GL_FALSE, val));
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="绘制简单的三角形">绘制简单的三角形</h2>
+<h2 id="绘制简单的三角形"><a class="header-anchor" href="#绘制简单的三角形"></a>绘制简单的三角形</h2>
 <p>我们链接成功后就获得了shader程序的可执行文件，就告诉显卡我们要怎么绘制点了，下面我们就用OpenGL里的绘制命令<strong>glDrawArrays</strong>绘制一个简单的三角形。</p>
 <p>当我们的顶点数据（VBO和VAO）和材质数据（VS和FS），都准备好之后我们需要告诉GPU开始绘制。</p>
 <p>绘制前需要先用<strong>glUseProgram和glBindVertexArray</strong>指令指定绘制使用哪一个已经<strong>编译链接好</strong>的shader程序和哪一个VAO，然后调用<strong>glDrawArrays</strong>指令告诉GPU绘制的详细内容。</p>
@@ -2206,7 +2248,7 @@ glDrawArrays(GL_TRIANGLES, 0, 5);&#x2F;&#x2F;最终会绘制出一个三角形�
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250424211839314.png" alt="image-20250424211839314" style="zoom: 50%;" />
 <p><strong>绘制直线：</strong></p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250424211915083.png" alt="image-20250424211915083" style="zoom:67%;" />
-<h2 id="绘制一个彩色的三角形">绘制一个彩色的三角形</h2>
+<h2 id="绘制一个彩色的三角形"><a class="header-anchor" href="#绘制一个彩色的三角形"></a>绘制一个彩色的三角形</h2>
 <p>当我们三个点的颜色各不相同时，内部已经实现的渲染管线会把三角形内部的点按照用插值算法进行计算，使得三个顶点之间的颜色1有一个平滑的过渡，就绘制出了彩色的三角形。下面是具体代码：</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//声明全局变量</span>
 GLuint vao<span class="token punctuation">,</span> program<span class="token punctuation">;</span>
@@ -2385,18 +2427,18 @@ GLuint vao<span class="token punctuation">,</span> program<span class="token pun
 <p>上面因为三个点的颜色不一致，所以会在内部自动进行三角形内每个点的插值运算，得到一个彩色的三角形，如下图所示：</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206114956358.png" alt="image-20240206114956358" style="zoom:50%;" />
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250511214654845.png" alt="image-20250511214654845" style="zoom:67%;" />
-<h2 id="texture-纹理">texture(纹理)</h2>
-<h3 id="UV坐标">UV坐标</h3>
+<h2 id="texture-纹理"><a class="header-anchor" href="#texture-纹理"></a>texture(纹理)</h2>
+<h3 id="UV坐标"><a class="header-anchor" href="#UV坐标"></a>UV坐标</h3>
 <p>在OpenGL中，<strong>左下角为坐标原点</strong>，图片的大都为左上角为坐标原点，因此在OpenGL中存储图片必须反转一下图片的Y轴。</p>
 <p>在纹理中，我们使用的是UV坐标。通常U表示横向，V表示纵向，两个方向的取值都是<strong>0到1</strong>之间，用以表示当前像素对应图片上百分比位置。</p>
 <p>以前的屏幕像素与纹理像素一一对应的方法不灵活且效果差，采用UV坐标后就改为了<strong>比例对应</strong>的方式。首先找到屏幕中某一像素所在位置的百分比，将横向和纵向的百分比分别乘以纹理图片的宽和高，就得到了与屏幕中该像素对应的纹理图片中的像素。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704220905713.png" alt="image-20250704220905713" style="zoom:50%;" />
 <p>从上面可以得知，在为我们的图形贴上贴图时，需要知道每个顶点的UV坐标。也就是说，<strong>UV坐标需要作为每个顶点的属性存储在VBO中</strong>。知道了顶点的UV坐标后，光栅化后的每个像素块的UV坐标都会由插值算法计算出，这样就可以为图形贴上纹理了。</p>
-<h3 id="纹理对象与采样">纹理对象与采样</h3>
+<h3 id="纹理对象与采样"><a class="header-anchor" href="#纹理对象与采样"></a>纹理对象与采样</h3>
 <p>纹理对象（Texture）是在GPU端按照<strong>一定的格式</strong>存储纹理图片的<strong>描述信息</strong>和<strong>数据信息</strong>的对象。（在cpu端，描述图片的格式有多种，例如jpg、png等。当我们读取到纹理图片到内存后需要发送到显存中，而在显存中用来描述纹理图片信息的对象就叫做纹理对象。）</p>
 <p>在GPU端<strong>根据UV坐标</strong>按照<strong>一定的算法</strong>从<strong>纹理图片中获取颜色</strong>的过程称为采样，执行采样的对象叫做采样器（sampler）。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704222728529.png" alt="image-20250704222728529" style="zoom:67%;" />
-<h3 id="Texture-Units-纹理单元">Texture Units(纹理单元)</h3>
+<h3 id="Texture-Units-纹理单元"><a class="header-anchor" href="#Texture-Units-纹理单元"></a>Texture Units(纹理单元)</h3>
 <p>纹理与单元绑定后，采样器可以选择使用哪一个单元并获取与之对应的纹理对象。</p>
 <p>具体来说，纹理单元是采样器和纹理对象之间的桥梁。纹理对象绑定某个纹理单元后，采样器可以对这个单元所绑定的纹理对象进行采样。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240220104327355.png" alt="image-20240220104327355" style="zoom:50%;" />
@@ -2460,16 +2502,12 @@ GLuint vao<span class="token punctuation">,</span> program<span class="token pun
 		<span class="token function">stbi_image_free</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
     
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="纹理过滤">纹理过滤</h3>
+<h3 id="纹理过滤"><a class="header-anchor" href="#纹理过滤"></a>纹理过滤</h3>
 <p>这其实就是之前计算机图形学中纹理问题的内容，当图片大小确定，而展示区域比图片大或者比图片小时都会出现绘制的问题，而纹理过滤就是为了解决这样的问题。</p>
 <p>总共有两种问题会出现：</p>
 <ol>
-<li class="lvl-3">
-<p>展示区域过大（屏幕像素&gt;图片像素），图片需要放大。一般会使用**双线性插值(Bilinear)**创造缺少的像素，这样会使图片放大后变得模糊，而不会出现明显的颗粒感。</p>
-</li>
-<li class="lvl-3">
-<p>展示区域过小（屏幕像素&lt;图片像素），图片需要缩小。一般使用**临近法(Nearest)**优先选择离屏幕像素更近的图片像素，使得小的区域能展示更多的图片信息。</p>
-</li>
+<li>展示区域过大（屏幕像素&gt;图片像素），图片需要放大。一般会使用**双线性插值(Bilinear)**创造缺少的像素，这样会使图片放大后变得模糊，而不会出现明显的颗粒感。</li>
+<li>展示区域过小（屏幕像素&lt;图片像素），图片需要缩小。一般使用**临近法(Nearest)**优先选择离屏幕像素更近的图片像素，使得小的区域能展示更多的图片信息。</li>
 </ol>
 <p>下面是在OpenGL中设置纹理过滤的方式，通过<strong>glTexParameteri</strong>函数进行设置。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240220113239049.png" alt="image-20240220113239049" style="zoom:67%;" />
@@ -2478,7 +2516,7 @@ GLuint vao<span class="token punctuation">,</span> program<span class="token pun
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 &#x2F;&#x2F;展示区域 &gt; 图片大小  纹理图片需要放大  就近
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="纹理包裹">纹理包裹</h3>
+<h3 id="纹理包裹"><a class="header-anchor" href="#纹理包裹"></a>纹理包裹</h3>
 <p>在前面的介绍中，opengl中的uv坐标是要在<code>[0, 1]</code> 范围内的，但是实际应用中uv坐标可能会出现大于1的情况。</p>
 <p><strong>纹理包裹（Texture Wrapping）</strong> 定义了当纹理坐标（UV）超出默认范围 <code>[0, 1]</code> 时，如何采样纹理边缘的行为。它是控制纹理重复、拉伸或截断的关键参数。可以通过<strong>glTexParameteri</strong>函数进行设置，共有四种策略可供使用。</p>
 <p>在设置时，主要分为 <strong>S（水平）</strong> 和 <strong>T（垂直）</strong> 两个方向，不难看出S和U同一个方向，T</p>
@@ -2513,7 +2551,7 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<span aria-hidd
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;设置纹理包裹方式
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);&#x2F;&#x2F;S -&gt; U
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);&#x2F;&#x2F;T -&gt; V<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="使用采样器">使用采样器</h3>
+<h3 id="使用采样器"><a class="header-anchor" href="#使用采样器"></a>使用采样器</h3>
 <p>这部分就要在shader中使用采样器对纹理进行采样获取每个像素的颜色。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 1. 因为uv坐标每个顶点都是不一样的，所以要先在vbo中将uv坐标作为顶点属性传到显存中
 void prepare()
@@ -2633,7 +2671,7 @@ void main()
 shader-&gt;setUniform1i(&quot;sampler&quot;, 0);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们在代码中可以给sampler赋一个int类型的数值（纹理单元的编号），将采样器与纹理单元进行绑定，表示这个采样器要对哪个纹理单元进行采样。</p>
 <p><strong>注意：</strong><code>glTexParameteri</code> 修改的是<strong>当前绑定的纹理对象</strong>的状态。因此必须先使用glBindTexture绑定纹理对象到opengl插槽后才能正确执行纹理过滤方式和纹理包裹方式的设置，如果还未绑定纹理对象就先设置，那么纹理则无法正常显示。</p>
-<h3 id="MipMap（多级渐远纹理）">MipMap（多级渐远纹理）</h3>
+<h3 id="MipMap（多级渐远纹理）"><a class="header-anchor" href="#MipMap（多级渐远纹理）"></a>MipMap（多级渐远纹理）</h3>
 <p>当视线逐渐远离一个物体时，根据进大远小的原理，物体也必然会变得越来越小，那么该物体在屏幕中所占的像素也会越来越少。那么问题来了，一开始物体表面的原始贴图必然是清晰的，随着物体越来越小，可显示的像素块页越来越少，就会导致在一块小区域对一张大图片进行采样，不仅会导致画面出现毛刺和摩尔纹等问题，也会浪费内存和带宽。</p>
 <p>如下图所示，将一张贴图向远处重复延伸，近处显示的很清晰，但是远处的画面看起来非常模糊不舒服，问题所在就是前面所描述的。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705214311994.png" alt="image-20250705214311994" style="zoom: 33%;" />
@@ -2643,7 +2681,7 @@ shader-&gt;setUniform1i(&quot;sampler&quot;, 0);<span aria-hidden="true" class="
 <p><strong>glGenerateMipmap</strong>函数会为当前绑定的纹理贴图生成一系列不同level的Mipmap纹理。</p>
 <p><strong>glTexParameteri</strong>函数是设置选择不同Mipmap纹理的策略，由于只有当<strong>展示区域像素&lt;纹理像素</strong>时才会出现这种情况，所以只需要设置<strong>GL_TEXTURE_MIN_FILTER</strong>情况时的Mipmap选择策略即可。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250706154430595.png" alt="image-20250706154430595" style="zoom: 50%;" />
-<h3 id="Texture类的封装">Texture类的封装</h3>
+<h3 id="Texture类的封装"><a class="header-anchor" href="#Texture类的封装"></a>Texture类的封装</h3>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;-------------------------------------------------texture.h文件
 #pragma once
 #include &quot;core.h&quot;
@@ -2723,11 +2761,11 @@ void Texture::bind()
 &#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="变换">变换</h2>
-<h3 id="坐标系">坐标系</h3>
+<h2 id="变换"><a class="header-anchor" href="#变换"></a>变换</h2>
+<h3 id="坐标系"><a class="header-anchor" href="#坐标系"></a>坐标系</h3>
 <p><img src="C:%5CUsers%5CHMY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250706202159737.png" alt="image-20250706202159737"></p>
 <p>世界坐标系是绝对的，永恒不变的。本地坐标系是物体身上附加的坐标系，用来表示物体的朝向等状态，当物体旋转或者移动时，其本地坐标系会随着物体改变。</p>
-<h3 id="模型变换矩阵（ModelMatrix）">模型变换矩阵（ModelMatrix）</h3>
+<h3 id="模型变换矩阵（ModelMatrix）"><a class="header-anchor" href="#模型变换矩阵（ModelMatrix）"></a>模型变换矩阵（ModelMatrix）</h3>
 <p>glm变换函数的第一个参数是一个矩阵，表明了当前物体前面的所有变换。如下代码所示，在第一次变换时，由于还未进行变换，所以要传入单位矩阵，表面是原始状态。在第二次变换时，传入的是第一次变换后得到的transform矩阵，这个矩阵已经记录了第一次将物体选择了45度的状态，然后在此状态下进行平移变换。且<strong>平移时是按照旋转后的本地坐标系移动</strong>的。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250706203639109.png" alt="image-20250706203639109" style="zoom: 50%;" />
 <p>旋转操作是围绕原点旋转的，<strong>glm中的旋转</strong>是以物体的<strong>本地坐标系原点</strong>为基准进行旋转的。一开始本地坐标系和世界坐标系重合，先将物体平移，再旋转45度，可以看到物体并没有绕着世界坐标系原点旋转，而是绕着本地坐标系原点旋转的。</p>
@@ -2735,20 +2773,14 @@ void Texture::bind()
 <p>glm的平移变换要根据缩放变换的程度而定，假设我们先将x方向缩放为原来的0.5倍，那么再将物体向x轴平移1个单位距离时，就会只平移0.5个单位距离。这是因为x轴已经被缩放过了，实际平移的距离 = 输入平移的距离 * 对应轴缩放系数。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250706204420151.png" alt="image-20250706204420151" style="zoom:50%;" />
 <p>模型变换就是对物体进行平移、缩放、旋转等变换操作，这一步骤会将物体的顶点坐标由<strong>模型坐标系</strong>转为<strong>世界坐标系</strong>下的坐标。简单来说，模型变换就是将物体从初始状态摆放在世界中的其他位置。</p>
-<h3 id="视图变换矩阵（MiewMatrix）">视图变换矩阵（MiewMatrix）</h3>
+<h3 id="视图变换矩阵（MiewMatrix）"><a class="header-anchor" href="#视图变换矩阵（MiewMatrix）"></a>视图变换矩阵（MiewMatrix）</h3>
 <p>为了将物体投影出来，我们需要一个观察者来观察世界中的物体，这个观察者被称为<strong>摄像机</strong>(Camera)，这只是一个抽象的概念，并不实际存在。</p>
 <p>对于一个摄像机来说，我们需要知道最基本的三个参数，即摄像机的<strong>位置</strong>、摄像机的<strong>朝向</strong>（看向哪个方向）和摄像机的<strong>穹顶方向</strong>（正上方的方向。因为当相机倒过来的时候看到的物体也会是倒的，我们需要知道摄像机是正的还是歪的）。</p>
 <p>现在考虑最简单的情况：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>摄像机在<strong>世界坐标系的原点</strong></p>
-</li>
-<li class="lvl-2">
-<p>摄像机<strong>看向-Z方向</strong></p>
-</li>
-<li class="lvl-2">
-<p>穹顶方向维Y轴方向</p>
-</li>
+<ul>
+<li>摄像机在<strong>世界坐标系的原点</strong></li>
+<li>摄像机<strong>看向-Z方向</strong></li>
+<li>穹顶方向维Y轴方向</li>
 </ul>
 <p>此时进行投影计算最为简单，因为所有的物体只需要<strong>沿z轴投影</strong>到摄像机的屏幕上即可。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707163143623.png" alt="image-20250707163143623" style="zoom:50%;" />
@@ -2801,21 +2833,21 @@ $$<br>
 &#x2F;&#x2F;第三个参数top：穹顶向量（定义摄像机的“向上”方向,正常摄像机为(0,1,0)，翻转摄像机为(0,-1,0)）
 &#x2F;&#x2F;因为我们的摄像机在本地坐标下总是看向-Z方向，所以一般会将摄像机放置到+Z位置
 mat4 viewMatrix &#x3D; lookAt(vec3 eye, vec3 center, vec3 top);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="投影变换矩阵（ProjectionMatrix）">投影变换矩阵（ProjectionMatrix）</h3>
+<h3 id="投影变换矩阵（ProjectionMatrix）"><a class="header-anchor" href="#投影变换矩阵（ProjectionMatrix）"></a>投影变换矩阵（ProjectionMatrix）</h3>
 <p>投影这个概念在数学中也很常见，就是将三维的物体沿某一坐标轴投影到二维平面上。在三维场景中的物体，必须投影到一块幕布上，才能显示出来。例如打游戏的时候，显示器的屏幕就是一个二维的屏幕，却能显示出三维的游戏场景，就是将场景中的物体最终投影到幕布上才能在二维的显示器屏幕上显示出来。</p>
 <p>投影又分为正交投影（Orthographic Projection）和透视投影（Perspective Projection）两种投影方式，两种投影方式都有各自的应用场景。</p>
 <p><strong>一、正交投影：</strong></p>
 <p>正交投影中不存在人眼的概念，发出的都是平行光，就好比是在一堆物体前用平行光照射到一堵墙上一样。类似数学中立体几何的正视图、俯视图、侧视图那样的效果，无法体现物体间进大远小那种立体感的效果。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707182324681.png" alt="image-20250707182324681" style="zoom:50%;" />
 <p>在正交投影中，我们会定义一个投影盒（left，right，top，bottom，near，far），可以简单理解为物体能够显示的边界范围，oopengl只会显示在投影盒内的物体。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
+<ul>
+<li>
 <p>如果物体<strong>全部顶点</strong>都在<strong>投影盒内</strong>，则完整显示物体；</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>如果物体<strong>全部顶点</strong>都在<strong>投影盒外</strong>，则不显示物体；</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>如果物体<strong>部分顶点</strong>在<strong>投影盒外</strong>，则opengl会求出物体与投影盒的交点，只显示投影盒内的部分，就好比物体用刀切去了一部分。</p>
 </li>
 </ul>
@@ -2825,12 +2857,8 @@ mat4 viewMatrix &#x3D; lookAt(vec3 eye, vec3 center, vec3 top);<span aria-hidden
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707183541524.png" alt="image-20250707183541524" style="zoom:40%;" />
 <p>由于NDC坐标系的范围是[-1, 1]，为了使这些顶点坐标缩放到同样的范围：</p>
 <ol>
-<li class="lvl-3">
-<p>我们需要先将<strong>投影盒的中心</strong>平移到摄像机坐标系的<strong>原点</strong>，盒内的物体顶点也随着做同样的平移变换。</p>
-</li>
-<li class="lvl-3">
-<p>将投影盒的<strong>长宽高</strong>都缩放为<strong>长度为2</strong>的立方体，盒内的顶点也随着做同样的缩放变换。</p>
-</li>
+<li>我们需要先将<strong>投影盒的中心</strong>平移到摄像机坐标系的<strong>原点</strong>，盒内的物体顶点也随着做同样的平移变换。</li>
+<li>将投影盒的<strong>长宽高</strong>都缩放为<strong>长度为2</strong>的立方体，盒内的顶点也随着做同样的缩放变换。</li>
 </ol>
 <p>上面两个步骤<strong>盒内和盒外</strong>的顶点都会<strong>做一样的变换</strong>，只是<strong>盒外的顶点</strong>变换后<strong>仍然在盒外</strong>，会被去除不显示出来。</p>
 <p>于是我们就将每个<strong>顶点坐标</strong>从<strong>摄像机坐标系</strong>坐标转换到了<strong>NDC坐标系坐标</strong>。</p>
@@ -2847,13 +2875,9 @@ mat4 orthProjectionMatrix &#x3D; ortho(float left, float right, float bottom, fl
 <p>与正交投影一样，透视投影也有一个包裹盒，为了<strong>模仿人眼透视</strong>的功能实现<strong>近大远小</strong>的特点，这个包裹盒是一个<strong>锥体</strong>，叫做<strong>视锥体</strong>。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707221330591.png" alt="image-20250707221330591" style="zoom: 50%;" />
 <p>视锥体也由六个参数控制：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>可视范围：near，far（表示和摄像机坐标原点的<strong>距离</strong>，均为<strong>正数</strong>）</p>
-</li>
-<li class="lvl-2">
-<p>近平面范围：left，right，top，bottom（表示了近平面可视区域的坐标范围，<strong>可正可负</strong>）</p>
-</li>
+<ul>
+<li>可视范围：near，far（表示和摄像机坐标原点的<strong>距离</strong>，均为<strong>正数</strong>）</li>
+<li>近平面范围：left，right，top，bottom（表示了近平面可视区域的坐标范围，<strong>可正可负</strong>）</li>
 </ul>
 <p>和正交投影一样，透视投影也是要将摄像机坐标系转为NDC坐标系，所以要将锥体包裹盒缩放为长度为2的立方体。由于距离摄像机原点越远，可视平面越大，当远平面也缩放到[-1, 1]范围时，远处的顶点坐标必然会缩放更多，也就造成了进大远小的效果。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707221928121.png" alt="image-20250707221928121" style="zoom:50%;" />
@@ -2868,9 +2892,9 @@ mat4 perspectiveProjectionMatrix &#x3D; perspective(float fov, float aspect, flo
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707235241817.png" alt="image-20250707235241817" style="zoom:50%;" />
 <p>知道了上述三种变换后，我们最终在vertexShader输出的顶点坐标是经过了完整的模型变换、视图变换和投影变换后的顶点。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl">gl_Position <span class="token operator">=</span> projectionMatrix <span class="token operator">*</span> viewMatrix <span class="token operator">*</span> modelMatrix <span class="token operator">*</span> aPos<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="相机系统">相机系统</h2>
+<h2 id="相机系统"><a class="header-anchor" href="#相机系统"></a>相机系统</h2>
 <p>了解了各种变换的原理，我们就可以使用glm提供的生成各个变换矩阵的功能函数创建我们的相机系统了。</p>
-<h3 id="系统结构">系统结构</h3>
+<h3 id="系统结构"><a class="header-anchor" href="#系统结构"></a>系统结构</h3>
 <p>Camera是控制画面的显示的，而CameraControl是控制Camera移动、旋转和缩放等功能的。</p>
 <p>由于投影共有透视投影和正交投影两种，所以派生出了两个子类PerspectiveCamera和OrthographicCamera，分别用来展示透视投影画面（2D）和正交投影画面（3D）。</p>
 <p>相机的运动轨迹可以分为<strong>轨迹球</strong>方式和<strong>游戏</strong>方式，前者常在三维设计软件中见到，后者就是游戏中使用的方式，分别对应TraclBallControl和GameControl。</p>
@@ -3136,7 +3160,7 @@ void CameraControl::update()
 &#123;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="TrackBallCameraController（轨迹球相机控制器）">TrackBallCameraController（轨迹球相机控制器）</h3>
+<h3 id="TrackBallCameraController（轨迹球相机控制器）"><a class="header-anchor" href="#TrackBallCameraController（轨迹球相机控制器）"></a>TrackBallCameraController（轨迹球相机控制器）</h3>
 <p>用户通过鼠标拖拽（类似在虚拟球面上滑动）来控制相机的旋转，适合自由观察3D物体或场景，在建模软件中经常可以看到这样的移动方式。</p>
 <p>这样的实现方式是将相机锁定在一个半径固定的球面上运动，相机始终看向某一个点（一般是原点）。当我们使用鼠标移动时，将鼠标移动的距离转化为相机在对应方向旋转的角度，创建出一个旋转矩阵，对相机的各个参数进行调整。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709164225962.png" alt="image-20250709164225962" style="zoom:40%;" />
@@ -3230,7 +3254,7 @@ void TrackBallCameraControl::pitch(float angle)
 	mCamera-&gt;mUp &#x3D; rotation * glm::vec4(mCamera-&gt;mUp, 0.0f);
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="GameCameraController（游戏相机控制器）">GameCameraController（游戏相机控制器）</h3>
+<h3 id="GameCameraController（游戏相机控制器）"><a class="header-anchor" href="#GameCameraController（游戏相机控制器）"></a>GameCameraController（游戏相机控制器）</h3>
 <p>游戏相机控制器可以类比第一人称游戏，可以使用WASD键进行前后左右移动，按下鼠标右键时可以转动视角。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709214146965.png" alt="image-20250709214146965" style="zoom:50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;-------------------------------------------------gameCameraControl.h文件
@@ -3355,23 +3379,23 @@ void GameCameraControl::yaw(float angle)
 	mCamera-&gt;mRight &#x3D; rotation * glm::vec4(mCamera-&gt;mRight, 0.0f);
 	mCamera-&gt;mUp &#x3D; rotation * glm::vec4(mCamera-&gt;mUp, 0.0f);
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="深度检测">深度检测</h2>
+<h2 id="深度检测"><a class="header-anchor" href="#深度检测"></a>深度检测</h2>
 <p>opengl中默认使用的绘制算法是<strong>画家算法</strong>，就像画画一样，先绘制的会被后绘制的遮挡住。这里的遮挡关系只和物体的绘制顺序有关，和距离摄像机远近没有关系。</p>
 <p>在3维世界中，同一个地点，必然是距离摄像机近的物体会遮盖住距离摄像机远的物体。</p>
 <p>就像下图所示，右边的三角形Z值为-1，左边的三角形Z值为0，在两个三角形重叠部分，应该是距离我们更近的左侧三角形露出来，但是却被右边的三角形遮盖住了，这显然是不合理的。之所以会出现这样的情况，是我们使用的是opengl默认的画家算法，右侧三角形是后绘制的，所以才遮盖住了左侧的三角形。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709222709081.png" alt="image-20250709222709081" style="zoom:50%;" />
-<h3 id="深度值">深度值</h3>
+<h3 id="深度值"><a class="header-anchor" href="#深度值"></a>深度值</h3>
 <p>为了解决这个问题，我们需要知道每个点距离摄像机的远近，这个值在opengl中叫做<strong>深度值</strong>(Depth)：表示当前绘制的Fragment（片元）<strong>距离相机的远近程度</strong>。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709224250490.png" alt="image-20250709224250490" style="zoom:50%;" />
-<h3 id="深度值插值">深度值插值</h3>
+<h3 id="深度值插值"><a class="header-anchor" href="#深度值插值"></a>深度值插值</h3>
 <p>我们得到了每个顶点的深度值后，需要进行插值计算出所有片元的深度值。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709224516084.png" alt="image-20250709224516084" style="zoom:50%;" />
-<h3 id="深度值检测">深度值检测</h3>
+<h3 id="深度值检测"><a class="header-anchor" href="#深度值检测"></a>深度值检测</h3>
 <p>创建一块和屏幕大小一样的缓存，存储每个像素的深度值。如果当前像素的深度值比缓存中的大，那么用新的颜色填充这个像素，同时更新该像素块的最小深度值。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709225020623.png" alt="image-20250709225020623" style="zoom:50%;" />
 <p>下面就是深度检测算法（Z-buffer算法）的伪代码：</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240118132918032.png" alt="image-20240118132918032" style="zoom: 50%;" />
-<h3 id="在opengl中开启和配置深度检测">在opengl中开启和配置深度检测</h3>
+<h3 id="在opengl中开启和配置深度检测"><a class="header-anchor" href="#在opengl中开启和配置深度检测"></a>在opengl中开启和配置深度检测</h3>
 <p>glEnable和glDisable函数允许我们启用或禁用某个OpenGL功能。这个功能会一直保持启用/禁用状态，直到另一个调用来禁用/启用它。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;1. 使用glEnable函数开启opengl的深度测试功能
 glEnable(GL_DEPTH_TEST);
@@ -3385,12 +3409,10 @@ glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 &#x2F;&#x2F;也可以使用这个函数指定清理深度缓冲时设置的值
 glCLearDepth(float val);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709225839392.png" alt="image-20250709225839392" style="zoom:50%;" />
-<h3 id="控制深度值写入权限">控制深度值写入权限</h3>
+<h3 id="控制深度值写入权限"><a class="header-anchor" href="#控制深度值写入权限"></a>控制深度值写入权限</h3>
 <p><strong>glDepthMask(GLboolean flag)</strong> 是 OpenGL 中用于控制深度缓冲区（Depth Buffer）写入状态的函数，它决定是否允许将片元（Fragment）的深度值写入深度缓冲区。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>当设置<strong>glDepthMask(GL_TRUE)<strong>时，此时是</strong>允许</strong>片元的深度值<strong>写入深度缓冲</strong>，是一般情况下的默认状态。</p>
-</li>
+<ul>
+<li>当设置<strong>glDepthMask(GL_TRUE)<strong>时，此时是</strong>允许</strong>片元的深度值<strong>写入深度缓冲</strong>，是一般情况下的默认状态。</li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;允许写入深度缓冲
 &#x2F;&#x2F;1.判断当前片元深度值是否小于此处深度缓冲区存入的深度值
@@ -3401,10 +3423,8 @@ if (z &lt; z-buffer[x,y,z])
     &#x2F;&#x2F;3.将该片元的更小的深度值存入深度缓冲区
     z-buffer[x,y,z] &#x3D; z;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>当设置<strong>glDepthMask(GL_FALSE)<strong>时，此时是</strong>不允许</strong>片元的深度值<strong>写入深度缓冲</strong>。此时即使调用glClear( GL_DEPTH_BUFFER_BIT)函数也无法将深度缓冲区的值重置为1，因为当前深度缓存区已经禁止写入了。</p>
-</li>
+<ul>
+<li>当设置<strong>glDepthMask(GL_FALSE)<strong>时，此时是</strong>不允许</strong>片元的深度值<strong>写入深度缓冲</strong>。此时即使调用glClear( GL_DEPTH_BUFFER_BIT)函数也无法将深度缓冲区的值重置为1，因为当前深度缓存区已经禁止写入了。</li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;不允许写入深度缓冲
 &#x2F;&#x2F;1.判断当前片元深度值是否小于此处深度缓冲区存入的深度值
@@ -3418,7 +3438,7 @@ if (z &lt; z-buffer[x,y,z])
 <p>下图左边是构建的测试场景，此时默认是允许写入深度缓冲区的，三个平面的遮盖关系可以正常显示。</p>
 <p>下图右则是绘制<strong>box_specular</strong>时设置<strong>glDepthMask(GL_FALSE)</strong>，另外两个都是glDepthMask(GL_TRUE)，可以看到原先笑脸被遮盖住的部分全部都绘制出来了。这是因为在绘制box_specular时并没有写入深度缓存，所以二者重叠的部分深度缓存区的值仍然为1（或者其他表示无穷大的值）；当绘制笑脸时进行深度值比较时会直接和1比较，自然会显示出。（一般这种效果常常用来绘制透明物体）。</p>
 <p>​                                      <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720202457242.png" alt="image-20250720202457242" style="zoom: 50%; display: inline;" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720202704709.png" alt="image-20250720202704709" style="zoom:50%;display: inline;" /></p>
-<h3 id="zFighting（深度冲突）">zFighting（深度冲突）</h3>
+<h3 id="zFighting（深度冲突）"><a class="header-anchor" href="#zFighting（深度冲突）"></a>zFighting（深度冲突）</h3>
 <p>Z-Fighting（深度冲突）是计算机图形学中一种常见的渲染问题，表现为两个或多个表面在深度缓冲区（Z-Buffer）中具有<strong>非常接近或相同的深度值</strong>，导致GPU在深度测试时无法确定哪个表面应该被渲染，最终产生闪烁或交替覆盖的视觉瑕疵。</p>
 <p>下图中两个平面之间的z轴距离仅为0.0000001个单位距离，当两个物体<strong>过于靠近</strong>时，由于计算机中浮点数<strong>精度有限</strong>，会导致深度缓存区对应两者深度值的比较出现问题，进而产生交替覆盖的现象。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720204846469.png" alt="image-20250720204846469" style="zoom:50%;" />
@@ -3429,33 +3449,25 @@ if (z &lt; z-buffer[x,y,z])
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720205820673.png" alt="image-20250720205820673" style="zoom:50%;" />
 <p>造成zFighting现象的会有两种情况：</p>
 <ol>
-<li class="lvl-3">
-<p>两个正常物体<strong>距离太过接近</strong>而产生zFighting现象</p>
-</li>
-<li class="lvl-3">
-<p>两个物体距离正常，但是会随着<strong>倾斜</strong>产生zFighting现象</p>
-</li>
+<li>两个正常物体<strong>距离太过接近</strong>而产生zFighting现象</li>
+<li>两个物体距离正常，但是会随着<strong>倾斜</strong>产生zFighting现象</li>
 </ol>
 <p>所以polygonOffset的第一个参数主要是为了解决倾斜问题的，第二个参数主要为了解决情况1的。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>当物体靠太近时，我们可以调整物体的深度值。但是当场景中的物体非常多时，对物体深度值的调整有可能会造成其他物体产生zFighting现象。所以对物体深度值的调整要尽可能的小，所以参数<strong>units要和数据最小值相乘，最小限度地调整深度值</strong>。</p>
-</li>
-<li class="lvl-2">
-<p>对于倾斜产生的zFighting现象，由深度值和z坐标的关系可知：距离镜头远的部分深度变换不明显，更容易产生zFighting现象，近处则不容易产生。所以可以将远处的部分多偏移一些，近处的部分少偏移一些就能解决这一问题。</p>
-</li>
+<ul>
+<li>当物体靠太近时，我们可以调整物体的深度值。但是当场景中的物体非常多时，对物体深度值的调整有可能会造成其他物体产生zFighting现象。所以对物体深度值的调整要尽可能的小，所以参数<strong>units要和数据最小值相乘，最小限度地调整深度值</strong>。</li>
+<li>对于倾斜产生的zFighting现象，由深度值和z坐标的关系可知：距离镜头远的部分深度变换不明显，更容易产生zFighting现象，近处则不容易产生。所以可以将远处的部分多偏移一些，近处的部分少偏移一些就能解决这一问题。</li>
 </ul>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720211158975.png" alt="image-20250720211158975" style="zoom:50%;" />
 <p>对于两个像素而言，倾斜放倒后，两个像素之间的深度值变化率较大（初始在一个平面，放倒后产生较大的深度值差距，且像素间的距离由于进大远小而缩小），距离镜头近的部分像素间深度变化率较小，于是就能根据深度变化率判断像素距离摄像机远近。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720211820440.png" alt="image-20250720211820440" style="zoom:50%;" />
-<h1>OpenGL中级</h1>
-<h2 id="代码框架">代码框架</h2>
-<h2 id="光照">光照</h2>
+<h1 id="OpenGL中级"><a class="header-anchor" href="#OpenGL中级"></a>OpenGL中级</h1>
+<h2 id="代码框架"><a class="header-anchor" href="#代码框架"></a>代码框架</h2>
+<h2 id="光照"><a class="header-anchor" href="#光照"></a>光照</h2>
 <p>在介绍光照之前，先简单说明一下颜色。对应<strong>光</strong>来说，颜色表示红绿蓝三种<strong>光的强度</strong>，对于一个<strong>物体</strong>来说，颜色表示对红绿蓝三种光的<strong>反射百分比</strong>。</p>
 <p>所以<strong>反射光的颜色 = 光照颜色 * 物体颜色</strong>（因为人眼之所以能看到物体，就是靠反射光线进入人眼）。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710210728390.png" alt="image-20250710210728390" style="zoom:50%;" />
-<h3 id="光照类型">光照类型</h3>
-<h4 id="漫反射光（diffuse）">漫反射光（diffuse）</h4>
+<h3 id="光照类型"><a class="header-anchor" href="#光照类型"></a>光照类型</h3>
+<h4 id="漫反射光（diffuse）"><a class="header-anchor" href="#漫反射光（diffuse）"></a>漫反射光（diffuse）</h4>
 <p>漫反射是光从一定角度入射之后从入射点向四面八方反射，且每个不同方向反射的光的强度相等，而产生漫反射的原因是物体表面的粗糙，光线照射到粗糙表面后向<strong>各个方向均匀散射</strong>。从任何角度看亮度相同，与<strong>视线方向无关</strong>。</p>
 <p>漫反射光是光线照射在物体身上后经过一次反射的光，漫反射光会使物体在光线下产生立体感。因为在计算漫反射光时，只需考虑光照方向和该点的法线方向即可，所以物体的不同区域由于跟光线角度不同，会出现明暗区域的平滑过渡，这种明亮变化就能是人看到立体感。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710212933232.png" alt="image-20250710212933232" style="zoom:50%;" />
@@ -3501,7 +3513,7 @@ if (z &lt; z-buffer[x,y,z])
 	<span class="token comment">//返回最终的颜色</span>
 	FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>diffuse<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="镜面反射光（specular）">镜面反射光（specular）</h4>
+<h4 id="镜面反射光（specular）"><a class="header-anchor" href="#镜面反射光（specular）"></a>镜面反射光（specular）</h4>
 <p>对于一个表面光滑的物体来说，当<strong>反射光</strong>的光线和<strong>人眼</strong>观看方向接近时，会产生刺眼的<strong>高光斑点</strong>，叫做镜面反射光。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710213413431.png" alt="image-20250710213413431" style="zoom:67%;" />
 <p>最终我们将三种光照叠加到一起，就模拟出了物体的光照情况。</p>
@@ -3616,7 +3628,7 @@ FragColor <span class="token operator">=</span> <span class="token keyword">vec4
 FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>diffuseColor <span class="token operator">+</span> specularColor <span class="token operator">*</span> flag <span class="token operator">*</span> specularMaskColor<span class="token punctuation">.</span>x <span class="token operator">+</span> ambientColor<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改代码后可以看到，高光只出现在了金属部分，木头部分的高光已经消失了。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250715202631908.png" alt="image-20250715202631908" style="zoom:33%;" />
-<h4 id="环境光（ambient）">环境光（ambient）</h4>
+<h4 id="环境光（ambient）"><a class="header-anchor" href="#环境光（ambient）"></a>环境光（ambient）</h4>
 <p>假设在一个场景中多个物体，那么对于一个物体来说，接收到的不止有阳光，还有经过其他物体多次反射的光，叫做环境光。环境光会将物体本身的轮廓或者颜色简单显示出来。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710213212632.png" alt="image-20250710213212632" style="zoom:50%;" />
 <p>在上面的演示中，我们可以看到没有被光照到的部分是完全黑色的，在现实生活中显然是不合理的。这就需要引入我们的环境光，由于真实的环境光是其他由物体反射多次的光，真实计算起来比较麻烦，所以目前采用较为简单的方法模拟环境光。</p>
@@ -3630,7 +3642,7 @@ FragColor &#x3D; vec4(diffuseColor + specularColor * flag + ambient, 1.0);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>加入环境光之后，原本没被光照到的地方也能隐约看到，并不是之前的黑色，显得更加真实一点。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711181725116.png" alt="image-20250711181725116" style="zoom: 67%;" />
-<h3 id="法线矩阵">法线矩阵</h3>
+<h3 id="法线矩阵"><a class="header-anchor" href="#法线矩阵"></a>法线矩阵</h3>
 <p>使用前面的代码，我们可以创建一个简单的光照，随着摄像机的移动，可以看到立方体的高光也在变化。但是当我们将盒子绕y轴随时间不停旋转时就会出现问题。</p>
 <p>我们让摄像机保持不动，让盒子的两面都选择到摄像机的面前，可以看到初始状态面对摄像机的部分是被光线照亮的，但是当另一面转到摄像机面前时，可以发现摄像机面前的盒子居然是黑色的。盒子的明暗就像固定在盒子上一样随着盒子转到，并没有像现实情况那样出现明暗交替的情况。</p>
 <p>出现这种情况的原因就是我们在旋转时没有让法线随着物体转到，当物体旋转30度之后，法线方向还是初始的方向没有变化，明暗情况也自然不会发生变化了。</p>
@@ -3646,13 +3658,13 @@ FragColor &#x3D; vec4(diffuseColor + specularColor * flag + ambient, 1.0);
 <p>当<strong>顶点数量非常多</strong>时，在<strong>shader</strong>中调用<strong>求逆矩阵</strong>的函数会大大<strong>降低性能</strong>，所以最好的做法就是在<strong>cpu端计算好</strong>法线矩阵后，通过<strong>uniform变量</strong>的形式将矩阵<strong>传递到shader</strong>中和法线进行运算，会大大节省算力。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;最终在vertexShader中将传递给fragmentShader的法线处理一下即可
 normal &#x3D; transpose(inverse(mat3(model))) * aNormal;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="光源类型">光源类型</h3>
-<h4 id="平行光">平行光</h4>
+<h3 id="光源类型"><a class="header-anchor" href="#光源类型"></a>光源类型</h3>
+<h4 id="平行光"><a class="header-anchor" href="#平行光"></a>平行光</h4>
 <p>平行光是最简单的光源，每一根光线的方向都一样，常用来模拟太阳光。</p>
 <p>假设空间中只有平行光，那么对于物体上能照射到平行光的点来说，<strong>光线方向都一样</strong>。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710211241870.png" alt="image-20250710211241870" style="zoom:50%;" />
 <p>由于平行光模拟的是无限远处的光源所发出的光线，所以我们不需要知道光源的位置，只需要知道平行光照的<strong>光照强度</strong>和<strong>光线方向</strong>即可。所以在代码中我们只需要定义两个三维向量<strong>lightDirection</strong>和<strong>lightColor</strong>分别表示光照方向和光照强度即可。</p>
-<h4 id="点光源-PointLight">点光源(PointLight)</h4>
+<h4 id="点光源-PointLight"><a class="header-anchor" href="#点光源-PointLight"></a>点光源(PointLight)</h4>
 <p>点光源比较好理解，就是场景中的一盏台灯或者一个电灯泡向四面八方发出的光。</p>
 <p>由于点光源是向四面八方发出光的，所以对于物体的一个顶点来说，该顶点接收到的点光源的光线方向在点光源位置和顶点位置的连线上，也就是说<strong>不同位置的顶点</strong>接收到的点光源<strong>光线方向</strong>是<strong>不同</strong>的。而且，对于更真实的点光源来说，光照的强度也会随着距离的增大而衰减。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250715202936084.png" alt="image-20250715202936084" style="zoom:50%;" />
@@ -3673,7 +3685,7 @@ normal &#x3D; transpose(inverse(mat3(model))) * aNormal;<span aria-hidden="true"
 
 <span class="token comment">//计算出衰减系数后，将最终得到的点光源光照颜色乘以该系数模拟光照衰退的效果（近亮远暗）</span>
 <span class="token keyword">vec3</span> final <span class="token operator">=</span> <span class="token punctuation">(</span>diffuseColor <span class="token operator">+</span> specularColor<span class="token operator">*</span>flag<span class="token operator">*</span>specularMaskColor<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> multi<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="聚光灯-SpotLight">聚光灯(SpotLight)</h4>
+<h4 id="聚光灯-SpotLight"><a class="header-anchor" href="#聚光灯-SpotLight"></a>聚光灯(SpotLight)</h4>
 <p>聚光灯不是像点光源那样向四面八方发射光线，而是只会在一定的角度范围内发射光线。如果把点光源发出的光线形状看左一个球形，那么聚光灯发出的光线形状就是一个圆锥体，类似于手电筒的效果。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250716152715092.png" alt="image-20250716152715092" style="zoom:50%;" />
 <p>对于一个聚光灯，我们不仅需要知道<strong>光源位置</strong>，还要知道<strong>聚光灯的朝向</strong>和<strong>最大照射角度θ</strong>。</p>
@@ -3722,21 +3734,19 @@ normal &#x3D; transpose(inverse(mat3(model))) * aNormal;<span aria-hidden="true"
 <span class="token keyword">vec3</span> final <span class="token operator">=</span> <span class="token punctuation">(</span>diffuseColor <span class="token operator">+</span> specularColor<span class="token operator">*</span>flag<span class="token operator">*</span>specularMaskColor<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> multi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改后的效果不再像之前那么生硬，边界有了明显的明暗过渡效果。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250716170040608.png" alt="image-20250716170040608" style="zoom:50%;" />
-<h2 id="模型读取">模型读取</h2>
-<h3 id="父子关系">父子关系</h3>
+<h2 id="模型读取"><a class="header-anchor" href="#模型读取"></a>模型读取</h2>
+<h3 id="父子关系"><a class="header-anchor" href="#父子关系"></a>父子关系</h3>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717181227698.png" alt="image-20250717181227698" style="zoom:40%;" />
-<h2 id="模板测试（StencilTest）">模板测试（StencilTest）</h2>
-<h3 id="介绍-6">介绍</h3>
+<h2 id="模板测试（StencilTest）"><a class="header-anchor" href="#模板测试（StencilTest）"></a>模板测试（StencilTest）</h2>
+<h3 id="介绍-k6"><a class="header-anchor" href="#介绍-k6"></a>介绍</h3>
 <p>当片段着色器处理完一个片段之后，模板测试(Stencil Test)会开始执行，和深度测试一样，它也可能会丢弃片段。接下来，被<strong>保留的片段会进入深度测试</strong>，它可能会丢弃更多的片段。模板测试是根据又一个缓冲来进行的，它叫做<strong>模板缓冲</strong>(Stencil Buffer)，我们可以在渲染的时候更新它来获得一些很有意思的效果。</p>
 <p>模板缓冲在绘制物体时决定该位置缓冲区的值，借由缓冲区的值做一些效果。例如制作物体的<strong>描边特效</strong>，首先绘制一个物体，并将绘制出物体对应的缓冲区设为1，然后再绘制一个稍微放大的同样形状的物体，设置其只能在缓冲区不为1的区域绘制。这样发大的物体就只能绘制在物体的边界处，也就形成了物体描边的效果。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250721162950358.png" alt="image-20250721162950358" style="zoom:50%;" />
-<h3 id="API">API</h3>
+<h3 id="API"><a class="header-anchor" href="#API"></a>API</h3>
 <p>和深度测试一样，需要使用glEnable和glDisable函数来控制模板测试的开启和关闭。</p>
 <p>当开启模板测试后，需要设置<strong>通过模板测试的条件（glStencilFunc）</strong>、<strong>模板缓冲区的更新策略（glStencilOp）</strong>、<strong>模板缓冲区的读写控制（glStencilMask）</strong>。大致都和深度测试的使用类似，只是多了模板缓冲区的更新策略（深度缓冲区的更新策略较为固定，只需通过深度测试的片元深度值替换缓冲区深度值即可），模板缓冲区的更新较为灵活，专门提供了设置更新策略的函数。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>模板测试的开启和关闭</strong></p>
-</li>
+<ul>
+<li><strong>模板测试的开启和关闭</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void glEnable(GL_STENCIL_TEST);&#x2F;&#x2F;开启模板测试
 void glDisable(GL_STENCIL_TEST);&#x2F;&#x2F;关闭模板测试
@@ -3744,10 +3754,8 @@ void glDisable(GL_STENCIL_TEST);&#x2F;&#x2F;关闭模板测试
 &#x2F;&#x2F;由于存在缓冲区，所以每帧绘制前要调用glClear清理上一帧的模板缓存值
 glClear(GL_STENCIL_BUFFER_BIT);
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>设置模板测试的条件(满足条件的片元才能通过模板测试，继续进行深度测试)</strong></p>
-</li>
+<ul>
+<li><strong>设置模板测试的条件(满足条件的片元才能通过模板测试，继续进行深度测试)</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;设置模板测试条件
 &#x2F;&#x2F;func：模板缓存中的数值与ref如何比较才算通过测试。
@@ -3762,10 +3770,8 @@ glStencilFunc(GL_EQUAL, 1, 0XFF);
 glStencilFunc(GL_LESS, 5, 0XFF);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>参数<strong>func</strong>的可选值如下：</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250721164453127.png" alt="image-20250721164453127" style="zoom:50%;" />
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>模板测试通过或失败后，如何更新模板缓冲区的值</strong></p>
-</li>
+<ul>
+<li><strong>模板测试通过或失败后，如何更新模板缓冲区的值</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;设置模板缓冲更新策略
 &#x2F;&#x2F;sfail：模板测试失败时对缓冲区执行什么操作
@@ -3779,10 +3785,8 @@ glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这三个参数的值可在下面选项中任意使用：</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250721170417176.png" alt="image-20250721170417176" style="zoom:50%;" />
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>开启模板测试的情况下，设置模板缓存是否能写入</strong></p>
-</li>
+<ul>
+<li><strong>开启模板测试的情况下，设置模板缓存是否能写入</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;模板缓冲区的写入控制
 &#x2F;&#x2F;mask：缓冲区值的更新是一位一位更新的，只有当mask中位是1的对应位置才会被改变
@@ -3792,8 +3796,8 @@ void glStencilMask(GLuint mask);<span aria-hidden="true" class="line-numbers-row
 <p>0x00：任何比特位都<strong>不允许</strong>写入（禁止更新模板缓冲区的值）。</p>
 <p>0xFF：任何比特位都<strong>允许</strong>写入。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250721174213217.png" alt="image-20250721174213217" style="zoom:50%;" />
-<h2 id="颜色混合（ColorBlending）">颜色混合（ColorBlending）</h2>
-<h3 id="介绍-7">介绍</h3>
+<h2 id="颜色混合（ColorBlending）"><a class="header-anchor" href="#颜色混合（ColorBlending）"></a>颜色混合（ColorBlending）</h2>
+<h3 id="介绍-k7"><a class="header-anchor" href="#介绍-k7"></a>介绍</h3>
 <p>OpenGL中，混合(Blending)通常是实现物体透明度(Transparency)的一种技术。透明就是说一个物体（或者其中的一部分）不是纯色(Solid Color)的，它的颜色是物体本身的颜色和它背后其它物体的颜色的不同强度结合。例如我们透过有色玻璃看向外面，我们看到的颜色就是外面的颜色和玻璃的颜色进行混合后的，就好像加了一层滤镜一样，所以透明度能让我们看穿物体。</p>
 <img src="https://learnopengl-cn.github.io/img/04/03/blending_transparency.png" alt="img" style="zoom: 67%;" />
 <p>在各种软件中，透明程度会使用**opacity（不透明度）**表示，其取值范围是[0, 1]，0是完全透明，1是完全不透明。</p>
@@ -3801,60 +3805,32 @@ void glStencilMask(GLuint mask);<span aria-hidden="true" class="line-numbers-row
 <p>在opengl中，这种透明物体颜色叠加的效果叫做<strong>颜色混合（color blending）</strong>。</p>
 <p>开启颜色混合后，会使用下图中的公式计算最终的混合颜色，其中：</p>
 <ol>
-<li class="lvl-3">
-<p><strong>源颜色(SrcColor)</strong>：当前片元着色器输出的颜色</p>
-</li>
-<li class="lvl-3">
-<p><strong>目标颜色(DestColor)</strong>：帧缓冲区中已经存在的颜色（颜色缓冲中的颜色）</p>
-</li>
+<li><strong>源颜色(SrcColor)</strong>：当前片元着色器输出的颜色</li>
+<li><strong>目标颜色(DestColor)</strong>：帧缓冲区中已经存在的颜色（颜色缓冲中的颜色）</li>
 </ol>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250722173021366.png" alt="image-20250722173021366" style="zoom:50%;" />
-<h3 id="API-2">API</h3>
+<h3 id="API-k2"><a class="header-anchor" href="#API-k2"></a>API</h3>
 <p>和深度测试一样，在opengl中要使用颜色混合，就要使用<strong>glEnable</strong>或者glDisanbe开启或关闭颜色混合功能。开启后再调用<strong>glBlendFunc</strong>函数设置最终混合颜色的计算公式。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>开启或关闭</strong></p>
-</li>
+<ul>
+<li><strong>开启或关闭</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void glEnable(GL_BLEND);&#x2F;&#x2F;开启
 void glDisable(GL_BLEND);&#x2F;&#x2F;关闭<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>设置混合颜色计算公式的参数</strong></p>
-</li>
+<ul>
+<li><strong>设置混合颜色计算公式的参数</strong></li>
 </ul>
 <p>两个参数均可从下面选项中任意使用：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><code>GL_ZERO</code>：因子为0.0</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_ONE</code>：因子为1.0</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_SRC_COLOR</code>：因子等于源颜色</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_ONE_MINUS_SRC_COLOR</code>：因子等于1-源颜色</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_DST_COLOR</code>：因子等于目标颜色</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_ONE_MINUS_DST_COLOR</code>：因子等于1-目标颜色</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_SRC_ALPHA</code>：因子等于源颜色的alpha分量</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_ONE_MINUS_SRC_ALPHA</code>：因子等于1-源颜色的alpha分量</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_DST_ALPHA</code>：因子等于目标颜色的alpha分量</p>
-</li>
-<li class="lvl-2">
-<p><code>GL_ONE_MINUS_DST_ALPHA</code>：因子等于1-目标颜色的alpha分量</p>
-</li>
+<ul>
+<li><code>GL_ZERO</code>：因子为0.0</li>
+<li><code>GL_ONE</code>：因子为1.0</li>
+<li><code>GL_SRC_COLOR</code>：因子等于源颜色</li>
+<li><code>GL_ONE_MINUS_SRC_COLOR</code>：因子等于1-源颜色</li>
+<li><code>GL_DST_COLOR</code>：因子等于目标颜色</li>
+<li><code>GL_ONE_MINUS_DST_COLOR</code>：因子等于1-目标颜色</li>
+<li><code>GL_SRC_ALPHA</code>：因子等于源颜色的alpha分量</li>
+<li><code>GL_ONE_MINUS_SRC_ALPHA</code>：因子等于1-源颜色的alpha分量</li>
+<li><code>GL_DST_ALPHA</code>：因子等于目标颜色的alpha分量</li>
+<li><code>GL_ONE_MINUS_DST_ALPHA</code>：因子等于1-目标颜色的alpha分量</li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;混合颜色计算公式：blend_color &#x3D; src_color * sfactor + dest_color * dfactor
 &#x2F;&#x2F;可用通过设置不同的参数，实现不同的混合效果
@@ -3864,10 +3840,8 @@ void glBlendFunc(GLenum sfactor, GLenum dfactor);
 
 &#x2F;&#x2F;该设置为常用设置，根据源颜色的alpha值控制混合颜色
 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>设置混合颜色的运算</strong></p>
-</li>
+<ul>
+<li><strong>设置混合颜色的运算</strong></li>
 </ul>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250722174155951.png" alt="image-20250722174155951" style="zoom:50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;这个参数可用设置两种颜色和自己的因子相乘后，二者之间用什么运算（默认是相加）
@@ -3879,7 +3853,7 @@ glBlendEquation(GL_FUNC_ADD);
 glBlendEquation(GL_FUNC_SUBTRACT);
 &#x2F;&#x2F;反向相减：blend_color &#x3D; dest_color * dfactor - src_color * sfactor
 glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="绘制顺序">绘制顺序</h3>
+<h3 id="绘制顺序"><a class="header-anchor" href="#绘制顺序"></a>绘制顺序</h3>
 <p>对于透明物体来说，不同的绘制顺序也会导致绘制结果的不同。</p>
 <p>对于这样一个每个面都是透明有色玻璃的盒子来说，开启颜色混合后却出现了这样的问题。可用看到盒子明显只绘制出了三个面，另外三个面没有绘制出来，但是当摄像机移动到消失面的前面时，又能正确绘制出来。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250722174525969.png" alt="image-20250722174525969" style="zoom:50%;" />
@@ -3891,84 +3865,64 @@ glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);<span aria-hidden="true" class="line-n
 <p>所以上面的透明玻璃盒子出现这一的原因就是因为透明物体之间的绘制顺序错误导致的。</p>
 <p>为了解决这一问题，有两个方法：</p>
 <ol>
-<li class="lvl-3">
-<p>将<strong>透明物体的深度写入关闭</strong>，这样对于一个复杂物体来说即使先绘制前面的片元也<strong>不会更新深度缓冲区</strong>（但依然会将<strong>颜色混合后写入颜色缓冲区</strong>），<strong>后面的片元</strong>能够<strong>通过深度测试</strong>进行颜色混合。</p>
-</li>
-<li class="lvl-3">
-<p>调整绘制顺序，<strong>先绘制不透明物体</strong>，再按照距离摄像机的距离<strong>从远到近</strong>的顺序依次<strong>绘制透明物体</strong>。</p>
-</li>
+<li>将<strong>透明物体的深度写入关闭</strong>，这样对于一个复杂物体来说即使先绘制前面的片元也<strong>不会更新深度缓冲区</strong>（但依然会将<strong>颜色混合后写入颜色缓冲区</strong>），<strong>后面的片元</strong>能够<strong>通过深度测试</strong>进行颜色混合。</li>
+<li>调整绘制顺序，<strong>先绘制不透明物体</strong>，再按照距离摄像机的距离<strong>从远到近</strong>的顺序依次<strong>绘制透明物体</strong>。</li>
 </ol>
 <p>方法1是一种较为简单的解决方法，方法2调整顺序之后才是真正的透明效果。</p>
 <p>方法1实现较为简单，只需要绘制该物体时关闭深度写入即可，所以在<strong>绘制透明物体</strong>时，应该<strong>关闭其深度写入</strong>。</p>
 <p>方法2的实现则需要在导入模型时对所有的mesh按照摄像机坐标系下的z值进行排序，按顺序绘制。</p>
-<h2 id="面剔除（FaceCulling）">面剔除（FaceCulling）</h2>
-<h3 id="介绍-8">介绍</h3>
+<h2 id="面剔除（FaceCulling）"><a class="header-anchor" href="#面剔除（FaceCulling）"></a>面剔除（FaceCulling）</h2>
+<h3 id="介绍-k8"><a class="header-anchor" href="#介绍-k8"></a>介绍</h3>
 <p>假设空间中有一个不透明的立方体盒子，不论我们从哪个角度看去，都不可能将六个面全部看到，事实上只能看到最多三个面。但是在绘制盒子的时候，我们确实是将六个面全部绘制出来了，没看到的部分只是由于深度关系被遮盖了，那部分的顶点仍然参与运算了。</p>
 <p>如果将看不到的面直接不渲染，，将会节省一部分计算资源，提升程序的性能。</p>
 <p>这正是**面剔除(Face Culling)<strong>所做的。OpenGL能够检查所有</strong>面向(Front Facing)<strong>观察者的面，并渲染它们，而</strong>丢弃那些背向(Back Facing)**的面，节省我们很多的片段着色器调用（它们的开销很大！）。但我们仍要告诉OpenGL哪些面是正向面(Front Face)，哪些面是背向面(Back Face)。OpenGL使用了一个很聪明的技巧，分析顶点数据的环绕顺序(Winding Order)。</p>
 <p>当我们定义一个三角形时，会将三个顶点按照顺时针（Clockwise）或者逆时针（Counter-clockwise）的顺序给出。<strong>OpenGL</strong>在渲染图元的时候将使用这个信息来决定一个三角形是一个正向三角形还是背向三角形。<strong>默认</strong>情况下，<strong>逆时针顺序</strong>顶点所定义的三角形将会被处理为<strong>正向三角形</strong>。</p>
 <p><img src="https://learnopengl-cn.github.io/img/04/04/faceculling_windingorder.png" alt="img"></p>
 <p>当定义好正向之后，我们在正面看的时候为正向，当移动到背面时，顶点的旋转顺序就会逆过来，就变成了背向。在3D物体中，背向观察者的面是看不到的，所以可以将其剔除。</p>
-<h3 id="API-3">API</h3>
+<h3 id="API-k3"><a class="header-anchor" href="#API-k3"></a>API</h3>
 <p>opengl默认禁用面剔除，可用使用glEnable和glDisable函数开启和关闭。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>开启和关闭</strong></p>
-</li>
+<ul>
+<li><strong>开启和关闭</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void glEnable(GL_CULL_FACE);&#x2F;&#x2F;开启
 void glDisable(GL_CULL_FACE);&#x2F;&#x2F;关闭<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>设置正向面（三角形顶点顺序逆时针为正向面还是顺时针为正向面）</strong></p>
-</li>
+<ul>
+<li><strong>设置正向面（三角形顶点顺序逆时针为正向面还是顺时针为正向面）</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;GL_CW  顺时针的环绕顺序
 &#x2F;&#x2F;GL_CCW 逆时针的环绕顺序（默认）
 void glFrontFace(GL_CCW);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>设置剔除面（剔除正向面还是背向面）</strong></p>
-</li>
+<ul>
+<li><strong>设置剔除面（剔除正向面还是背向面）</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; GL_BACK： 只剔除背向面。
 &#x2F;&#x2F; GL_FRONT：只剔除正向面。
 &#x2F;&#x2F; GL_FRONT_AND_BACK：剔除正向面和背向面。
 void glFrontFace(GL_BACK);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="帧缓冲（FrameBuffer）">帧缓冲（FrameBuffer）</h2>
-<h3 id="介绍-9">介绍</h3>
+<h2 id="帧缓冲（FrameBuffer）"><a class="header-anchor" href="#帧缓冲（FrameBuffer）"></a>帧缓冲（FrameBuffer）</h2>
+<h3 id="介绍-k9"><a class="header-anchor" href="#介绍-k9"></a>介绍</h3>
 <p>前面已经使用了很多屏幕缓冲了：用于写入颜色值的颜色缓冲、用于写入深度信息的深度缓冲和允许我们根据一些条件丢弃特定片段的模板缓冲。这些缓冲结合起来叫做帧缓冲(Framebuffer)，它被储存在GPU内存中的某处。</p>
 <p>简单来说，帧缓冲就是一些屏幕缓冲（颜色缓冲、深度缓冲、模板缓冲等）的总和。</p>
 <p>我们目前所做的所有操作都是在<strong>默认帧缓冲</strong>上进行的。默认的帧缓冲是在你创建窗口的时候生成和配置的（GLFW帮我们做了这些）。我们也创建我们自己的帧缓冲，实现一些酷炫的后期效果。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727200339395.png" alt="image-20250727200339395" style="zoom:50%;" />
 <p>帧缓冲的这些附件，我们可用使用2D纹理图片进行存储，绘制时可用直接从纹理中采样进行使用。</p>
 <p>实现帧缓冲，我们需要进行两次绘制：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>第一次绘制：创建自己的帧缓冲，将要绘制的画面渲染后添加到自己的帧缓冲附件上</p>
-</li>
-<li class="lvl-2">
-<p>第二次绘制：使用上述帧缓冲的颜色附件（ColorBuffer）作为纹理进行采样，对图像进行后期处理，绘制到屏幕上</p>
-</li>
+<ul>
+<li>第一次绘制：创建自己的帧缓冲，将要绘制的画面渲染后添加到自己的帧缓冲附件上</li>
+<li>第二次绘制：使用上述帧缓冲的颜色附件（ColorBuffer）作为纹理进行采样，对图像进行后期处理，绘制到屏幕上</li>
 </ul>
-<h3 id="API-4">API</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>创建帧缓冲</strong></p>
-</li>
+<h3 id="API-k4"><a class="header-anchor" href="#API-k4"></a>API</h3>
+<ul>
+<li><strong>创建帧缓冲</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">unsigned int fbo;
 glGenFramebuffers(1, &amp;fbo);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>绑定帧缓冲</strong></p>
-</li>
+<ul>
+<li><strong>绑定帧缓冲</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">glBindFramebuffer(GL_FRAMEBUFFER, fbo);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>将颜色附件创建</strong></p>
-</li>
+<ul>
+<li><strong>将颜色附件创建</strong></li>
 </ul>
 <p>首先要创建一个<strong>空的2D纹理</strong>作为帧缓冲的<strong>颜色附件</strong>，再将该颜色附件绑定到帧缓冲。当帧缓冲绑定后，最终的<strong>绘制结果</strong>会<strong>保存到该颜色附件</strong>中。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;创建一个普通的2D纹理作为颜色附件（纹理对象数据为空）
@@ -3985,10 +3939,8 @@ glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_B
 &#x2F;&#x2F;设置纹理过滤方式
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>将颜色附件添加到帧缓冲</strong></p>
-</li>
+<ul>
+<li><strong>将颜色附件添加到帧缓冲</strong></li>
 </ul>
 <p>调用<strong>glFramebufferTexture2D</strong>函数可用将指定缓冲的附件添加到当前绑定的帧缓冲上。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;将颜色附件添加到帧缓冲上
@@ -3998,10 +3950,8 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);<span aria-hid
 &#x2F;&#x2F;第四个参数是颜色缓冲的id值
 &#x2F;&#x2F;第五个参数是指把当前纹理哪个level的mipmap绑定进去（没有生成mipmap，使用0级的）
 glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, colorAttachment, 0);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>创建深度和模板附件</strong></p>
-</li>
+<ul>
+<li><strong>创建深度和模板附件</strong></li>
 </ul>
 <p>深度缓冲和模板缓冲一般情况下可以分配到<strong>同一个缓冲</strong>中，假设每个像素有32bit存储这些缓冲，前<strong>24bit深度缓冲</strong>使用，后<strong>8bit模板缓冲</strong>使用。由于两个缓冲共存在一个纹理中，所以调用<strong>glTexImage2D</strong>函数传输空数据时的<strong>数据格式</strong>也不同。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;创建一个普通的2D纹理作为颜色附件（纹理对象数据为空）
@@ -4019,17 +3969,13 @@ glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, width, height, 0, GL_DEPTH_S
 &#x2F;&#x2F;设置纹理过滤方式
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>将深度模板附件添加到帧缓冲上</strong></p>
-</li>
+<ul>
+<li><strong>将深度模板附件添加到帧缓冲上</strong></li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;将深度模板附件添加到帧缓冲上
 glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, depthStencilAttachment, 0);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>检查fbo是否完整</strong></p>
-</li>
+<ul>
+<li><strong>检查fbo是否完整</strong></li>
 </ul>
 <p>创建fbo完成后，可用调用<strong>glCheckFramebufferStatus</strong>函数查看<strong>当前绑定</strong>的fbo<strong>是否创建完整</strong>。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;检查当前fbo是否完整
@@ -4037,22 +3983,14 @@ if (glCheckFramebufferStatus(GL_FRAMEBUFFER) !&#x3D; GL_FRAMEBUFFER_COMPLETE)
 &#123;
     std::cout &lt;&lt; &quot;当前fbo缺少附件&quot; &lt;&lt; std::endl;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="后期效果">后期效果</h3>
+<h3 id="后期效果"><a class="header-anchor" href="#后期效果"></a>后期效果</h3>
 <p>在最初的绘制中，我们如果想对最终的绘制结果进行后期处理（调高亮度、模糊处理、灰度图等），是很难实现的，因为在着色器中无法得知其他片元的颜色或者其他数据。</p>
 <p>使用我们自己创建的帧缓冲后，可用将绘制的最终结果保存到帧缓冲的颜色缓冲中，这样我们就相当于拿到了最终绘制结果的纹理图片，在对这个纹理采样时做一些后期处理就变得很容易了。</p>
 <ol>
-<li class="lvl-3">
-<p>首先要创建一个完全遮挡住屏幕的矩形。</p>
-</li>
-<li class="lvl-3">
-<p>创建一个完整的FBO。</p>
-</li>
-<li class="lvl-3">
-<p>绑定创建的FBO，执行场景的绘制操作。第一次渲染操作，会将场景的渲染结果作为2D纹理保存到当前FBO的颜色缓冲中。</p>
-</li>
-<li class="lvl-3">
-<p>绑定默认的帧缓冲（FBO为0），渲染矩形屏幕，其采样的纹理为创建的FBO的颜色缓冲。第二次渲染操作，用一个完全盖住屏幕的屏幕，纹理为颜色缓冲。</p>
-</li>
+<li>首先要创建一个完全遮挡住屏幕的矩形。</li>
+<li>创建一个完整的FBO。</li>
+<li>绑定创建的FBO，执行场景的绘制操作。第一次渲染操作，会将场景的渲染结果作为2D纹理保存到当前FBO的颜色缓冲中。</li>
+<li>绑定默认的帧缓冲（FBO为0），渲染矩形屏幕，其采样的纹理为创建的FBO的颜色缓冲。第二次渲染操作，用一个完全盖住屏幕的屏幕，纹理为颜色缓冲。</li>
 </ol>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;绑定创建的FBO
 glBindFramebuffer(GL_FRAMEBUFFER, fbo);
@@ -4104,33 +4042,27 @@ draw();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 	FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>​                     <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727205147193.png" alt="image-20250727205147193" style="zoom:50%;display=inline;" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727205130194.png" alt="image-20250727205130194" style="zoom:50%;display=inline;" /></p>
-<h2 id="立方体贴图（CuebMap）">立方体贴图（CuebMap）</h2>
-<h3 id="介绍-10">介绍</h3>
+<h2 id="立方体贴图（CuebMap）"><a class="header-anchor" href="#立方体贴图（CuebMap）"></a>立方体贴图（CuebMap）</h2>
+<h3 id="介绍-k10"><a class="header-anchor" href="#介绍-k10"></a>介绍</h3>
 <p>纹理贴图中除了2D纹理贴图，还有立方体贴图，就好像是把一个立方体盒子展开了一样，共有六张图片，分为上下左右前后六个方向。立方体贴图常常用来实现天空盒，就好像是把摄像机盖在了盒子里，盒子作为天空始终作为背景显示在最后。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727205356023.png" alt="image-20250727205356023" style="zoom:50%;" />
 <p>假设我们有一个1x1x1的单位立方体，方向向量的原点位于它的中心。使用一个橘黄色的方向向量来从立方体贴图上采样一个纹理值会像是这样：</p>
 <img src="https://learnopengl-cn.github.io/img/04/06/cubemaps_sampling.png" alt="img" style="zoom:67%;" />
 <p>方向向量的<strong>大小并不重要</strong>，只要<strong>提供了方向</strong>，OpenGL就会获取方向向量盒立方体贴图相交位置的颜色。这样子，只要立方体的<strong>中心位于原点</strong>（可用将盒子的<strong>中心位置</strong>始终<strong>跟随摄像机位置</strong>，就能保证盒子中心始终位于摄像机坐标系的原点中），我们就能使用立方体的<strong>实际位置向量</strong>来对立方体贴图进行<strong>采样</strong>了，这样一来，可用直接使用<strong>顶点坐标</strong>作为每个顶点<strong>uv坐标</strong>进行采样即可。</p>
-<h3 id="创建立方体贴图">创建立方体贴图</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>创建纹理</strong></p>
-</li>
+<h3 id="创建立方体贴图"><a class="header-anchor" href="#创建立方体贴图"></a>创建立方体贴图</h3>
+<ul>
+<li><strong>创建纹理</strong></li>
 </ul>
 <p>与普通纹理一样，直接使用glGenTextures函数创建一个纹理即可</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">glGenTextures(1, &amp;cubeMap);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>绑定纹理到opengl对应插槽</strong></p>
-</li>
+<ul>
+<li><strong>绑定纹理到opengl对应插槽</strong></li>
 </ul>
 <p>绑定流程与普通纹理类似，但是<strong>glBindTexture</strong>函数中要<strong>绑定</strong>到<strong>GL_TEXTURE_CUBE_MAP</strong>而非GL_TEXTURE_TEXTURE_2D。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">glActiveTexture(GL_TEXTURE0 + unit);&#x2F;&#x2F;激活对应纹理单元
 glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap);&#x2F;&#x2F;绑定创建的立方体贴图到GL_TEXTURE_CUBE_MAP插槽<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>向纹理贴图中传输图片数据</strong></p>
-</li>
+<ul>
+<li><strong>向纹理贴图中传输图片数据</strong></li>
 </ul>
 <p>cubeMap贴图读取时<strong>不需要翻转y轴</strong>，而且因为立方体贴图有六个面，必须为六个面都传输数据。</p>
 <p>传输数据和普通纹理图片类似，都是读取数据后调用<strong>glTexImage2D</strong>函数，只是立方体贴图有六个面，所以需要调用<strong>六次函数</strong>。每次将纹理目标(<strong>target</strong>)参数（第一个参数）设置为立方体贴图的一个<strong>特定的面</strong>。</p>
@@ -4198,7 +4130,7 @@ glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="显示立方体贴图">显示立方体贴图</h3>
+<h3 id="显示立方体贴图"><a class="header-anchor" href="#显示立方体贴图"></a>显示立方体贴图</h3>
 <p>立方体贴图的绘制需要依附于一个立方体盒子，所以也需要一个shader，复杂绘制天空盒。</p>
 <p>之前已经介绍过，可用直接使用立方体盒子<strong>每个顶点的位置作为其uv坐标</strong>进行采样，<strong>立方体的变换和正常物体一样</strong>，只是我们将立方体的中心位置始终设置为摄像机的位置，就实现了天空盒包裹住摄像机的效果。</p>
 <p>由于立方体贴图是立体的，采样器要使用<strong>samplerCube</strong>类型进行采样，<strong>texture</strong>函数中传入的<strong>uv坐标也是三维</strong>的。</p>
@@ -4244,7 +4176,7 @@ glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<span 
 	FragColor <span class="token operator">=</span> <span class="token function">texture</span><span class="token punctuation">(</span>cubeSampler<span class="token punctuation">,</span> uvw<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>同时在绘制天空盒时，由于深度缓冲盒天空盒的深度值都为1，深度测试时会出现zFighting现象。所以需要将深度测试函数设置为<strong>glDepthFunc(GL_LEQUAL)</strong>，让深度值等于1时也可用通过深度测试，这样场景中没有物体的部分会被填充为天空盒的颜色。</p>
-<h3 id="环境映射">环境映射</h3>
+<h3 id="环境映射"><a class="header-anchor" href="#环境映射"></a>环境映射</h3>
 <p>我们将立方体贴图当作我们的天空盒，我们也同样可用将该<strong>立方体贴图</strong>应用在物体的<strong>环境光</strong>上。通过使用环境的立方体贴图，我们可以给物体<strong>反射</strong>和<strong>折射</strong>的属性。这样使用<strong>环境立方体贴图</strong>的技术叫做环境映射(Environment Mapping)</p>
 <p>本质上就是给物体再加上一个立方体贴图用作环境光贴图，通过计算视线方向盒法线向量的反射方向，根据反射方向去立方体贴图上采样，作为环境光叠加到物体身上。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//---------------------------------------vertexShader</span>
@@ -4397,13 +4329,13 @@ glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<span 
 	FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>finalColor<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727234541835.png" alt="image-20250727234541835" style="zoom:80%;" />
-<h2 id="实例化（Instancing）">实例化（Instancing）</h2>
-<h3 id="介绍-11">介绍</h3>
+<h2 id="实例化（Instancing）"><a class="header-anchor" href="#实例化（Instancing）"></a>实例化（Instancing）</h2>
+<h3 id="介绍-k11"><a class="header-anchor" href="#介绍-k11"></a>介绍</h3>
 <p>在之前的绘制中，我们的策略是对每一个mesh都调用一次绘制函数（DrawCall），但是执行一次绘制函数非常昂贵，会对性能产生非常大的影响。每次调用绘制时，都需要CPU向GPU发送一些数据和命令，对性能影响非常大。如果绘制一个大型场景，每个mesh都调用一次绘制函数，那么场景就会变得非常卡顿。</p>
 <p>如果在一个大型场景中，大部分的模型包含的是同一组顶点数据和材质，只是模型变换不同。对于这样的物体，我们可用使用实例化的方式，只调用一次绘制函数，直接告诉GPU渲染N个这样的物体，可用大大提高性能。</p>
 <p>由于每个物体只有模型变换不同，所以每个物体的模型变换矩阵（ModelMatrix）需要给出，以物体的不同变换。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250728113821698.png" alt="image-20250728113821698" style="zoom:50%;" />
-<h3 id="API-5">API</h3>
+<h3 id="API-k5"><a class="header-anchor" href="#API-k5"></a>API</h3>
 <p>可以通过调用<strong>glDrawArraysInstanced</strong>或<strong>glDrawElementsInstanced</strong>函数即可实现实例化绘制。但是相比<strong>glDrawArrays</strong>和<strong>glDrawElements</strong>函数，实例化绘制函数的参数列表最后**多了一个实例数量(Instance Count)**的参数，它能够设置我们需要渲染的实例个数。</p>
 <p>这样我们只需要将必须的数据发送到GPU一次，然后使用一次函数调用告诉GPU它应该如何绘制这些实例。GPU将会直接渲染这些实例，而不用不断地与CPU进行通信。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;实例化绘制函数和原始绘制函数参数列表相同，只是最后多了一个额外的参数instancecount，设置该实例渲染几个
@@ -4418,12 +4350,12 @@ void glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *indices
 &#x2F;&#x2F;根据顶点索引绘制（实例化版本）
 void glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>CPU向GPU传输数据有两种方式：Uniform和Attribute，我们要传输的<strong>模型变换矩阵数组</strong>也可以通过这两种方式传送到GPU。</p>
-<h3 id="uniform更新策略">uniform更新策略</h3>
+<h3 id="uniform更新策略"><a class="header-anchor" href="#uniform更新策略"></a>uniform更新策略</h3>
 <p>由于每个实例的模型变换矩阵不同，所以设置一个Uniform变量存储模型变换矩阵。</p>
 <p>glsl中内置变量<strong>gl_InstanceID</strong>表示<strong>当前绘制的是第几个实例</strong>。在<strong>使用实例化渲染调用</strong>时，<strong>gl_InstanceID</strong>会<strong>从0开始</strong>，在<strong>每个实例被渲染时递增1</strong>。这样以来，对于<strong>每个实例的所有顶点</strong>来说，使用的都是<strong>同一个模型变换矩阵</strong>，也就能正确的应用模型变换。</p>
 <p>结合模型变换矩阵数组和gl_InstanceID，我们就能正确地绘制出多个不同模型变换的物体，而且只调用了一次绘制函数。</p>
 <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250728115028104.png" alt="image-20250728115028104" style="zoom:50%;" />
-<h3 id="Attribute更新策略">Attribute更新策略</h3>
+<h3 id="Attribute更新策略"><a class="header-anchor" href="#Attribute更新策略"></a>Attribute更新策略</h3>
 <p>使用Uniform变量传输数据虽然较为简单，但是如果绘制一个非常大的场景，需要实例化的物体数量非常多，我们最终会超过最大能够发送至着色器的uniform数据大小（上限）。</p>
 <p>因此可以采取<strong>实例化数组(Instanced Array)<strong>的方式传输数据，可以将这些模型变换矩阵数组</strong>存放到一个VBO</strong>中，让这些模型变换矩阵作为每个顶点的属性。</p>
 <p>对于VBO中的每个属性（坐标、UV、法线等）来说，都是<strong>逐顶点进行更新</strong>的，也就是每处理下一个新的顶点，VBO都会自动跳到该属性的下一组数据中作为该顶点的属性，也就是说<strong>每个顶点拿到的属性值都不一样</strong>。但是对于我们的模型变换矩阵来说，<strong>每个实例的所有顶点的模型变换矩阵都应该一样</strong>，我们<strong>希望每渲染一个实例才更新到下一组矩阵数据</strong>。</p>
@@ -4697,8 +4629,8 @@ glVertexAttribDivisor(6, 1);<span aria-hidden="true" class="line-numbers-rows"><
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // Set scroll toc fixed.
