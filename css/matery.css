@@ -34,11 +34,18 @@
 }
 
 body {
-    background-color: #eaeaea;
+    /* background-color: #eaeaea; */
+    background: linear-gradient(60deg, 
+                #f0e6a8 0%, 
+                rgba(240, 230, 168, 0.275) 15%, 
+                #b8e1f5 30%, 
+                rgba(184, 225, 245, 0.25) 50%, 
+                #f0e6a8 70%, 
+                rgba(184, 225, 245, 0.2) 85%, 
+                #b8e1f5 100%) 0% 0% /     cover, url("/medias/background.jpg"), url("/medias/background.jpg") 0px 0px;
+    background-attachment: fixed;
     margin: 0;
-    color: #34495e;
-    overflow-x: hidden;
-    overflow-y: auto;
+    color: #7F95D1;
 }
 
 h1 {
@@ -543,6 +550,7 @@ header .go-back i {
     transform: translate3d(0px, 0px, 0px);
 }
 
+
 .index-cover {
     height: 100vh;
 }
@@ -552,8 +560,75 @@ header .go-back i {
 }
 
 .bg-cover:after {
-    -webkit-animation: rainbow 60s infinite;
-    animation: rainbow 60s infinite;
+    -webkit-animation: electricFlow 60s ease-in-out infinite;
+    animation: electricFlow 60s ease-in-out infinite;
+    background-size: 200% 200%; /* 为流动效果做准备 */
+}
+
+@-webkit-keyframes electricFlow {
+    0%, 100% {
+        background: linear-gradient(45deg, 
+            rgba(240, 230, 168, 0.375) 0%,  /* 美琴发色 - 浅金色 */
+            rgba(184, 225, 245, 0.325) 100% /* 电击蓝色 */
+        );
+        background-position: 0% 50%;
+    }
+    25% {
+        background: linear-gradient(45deg, 
+            rgba(184, 225, 245, 0.375) 0%,  /* 电击蓝增强 */
+            rgba(240, 230, 168, 0.325) 100% /* 浅金色 */
+        );
+        background-position: 50% 100%;
+    }
+    50% {
+        background: linear-gradient(45deg, 
+            rgba(240, 230, 168, 0.4) 0%,  /* 浅金色增强 */
+            rgba(255, 255, 255, 0.35) 50%, /* 电击高光 */
+            rgba(184, 225, 245, 0.325) 100%
+        );
+        background-position: 100% 50%;
+    }
+    75% {
+        background: linear-gradient(45deg, 
+            rgba(184, 225, 245, 0.4) 0%,  /* 电击蓝增强 */
+            rgba(255, 255, 255, 0.35) 50%, /* 电击高光 */
+            rgba(240, 230, 168, 0.325) 100%
+        );
+        background-position: 50% 0%;
+    }
+}
+
+@keyframes electricFlow {
+    0%, 100% {
+        background: linear-gradient(45deg, 
+            rgba(240, 230, 168, 0.375) 0%,  /* 美琴发色 - 浅金色 */
+            rgba(184, 225, 245, 0.325) 100% /* 电击蓝色 */
+        );
+        background-position: 0% 50%;
+    }
+    25% {
+        background: linear-gradient(45deg, 
+            rgba(184, 225, 245, 0.375) 0%,  /* 电击蓝增强 */
+            rgba(240, 230, 168, 0.325) 100% /* 浅金色 */
+        );
+        background-position: 50% 100%;
+    }
+    50% {
+        background: linear-gradient(45deg, 
+            rgba(240, 230, 168, 0.4) 0%,  /* 浅金色增强 */
+            rgba(255, 255, 255, 0.35) 50%, /* 电击高光 */
+            rgba(184, 225, 245, 0.325) 100%
+        );
+        background-position: 100% 50%;
+    }
+    75% {
+        background: linear-gradient(45deg, 
+            rgba(184, 225, 245, 0.4) 0%,  /* 电击蓝增强 */
+            rgba(255, 255, 255, 0.35) 50%, /* 电击高光 */
+            rgba(240, 230, 168, 0.325) 100%
+        );
+        background-position: 50% 0%;
+    }
 }
 
 .bg-cover:before,
@@ -751,6 +826,12 @@ header .go-back i {
     .index-card .card .card-content {
         padding: 20px 20px;
     }
+}
+
+/* 调整已发布文章卡片的透明度和文字颜色 */
+.card {
+    opacity: .8;
+    color: rgb(100, 99, 99);
 }
 
 .recommend .row .col {
@@ -2030,8 +2111,6 @@ p.search-result-summary{
 
 /*二级菜单*/
 
-.nav-menu {
-}
 
 .nav-menu li .sub-nav {
     position: absolute;
