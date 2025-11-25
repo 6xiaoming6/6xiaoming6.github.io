@@ -394,13 +394,96 @@ header .side-nav .social-link {
     box-shadow: none;
 }
 
-.cover-btns a:hover {
-    border: 1px solid #f44336;
-    background-color: #f44336;
-    box-shadow: 0 14px 26px -12px rgba(233, 30, 99, 0.42),
-    0 4px 23px 0 rgba(0, 0, 0, 0.12),
-    0 8px 10px -5px rgba(233, 30, 99, 0.2);
+/* banner界面的开始阅读、github按钮的hover颜色 */
+.cover-btns a {
+    /* 基础样式 - 椭圆形按钮 */
+    border-radius: 50px !important; /* 椭圆形按钮 */
+    background: rgba(255, 255, 255, 0.9) !important; /* 半透明白色背景 */
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* 浅色边框 */
+    color: #5a6c7d !important; /* 深灰色文字 */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
 }
+
+/* 悬停时的光晕效果 */
+.cover-btns a:hover {
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #2d3748 !important; /* 更深的文字颜色 */
+    transform: translateY(-3px); /* 轻微上浮 */
+    
+    /* 多层柔和光晕效果 */
+    box-shadow: 
+        0 8px 25px rgba(184, 225, 245, 0.4), /* 主光晕 - 电击蓝 */
+        0 4px 15px rgba(240, 230, 168, 0.3), /* 辅助光晕 - 浅金色 */
+        0 2px 6px rgba(255, 255, 255, 0.4),  /* 白光晕增强立体感 */
+        inset 0 1px 0 rgba(255, 255, 255, 0.6); /* 内发光 */
+}
+
+/* 添加光晕动画效果 */
+.cover-btns a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    background: radial-gradient(
+        circle at center,
+        rgba(184, 225, 245, 0.3) 0%,
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.cover-btns a:hover::before {
+    opacity: 1;
+}
+
+/* 添加按钮内微妙的渐变效果 */
+.cover-btns a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.cover-btns a:hover::after {
+    left: 100%;
+}
+
+/* 针对不同按钮的微调 */
+.cover-btns a:first-child:hover { /* 开始阅读按钮 */
+    box-shadow: 
+        0 8px 25px rgba(135, 206, 235, 0.5), /* 天蓝色光晕 */
+        0 4px 15px rgba(240, 230, 168, 0.4),
+        0 2px 6px rgba(255, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.cover-btns a:last-child:hover { /* GITHUB按钮 */
+    box-shadow: 
+        0 8px 25px rgba(100, 100, 100, 0.4), /* 灰色光晕 */
+        0 4px 15px rgba(240, 230, 168, 0.3),
+        0 2px 6px rgba(255, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* banner界面的开始阅读、github按钮的hover颜色-----------------------end */
 
 .cover-btns a i {
     font-size: 1.1rem;
@@ -828,10 +911,9 @@ header .go-back i {
     }
 }
 
-/* 调整已发布文章卡片的透明度和文字颜色 */
 .card {
     opacity: .8;
-    color: rgb(100, 99, 99);
+    color: rgb(99, 99, 99);
 }
 
 .recommend .row .col {
@@ -2177,6 +2259,168 @@ p.search-result-summary{
     border-style: solid;
     border-color: transparent transparent rgba(255, 255, 255, .8)
 }
+
+/* 顶部导航栏 */
+.nav-menu li a {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: -8px -16px;
+    border-radius: 6px;
+    z-index: 1;
+    margin: 0 2px; /* 添加小间距避免重叠 */
+}
+
+.nav-menu li a:hover {
+    color: #73dee6 !important;
+    background: rgba(184, 225, 245, 0.15);
+    transform: translateY(-1px); /* 减小上浮距离 */
+    
+    /* 更柔和的阴影 */
+    box-shadow: 0 2px 8px rgba(184, 225, 245, 0.2),
+                0 1px 3px rgba(240, 230, 168, 0.15);
+}
+
+/* 底部渐变线条 - 更贴近按钮 */
+.nav-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* 紧贴按钮底部 */
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+                transparent 0%, 
+                #f0e6a8 30%, 
+                #b8e1f5 70%, 
+                transparent 100%);
+    border-radius: 1px;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.nav-menu li a:hover::after {
+    width: 85%; /* 线条长度略小于按钮宽度 */
+    opacity: 1;
+}
+
+/* 缩小光晕范围，更贴近按钮 */
+.nav-menu li a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle at center, 
+                rgba(184, 225, 245, 0.25) 0%, 
+                transparent 60%);
+    border-radius: 4px; /* 改为圆角矩形，更贴合按钮形状 */
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    z-index: -1;
+    opacity: 0;
+}
+
+.nav-menu li a:hover::before {
+    width: calc(100% - 4px);  /* 光晕宽度略小于按钮 */
+    height: calc(100% - 4px); /* 光晕高度略小于按钮 */
+    opacity: 1;
+}
+
+/* 可选：添加文字阴影增强可读性 */
+.nav-menu li a:hover {
+    text-shadow: 0 0 8px rgba(240, 230, 168, 0.5);
+}
+/* 顶部导航栏-----end */
+
+
+
+/* ---------------------------------------二级导航栏整体样式 */
+.sub-nav.menus_item_child {
+    background: rgba(255, 255, 255, 0.95) !important; /* 提高不透明度 */
+    backdrop-filter: blur(8px); /* 减少模糊度 */
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4); /* 加强边框 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* 加强阴影 */
+    padding: 8px 0;
+    min-width: 150px;
+}
+
+/* 菜单项样式 - 提高对比度 */
+.sub-nav.menus_item_child li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #2d3748 !important; /* 使用更深的文字颜色 */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 6px;
+    margin: 2px 8px;
+    font-weight: 500; /* 加粗文字 */
+}
+
+/* 图标样式 - 统一颜色和大小 */
+.sub-nav.menus_item_child li a i {
+    margin-top: 0 !important;
+    zoom: 0.7;
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: #4a5568 !important; /* 给图标设置颜色 */
+}
+
+/* Hover效果 - 确保图标和文字都变色 */
+.sub-nav.menus_item_child li a:hover {
+    background: rgba(184, 225, 245, 0.3) !important;
+    color: #1a365d !important; /* 更深的蓝色文字 */
+    transform: translateX(5px);
+    border-left: 3px solid #b8e1f5;
+}
+
+/* Hover时图标和文字都变色 */
+.sub-nav.menus_item_child li a:hover i,
+.sub-nav.menus_item_child li a:hover span {
+    color: #73dee6 !important; 
+}
+
+/* 当前选中状态样式（参考图片中的音乐选项） */
+.sub-nav.menus_item_child li a.active {
+    background: rgba(240, 230, 168, 0.2) !important; /* 浅金色背景 */
+    border-left: 3px solid #f0e6a8; /* 浅金色边框 */
+    color: #1a365d !important;
+}
+
+.sub-nav.menus_item_child li a.active i,
+.sub-nav.menus_item_child li a.active span {
+    color: #73dee6 !important;
+}
+
+/* 为每个菜单项添加独特的hover颜色 */
+.sub-nav.menus_item_child li:nth-child(1) a:hover { /* 音乐 */
+    border-left-color: #f0e6a8;
+    background: rgba(240, 230, 168, 0.25) !important;
+}
+
+.sub-nav.menus_item_child li:nth-child(2) a:hover { /* 电影 */
+    border-left-color: #b8e1f5;
+    background: rgba(184, 225, 245, 0.25) !important;
+}
+
+.sub-nav.menus_item_child li:nth-child(3) a:hover { /* 阅读 */
+    border-left-color: #a78bfa;
+    background: rgba(167, 139, 250, 0.15) !important;
+}
+
+.sub-nav.menus_item_child li:nth-child(4) a:hover { /* 相册 */
+    border-left-color: #34d399;
+    background: rgba(52, 211, 153, 0.15) !important;
+}
+/* ---------------------------------------二级导航栏----------end */
+
 
 .m-nav-item {
     position: relative;
