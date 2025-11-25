@@ -456,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-11-24
+                    2025-11-25
                 </div>
                 
 
@@ -534,14 +534,14 @@
 <span class="token comment">#参数之间空格隔开</span>
 <span class="token keyword">add_executable</span><span class="token punctuation">(</span>OpenGLStudy <span class="token string">"main.cpp"</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250411204132847.png" alt="image-20250411204132847" style="zoom: 67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250411204132847.png" alt="image-20250411204132847" style="zoom: 67%;" />
 <p>项目文件准备完成后，使用vs按照上图所示操作打开CMake项目，vs会根据配置文件生成对应的文件。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250411204540750.png" alt="image-20250411204540750" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250411204540750.png" alt="image-20250411204540750" style="zoom:67%;" />
 <p>如上图所示，在项目根目录下会生成out文件夹，里面存放的就是生成的目标文件。因此在分享项目工程时，out文件夹和.vs文件夹可以删除，这些都是IDE自动生成的，而且比较大。在根目录下的out/build/x64-Debug目录下可以看到生成的可执行文件，名称和我们在CMakeLists.txt中定义的一样。</p>
 <h2 id="多源文件编译"><a class="header-anchor" href="#多源文件编译"></a>多源文件编译</h2>
 <p>实际开发中，肯定不可能只有一个main.cpp文件，我们肯定会创建许多类，会有多个cpp文件。</p>
 <p>如下图所示，新建了func.h和func.cpp文件，在main.cpp文件中使用了func.cpp实现的add函数，此时如果直接运行代码会报错，因为我们并没有将func.cpp加入到CMake的编译目标中。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250411215637145.png" alt="image-20250411215637145" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250411215637145.png" alt="image-20250411215637145" style="zoom:67%;" />
 <p>我们有两种解决方法：</p>
 <ol>
 <li>手动将所有的cpp文件加入到CMakeLists.txt中的源文件中</li>
@@ -581,11 +581,11 @@
 <h2 id="多文件夹编译"><a class="header-anchor" href="#多文件夹编译"></a>多文件夹编译</h2>
 <p>开发中为了规范，不可能将所有的cpp文件都放在根目录下，因此我们会创建专门的文件夹存放对应的cpp文件。</p>
 <p>如下图所示，我们将func.cpp和func.h放在了funcs文件夹下，里面存放的都是我们自己实现的函数，但是这样一来CMake就会找不到func.cpp文件而报错。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412112710734.png" alt="image-20250412112710734" style="zoom: 67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412112710734.png" alt="image-20250412112710734" style="zoom: 67%;" />
 <ol>
 <li>首先我们先在funcs目录下新建一个CMakeLists.txt文件，编译时将该目录下的所有cpp文件编译为一个lib库</li>
 </ol>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412114046837.png" alt="image-20250412114046837" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412114046837.png" alt="image-20250412114046837" style="zoom:67%;" />
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">
 <span class="token comment">#递归扫描当前目录下的所有cpp文件，将其存到FUNCS变量</span>
 <span class="token comment">#GLOB_RECURSE表示递归查询；FUNCS表示变量名；./*.cpp表示该目录下的所有cpp文件</span>
@@ -619,13 +619,13 @@
 <span class="token comment">#---------------------------------------------------------------------新增</span>
 <span class="token comment">#将funcs目录下生成的连接库连接到我们最终生成的的可执行文件中</span>
 <span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>OpenGLStudy MyFuncLib<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412115430563.png" alt="image-20250412115430563" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412115430563.png" alt="image-20250412115430563" style="zoom:67%;" />
 <p>最后可以在生成的out目录下找到func文件夹，里面就是生成的lib库。</p>
 <h2 id="资源拷贝"><a class="header-anchor" href="#资源拷贝"></a>资源拷贝</h2>
 <p>在进行OpenGL开发中，我们会经常使用各种各样的图片素材，或者其他第三方的dll库，我们开发中会在根目录下创建对应的文件夹存放我们的素材和第三方链接库。</p>
 <p>但是这些文件要放在最后生成的可执行文件同目录下才可以被正确的使用，但是CMake生成的可执行文件在out目录里。所以我们必须手动的将这些文件夹复制到可执行文件的同目录下，不仅麻烦而且容易出错。</p>
 <p>为了方便，我们可以使用CMake的资源拷贝功能，自动的将这些文件复制到可执行文件统计目录下，只需要每次添加新素材或者链接库时重新生成一下即可，CMake会自动拷贝这些文件。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412115647966.png" alt="image-20250412115647966" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412115647966.png" alt="image-20250412115647966" style="zoom:67%;" />
 <p>想实现这个功能，只需要在根目录下的CMakeLists.txt文件中添加这两句指令即可</p>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token comment">#资源拷贝</span>
 <span class="token comment">#给出需要拷贝的资源路径，将路径里的文件放到ASSETS变量中</span>
@@ -633,18 +633,18 @@
 <span class="token comment">#将ASSETS中的内容都拷贝到可执行文件所在目录下</span>
 <span class="token comment">#CMAKE_BINARY_DIR指的是当前项目可执行文件的所在目录</span>
 <span class="token keyword">file</span><span class="token punctuation">(</span>COPY <span class="token punctuation">$&#123;</span>ASSETS<span class="token punctuation">&#125;</span> DESTINATION <span class="token punctuation">$&#123;</span><span class="token variable">CMAKE_BINARY_DIR</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412120621684.png" alt="image-20250412120621684" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412120621684.png" alt="image-20250412120621684" style="zoom:67%;" />
 <p>编写完成后在重新生成即可看到所需要的文件已经被拷贝到了可执行文件所在目录。</p>
 <h1 id="GLAD"><a class="header-anchor" href="#GLAD"></a>GLAD</h1>
 <p>GLAD是一个 <strong>OpenGL 函数加载库</strong>，用于动态加载 OpenGL 驱动程序的函数指针。因为OpenGL是一个规范，只对各个函数进行了定义，并没有具体实现，具体的实现在各个显卡的驱动程序里。所以我们想使用某个函数，就必须从驱动程序中拿到对应的函数指针。我们可以手动指定加载哪些函数的函数指针，但是函数有那么多，我们不可能每一个都手动加载进来。</p>
 <p>GLAD就帮我们完成了这一工程，只需要使用GLAD提供的几行代码，就可以完成对应函数指针的加载。</p>
 <h2 id="下载"><a class="header-anchor" href="#下载"></a>下载</h2>
 <p>访问<a target="_blank" rel="noopener" href="https://glad.dav1d.de/%E5%8D%B3%E5%8F%AF%E6%89%BE%E5%88%B0glad%E7%9A%84%E4%B8%8B%E8%BD%BD%E7%95%8C%E9%9D%A2%EF%BC%8C%E8%BF%9B%E5%85%A5%E5%90%8E%E6%88%91%E4%BB%AC%E4%BC%9A%E7%9C%8B%E5%88%B0%E5%A6%82%E4%B8%8B%E5%86%85%E5%AE%B9%EF%BC%9A">https://glad.dav1d.de/即可找到glad的下载界面，进入后我们会看到如下内容：</a></p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412171016000.png" alt="image-20250412171016000" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412171016000.png" alt="image-20250412171016000" style="zoom: 50%;" />
 <p>我们只需选择对应的选项，再点击右下角的生成按钮，即可获得对应的代码。获取的文件如下图所示，我们可以获得对应的头文件和源代码。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412171141544.png" alt="image-20250412171141544" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412171141544.png" alt="image-20250412171141544" style="zoom:67%;" />
 <h2 id="配置"><a class="header-anchor" href="#配置"></a>配置</h2>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412171614442.png" alt="image-20250412171614442" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412171614442.png" alt="image-20250412171614442" style="zoom:67%;" />
 <p>这里引入项目的方式和GLFW类似，直接将include里面的东西都复制到thirdParty目录下的include文件夹中，但由于直接提供了源码，为了方便起见，我们直接将源码glad.c放到和main.cpp同样的目录下。</p>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token comment">#CMakeLists.txt只需要修改这一句即可，将glad.c连接到可执行文件中</span>
 <span class="token keyword">add_executable</span><span class="token punctuation">(</span>OpenGLStudy <span class="token string">"main.cpp"</span> <span class="token string">"glad.c"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -673,14 +673,14 @@ else
 <p>如果我们想进行图形学的编程，必然需要创建一个窗口展示效果，但是不同的操作系统创建一个窗口的方式天差地别且还需要考虑与OpenGL等图形学API的兼容性。GLFW是一个轻量级的 <strong>跨平台窗口和输入管理库</strong>，专门为 OpenGL/Vulkan 设计。其只负责创建窗口、处理用户输入（键盘/鼠标/手柄）、控制上下文（OpenGL 渲染环境）等操作，相当于为我们创建了一个画布，我们可以使用OpenGL规定的API在该窗口绘制图形。</p>
 <h2 id="配置-k2"><a class="header-anchor" href="#配置-k2"></a>配置</h2>
 <p>到官网下载对应的库（下载源码自己编译或者下载已经编译好的库），这里使用官方提供的已经编译好的库。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412162250191.png" alt="image-20250412162250191" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412162250191.png" alt="image-20250412162250191" style="zoom:67%;" />
 <p>打开文件夹可以看到如上图所示的文件，include文件夹里存放的是我们要引用的头文件，下面lib开头的是各个版本的链接库，现在使用的是vs2019，所以选择lib-vc2019里面的库。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412162410785.png" alt="image-20250412162410785" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412162410785.png" alt="image-20250412162410785" style="zoom:50%;" />
 <p>进入之后可以看到上图所示的链接库，根据不同的方案使用不同的库。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412162452050.png" alt="image-20250412162452050" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412162452050.png" alt="image-20250412162452050" style="zoom:50%;" />
 <p>为了方便起见，直接使用第一种静态链接的方式。</p>
 <p>照下图所示新建一个项目，thirdParty文件夹用来存放所有的第三方库，include文件夹存放头文件，lib文件夹存放对应的lib链接文件。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250412165203427.png" alt="image-20250412165203427" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250412165203427.png" alt="image-20250412165203427" style="zoom:67%;" />
 <p>下面就是设置引入路径和链接路径，引入路径就是在写代码时#include搜寻的目录，链接路径就是链接时搜寻的路径。</p>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token comment">#设置该CMake项目的最低CMake版本要求</span>
 <span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.17</span><span class="token punctuation">)</span>
@@ -933,7 +933,7 @@ int main()
 <p>读取图片只需调用该函数即可，其中返回值为<strong>stbi_uc</strong>*，其实就是stb_image封装的**unsigned char ***数据类型。</p>
 <p>其中最后一个参数是我们期待的拿到的图片通道格式，比如我们的图片只有rgb三个通道，但是实际需要rgba四个通道的数据，那么stbimage就可以完成格式之间的转化，共有四个选项可以选择。</p>
 <p>STBI_grey ，STBI_grey_alpha，STBI_rgb，STBI_rgb_alpha。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704224424533.png" alt="image-20250704224424533" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250704224424533.png" alt="image-20250704224424533" style="zoom:50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int width, height, channel;
 &#x2F;&#x2F;读取图片
 &#x2F;&#x2F;翻转y轴，使图片原点和opengl原点一致
@@ -1268,11 +1268,11 @@ glUniformMatrix4fv(location, 1, GL_FALSE, val);<span aria-hidden="true" class="l
 <h2 id="配置-k4"><a class="header-anchor" href="#配置-k4"></a>配置</h2>
 <p>imgui是一个开源的库，可以直接从网上下载源码，加入到自己的项目中直接引用即可。</p>
 <p>除了需要引入根目录下这些<strong>必须的文件</strong>，还需要根据项目所使用的库引入不同的<strong>兼容性文件</strong>，这部分文件是imgui为了兼容其他第三方库而实现的。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717171621962.png" alt="image-20250717171621962" style="zoom:60%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717171621962.png" alt="image-20250717171621962" style="zoom:60%;" />
 <p>一个简单的方法就是可以进入examples文件夹查看示例工程，将示例示例工程中引入的文件引入自己项目中。这里我们用的是glfw+opengl新版本，就选择对应的文件夹打开里面的项目文件。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717172008182.png" alt="image-20250717172008182" style="zoom:60%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717172008182.png" alt="image-20250717172008182" style="zoom:60%;" />
 <p>然后按照示例项目里面的引入文件引入到自己的项目即可。（示例项目里面的文件都引入之后，也有可能运行报错，这时候只需要根据报错信息引入对应的文件即可）</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717172125492.png" alt="image-20250717172125492" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717172125492.png" alt="image-20250717172125492" style="zoom:67%;" />
 <h2 id="使用-k2"><a class="header-anchor" href="#使用-k2"></a>使用</h2>
 <p>在使用时，一共可分为三个步骤：</p>
 <ol>
@@ -1335,7 +1335,7 @@ ImGui::Button(&quot;c++&quot;, ImVec2(40, 40));
 ImGui::End();
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到调用了两次Begin和End函数且两个窗体<strong>名称不同</strong>，创建了两个不同的窗体，并且各自里面的组件也都在各自的窗体里。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717172954002.png" alt="image-20250717172954002" style="zoom:60%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717172954002.png" alt="image-20250717172954002" style="zoom:60%;" />
 <p>imgui区分窗体的<strong>标识</strong>为<strong>创建的名称</strong>，也就是Begin函数传入的参数。如果两个窗体的<strong>名称一样</strong>，那么就会被认作是<strong>一个窗体</strong>。如下的代码所示，两段代码的运行结果是一样的，都是两个按钮一起出现在了&quot;hello world&quot;窗体里。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;下面两段代码运行结果一样
 &#x2F;&#x2F;两个窗体名称一样
@@ -1352,7 +1352,7 @@ ImGui::Begin(&quot;hello world&quot;);
 ImGui::Button(&quot;world&quot;, ImVec2(60, 40));
 ImGui::Button(&quot;c++&quot;, ImVec2(40, 40));
 ImGui::End();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717173401824.png" alt="image-20250717173401824" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717173401824.png" alt="image-20250717173401824" style="zoom:67%;" />
 <h1 id="Assimp"><a class="header-anchor" href="#Assimp"></a>Assimp</h1>
 <h2 id="介绍-k5"><a class="header-anchor" href="#介绍-k5"></a>介绍</h2>
 <p><strong>Assimp</strong>（<strong>Open Asset Import Library</strong>）是一个开源的 <strong>3D 模型导入库</strong>，用于加载和处理多种 3D 文件格式。它广泛应用于游戏开发、计算机图形学、3D 建模工具等领域，能够解析模型数据（如网格、材质、动画等），并转换为统一的内部数据结构，方便在程序中使用。</p>
@@ -1370,11 +1370,11 @@ ImGui::End();<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <li><strong>场景结构（Scene Graph）</strong>：节点层次结构（如父子关系）</li>
 </ul>
 <p>具体使用流程如下：我们使用Assimp库导入一个3D模型文件，Assimp会解析文件数据并将其转换为Assimp规定的数据结构，我们拿到Assimp的数据结构后要根据自己的需求转换为自己可以使用的数据结构。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717221457130.png" alt="image-20250717221457130" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717221457130.png" alt="image-20250717221457130" style="zoom:50%;" />
 <h2 id="Assimp数据结构"><a class="header-anchor" href="#Assimp数据结构"></a>Assimp数据结构</h2>
 <p>当使用Assimp导入一个模型的时候，它通常会将整个模型加载进一个<strong>场景</strong>(Scene)对象，它会包含导入的模型/场景中的所有数据。Assimp会将场景载入为一系列的节点(Node)，每个节点包含了场景对象中所储存数据的索引，每个节点都可以有任意数量的子节点。Assimp数据结构的（简化）模型如下：</p>
-<img src="https://learnopengl-cn.github.io/img/03/01/assimp_structure.png" alt="img" style="zoom: 80%;" />
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717222711536.png" alt="image-20250717222711536" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\assimp_structure.png" alt="img" style="zoom: 80%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717222711536.png" alt="image-20250717222711536" style="zoom:50%;" />
 <ul>
 <li>
 <p>aiScene中包含了该模型文件中的所有物体。</p>
@@ -1395,7 +1395,7 @@ ImGui::End();<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <p>RootNode是场景的根节点，可以把每个Node当做一个空的Object（空Object当中父物体挂载其他mesh）。Node.mMeshes数组表示挂载在当前Node的物体的mesh，里面存放的是索引值，可以使用这个索引值去aiScene.mMeshes数组中获得指定的mesh；Node.mChildren表示挂载在当前Node的子Node。</p>
 </li>
 </ul>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717223840702.png" alt="image-20250717223840702" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717223840702.png" alt="image-20250717223840702" style="zoom:50%;" />
 <h2 id="使用-k3"><a class="header-anchor" href="#使用-k3"></a>使用</h2>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;assimp&#x2F;Importer.hpp&gt;
 #include &lt;assimp&#x2F;scene.h&gt;
@@ -1517,7 +1517,7 @@ int main()
 
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250415191049509.png" alt="image-20250415191049509" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250415191049509.png" alt="image-20250415191049509" style="zoom: 50%;" />
 <p>可以看到代码中的glCLear(-1)明显传入了一个错误的参数，但是我们的程序还是能正常运行，没有什么报错信息。而且前面设置的清除颜色是灰色的，运行时确实黑色。对于一个大型项目来说，出现这样一个错误是非常难维护的，所有我们在开发时就必须处理好程序的报错问题。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;glGetError()可以获得离自己最近的一个报错情况的错误代码
 &#x2F;&#x2F;GLenum是glad定义的枚举类型，本质就是int
@@ -1531,9 +1531,9 @@ glClear(GL_COLOR_BUFFER_BIT);
 glClear(-1);
 &#x2F;&#x2F;因为只会获得距离自己最近的错误情况，所以会得到第3句的错误代码
 GLenum errCode &#x3D; glGetError();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250415194926089.png" alt="image-20250415194926089" style="zoom: 80%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250415194926089.png" alt="image-20250415194926089" style="zoom: 80%;" />
 <p>如上图所示，每一个错误代码都有一个与之对应的宏，获得错误代码后可以比较这些宏从而找到错误原因。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250415200448883.png" alt="image-20250415200448883" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250415200448883.png" alt="image-20250415200448883" style="zoom:67%;" />
 <p>如上图所示，在项目中新建一个wrapper文件夹，用来存放我们自己写的包装好的工具，创建一个CMakeLists.txt文件，配置方法和CMake的多文件夹编译一节一样。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;------------------------------------------------------checkError.h文件
 #pragma once
@@ -1582,12 +1582,12 @@ void checkError()
 GL_CALL(glClear(GL_COLOR_BUFFER_BIT));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="NDC-Normalized-Device-Coordinates"><a class="header-anchor" href="#NDC-Normalized-Device-Coordinates"></a>NDC(Normalized Device Coordinates)</h2>
 <p>把屏幕坐标划分为[-1,1]的范围，0表示中点位置，-1是左边界或下边界，1是右边界或上边界。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204164555512.png" alt="image-20240204164555512" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204164555512.png" alt="image-20240204164555512" style="zoom: 50%;" />
 <p>使用这种坐标的好出是在屏幕中显示的图像会随着屏幕的大小进行相应比例的缩放，最终我们在OpenGL中给出的坐标也都是NDC中的坐标。</p>
 <h2 id="VBO-Vertex-Buffer-Objects"><a class="header-anchor" href="#VBO-Vertex-Buffer-Objects"></a>VBO(Vertex Buffer Objects)</h2>
 <h3 id="创建"><a class="header-anchor" href="#创建"></a>创建</h3>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204165607889.png" alt="image-20240204165607889" style="zoom:67%;" />
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204165839066.png" alt="image-20240204165839066" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204165607889.png" alt="image-20240204165607889" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204165839066.png" alt="image-20240204165839066" style="zoom:67%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">   &#x2F;&#x2F;在此过程中并未开辟显存
 &#x2F;&#x2F;创建1个VBO
    GLuint n &#x3D; 1;
@@ -1605,8 +1605,8 @@ GL_CALL(glClear(GL_COLOR_BUFFER_BIT));<span aria-hidden="true" class="line-numbe
    glDeleteBuffers(n, vbo2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="绑定和数据填入"><a class="header-anchor" href="#绑定和数据填入"></a>绑定和数据填入</h3>
 <p>使用glGenBuffers函数创建vbo时并不会开辟显存空间，<strong>填入数据</strong>时会真正的<strong>开辟显存空间</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250417172543086.png" alt="image-20250417172543086" style="zoom:33%;" />
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204173148411.png" alt="image-20240204173148411" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250417172543086.png" alt="image-20250417172543086" style="zoom:33%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204173148411.png" alt="image-20240204173148411" style="zoom: 50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;准备数据
 float vertices[] &#x3D; &#123;
     0.5f,0.3f,0,
@@ -1627,7 +1627,7 @@ glDeleteBuffers(1, &amp;vbo);<span aria-hidden="true" class="line-numbers-rows">
 <p>对于一个三角形来说，其包含的数据不止有三个顶点的坐标信息，还有类似颜色、深度等的其他信息，也就是说明一个点是多属性数据，下面介绍两种vbo中存储多属性的策略。</p>
 <h4 id="single-buffer"><a class="header-anchor" href="#single-buffer"></a>single buffer</h4>
 <p>该策略是为每一个属性分配一个vbo对象存储，即创建多个vbo对象，每个vbo对象只负责记录所有点的某一个属性的信息。如下图所示，我们可以创建两个vbo对象，分别存储点的坐标信息和颜色信息。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204174550438.png" alt="image-20240204174550438" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204174550438.png" alt="image-20240204174550438" style="zoom: 50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void prepaerSingleBuffer() &#123;
     float pos[] &#x3D; &#123;
     0.5f,0.3f,0,
@@ -1657,7 +1657,7 @@ glDeleteBuffers(1, &amp;vbo);<span aria-hidden="true" class="line-numbers-rows">
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="interleaved-buffer"><a class="header-anchor" href="#interleaved-buffer"></a>interleaved buffer</h4>
 <p>该策略是将所有的信息放到一个数组里，只创建一个vbo对象存储。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204192206098.png" alt="image-20240204192206098" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204192206098.png" alt="image-20240204192206098" style="zoom:67%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void prepaerInterleavedBuffer() &#123;
     float vertices[] &#x3D; &#123;
         0.5f,0.3f,0,1.0f,1.0f,1.0f,
@@ -1683,13 +1683,13 @@ float vertices[] &#x3D; &#123;
 &#x2F;&#x2F;显卡接收到的数据就是一堆展开的数字，需要使用VAO描述这些数据
 &#x2F;&#x2F;几个数字为一组，数据是什么类型，存储在几号VBO中等等
 0.5f,0.3f,0,1.0f,1.0f,1.0f,  -0.5f,0.2f,0,1.0f,1.0f,1.0f,   -0.3f,0.2f,0,1.0f,1.0f,1.0f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204194640180.png" alt="image-20240204194640180" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204194640180.png" alt="image-20240204194640180" style="zoom:67%;" />
 <p>下面就具体说明如何使用代码绑定VAO。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204194816949.png" alt="image-20240204194816949" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204194816949.png" alt="image-20240204194816949" style="zoom: 50%;" />
 <p>当前OpenGL中绑定的是哪一个VBO，调用这个函数设置的VAO就是对哪一个VBO的信息的描述。要想设置特定的VBO的信息描述前，一定要记得先绑定对应的VBO。</p>
 <p>对于<strong>stride</strong>属性，是说明一个顶点的所有属性数据有多长。例如vbo中存储了3个顶点的坐标信息(float类型)，那么stride=3* sizeof(float)=<strong>12字节</strong>；vbo中存储了3个顶点的坐标信息和颜色信息(float类型)，那么stride=6*sizeof(float)=<strong>24字节</strong>。</p>
 <p>对于<strong>pointer</strong>属性，是说明该属性数据在顶点所有属性数据内的偏移量。例如vbo中存储了3个顶点的坐标信息和颜色信息(float类型)，对于坐标信息，偏移量为0；但是对于颜色信息，由于每个顶点的数据中，颜色信息在坐标信息之后，所以会有一个偏移量，即pointer = 3*sizeof(float) = 12字节的便宜。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204195042028.png" alt="image-20240204195042028" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204195042028.png" alt="image-20240204195042028" style="zoom:50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void prepaerVAO() &#123;
     &#x2F;&#x2F;准备数据
     &#x2F;&#x2F;对应这样的数据假设每一个顶点有6个数据，分别是坐标信息和颜色信息，所以stride的值为6*sizeof(float)&#x3D;24字节
@@ -1724,12 +1724,12 @@ float vertices[] &#x3D; &#123;
     glBindVertexArray(0);
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下面是具体的练习题：</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240204203237223.png" alt="image-20240204203237223" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240204203237223.png" alt="image-20240204203237223" style="zoom:67%;" />
 <h2 id="EBO-Element-Buffer-Object"><a class="header-anchor" href="#EBO-Element-Buffer-Object"></a>EBO(Element Buffer Object)</h2>
 <p>之前我们用VBO存储数据进行绘制多个点时，如果有两个三角形共用了一个或两个点，我们只能按顺序写6个点才能绘制成功，我们可以发现VBO的方式这些点<strong>不能复用</strong>，这就造成了<strong>空间的浪费</strong>。我们可以把用到的点的信息还是都放在VBO中，但是通过索引值获取到要绘制的点，在点的数量很多的情况下可以大大的减少空间的浪费，于是便有了EBO。</p>
 <p><strong>EBO：用于存储顶点绘制顺序索引号的GPU显存区域。</strong></p>
 <p>我们通过将EBO与VAO绑定，在绘制点的时候根据EBO中的索引序号再向VBO中获取到点。EBO的创建与VBO的也类似，只是模式参数不同。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250511210537587.png" alt="image-20250511210537587" style="zoom: 67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250511210537587.png" alt="image-20250511210537587" style="zoom: 67%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl">   <span class="token comment">//创建VBO</span>
    GLuint vbo<span class="token punctuation">;</span>
    <span class="token function">glGenBuffers</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>vbo<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1752,7 +1752,7 @@ float vertices[] &#x3D; &#123;
    <span class="token function">glDrawElements</span><span class="token punctuation">(</span>GL_TRIANGLES<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> GL_UNSIGNED_INT<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下面就是完整的使用EBO进行绘制的代码</p>
 <p>使用EBO参与绘制后，绘制命令就不能再使用<strong>glDrawArrays</strong>了，要使用<strong>glDrawElements</strong>才可以。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250511211731635.png" alt="image-20250511211731635" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250511211731635.png" alt="image-20250511211731635" style="zoom: 50%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//声明全局变量</span>
 GLuint vao<span class="token punctuation">,</span> program<span class="token punctuation">;</span>
 
@@ -1812,13 +1812,13 @@ GLuint vao<span class="token punctuation">,</span> program<span class="token pun
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="shader-着色器程序-入门"><a class="header-anchor" href="#shader-着色器程序-入门"></a>shader(着色器程序)入门</h2>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240205161612785.png" alt="image-20240205161612785" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240205161612785.png" alt="image-20240205161612785" style="zoom:67%;" />
 <h3 id="GLSL-Graphic-Library-Shader-Language"><a class="header-anchor" href="#GLSL-Graphic-Library-Shader-Language"></a>GLSL(Graphic Library Shader Language)</h3>
 <p>着色器的编写要使用专门的语言来完成，这里使用的是GLSL，这是一种类C语言写成的，包含一些对向量和矩阵的操作的有用的特性。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240205161939253.png" alt="image-20240205161939253" style="zoom:67%;" />
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704180609917.png" alt="image-20250704180609917" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240205161939253.png" alt="image-20240205161939253" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250704180609917.png" alt="image-20250704180609917" style="zoom: 50%;" />
 <h4 id="简单数据类型"><a class="header-anchor" href="#简单数据类型"></a>简单数据类型</h4>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206145951400.png" alt="image-20240206145951400" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240206145951400.png" alt="image-20240206145951400" style="zoom: 50%;" />
 <p>在三维向量中，前三个数字可用xyz或者rgb分别表示。</p>
 <p>在四维向量中，前四个数字可用xyzw或者rgba分别表示。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token keyword">vec3</span> color<span class="token operator">=</span><span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span><span class="token number">1.0</span><span class="token punctuation">,</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1879,7 +1879,7 @@ GLfloat timeValue &#x3D; glfwGetTime();&#x2F;&#x2F;获取时间
 GLfloat greenValue &#x3D; (sin(timeValue)+1)&#x2F;2;&#x2F;&#x2F;根据实际的正弦值计算颜色
 shader-&gt;setUniform3Float(&quot;uColor&quot;, 0.0f, greenValue, 0.0f);&#x2F;&#x2F;设置uniform变量的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到三角形的颜色会随时间进行周期性的变化。</p>
-<p>​                        <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206161838490.png" alt="image-20240206161838490" style="zoom:50%;" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206161857442.png" alt="image-20240206161857442" style="zoom:50%;" /></p>
+<p>​                        <img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240206161838490.png" alt="image-20240206161838490" style="zoom:50%;" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206161857442.png" alt="image-20240206161857442" style="zoom:50%;" /></p>
 <h3 id="Vertex-Shader"><a class="header-anchor" href="#Vertex-Shader"></a>Vertex Shader</h3>
 <p>顶点着色器(Vertex Shader)是几个可编程着色器中的一个。如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。着色器的编写需要用到上面的GLSL来实现，下面是一个简单的实现。顶点着色器是将三维世界的左边转化成NDC坐标的，这里我们默认输入的数据就是NDC坐标，所以不用做任何处理，就实现了一个最简单的顶点着色器。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//opengl版本为4.6核心模式</span>
@@ -1922,9 +1922,9 @@ shader-&gt;setUniform3Float(&quot;uColor&quot;, 0.0f, greenValue, 0.0f);&#x2F;&#
     <span class="token comment">//vec4表示的是rgba，在shader中颜色三个通道的值范围都是[0,1]</span>
     color <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>mColor<span class="token punctuation">.</span>x<span class="token punctuation">,</span> mColor<span class="token punctuation">.</span>y<span class="token punctuation">,</span> mColor<span class="token punctuation">.</span>z<span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704155644324.png" alt="image-20250704155644324" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250704155644324.png" alt="image-20250704155644324" style="zoom:50%;" />
 <h3 id="shader的编译"><a class="header-anchor" href="#shader的编译"></a>shader的编译</h3>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240205164023977.png" alt="image-20240205164023977" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240205164023977.png" alt="image-20240205164023977" style="zoom:67%;" />
 <p>因为shader的编写是使用一门语言完成的，我们需要在OpenGL中手动编译和链接。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token keyword">void</span> <span class="token function">prepaerShader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">//shader源代码</span>
@@ -2236,9 +2236,9 @@ glDrawArrays(GL_TRIANGLES, 0, 6);&#x2F;&#x2F;最终会绘制出两个三角形
 glDrawArrays(GL_TRIANGLES, 0, 5);&#x2F;&#x2F;最终会绘制出一个三角形，因为在三角形绘制模式下最后两个顶点无法构成三角形<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下面列举出<strong>glDrawArrays</strong>中一些绘制模式，不同的绘制模式连接顶点的方式不一样：</p>
 <p><strong>绘制三角形：</strong></p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250424211839314.png" alt="image-20250424211839314" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250424211839314.png" alt="image-20250424211839314" style="zoom: 50%;" />
 <p><strong>绘制直线：</strong></p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250424211915083.png" alt="image-20250424211915083" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250424211915083.png" alt="image-20250424211915083" style="zoom:67%;" />
 <h2 id="绘制一个彩色的三角形"><a class="header-anchor" href="#绘制一个彩色的三角形"></a>绘制一个彩色的三角形</h2>
 <p>当我们三个点的颜色各不相同时，内部已经实现的渲染管线会把三角形内部的点按照用插值算法进行计算，使得三个顶点之间的颜色1有一个平滑的过渡，就绘制出了彩色的三角形。下面是具体代码：</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//声明全局变量</span>
@@ -2416,33 +2416,33 @@ GLuint vao<span class="token punctuation">,</span> program<span class="token pun
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面因为三个点的颜色不一致，所以会在内部自动进行三角形内每个点的插值运算，得到一个彩色的三角形，如下图所示：</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240206114956358.png" alt="image-20240206114956358" style="zoom:50%;" />
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250511214654845.png" alt="image-20250511214654845" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240206114956358.png" alt="image-20240206114956358" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250511214654845.png" alt="image-20250511214654845" style="zoom:67%;" />
 <h2 id="texture-纹理"><a class="header-anchor" href="#texture-纹理"></a>texture(纹理)</h2>
 <h3 id="UV坐标"><a class="header-anchor" href="#UV坐标"></a>UV坐标</h3>
 <p>在OpenGL中，<strong>左下角为坐标原点</strong>，图片的大都为左上角为坐标原点，因此在OpenGL中存储图片必须反转一下图片的Y轴。</p>
 <p>在纹理中，我们使用的是UV坐标。通常U表示横向，V表示纵向，两个方向的取值都是<strong>0到1</strong>之间，用以表示当前像素对应图片上百分比位置。</p>
 <p>以前的屏幕像素与纹理像素一一对应的方法不灵活且效果差，采用UV坐标后就改为了<strong>比例对应</strong>的方式。首先找到屏幕中某一像素所在位置的百分比，将横向和纵向的百分比分别乘以纹理图片的宽和高，就得到了与屏幕中该像素对应的纹理图片中的像素。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704220905713.png" alt="image-20250704220905713" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250704220905713.png" alt="image-20250704220905713" style="zoom:50%;" />
 <p>从上面可以得知，在为我们的图形贴上贴图时，需要知道每个顶点的UV坐标。也就是说，<strong>UV坐标需要作为每个顶点的属性存储在VBO中</strong>。知道了顶点的UV坐标后，光栅化后的每个像素块的UV坐标都会由插值算法计算出，这样就可以为图形贴上纹理了。</p>
 <h3 id="纹理对象与采样"><a class="header-anchor" href="#纹理对象与采样"></a>纹理对象与采样</h3>
 <p>纹理对象（Texture）是在GPU端按照<strong>一定的格式</strong>存储纹理图片的<strong>描述信息</strong>和<strong>数据信息</strong>的对象。（在cpu端，描述图片的格式有多种，例如jpg、png等。当我们读取到纹理图片到内存后需要发送到显存中，而在显存中用来描述纹理图片信息的对象就叫做纹理对象。）</p>
 <p>在GPU端<strong>根据UV坐标</strong>按照<strong>一定的算法</strong>从<strong>纹理图片中获取颜色</strong>的过程称为采样，执行采样的对象叫做采样器（sampler）。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250704222728529.png" alt="image-20250704222728529" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250704222728529.png" alt="image-20250704222728529" style="zoom:67%;" />
 <h3 id="Texture-Units-纹理单元"><a class="header-anchor" href="#Texture-Units-纹理单元"></a>Texture Units(纹理单元)</h3>
 <p>纹理与单元绑定后，采样器可以选择使用哪一个单元并获取与之对应的纹理对象。</p>
 <p>具体来说，纹理单元是采样器和纹理对象之间的桥梁。纹理对象绑定某个纹理单元后，采样器可以对这个单元所绑定的纹理对象进行采样。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240220104327355.png" alt="image-20240220104327355" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240220104327355.png" alt="image-20240220104327355" style="zoom:50%;" />
 <p>使用下面的函数可以进行纹理对象的创建、纹理单元的激活以及纹理对象和纹理单元的绑定操作。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240220104357382.png" alt="image-20240220104357382" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240220104357382.png" alt="image-20240220104357382" style="zoom:50%;" />
 <p>如果我们先执行纹理单元的激活操作，再执行<strong>glBindTexture</strong>函数，此时会将该<strong>纹理对象绑定到前面激活的纹理单元</strong>上。</p>
 <p>glBindTexture函数不仅会将纹理对象绑定到纹理单元上，也会将纹理对象绑定到Opengl对应的插槽上，以便将图片数据发送到指定的纹理对象身上。</p>
 <p>如果执行<strong>glBindTexture</strong>函数时没有激活任何纹理单元，则此时会<strong>默认激活0号纹理单元</strong>，该纹理对象绑定到0号单元。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240220104438107.png" alt="image-20240220104438107" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240220104438107.png" alt="image-20240220104438107" style="zoom:50%;" />
 <p>执行glTexImage2D函数后，会向当前绑定在状态机中的纹理对象中发送图片数据。</p>
 <p>其中<strong>type</strong>参数是指我们每一个通道的数据是什么格式的，因为每个通道取值都是0-255，所以8位的unsigned_byte类型足够了。</p>
 <p><strong>pixels</strong>参数就是读取到的图片数据的指针，将读取到的数据直接传过去即可。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240220104946423.png" alt="image-20240220104946423" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240220104946423.png" alt="image-20240220104946423" style="zoom:67%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl">GLuint texture<span class="token punctuation">;</span>
 <span class="token comment">//----------------------------------旧版（OpenGL 4.5之前）创建纹理方式</span>
 <span class="token keyword">void</span> <span class="token function">prepaerTextures</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -2501,7 +2501,7 @@ GLuint vao<span class="token punctuation">,</span> program<span class="token pun
 <li>展示区域过小（屏幕像素&lt;图片像素），图片需要缩小。一般使用**临近法(Nearest)**优先选择离屏幕像素更近的图片像素，使得小的区域能展示更多的图片信息。</li>
 </ol>
 <p>下面是在OpenGL中设置纹理过滤的方式，通过<strong>glTexParameteri</strong>函数进行设置。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240220113239049.png" alt="image-20240220113239049" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240220113239049.png" alt="image-20240220113239049" style="zoom:67%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;设置纹理过滤方式
 &#x2F;&#x2F;展示区域 &lt; 图片大小  纹理图片需要缩小  线性插值
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -2537,8 +2537,8 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<span aria-hidd
 </tr>
 </tbody>
 </table>
-<p><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705165048770.png" alt="image-20250705165048770" style="zoom:50%;display:inline" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705165210016.png" alt="image-20250705165210016" style="zoom:50%;display:inline" /></p>
-<p><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705165428936.png" alt="image-20250705165428936" style="zoom:40%;display:inline" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705165647969.png" alt="image-20250705165647969" style="zoom:40%;display:inline" /></p>
+<p><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705165048770.png" alt="image-20250705165048770" style="zoom:50%;display:inline" /><img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250705165210016.png" alt="image-20250705165210016" style="zoom:50%;display:inline" /></p>
+<p><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705165428936.png" alt="image-20250705165428936" style="zoom:40%;display:inline" /><img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250705165647969.png" alt="image-20250705165647969" style="zoom:40%;display:inline" /></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;设置纹理包裹方式
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);&#x2F;&#x2F;S -&gt; U
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);&#x2F;&#x2F;T -&gt; V<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -2665,13 +2665,13 @@ shader-&gt;setUniform1i(&quot;sampler&quot;, 0);<span aria-hidden="true" class="
 <h3 id="MipMap（多级渐远纹理）"><a class="header-anchor" href="#MipMap（多级渐远纹理）"></a>MipMap（多级渐远纹理）</h3>
 <p>当视线逐渐远离一个物体时，根据进大远小的原理，物体也必然会变得越来越小，那么该物体在屏幕中所占的像素也会越来越少。那么问题来了，一开始物体表面的原始贴图必然是清晰的，随着物体越来越小，可显示的像素块页越来越少，就会导致在一块小区域对一张大图片进行采样，不仅会导致画面出现毛刺和摩尔纹等问题，也会浪费内存和带宽。</p>
 <p>如下图所示，将一张贴图向远处重复延伸，近处显示的很清晰，但是远处的画面看起来非常模糊不舒服，问题所在就是前面所描述的。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705214311994.png" alt="image-20250705214311994" style="zoom: 33%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250705214311994.png" alt="image-20250705214311994" style="zoom: 33%;" />
 <p>为了解决这一问题，于是就有了MipMap。MipMap可以生成一系列的纹理图像，根据不同的距离为物体选择合适的纹理，即解决了远距离图像失真的情况，又节省了渲染资源。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250705214529896.png" alt="image-20250705214529896" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250705214529896.png" alt="image-20250705214529896" style="zoom:50%;" />
 <p>如果要使用OpenGL中提供的MipMap生成策略，只需要两句代码即可。</p>
 <p><strong>glGenerateMipmap</strong>函数会为当前绑定的纹理贴图生成一系列不同level的Mipmap纹理。</p>
 <p><strong>glTexParameteri</strong>函数是设置选择不同Mipmap纹理的策略，由于只有当<strong>展示区域像素&lt;纹理像素</strong>时才会出现这种情况，所以只需要设置<strong>GL_TEXTURE_MIN_FILTER</strong>情况时的Mipmap选择策略即可。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250706154430595.png" alt="image-20250706154430595" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250706154430595.png" alt="image-20250706154430595" style="zoom: 50%;" />
 <h3 id="Texture类的封装"><a class="header-anchor" href="#Texture类的封装"></a>Texture类的封装</h3>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;-------------------------------------------------texture.h文件
 #pragma once
@@ -2754,15 +2754,15 @@ void Texture::bind()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="变换"><a class="header-anchor" href="#变换"></a>变换</h2>
 <h3 id="坐标系"><a class="header-anchor" href="#坐标系"></a>坐标系</h3>
-<p><img src="C:%5CUsers%5CHMY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250706202159737.png" alt="image-20250706202159737"></p>
+<p><img src="C:%5CUsers%5CHMY%5CWPSDrive%5C1733946015%5CWPS%E4%BC%81%E4%B8%9A%E4%BA%91%E7%9B%98%5C%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6%5C%E6%88%91%E7%9A%84%E4%BC%81%E4%B8%9A%E6%96%87%E6%A1%A3%5Cc++%5C%E7%AC%94%E8%AE%B0%5COpenGL.assets%5Cimage-20250706202159737.png" alt="image-20250706202159737"></p>
 <p>世界坐标系是绝对的，永恒不变的。本地坐标系是物体身上附加的坐标系，用来表示物体的朝向等状态，当物体旋转或者移动时，其本地坐标系会随着物体改变。</p>
 <h3 id="模型变换矩阵（ModelMatrix）"><a class="header-anchor" href="#模型变换矩阵（ModelMatrix）"></a>模型变换矩阵（ModelMatrix）</h3>
 <p>glm变换函数的第一个参数是一个矩阵，表明了当前物体前面的所有变换。如下代码所示，在第一次变换时，由于还未进行变换，所以要传入单位矩阵，表面是原始状态。在第二次变换时，传入的是第一次变换后得到的transform矩阵，这个矩阵已经记录了第一次将物体选择了45度的状态，然后在此状态下进行平移变换。且<strong>平移时是按照旋转后的本地坐标系移动</strong>的。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250706203639109.png" alt="image-20250706203639109" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250706203639109.png" alt="image-20250706203639109" style="zoom: 50%;" />
 <p>旋转操作是围绕原点旋转的，<strong>glm中的旋转</strong>是以物体的<strong>本地坐标系原点</strong>为基准进行旋转的。一开始本地坐标系和世界坐标系重合，先将物体平移，再旋转45度，可以看到物体并没有绕着世界坐标系原点旋转，而是绕着本地坐标系原点旋转的。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250706204146727.png" alt="image-20250706204146727" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250706204146727.png" alt="image-20250706204146727" style="zoom:50%;" />
 <p>glm的平移变换要根据缩放变换的程度而定，假设我们先将x方向缩放为原来的0.5倍，那么再将物体向x轴平移1个单位距离时，就会只平移0.5个单位距离。这是因为x轴已经被缩放过了，实际平移的距离 = 输入平移的距离 * 对应轴缩放系数。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250706204420151.png" alt="image-20250706204420151" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250706204420151.png" alt="image-20250706204420151" style="zoom:50%;" />
 <p>模型变换就是对物体进行平移、缩放、旋转等变换操作，这一步骤会将物体的顶点坐标由<strong>模型坐标系</strong>转为<strong>世界坐标系</strong>下的坐标。简单来说，模型变换就是将物体从初始状态摆放在世界中的其他位置。</p>
 <h3 id="视图变换矩阵（MiewMatrix）"><a class="header-anchor" href="#视图变换矩阵（MiewMatrix）"></a>视图变换矩阵（MiewMatrix）</h3>
 <p>为了将物体投影出来，我们需要一个观察者来观察世界中的物体，这个观察者被称为<strong>摄像机</strong>(Camera)，这只是一个抽象的概念，并不实际存在。</p>
@@ -2774,20 +2774,20 @@ void Texture::bind()
 <li>穹顶方向维Y轴方向</li>
 </ul>
 <p>此时进行投影计算最为简单，因为所有的物体只需要<strong>沿z轴投影</strong>到摄像机的屏幕上即可。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707163143623.png" alt="image-20250707163143623" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707163143623.png" alt="image-20250707163143623" style="zoom:50%;" />
 <p>假设此时摄像机进行了旋转和平移等变换操作：</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707163802275.png" alt="image-20250707163802275" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707163802275.png" alt="image-20250707163802275" style="zoom:50%;" />
 <p>此时摄像机的朝向是一个较为复杂的方向，如果此时再将物体投影到摄像机的屏幕上，在数学计算上是一个非常麻烦的事情。在数学上，我们的的投影都喜欢沿着坐标轴投影，处理这样一个复杂方向的投影是比较困难的。</p>
 <p>为了解决这一问题，可以将<strong>物体</strong>的顶点坐标由<strong>世界坐标系</strong>转为到<strong>摄像机坐标系</strong>（就是摄像机自己的本地坐标系）中。这样的好处是，在摄像机坐标系中摄像机所在的<strong>位置始终是原点</strong>，其<strong>朝向始终是-Z轴</strong>，物体可以直接在摄像机坐标系下沿Z轴进行投影。</p>
 <p>所以我们只需要求出摄像机变换后，物体在摄像机坐标系下的坐标即可，即将<strong>物体顶点坐标</strong>从<strong>世界坐标系</strong>转到<strong>摄像机坐标系</strong>下。</p>
 <p>相机的变换位置可由旋转变换和平移变换叠加而来。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707165401188.png" alt="image-20250707165401188" style="zoom: 33%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707165401188.png" alt="image-20250707165401188" style="zoom: 33%;" />
 <p>这里我们让物体的顶点和摄像机做相同的变换，经过推导可得物体顶点的世界坐标系坐标和摄像机坐标系坐标的关系。</p>
 <p>即已知某点的<strong>摄像机坐标系坐标</strong>和<strong>摄像机变换矩阵</strong>可以求得<strong>该点的世界坐标系坐标</strong>；</p>
 <p>反之，已知某点的<strong>世界坐标系坐标</strong>和<strong>摄像机变换矩阵</strong>也可以求出<strong>该点的摄像机坐标系坐标</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707171022603.png" alt="image-20250707171022603" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707171022603.png" alt="image-20250707171022603" style="zoom: 50%;" />
 <p>这样以来，我们只需要知道了摄像机的变换矩阵，便可通过下面的公式求出顶点的<strong>摄像机坐标系坐标</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707171758859.png" alt="image-20250707171758859" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707171758859.png" alt="image-20250707171758859" style="zoom:50%;" />
 <p>知道计算公式以后，我们还需要计算出摄像机变换矩阵中的<strong>旋转部分</strong>和<strong>平移部分</strong>，因为变换矩阵是由旋转矩阵和平移矩阵叠加而来的。</p>
 <p>由旋转矩阵的几何意义可知：旋转矩阵的<strong>前三列</strong>是旋转后物体<strong>本地坐标的三个轴</strong>。<br>
 $$<br>
@@ -2811,11 +2811,11 @@ R = \begin{bmatrix}<br>
 可以发现旋转矩阵的前三列就是该物体旋转后的本地坐标系的三个轴<br>
 $$<br>
 所以我们只需要知道摄像机当前的<strong>右向量</strong>、<strong>上向量</strong>和<strong>朝向</strong>（分别表示本地坐标系的x，y，-z方向），即可求出<strong>旋转矩阵R</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707174921598.png" alt="image-20250707174921598" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707174921598.png" alt="image-20250707174921598" style="zoom:50%;" />
 <p>因为是先在原点进行旋转，所以<strong>平移矩阵T</strong>直接将变换后的世界坐标和原点坐标相减即可求出。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707175050664.png" alt="image-20250707175050664" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707175050664.png" alt="image-20250707175050664" style="zoom:50%;" />
 <p>于是我们就可以求出摄像机的变换矩阵及其逆矩阵：</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707175228123.png" alt="image-20250707175228123" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707175228123.png" alt="image-20250707175228123" style="zoom:50%;" />
 <p>有了摄像机变换矩阵的逆矩阵，我们就可以根据<strong>物体顶点</strong>的<strong>世界坐标系坐标</strong>求出其摄像机坐标系坐标。知道了物体顶点在摄像机坐标系下的坐标后，那么就可以很方便的将物体沿摄像机坐标系的Z轴投影到摄像机屏幕上。</p>
 <p>简单来说，<strong>视图变换矩阵</strong>就是将物体顶点坐标从<strong>世界坐标系</strong>转到<strong>摄像机坐标系</strong>下。</p>
 <p>我们可以使用glm库的<strong>lookAt</strong>函数生成视图变换矩阵viewMatrix。</p>
@@ -2829,7 +2829,7 @@ mat4 viewMatrix &#x3D; lookAt(vec3 eye, vec3 center, vec3 top);<span aria-hidden
 <p>投影又分为正交投影（Orthographic Projection）和透视投影（Perspective Projection）两种投影方式，两种投影方式都有各自的应用场景。</p>
 <p><strong>一、正交投影：</strong></p>
 <p>正交投影中不存在人眼的概念，发出的都是平行光，就好比是在一堆物体前用平行光照射到一堵墙上一样。类似数学中立体几何的正视图、俯视图、侧视图那样的效果，无法体现物体间进大远小那种立体感的效果。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707182324681.png" alt="image-20250707182324681" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707182324681.png" alt="image-20250707182324681" style="zoom:50%;" />
 <p>在正交投影中，我们会定义一个投影盒（left，right，top，bottom，near，far），可以简单理解为物体能够显示的边界范围，oopengl只会显示在投影盒内的物体。</p>
 <ul>
 <li>
@@ -2842,10 +2842,10 @@ mat4 viewMatrix &#x3D; lookAt(vec3 eye, vec3 center, vec3 top);<span aria-hidden
 <p>如果物体<strong>部分顶点</strong>在<strong>投影盒外</strong>，则opengl会求出物体与投影盒的交点，只显示投影盒内的部分，就好比物体用刀切去了一部分。</p>
 </li>
 </ul>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707184523187.png" alt="image-20250707184523187" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707184523187.png" alt="image-20250707184523187" style="zoom:40%;" />
 <p>投影盒投影面的四个角和屏幕的四个角是一一对应的，但是投影盒的大小是我们自己设置的，而且屏幕中采用的是NDC坐标系，X，Y，Z轴的范围都是[-1, 1]，所以还需要将投影盒内的顶点坐标转为NDC坐标。</p>
 <p>不难发现，<strong>投影矩阵</strong>的作用就是将顶点的<strong>摄像机坐标系坐标</strong>转为屏幕上对应的<strong>NDC坐标系坐标</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707183541524.png" alt="image-20250707183541524" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707183541524.png" alt="image-20250707183541524" style="zoom:40%;" />
 <p>由于NDC坐标系的范围是[-1, 1]，为了使这些顶点坐标缩放到同样的范围：</p>
 <ol>
 <li>我们需要先将<strong>投影盒的中心</strong>平移到摄像机坐标系的<strong>原点</strong>，盒内的物体顶点也随着做同样的平移变换。</li>
@@ -2854,24 +2854,24 @@ mat4 viewMatrix &#x3D; lookAt(vec3 eye, vec3 center, vec3 top);<span aria-hidden
 <p>上面两个步骤<strong>盒内和盒外</strong>的顶点都会<strong>做一样的变换</strong>，只是<strong>盒外的顶点</strong>变换后<strong>仍然在盒外</strong>，会被去除不显示出来。</p>
 <p>于是我们就将每个<strong>顶点坐标</strong>从<strong>摄像机坐标系</strong>坐标转换到了<strong>NDC坐标系坐标</strong>。</p>
 <p><strong>注意：<strong>在缩放变换矩阵中，x和y方向的缩放因子都是正数，但是</strong>z轴</strong>的缩放因子是<strong>负数</strong>。这是因为opengl中使用的是<strong>右手</strong>坐标系，<strong>屏幕朝外</strong>是z轴正方向；但是NDC坐标系使用的是<strong>左手</strong>坐标系，<strong>屏幕朝内</strong>才是z轴正方向。两个坐标系的<strong>z轴相反</strong>，所以在转换为NDC坐标系时要翻转一下z轴方向。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707212835860.png" alt="image-20250707212835860" style="zoom:45%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707212835860.png" alt="image-20250707212835860" style="zoom:45%;" />
 <p>执行完投影变换后就会将顶点继续送入后续管线阶段，后面的过程是opengl自动实现的。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707213303648.png" alt="image-20250707213303648" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707213303648.png" alt="image-20250707213303648" style="zoom:50%;" />
 <p>在glm库中可以使用rotho函数生成我们的投影变换矩阵orthProjectionMatrix。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;函数的六个参数定义了投影盒的范围，盒内的顶点才会最终显示在屏幕上
 mat4 orthProjectionMatrix &#x3D; ortho(float left, float right, float bottom, float top, float zNear, float zFar);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong>二、透视投影：</strong></p>
 <p>透视投影是符合人眼的效果，前面介绍的摄像机就替代了人眼的功能，可以看到物体间进大远小的效果。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707182839172.png" alt="image-20250707182839172" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707182839172.png" alt="image-20250707182839172" style="zoom: 50%;" />
 <p>与正交投影一样，透视投影也有一个包裹盒，为了<strong>模仿人眼透视</strong>的功能实现<strong>近大远小</strong>的特点，这个包裹盒是一个<strong>锥体</strong>，叫做<strong>视锥体</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707221330591.png" alt="image-20250707221330591" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707221330591.png" alt="image-20250707221330591" style="zoom: 50%;" />
 <p>视锥体也由六个参数控制：</p>
 <ul>
 <li>可视范围：near，far（表示和摄像机坐标原点的<strong>距离</strong>，均为<strong>正数</strong>）</li>
 <li>近平面范围：left，right，top，bottom（表示了近平面可视区域的坐标范围，<strong>可正可负</strong>）</li>
 </ul>
 <p>和正交投影一样，透视投影也是要将摄像机坐标系转为NDC坐标系，所以要将锥体包裹盒缩放为长度为2的立方体。由于距离摄像机原点越远，可视平面越大，当远平面也缩放到[-1, 1]范围时，远处的顶点坐标必然会缩放更多，也就造成了进大远小的效果。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707221928121.png" alt="image-20250707221928121" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707221928121.png" alt="image-20250707221928121" style="zoom:50%;" />
 <p>投影是沿z轴投影到xy平面，正交投影在投影时，x，y和z的值都不会变化。但是透视投影的包裹盒是一个锥体，在投影时远平面的坐标投影在近平面时x，y和z的值都会发生变化，不能简单的直接使用，要计算出远平面投影到近平面后的新坐标。</p>
 <p>在glm库中我们可以使用perspective函数来创建投影变换矩阵perspectiveProjectionMatrix。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;为了方便使用，将参数简化为了四个来定义视锥体
@@ -2880,7 +2880,7 @@ mat4 orthProjectionMatrix &#x3D; ortho(float left, float right, float bottom, fl
 &#x2F;&#x2F;zNear 是近平面距离摄像机坐标系原点的距离（正数）
 &#x2F;&#x2F;zFar 是远平面距离摄像机坐标系原点的距离（正数）
 mat4 perspectiveProjectionMatrix &#x3D; perspective(float fov, float aspect, float zNear, float zFar);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250707235241817.png" alt="image-20250707235241817" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250707235241817.png" alt="image-20250707235241817" style="zoom:50%;" />
 <p>知道了上述三种变换后，我们最终在vertexShader输出的顶点坐标是经过了完整的模型变换、视图变换和投影变换后的顶点。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl">gl_Position <span class="token operator">=</span> projectionMatrix <span class="token operator">*</span> viewMatrix <span class="token operator">*</span> modelMatrix <span class="token operator">*</span> aPos<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="相机系统"><a class="header-anchor" href="#相机系统"></a>相机系统</h2>
@@ -2889,7 +2889,7 @@ mat4 perspectiveProjectionMatrix &#x3D; perspective(float fov, float aspect, flo
 <p>Camera是控制画面的显示的，而CameraControl是控制Camera移动、旋转和缩放等功能的。</p>
 <p>由于投影共有透视投影和正交投影两种，所以派生出了两个子类PerspectiveCamera和OrthographicCamera，分别用来展示透视投影画面（2D）和正交投影画面（3D）。</p>
 <p>相机的运动轨迹可以分为<strong>轨迹球</strong>方式和<strong>游戏</strong>方式，前者常在三维设计软件中见到，后者就是游戏中使用的方式，分别对应TraclBallControl和GameControl。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709181840293.png" alt="image-20250709181840293" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709181840293.png" alt="image-20250709181840293" style="zoom:50%;" />
 <p>相机类包含了定义一个相机所必须的<strong>参数</strong>，以及获取<strong>视图变化矩阵</strong>（viewMatrix）和<strong>投影变换矩阵</strong>（projectionMatrix）的方法。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;-------------------------------------------------Camera.h文件，Camera类是所有相机的父类
 #pragma once
@@ -3154,11 +3154,11 @@ void CameraControl::update()
 <h3 id="TrackBallCameraController（轨迹球相机控制器）"><a class="header-anchor" href="#TrackBallCameraController（轨迹球相机控制器）"></a>TrackBallCameraController（轨迹球相机控制器）</h3>
 <p>用户通过鼠标拖拽（类似在虚拟球面上滑动）来控制相机的旋转，适合自由观察3D物体或场景，在建模软件中经常可以看到这样的移动方式。</p>
 <p>这样的实现方式是将相机锁定在一个半径固定的球面上运动，相机始终看向某一个点（一般是原点）。当我们使用鼠标移动时，将鼠标移动的距离转化为相机在对应方向旋转的角度，创建出一个旋转矩阵，对相机的各个参数进行调整。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709164225962.png" alt="image-20250709164225962" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709164225962.png" alt="image-20250709164225962" style="zoom:40%;" />
 <p>对于相机任意的移动，我们可以将其分解为左右沿纬线运动和上下沿经线运动。</p>
 <p>绕着纬线<strong>左右运动</strong>是绕着<strong>世界坐标系的y轴</strong>旋转的，产生的角度叫做<strong>yaw</strong>角（类似人眼左右移动）。当相机绕着球面左右运动时，相机的<strong>position</strong>(位置)、<strong>up</strong>(相机本地坐标系的y轴)、<strong>right</strong>(相机本坐标系的x轴)参数都会<strong>发生变化</strong>，所以左右移动时需要更新这<strong>三</strong>个参数。</p>
 <p>绕着经线<strong>上下运动</strong>是绕着<strong>摄像机本地坐标系的x轴</strong>旋转的，产生的角度叫做<strong>pitch</strong>角（类似人眼上下移动）。当相机绕着球面左右运动时，相机的<strong>position</strong>(位置)、<strong>up</strong>(相机本地坐标系的y轴)参数都会<strong>发生变化</strong>，所以上下移动时需要更新这<strong>两</strong>个参数。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709165319540.png" alt="image-20250709165319540" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709165319540.png" alt="image-20250709165319540" style="zoom:50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;-------------------------------------------------trackBallCameraControl.h文件
 #pragma once
 #include &quot;..&#x2F;..&#x2F;glframework&#x2F;core.h&quot;
@@ -3247,7 +3247,7 @@ void TrackBallCameraControl::pitch(float angle)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="GameCameraController（游戏相机控制器）"><a class="header-anchor" href="#GameCameraController（游戏相机控制器）"></a>GameCameraController（游戏相机控制器）</h3>
 <p>游戏相机控制器可以类比第一人称游戏，可以使用WASD键进行前后左右移动，按下鼠标右键时可以转动视角。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709214146965.png" alt="image-20250709214146965" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709214146965.png" alt="image-20250709214146965" style="zoom:50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;-------------------------------------------------gameCameraControl.h文件
 #pragma once
 #include &quot;..&#x2F;..&#x2F;glframework&#x2F;core.h&quot;
@@ -3374,18 +3374,18 @@ void GameCameraControl::yaw(float angle)
 <p>opengl中默认使用的绘制算法是<strong>画家算法</strong>，就像画画一样，先绘制的会被后绘制的遮挡住。这里的遮挡关系只和物体的绘制顺序有关，和距离摄像机远近没有关系。</p>
 <p>在3维世界中，同一个地点，必然是距离摄像机近的物体会遮盖住距离摄像机远的物体。</p>
 <p>就像下图所示，右边的三角形Z值为-1，左边的三角形Z值为0，在两个三角形重叠部分，应该是距离我们更近的左侧三角形露出来，但是却被右边的三角形遮盖住了，这显然是不合理的。之所以会出现这样的情况，是我们使用的是opengl默认的画家算法，右侧三角形是后绘制的，所以才遮盖住了左侧的三角形。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709222709081.png" alt="image-20250709222709081" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709222709081.png" alt="image-20250709222709081" style="zoom:50%;" />
 <h3 id="深度值"><a class="header-anchor" href="#深度值"></a>深度值</h3>
 <p>为了解决这个问题，我们需要知道每个点距离摄像机的远近，这个值在opengl中叫做<strong>深度值</strong>(Depth)：表示当前绘制的Fragment（片元）<strong>距离相机的远近程度</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709224250490.png" alt="image-20250709224250490" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709224250490.png" alt="image-20250709224250490" style="zoom:50%;" />
 <h3 id="深度值插值"><a class="header-anchor" href="#深度值插值"></a>深度值插值</h3>
 <p>我们得到了每个顶点的深度值后，需要进行插值计算出所有片元的深度值。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709224516084.png" alt="image-20250709224516084" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709224516084.png" alt="image-20250709224516084" style="zoom:50%;" />
 <h3 id="深度值检测"><a class="header-anchor" href="#深度值检测"></a>深度值检测</h3>
 <p>创建一块和屏幕大小一样的缓存，存储每个像素的深度值。如果当前像素的深度值比缓存中的大，那么用新的颜色填充这个像素，同时更新该像素块的最小深度值。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709225020623.png" alt="image-20250709225020623" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709225020623.png" alt="image-20250709225020623" style="zoom:50%;" />
 <p>下面就是深度检测算法（Z-buffer算法）的伪代码：</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20240118132918032.png" alt="image-20240118132918032" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20240118132918032.png" alt="image-20240118132918032" style="zoom: 50%;" />
 <h3 id="在opengl中开启和配置深度检测"><a class="header-anchor" href="#在opengl中开启和配置深度检测"></a>在opengl中开启和配置深度检测</h3>
 <p>glEnable和glDisable函数允许我们启用或禁用某个OpenGL功能。这个功能会一直保持启用/禁用状态，直到另一个调用来禁用/启用它。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;1. 使用glEnable函数开启opengl的深度测试功能
@@ -3399,7 +3399,7 @@ glDepthFunc(GL_LESS);
 glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 &#x2F;&#x2F;也可以使用这个函数指定清理深度缓冲时设置的值
 glCLearDepth(float val);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250709225839392.png" alt="image-20250709225839392" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250709225839392.png" alt="image-20250709225839392" style="zoom:50%;" />
 <h3 id="控制深度值写入权限"><a class="header-anchor" href="#控制深度值写入权限"></a>控制深度值写入权限</h3>
 <p><strong>glDepthMask(GLboolean flag)</strong> 是 OpenGL 中用于控制深度缓冲区（Depth Buffer）写入状态的函数，它决定是否允许将片元（Fragment）的深度值写入深度缓冲区。</p>
 <ul>
@@ -3428,16 +3428,16 @@ if (z &lt; z-buffer[x,y,z])
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下图左边是构建的测试场景，此时默认是允许写入深度缓冲区的，三个平面的遮盖关系可以正常显示。</p>
 <p>下图右则是绘制<strong>box_specular</strong>时设置<strong>glDepthMask(GL_FALSE)</strong>，另外两个都是glDepthMask(GL_TRUE)，可以看到原先笑脸被遮盖住的部分全部都绘制出来了。这是因为在绘制box_specular时并没有写入深度缓存，所以二者重叠的部分深度缓存区的值仍然为1（或者其他表示无穷大的值）；当绘制笑脸时进行深度值比较时会直接和1比较，自然会显示出。（一般这种效果常常用来绘制透明物体）。</p>
-<p>​                                      <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720202457242.png" alt="image-20250720202457242" style="zoom: 50%; display: inline;" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720202704709.png" alt="image-20250720202704709" style="zoom:50%;display: inline;" /></p>
+<p>​                                      <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720202457242.png" alt="image-20250720202457242" style="zoom: 50%; display: inline;" /><img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250720202704709.png" alt="image-20250720202704709" style="zoom:50%;display: inline;" /></p>
 <h3 id="zFighting（深度冲突）"><a class="header-anchor" href="#zFighting（深度冲突）"></a>zFighting（深度冲突）</h3>
 <p>Z-Fighting（深度冲突）是计算机图形学中一种常见的渲染问题，表现为两个或多个表面在深度缓冲区（Z-Buffer）中具有<strong>非常接近或相同的深度值</strong>，导致GPU在深度测试时无法确定哪个表面应该被渲染，最终产生闪烁或交替覆盖的视觉瑕疵。</p>
 <p>下图中两个平面之间的z轴距离仅为0.0000001个单位距离，当两个物体<strong>过于靠近</strong>时，由于计算机中浮点数<strong>精度有限</strong>，会导致深度缓存区对应两者深度值的比较出现问题，进而产生交替覆盖的现象。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720204846469.png" alt="image-20250720204846469" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250720204846469.png" alt="image-20250720204846469" style="zoom:50%;" />
 <p>为了解决这一问题，我们可以使用<strong>更高的精度来处理深度缓存区的数据</strong>或者将<strong>两个物体的深度值进行调整让他们靠的不那么近</strong>。前者显然治标不治本，后者就可以使用opengl提供的<strong>polygonOffset</strong>函数实现。</p>
 <p>polygonOffset函数<strong>只调整物体的深度值</strong>，但是并<strong>不改变物体的位置</strong>。（zFighting问题的本质就是物体的深度值太过接近无法精准判断，将深度值拉开差距即可）。</p>
 <p>和深度测试一样，需要先使用glEnable开启该功能，在调用polygonOffset函数具体调整。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720205851884.png" alt="image-20250720205851884" style="zoom:50%;" />
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720205820673.png" alt="image-20250720205820673" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250720205851884.png" alt="image-20250720205851884" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250720205820673.png" alt="image-20250720205820673" style="zoom:50%;" />
 <p>造成zFighting现象的会有两种情况：</p>
 <ol>
 <li>两个正常物体<strong>距离太过接近</strong>而产生zFighting现象</li>
@@ -3448,32 +3448,32 @@ if (z &lt; z-buffer[x,y,z])
 <li>当物体靠太近时，我们可以调整物体的深度值。但是当场景中的物体非常多时，对物体深度值的调整有可能会造成其他物体产生zFighting现象。所以对物体深度值的调整要尽可能的小，所以参数<strong>units要和数据最小值相乘，最小限度地调整深度值</strong>。</li>
 <li>对于倾斜产生的zFighting现象，由深度值和z坐标的关系可知：距离镜头远的部分深度变换不明显，更容易产生zFighting现象，近处则不容易产生。所以可以将远处的部分多偏移一些，近处的部分少偏移一些就能解决这一问题。</li>
 </ul>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720211158975.png" alt="image-20250720211158975" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250720211158975.png" alt="image-20250720211158975" style="zoom:50%;" />
 <p>对于两个像素而言，倾斜放倒后，两个像素之间的深度值变化率较大（初始在一个平面，放倒后产生较大的深度值差距，且像素间的距离由于进大远小而缩小），距离镜头近的部分像素间深度变化率较小，于是就能根据深度变化率判断像素距离摄像机远近。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250720211820440.png" alt="image-20250720211820440" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250720211820440.png" alt="image-20250720211820440" style="zoom:50%;" />
 <h1 id="OpenGL中级"><a class="header-anchor" href="#OpenGL中级"></a>OpenGL中级</h1>
 <h2 id="代码框架"><a class="header-anchor" href="#代码框架"></a>代码框架</h2>
 <h2 id="光照"><a class="header-anchor" href="#光照"></a>光照</h2>
 <p>在介绍光照之前，先简单说明一下颜色。对应<strong>光</strong>来说，颜色表示红绿蓝三种<strong>光的强度</strong>，对于一个<strong>物体</strong>来说，颜色表示对红绿蓝三种光的<strong>反射百分比</strong>。</p>
 <p>所以<strong>反射光的颜色 = 光照颜色 * 物体颜色</strong>（因为人眼之所以能看到物体，就是靠反射光线进入人眼）。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710210728390.png" alt="image-20250710210728390" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250710210728390.png" alt="image-20250710210728390" style="zoom:50%;" />
 <h3 id="光照类型"><a class="header-anchor" href="#光照类型"></a>光照类型</h3>
 <h4 id="漫反射光（diffuse）"><a class="header-anchor" href="#漫反射光（diffuse）"></a>漫反射光（diffuse）</h4>
 <p>漫反射是光从一定角度入射之后从入射点向四面八方反射，且每个不同方向反射的光的强度相等，而产生漫反射的原因是物体表面的粗糙，光线照射到粗糙表面后向<strong>各个方向均匀散射</strong>。从任何角度看亮度相同，与<strong>视线方向无关</strong>。</p>
 <p>漫反射光是光线照射在物体身上后经过一次反射的光，漫反射光会使物体在光线下产生立体感。因为在计算漫反射光时，只需考虑光照方向和该点的法线方向即可，所以物体的不同区域由于跟光线角度不同，会出现明暗区域的平滑过渡，这种明亮变化就能是人看到立体感。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710212933232.png" alt="image-20250710212933232" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250710212933232.png" alt="image-20250710212933232" style="zoom:50%;" />
 <p>下面介绍一下漫反射光的计算：</p>
 <p>光的反射可以理解为光照射在物体表面，物体表面吸收部分光能后释放出去的过程（物体颜色的本质就是物体吸收光能后释放出去的百分比）。为此我们需要计算出一束光照射在物体表面时，物体能吸收多少光。</p>
 <p>物体吸收光的多少与其接收到光照的面积有关，当物体表面倾斜一定角度时，需要计算表面面积的投影。</p>
 <p>如下图所示，对于一格像素来说，当表面与光线倾角为theat时，吸收的光为<strong>power = light * cos(theta)</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710215752130.png" alt="image-20250710215752130" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250710215752130.png" alt="image-20250710215752130" style="zoom:40%;" />
 <p>计算出吸收的光后，根据颜色就是物体反射光的百分比这一结论可知，最终反射出去的光为<strong>out = power * objectColor</strong>。</p>
 <p>所以最终漫反射的反射光颜色为<strong>diffuseColor = lightColor * cos(θ) * objectColor</strong>。</p>
 <p>还有一个问题就是我们如何计算倾角theta？</p>
 <p>只要知道了物体表面一点的<strong>法线向量</strong>（normal），我们就能根据法线向量和光线方向两个向量计算出夹角theta。法线向量需要作为每一个顶点的顶点属性给出，这样所有像素的法线向量都会经过插值算法自动计算出来。</p>
 <p>当法线向量和光线方向向量都是归一化的向量后，就可以利用向量点乘公式直接计算出<strong>cos(theta) = dot(-lightDir, normal)</strong>。</p>
 <p>因为光线方向是从光源指向物体表面的，所以要正确计算出theta角，需要使用光线方向的反方向，如下图所示。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710220204952.png" alt="image-20250710220204952" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250710220204952.png" alt="image-20250710220204952" style="zoom:40%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">version</span> <span class="token expression"><span class="token number">460</span> core</span></span>
 <span class="token keyword">out</span> <span class="token keyword">vec4</span> FragColor<span class="token punctuation">;</span>
 
@@ -3506,12 +3506,12 @@ if (z &lt; z-buffer[x,y,z])
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="镜面反射光（specular）"><a class="header-anchor" href="#镜面反射光（specular）"></a>镜面反射光（specular）</h4>
 <p>对于一个表面光滑的物体来说，当<strong>反射光</strong>的光线和<strong>人眼</strong>观看方向接近时，会产生刺眼的<strong>高光斑点</strong>，叫做镜面反射光。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710213413431.png" alt="image-20250710213413431" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250710213413431.png" alt="image-20250710213413431" style="zoom:67%;" />
 <p>最终我们将三种光照叠加到一起，就模拟出了物体的光照情况。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710213513238.png" alt="image-20250710213513238" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250710213513238.png" alt="image-20250710213513238" style="zoom:50%;" />
 <p>当一束光照射在光滑物体表面时，由物理知识可知，光线会被反射回去，且入射角等于反射角。由于表面光滑，光线并不会像漫反射那样均匀地向四面八方反射，而是主要集中在反射方向上（因为不存在绝对光滑，所以不可能只向一个方向反射，所以在不同的方向观察都能或多或少看见高光）。</p>
 <p>当人眼朝不同的方向朝该点看去，视线方向和反射方向之间会有一个夹角，夹角越小就说明反射光的方向越解决人眼，所以此时产生的高光也更强。于是我们可以使用<strong>视线方向</strong>和<strong>反射方向</strong>之间的<strong>夹角</strong>来作为<strong>衡量高光大小的标准</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711162255618.png" alt="image-20250711162255618" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711162255618.png" alt="image-20250711162255618" style="zoom:50%;" />
 <p>为了计算镜面反射光，我们除了需要知道<strong>光照方向</strong>和<strong>法线</strong>，还需要知道此时的<strong>视线方向</strong>。</p>
 <p>为了求出视线方向，我们需要知道每个<strong>像素的世界坐标位置</strong>和<strong>摄像机的世界坐标位置</strong>，前者在shader中就可以拿到，后者需要使用代码赋值到shader的uniform变量中。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//-------------------------------------------------------------vs</span>
@@ -3578,22 +3578,22 @@ if (z &lt; z-buffer[x,y,z])
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果直接使用上面的代码，会出现一个问题。上面代码的光照方向为斜45度照向左下角的平行光，所以立方体的左下角会因为照射不到光照而变成黑色，但是在移动过程中会发现黑色阴影处出现了反射高光，这显然是不合理的。</p>
 <p>这是因为我们计算时并未判断光照方向是从物体正面照射来的还是反面照射来的，而是直接将光照方向和反射光方向进行计算，导致阴影处出现高光。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711173252647.png" alt="image-20250711173252647" style="zoom:33%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711173252647.png" alt="image-20250711173252647" style="zoom:33%;" />
 <p>通过观察可以发现，如果光照方向是从背面照射到该点，那么光照方向的反方向和法线的夹角是一个钝角，可以利用这一点在shader中进行判断，从而提出背面的反射高光。</p>
 <p>在shader中使用if else语句会损失性能，所以使用<strong>step</strong>函数实现判断功能。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711172720468.png" alt="image-20250711172720468" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711172720468.png" alt="image-20250711172720468" style="zoom:50%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//处理背面高光线性</span>
 <span class="token keyword">float</span> flag <span class="token operator">=</span> <span class="token function">step</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token function">dot</span><span class="token punctuation">(</span><span class="token operator">-</span>lightDirectionN<span class="token punctuation">,</span> normalN<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">//使用texture函数选择一个采样器在指定uv坐标上采样，获取一个四维向量(rgba)</span>
 FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>diffuse <span class="token operator">+</span> specular <span class="token operator">*</span> flag<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>添加代码后背面的高光就会被消除了。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711173649961.png" alt="image-20250711173649961" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711173649961.png" alt="image-20250711173649961" style="zoom: 50%;" />
 <p>通过上面的演示图可以看到，我们的镜面反射光有时会将高光铺满整个立方体面，着显然是不太合理的，我们希望看到的是一小块区域更集中的高光光斑。</p>
 <p>代码中控制高光的是<strong>max(dot(-viewDirection, reflectDirection), 0.0)</strong>，其大致函数曲线大致形状类似于<strong>cos</strong>函数曲线。在曲线中我们可以看到，随着<strong>夹角的增大</strong>虽然<strong>值会变小</strong>，但是值<strong>不为0</strong>还是会<strong>出现高光</strong>，这就导致我们的高光范围比较大，不集中。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711174907035.png" alt="image-20250711174907035" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711174907035.png" alt="image-20250711174907035" style="zoom:50%;" />
 <p>如果我们为这个函数加上一个指数，变成y = a^x形式，由于取值范围是0到1，所以函数图形会随着指数的增大而变得更瘦，这就会让我们的高光变得更近集中，只会在看向点的附近出现集中的高光。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711175326221.png" alt="image-20250711175326221" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711175326221.png" alt="image-20250711175326221" style="zoom:50%;" />
 <p>将计算镜面反射光的代码按这样修改后就会形成区域集中的小范围光斑了。</p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//计算镜面反射光</span>
 <span class="token comment">//计算视线方向</span>
@@ -3605,10 +3605,10 @@ FragColor <span class="token operator">=</span> <span class="token keyword">vec4
 <span class="token keyword">vec3</span> specularColor <span class="token operator">=</span> lightColor <span class="token operator">*</span> <span class="token function">pow</span><span class="token punctuation">(</span>specular<span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//处理背面高光线性</span>
 <span class="token keyword">float</span> flag <span class="token operator">=</span> <span class="token function">step</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token function">dot</span><span class="token punctuation">(</span><span class="token operator">-</span>lightDirectionN<span class="token punctuation">,</span> normalN<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711175825796.png" alt="image-20250711175825796" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711175825796.png" alt="image-20250711175825796" style="zoom:50%;" />
 <p>对于这样一个箱子，中间部分都是木头材质的，显然不可能像上面那样出现高光。正常情况下只会在箱子边的一圈金属部分才会出现高光，中间的木头部分不应该出现高光。为了实现这种效果，可以使用**镜面高光贴图（高光蒙版）**进行采样。</p>
 <p>下图就是这个盒子纹理贴图所对应的镜面高光贴图，可以看到这张贴图是一个黑和白两种颜色的<strong>灰度图</strong>（<strong>rgb三个通道值一样</strong>），不难发现，中心的木头部分三个通道均为0，外侧金属部分的通道值也都在(0,1)之间。于是，我们可以对镜面高光贴图在shader中采样，三个通道的任一通道的值都可以看做这一点的镜面反射高光的强度。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250715202030389.png" alt="image-20250715202030389" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250715202030389.png" alt="image-20250715202030389" style="zoom:40%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//在fragmentShader中新增采样器，专门采样镜面反射贴图</span>
 <span class="token keyword">uniform</span> <span class="token keyword">sampler2D</span> specularSampler<span class="token punctuation">;</span>
 
@@ -3618,10 +3618,10 @@ FragColor <span class="token operator">=</span> <span class="token keyword">vec4
 <span class="token comment">//将最终的镜面反射光颜色乘以采样颜色的任一通道值</span>
 FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>diffuseColor <span class="token operator">+</span> specularColor <span class="token operator">*</span> flag <span class="token operator">*</span> specularMaskColor<span class="token punctuation">.</span>x <span class="token operator">+</span> ambientColor<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改代码后可以看到，高光只出现在了金属部分，木头部分的高光已经消失了。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250715202631908.png" alt="image-20250715202631908" style="zoom:33%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250715202631908.png" alt="image-20250715202631908" style="zoom:33%;" />
 <h4 id="环境光（ambient）"><a class="header-anchor" href="#环境光（ambient）"></a>环境光（ambient）</h4>
 <p>假设在一个场景中多个物体，那么对于一个物体来说，接收到的不止有阳光，还有经过其他物体多次反射的光，叫做环境光。环境光会将物体本身的轮廓或者颜色简单显示出来。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710213212632.png" alt="image-20250710213212632" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250710213212632.png" alt="image-20250710213212632" style="zoom:50%;" />
 <p>在上面的演示中，我们可以看到没有被光照到的部分是完全黑色的，在现实生活中显然是不合理的。这就需要引入我们的环境光，由于真实的环境光是其他由物体反射多次的光，真实计算起来比较麻烦，所以目前采用较为简单的方法模拟环境光。</p>
 <p>我们只需要设置一个三维变量ambient模拟环境光，再将其和objectColor相乘即可。引入环境光可以让物体没有被光照到的地方也能隐约被我们看到，而不是全黑的。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;外部设置环境光强度
@@ -3632,19 +3632,19 @@ vec3 ambientColor &#x3D; ambient * objColor;
 FragColor &#x3D; vec4(diffuseColor + specularColor * flag + ambient, 1.0);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>加入环境光之后，原本没被光照到的地方也能隐约看到，并不是之前的黑色，显得更加真实一点。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711181725116.png" alt="image-20250711181725116" style="zoom: 67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711181725116.png" alt="image-20250711181725116" style="zoom: 67%;" />
 <h3 id="法线矩阵"><a class="header-anchor" href="#法线矩阵"></a>法线矩阵</h3>
 <p>使用前面的代码，我们可以创建一个简单的光照，随着摄像机的移动，可以看到立方体的高光也在变化。但是当我们将盒子绕y轴随时间不停旋转时就会出现问题。</p>
 <p>我们让摄像机保持不动，让盒子的两面都选择到摄像机的面前，可以看到初始状态面对摄像机的部分是被光线照亮的，但是当另一面转到摄像机面前时，可以发现摄像机面前的盒子居然是黑色的。盒子的明暗就像固定在盒子上一样随着盒子转到，并没有像现实情况那样出现明暗交替的情况。</p>
 <p>出现这种情况的原因就是我们在旋转时没有让法线随着物体转到，当物体旋转30度之后，法线方向还是初始的方向没有变化，明暗情况也自然不会发生变化了。</p>
-<p><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711211222316.png" alt="image-20250711211222316" style="zoom:50%;display:inline" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711211251648.png" alt="image-20250711211251648" style="zoom:50%;display:inline" /></p>
+<p><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711211222316.png" alt="image-20250711211222316" style="zoom:50%;display:inline" /><img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711211251648.png" alt="image-20250711211251648" style="zoom:50%;display:inline" /></p>
 <p>为了解决这一问题，我们就需要让每个顶点的法线随着顶点的变化而变化。</p>
 <p>如果让法线随着顶点做<strong>同样的模型变换</strong>时，可以发现在进行<strong>旋转和平移</strong>时，都能<strong>正确</strong>的将变换应用到法线上；但是当我们对物体在某一个方向上进行<strong>缩放</strong>时，将缩放变换应用到法线上就会发生<strong>错误</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711211914084.png" alt="image-20250711211914084" style="zoom:45%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711211914084.png" alt="image-20250711211914084" style="zoom:45%;" />
 <p>所以必须想办法找到一个新的变换矩阵，使法线在变换后到达正确的方向，这个矩阵称为<strong>NormalMatrix（法线矩阵）</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711212532930.png" alt="image-20250711212532930" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711212532930.png" alt="image-20250711212532930" style="zoom:40%;" />
 <p>下图为法线矩阵的推导过程，由最终结果可知，法线矩阵的值为模型变换矩阵的逆矩阵再转置即可。这是经过严格推到出来的，不论经过上面变换，将法线乘以模型变换矩阵的逆转置矩阵，得到的新法线都会垂直于该点切面。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250711214237454.png" alt="image-20250711214237454" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250711214237454.png" alt="image-20250711214237454" style="zoom:50%;" />
 <p>这样修改代码后即可实现法线的正确变换，但是由于求逆矩阵运算复杂。</p>
 <p>当<strong>顶点数量非常多</strong>时，在<strong>shader</strong>中调用<strong>求逆矩阵</strong>的函数会大大<strong>降低性能</strong>，所以最好的做法就是在<strong>cpu端计算好</strong>法线矩阵后，通过<strong>uniform变量</strong>的形式将矩阵<strong>传递到shader</strong>中和法线进行运算，会大大节省算力。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;最终在vertexShader中将传递给fragmentShader的法线处理一下即可
@@ -3653,17 +3653,17 @@ normal &#x3D; transpose(inverse(mat3(model))) * aNormal;<span aria-hidden="true"
 <h4 id="平行光"><a class="header-anchor" href="#平行光"></a>平行光</h4>
 <p>平行光是最简单的光源，每一根光线的方向都一样，常用来模拟太阳光。</p>
 <p>假设空间中只有平行光，那么对于物体上能照射到平行光的点来说，<strong>光线方向都一样</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250710211241870.png" alt="image-20250710211241870" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250710211241870.png" alt="image-20250710211241870" style="zoom:50%;" />
 <p>由于平行光模拟的是无限远处的光源所发出的光线，所以我们不需要知道光源的位置，只需要知道平行光照的<strong>光照强度</strong>和<strong>光线方向</strong>即可。所以在代码中我们只需要定义两个三维向量<strong>lightDirection</strong>和<strong>lightColor</strong>分别表示光照方向和光照强度即可。</p>
 <h4 id="点光源-PointLight"><a class="header-anchor" href="#点光源-PointLight"></a>点光源(PointLight)</h4>
 <p>点光源比较好理解，就是场景中的一盏台灯或者一个电灯泡向四面八方发出的光。</p>
 <p>由于点光源是向四面八方发出光的，所以对于物体的一个顶点来说，该顶点接收到的点光源的光线方向在点光源位置和顶点位置的连线上，也就是说<strong>不同位置的顶点</strong>接收到的点光源<strong>光线方向</strong>是<strong>不同</strong>的。而且，对于更真实的点光源来说，光照的强度也会随着距离的增大而衰减。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250715202936084.png" alt="image-20250715202936084" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250715202936084.png" alt="image-20250715202936084" style="zoom:50%;" />
 <p>由于不同位置的顶点接收到的光线方向不一致，所以定义一个点光源，我们需要知道点光源的<strong>位置</strong>和其<strong>光照强度</strong>即可，根据点光源位置就能计算出点光源到某一个顶点的光照方向。</p>
 <p>下面简单介绍一下点<strong>光源随距离而衰减</strong>的理论知识：</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250715204340070.png" alt="image-20250715204340070" style="zoom:40%;" />
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250715204400223.png" alt="image-20250715204400223" style="zoom:50%;" />
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250715204519254.png" alt="image-20250715204519254" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250715204340070.png" alt="image-20250715204340070" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250715204400223.png" alt="image-20250715204400223" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250715204519254.png" alt="image-20250715204519254" style="zoom:40%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//除了共有的光源颜色属性外，点光源还需要光源位置和衰减系数</span>
 <span class="token comment">//光源位置</span>
 <span class="token keyword">uniform</span> <span class="token keyword">vec3</span> lightPosition<span class="token punctuation">;</span>
@@ -3678,9 +3678,9 @@ normal &#x3D; transpose(inverse(mat3(model))) * aNormal;<span aria-hidden="true"
 <span class="token keyword">vec3</span> final <span class="token operator">=</span> <span class="token punctuation">(</span>diffuseColor <span class="token operator">+</span> specularColor<span class="token operator">*</span>flag<span class="token operator">*</span>specularMaskColor<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> multi<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="聚光灯-SpotLight"><a class="header-anchor" href="#聚光灯-SpotLight"></a>聚光灯(SpotLight)</h4>
 <p>聚光灯不是像点光源那样向四面八方发射光线，而是只会在一定的角度范围内发射光线。如果把点光源发出的光线形状看左一个球形，那么聚光灯发出的光线形状就是一个圆锥体，类似于手电筒的效果。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250716152715092.png" alt="image-20250716152715092" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250716152715092.png" alt="image-20250716152715092" style="zoom:50%;" />
 <p>对于一个聚光灯，我们不仅需要知道<strong>光源位置</strong>，还要知道<strong>聚光灯的朝向</strong>和<strong>最大照射角度θ</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250716153455153.png" alt="image-20250716153455153" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250716153455153.png" alt="image-20250716153455153" style="zoom:50%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//聚光灯目标朝向方向</span>
 <span class="token keyword">uniform</span> <span class="token keyword">vec3</span> lightTargetDirection<span class="token punctuation">;</span>
 <span class="token comment">//聚光灯最大可视角度</span>
@@ -3700,11 +3700,11 @@ normal &#x3D; transpose(inverse(mat3(model))) * aNormal;<span aria-hidden="true"
 
 <span class="token comment">//将聚光灯下的漫反射和镜面反射结果都称以isVisible控制是否可见</span>
 <span class="token keyword">vec3</span> final <span class="token operator">=</span> <span class="token punctuation">(</span>diffuseColor <span class="token operator">+</span> specularColor<span class="token operator">*</span>flag<span class="token operator">*</span>specularMaskColor<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> isVisible<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250716162447499.png" alt="image-20250716162447499" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250716162447499.png" alt="image-20250716162447499" style="zoom:50%;" />
 <p>虽然成功地显示出来手电筒类的光照，但是明显看起来很别扭。因为光照的边缘明暗过渡太过于生硬了，在边缘内的明亮直接变成了黑的，不符合现实情况。为了解决这个问题，我们还需要顶定义一个<strong>过渡角β</strong>。</p>
 <p>当某点角度γ&lt;θ时，光照正常；当θ&lt;γ&lt;β时，光照会一定程度上进行衰减；当β&lt;γ时，认为该点不能接收到聚光灯光照。</p>
 <p>于是我们就可以有一个平滑的明暗过渡效果，最终衰减系数的计算公式如下。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250716165355944.png" alt="image-20250716165355944" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250716165355944.png" alt="image-20250716165355944" style="zoom:50%;" />
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//聚光灯目标朝向方向</span>
 <span class="token keyword">uniform</span> <span class="token keyword">vec3</span> lightTargetDirection<span class="token punctuation">;</span>
 <span class="token comment">//聚光灯可视范围的内边界和外边界</span>
@@ -3724,15 +3724,15 @@ normal &#x3D; transpose(inverse(mat3(model))) * aNormal;<span aria-hidden="true"
 <span class="token comment">//将聚光灯下的漫反射和镜面反射结果都称以multi以控制光照衰减</span>
 <span class="token keyword">vec3</span> final <span class="token operator">=</span> <span class="token punctuation">(</span>diffuseColor <span class="token operator">+</span> specularColor<span class="token operator">*</span>flag<span class="token operator">*</span>specularMaskColor<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> multi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改后的效果不再像之前那么生硬，边界有了明显的明暗过渡效果。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250716170040608.png" alt="image-20250716170040608" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250716170040608.png" alt="image-20250716170040608" style="zoom:50%;" />
 <h2 id="模型读取"><a class="header-anchor" href="#模型读取"></a>模型读取</h2>
 <h3 id="父子关系"><a class="header-anchor" href="#父子关系"></a>父子关系</h3>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250717181227698.png" alt="image-20250717181227698" style="zoom:40%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250717181227698.png" alt="image-20250717181227698" style="zoom:40%;" />
 <h2 id="模板测试（StencilTest）"><a class="header-anchor" href="#模板测试（StencilTest）"></a>模板测试（StencilTest）</h2>
 <h3 id="介绍-k6"><a class="header-anchor" href="#介绍-k6"></a>介绍</h3>
 <p>当片段着色器处理完一个片段之后，模板测试(Stencil Test)会开始执行，和深度测试一样，它也可能会丢弃片段。接下来，被<strong>保留的片段会进入深度测试</strong>，它可能会丢弃更多的片段。模板测试是根据又一个缓冲来进行的，它叫做<strong>模板缓冲</strong>(Stencil Buffer)，我们可以在渲染的时候更新它来获得一些很有意思的效果。</p>
 <p>模板缓冲在绘制物体时决定该位置缓冲区的值，借由缓冲区的值做一些效果。例如制作物体的<strong>描边特效</strong>，首先绘制一个物体，并将绘制出物体对应的缓冲区设为1，然后再绘制一个稍微放大的同样形状的物体，设置其只能在缓冲区不为1的区域绘制。这样发大的物体就只能绘制在物体的边界处，也就形成了物体描边的效果。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250721162950358.png" alt="image-20250721162950358" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250721162950358.png" alt="image-20250721162950358" style="zoom:50%;" />
 <h3 id="API"><a class="header-anchor" href="#API"></a>API</h3>
 <p>和深度测试一样，需要使用glEnable和glDisable函数来控制模板测试的开启和关闭。</p>
 <p>当开启模板测试后，需要设置<strong>通过模板测试的条件（glStencilFunc）</strong>、<strong>模板缓冲区的更新策略（glStencilOp）</strong>、<strong>模板缓冲区的读写控制（glStencilMask）</strong>。大致都和深度测试的使用类似，只是多了模板缓冲区的更新策略（深度缓冲区的更新策略较为固定，只需通过深度测试的片元深度值替换缓冲区深度值即可），模板缓冲区的更新较为灵活，专门提供了设置更新策略的函数。</p>
@@ -3760,7 +3760,7 @@ glStencilFunc(GL_EQUAL, 1, 0XFF);
 &#x2F;&#x2F;缓冲区数值小于5才通过模板测试
 glStencilFunc(GL_LESS, 5, 0XFF);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>参数<strong>func</strong>的可选值如下：</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250721164453127.png" alt="image-20250721164453127" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250721164453127.png" alt="image-20250721164453127" style="zoom:50%;" />
 <ul>
 <li><strong>模板测试通过或失败后，如何更新模板缓冲区的值</strong></li>
 </ul>
@@ -3775,7 +3775,7 @@ glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 &#x2F;&#x2F;该设置为只有模板测试和深度测试都通过时，就将缓冲区的值更新为ref（一般情况下使用的是该设置）
 glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这三个参数的值可在下面选项中任意使用：</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250721170417176.png" alt="image-20250721170417176" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250721170417176.png" alt="image-20250721170417176" style="zoom:50%;" />
 <ul>
 <li><strong>开启模板测试的情况下，设置模板缓存是否能写入</strong></li>
 </ul>
@@ -3786,11 +3786,11 @@ void glStencilMask(GLuint mask);<span aria-hidden="true" class="line-numbers-row
 <p>一般常用的mask值有两种：</p>
 <p>0x00：任何比特位都<strong>不允许</strong>写入（禁止更新模板缓冲区的值）。</p>
 <p>0xFF：任何比特位都<strong>允许</strong>写入。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250721174213217.png" alt="image-20250721174213217" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250721174213217.png" alt="image-20250721174213217" style="zoom:50%;" />
 <h2 id="颜色混合（ColorBlending）"><a class="header-anchor" href="#颜色混合（ColorBlending）"></a>颜色混合（ColorBlending）</h2>
 <h3 id="介绍-k7"><a class="header-anchor" href="#介绍-k7"></a>介绍</h3>
 <p>OpenGL中，混合(Blending)通常是实现物体透明度(Transparency)的一种技术。透明就是说一个物体（或者其中的一部分）不是纯色(Solid Color)的，它的颜色是物体本身的颜色和它背后其它物体的颜色的不同强度结合。例如我们透过有色玻璃看向外面，我们看到的颜色就是外面的颜色和玻璃的颜色进行混合后的，就好像加了一层滤镜一样，所以透明度能让我们看穿物体。</p>
-<img src="https://learnopengl-cn.github.io/img/04/03/blending_transparency.png" alt="img" style="zoom: 67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\blending_transparency.png" alt="img" style="zoom: 67%;" />
 <p>在各种软件中，透明程度会使用**opacity（不透明度）**表示，其取值范围是[0, 1]，0是完全透明，1是完全不透明。</p>
 <p>图片中例如png格式的，其通道为rgba，最后一个通道<strong>alpha</strong>就表示了图片某个<strong>像素的透明度</strong>，其含义和opacity一样。</p>
 <p>在opengl中，这种透明物体颜色叠加的效果叫做<strong>颜色混合（color blending）</strong>。</p>
@@ -3799,7 +3799,7 @@ void glStencilMask(GLuint mask);<span aria-hidden="true" class="line-numbers-row
 <li><strong>源颜色(SrcColor)</strong>：当前片元着色器输出的颜色</li>
 <li><strong>目标颜色(DestColor)</strong>：帧缓冲区中已经存在的颜色（颜色缓冲中的颜色）</li>
 </ol>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250722173021366.png" alt="image-20250722173021366" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250722173021366.png" alt="image-20250722173021366" style="zoom:50%;" />
 <h3 id="API-k2"><a class="header-anchor" href="#API-k2"></a>API</h3>
 <p>和深度测试一样，在opengl中要使用颜色混合，就要使用<strong>glEnable</strong>或者glDisanbe开启或关闭颜色混合功能。开启后再调用<strong>glBlendFunc</strong>函数设置最终混合颜色的计算公式。</p>
 <ul>
@@ -3834,7 +3834,7 @@ glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);<span aria-hidden="true" class
 <ul>
 <li><strong>设置混合颜色的运算</strong></li>
 </ul>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250722174155951.png" alt="image-20250722174155951" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250722174155951.png" alt="image-20250722174155951" style="zoom:50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;这个参数可用设置两种颜色和自己的因子相乘后，二者之间用什么运算（默认是相加）
 void glBlendEquation(GLenum mode);
 
@@ -3847,12 +3847,12 @@ glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);<span aria-hidden="true" class="line-n
 <h3 id="绘制顺序"><a class="header-anchor" href="#绘制顺序"></a>绘制顺序</h3>
 <p>对于透明物体来说，不同的绘制顺序也会导致绘制结果的不同。</p>
 <p>对于这样一个每个面都是透明有色玻璃的盒子来说，开启颜色混合后却出现了这样的问题。可用看到盒子明显只绘制出了三个面，另外三个面没有绘制出来，但是当摄像机移动到消失面的前面时，又能正确绘制出来。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250722174525969.png" alt="image-20250722174525969" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250722174525969.png" alt="image-20250722174525969" style="zoom:50%;" />
 <p>这是由于对于一个复杂物体来说，包含多个三角形，我们的绘制顺序是不确定的，才导致这一情况。</p>
 <p>假设我们有三个<strong>有色透明三角形</strong>重叠在一起，只有<strong>z坐标不同</strong>，A距离摄像机最近，C最远。</p>
 <p>如果按照<strong>CBA</strong>的顺序进行绘制，在开启颜色混合的情况下。先绘制C，再绘制B时将B的颜色和颜色缓冲中C的颜色进行混合，再绘制A的适合再将混合后的颜色和A的颜色进行混合，会得到正确的混合颜色。</p>
 <p>如果按照<strong>ABC</strong>的顺序进行绘制，在开启颜色混合的情况下。先绘制A，在绘制B的时候会由于<strong>B被A遮挡</strong>而<strong>无法通过深度测试</strong>自然也无法进行后面的颜色混合，绘制C时也同理，所以此时透过A看去，看不到B和C的混合颜色。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250722174931892.png" alt="image-20250722174931892" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250722174931892.png" alt="image-20250722174931892" style="zoom:50%;" />
 <p>所以上面的透明玻璃盒子出现这一的原因就是因为透明物体之间的绘制顺序错误导致的。</p>
 <p>为了解决这一问题，有两个方法：</p>
 <ol>
@@ -3868,7 +3868,7 @@ glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);<span aria-hidden="true" class="line-n
 <p>如果将看不到的面直接不渲染，，将会节省一部分计算资源，提升程序的性能。</p>
 <p>这正是**面剔除(Face Culling)<strong>所做的。OpenGL能够检查所有</strong>面向(Front Facing)<strong>观察者的面，并渲染它们，而</strong>丢弃那些背向(Back Facing)**的面，节省我们很多的片段着色器调用（它们的开销很大！）。但我们仍要告诉OpenGL哪些面是正向面(Front Face)，哪些面是背向面(Back Face)。OpenGL使用了一个很聪明的技巧，分析顶点数据的环绕顺序(Winding Order)。</p>
 <p>当我们定义一个三角形时，会将三个顶点按照顺时针（Clockwise）或者逆时针（Counter-clockwise）的顺序给出。<strong>OpenGL</strong>在渲染图元的时候将使用这个信息来决定一个三角形是一个正向三角形还是背向三角形。<strong>默认</strong>情况下，<strong>逆时针顺序</strong>顶点所定义的三角形将会被处理为<strong>正向三角形</strong>。</p>
-<p><img src="https://learnopengl-cn.github.io/img/04/04/faceculling_windingorder.png" alt="img"></p>
+<p><img src="C:%5CUsers%5CHMY%5CWPSDrive%5C1733946015%5CWPS%E4%BC%81%E4%B8%9A%E4%BA%91%E7%9B%98%5C%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6%5C%E6%88%91%E7%9A%84%E4%BC%81%E4%B8%9A%E6%96%87%E6%A1%A3%5Cc++%5C%E7%AC%94%E8%AE%B0%5COpenGL.assets%5Cfaceculling_windingorder.png" alt="img"></p>
 <p>当定义好正向之后，我们在正面看的时候为正向，当移动到背面时，顶点的旋转顺序就会逆过来，就变成了背向。在3D物体中，背向观察者的面是看不到的，所以可以将其剔除。</p>
 <h3 id="API-k3"><a class="header-anchor" href="#API-k3"></a>API</h3>
 <p>opengl默认禁用面剔除，可用使用glEnable和glDisable函数开启和关闭。</p>
@@ -3895,7 +3895,7 @@ void glFrontFace(GL_BACK);<span aria-hidden="true" class="line-numbers-rows"><sp
 <p>前面已经使用了很多屏幕缓冲了：用于写入颜色值的颜色缓冲、用于写入深度信息的深度缓冲和允许我们根据一些条件丢弃特定片段的模板缓冲。这些缓冲结合起来叫做帧缓冲(Framebuffer)，它被储存在GPU内存中的某处。</p>
 <p>简单来说，帧缓冲就是一些屏幕缓冲（颜色缓冲、深度缓冲、模板缓冲等）的总和。</p>
 <p>我们目前所做的所有操作都是在<strong>默认帧缓冲</strong>上进行的。默认的帧缓冲是在你创建窗口的时候生成和配置的（GLFW帮我们做了这些）。我们也创建我们自己的帧缓冲，实现一些酷炫的后期效果。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727200339395.png" alt="image-20250727200339395" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250727200339395.png" alt="image-20250727200339395" style="zoom:50%;" />
 <p>帧缓冲的这些附件，我们可用使用2D纹理图片进行存储，绘制时可用直接从纹理中采样进行使用。</p>
 <p>实现帧缓冲，我们需要进行两次绘制：</p>
 <ul>
@@ -4032,13 +4032,13 @@ draw();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 
 	FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​                     <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727205147193.png" alt="image-20250727205147193" style="zoom:50%;display=inline;" /><img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727205130194.png" alt="image-20250727205130194" style="zoom:50%;display=inline;" /></p>
+<p>​                     <img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727205147193.png" alt="image-20250727205147193" style="zoom:50%;display=inline;" /><img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250727205130194.png" alt="image-20250727205130194" style="zoom:50%;display=inline;" /></p>
 <h2 id="立方体贴图（CuebMap）"><a class="header-anchor" href="#立方体贴图（CuebMap）"></a>立方体贴图（CuebMap）</h2>
 <h3 id="介绍-k10"><a class="header-anchor" href="#介绍-k10"></a>介绍</h3>
 <p>纹理贴图中除了2D纹理贴图，还有立方体贴图，就好像是把一个立方体盒子展开了一样，共有六张图片，分为上下左右前后六个方向。立方体贴图常常用来实现天空盒，就好像是把摄像机盖在了盒子里，盒子作为天空始终作为背景显示在最后。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727205356023.png" alt="image-20250727205356023" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250727205356023.png" alt="image-20250727205356023" style="zoom:50%;" />
 <p>假设我们有一个1x1x1的单位立方体，方向向量的原点位于它的中心。使用一个橘黄色的方向向量来从立方体贴图上采样一个纹理值会像是这样：</p>
-<img src="https://learnopengl-cn.github.io/img/04/06/cubemaps_sampling.png" alt="img" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\cubemaps_sampling.png" alt="img" style="zoom:67%;" />
 <p>方向向量的<strong>大小并不重要</strong>，只要<strong>提供了方向</strong>，OpenGL就会获取方向向量盒立方体贴图相交位置的颜色。这样子，只要立方体的<strong>中心位于原点</strong>（可用将盒子的<strong>中心位置</strong>始终<strong>跟随摄像机位置</strong>，就能保证盒子中心始终位于摄像机坐标系的原点中），我们就能使用立方体的<strong>实际位置向量</strong>来对立方体贴图进行<strong>采样</strong>了，这样一来，可用直接使用<strong>顶点坐标</strong>作为每个顶点<strong>uv坐标</strong>进行采样即可。</p>
 <h3 id="创建立方体贴图"><a class="header-anchor" href="#创建立方体贴图"></a>创建立方体贴图</h3>
 <ul>
@@ -4128,7 +4128,7 @@ glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<span 
 <p>由于立方体贴图作为天空盒绘制在屏幕中，所以<strong>立方体贴图</strong>应该在场景中<strong>所有物体之后</strong>，我们只需要将该立方体的<strong>深度值</strong>始终<strong>设置为最大的1</strong>即可。</p>
 <p>由下图流程可知，<strong>vertexShader</strong>输出的顶点坐标<strong>除以w</strong>后转化为NDC坐标，再将<strong>Z的NDC</strong>坐标<strong>加1除2</strong>可转化为最终的<strong>深度值</strong>，所以想让天空盒的深度值始终为一，只需<strong>vertexShader输出的Z坐标等于w</strong>即可。</p>
 <p>所以在vertexShader的最后用<strong>gl_Position = gl_Position.xyww</strong>，让输出的<strong>z值等于w</strong>。</p>
-<p><img src="C:%5CUsers%5CHMY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20250727230227272.png" alt="image-20250727230227272"></p>
+<p><img src="C:%5CUsers%5CHMY%5CWPSDrive%5C1733946015%5CWPS%E4%BC%81%E4%B8%9A%E4%BA%91%E7%9B%98%5C%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6%5C%E6%88%91%E7%9A%84%E4%BC%81%E4%B8%9A%E6%96%87%E6%A1%A3%5Cc++%5C%E7%AC%94%E8%AE%B0%5COpenGL.assets%5Cimage-20250727230227272.png" alt="image-20250727230227272"></p>
 <pre class="line-numbers language-glsl" data-language="glsl"><code class="language-glsl"><span class="token comment">//------------------------------vertexShader</span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">version</span> <span class="token expression"><span class="token number">460</span> core</span></span>
 <span class="token keyword">layout</span><span class="token punctuation">(</span>location <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token keyword">vec3</span> aPosition<span class="token punctuation">;</span>
@@ -4319,13 +4319,13 @@ glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<span 
 	
 	FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>finalColor<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250727234541835.png" alt="image-20250727234541835" style="zoom:80%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250727234541835.png" alt="image-20250727234541835" style="zoom:80%;" />
 <h2 id="实例化（Instancing）"><a class="header-anchor" href="#实例化（Instancing）"></a>实例化（Instancing）</h2>
 <h3 id="介绍-k11"><a class="header-anchor" href="#介绍-k11"></a>介绍</h3>
 <p>在之前的绘制中，我们的策略是对每一个mesh都调用一次绘制函数（DrawCall），但是执行一次绘制函数非常昂贵，会对性能产生非常大的影响。每次调用绘制时，都需要CPU向GPU发送一些数据和命令，对性能影响非常大。如果绘制一个大型场景，每个mesh都调用一次绘制函数，那么场景就会变得非常卡顿。</p>
 <p>如果在一个大型场景中，大部分的模型包含的是同一组顶点数据和材质，只是模型变换不同。对于这样的物体，我们可用使用实例化的方式，只调用一次绘制函数，直接告诉GPU渲染N个这样的物体，可用大大提高性能。</p>
 <p>由于每个物体只有模型变换不同，所以每个物体的模型变换矩阵（ModelMatrix）需要给出，以物体的不同变换。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250728113821698.png" alt="image-20250728113821698" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250728113821698.png" alt="image-20250728113821698" style="zoom:50%;" />
 <h3 id="API-k5"><a class="header-anchor" href="#API-k5"></a>API</h3>
 <p>可以通过调用<strong>glDrawArraysInstanced</strong>或<strong>glDrawElementsInstanced</strong>函数即可实现实例化绘制。但是相比<strong>glDrawArrays</strong>和<strong>glDrawElements</strong>函数，实例化绘制函数的参数列表最后**多了一个实例数量(Instance Count)**的参数，它能够设置我们需要渲染的实例个数。</p>
 <p>这样我们只需要将必须的数据发送到GPU一次，然后使用一次函数调用告诉GPU它应该如何绘制这些实例。GPU将会直接渲染这些实例，而不用不断地与CPU进行通信。</p>
@@ -4345,14 +4345,14 @@ void glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const void
 <p>由于每个实例的模型变换矩阵不同，所以设置一个Uniform变量存储模型变换矩阵。</p>
 <p>glsl中内置变量<strong>gl_InstanceID</strong>表示<strong>当前绘制的是第几个实例</strong>。在<strong>使用实例化渲染调用</strong>时，<strong>gl_InstanceID</strong>会<strong>从0开始</strong>，在<strong>每个实例被渲染时递增1</strong>。这样以来，对于<strong>每个实例的所有顶点</strong>来说，使用的都是<strong>同一个模型变换矩阵</strong>，也就能正确的应用模型变换。</p>
 <p>结合模型变换矩阵数组和gl_InstanceID，我们就能正确地绘制出多个不同模型变换的物体，而且只调用了一次绘制函数。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250728115028104.png" alt="image-20250728115028104" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250728115028104.png" alt="image-20250728115028104" style="zoom:50%;" />
 <h3 id="Attribute更新策略"><a class="header-anchor" href="#Attribute更新策略"></a>Attribute更新策略</h3>
 <p>使用Uniform变量传输数据虽然较为简单，但是如果绘制一个非常大的场景，需要实例化的物体数量非常多，我们最终会超过最大能够发送至着色器的uniform数据大小（上限）。</p>
 <p>因此可以采取<strong>实例化数组(Instanced Array)<strong>的方式传输数据，可以将这些模型变换矩阵数组</strong>存放到一个VBO</strong>中，让这些模型变换矩阵作为每个顶点的属性。</p>
 <p>对于VBO中的每个属性（坐标、UV、法线等）来说，都是<strong>逐顶点进行更新</strong>的，也就是每处理下一个新的顶点，VBO都会自动跳到该属性的下一组数据中作为该顶点的属性，也就是说<strong>每个顶点拿到的属性值都不一样</strong>。但是对于我们的模型变换矩阵来说，<strong>每个实例的所有顶点的模型变换矩阵都应该一样</strong>，我们<strong>希望每渲染一个实例才更新到下一组矩阵数据</strong>。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250728120532989.png" alt="image-20250728120532989" style="zoom: 50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250728120532989.png" alt="image-20250728120532989" style="zoom: 50%;" />
 <p>为了实现这一效果，我们可以用glVertexAttribDivisor函数设置某个属性值的更新策略。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250728120843150.png" alt="image-20250728120843150" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250728120843150.png" alt="image-20250728120843150" style="zoom:50%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void glVertexAttribDivisor(Gluint index, Gluint divisor);
 
 &#x2F;&#x2F;案例
@@ -4367,7 +4367,7 @@ glVertexAttribDivisor(1, 1);&#x2F;&#x2F;每个实例更新一次，同一实例�
 glVertexAttribDivisor(1, n);&#x2F;&#x2F;每n个实例更新一次，每n个实例的所有顶点拿到的都一样<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由于我们传入的是一个四维矩阵的数组，里面有16个数据，但是opengl中一个顶点的<strong>Attribute最多支持四维向量</strong>的属性，我们没办法在一个属性内将矩阵传过去。</p>
 <p>我们可以将四维矩阵拆分为4个四维列向量进行传输，每个列向量作为一个属性值，在shader中拿到四个列向量后再拼接为一个四维矩阵。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250728122259641.png" alt="image-20250728122259641" style="zoom:67%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250728122259641.png" alt="image-20250728122259641" style="zoom:67%;" />
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;假设instanceCount &#x3D; 3，准备大小为3的模型变换矩阵数组
 glm::mat4 transforms[3];
 transforms[0] &#x3D; glm::mat4(1.0f);
@@ -4402,7 +4402,7 @@ glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeo
 &#x2F;&#x2F;设置6号属性，每一个实例换到下一组数据
 glVertexAttribDivisor(6, 1);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>最终只调用了一次绘制函数，就绘制出了多个不同模型变换的同一物体。</p>
-<img src="C:\Users\HMY\AppData\Roaming\Typora\typora-user-images\image-20250728122328266.png" alt="image-20250728122328266" style="zoom:50%;" />
+<img src="C:\Users\HMY\WPSDrive\1733946015\WPS企业云盘\吉林大学\我的企业文档\c++\笔记\OpenGL.assets\image-20250728122328266.png" alt="image-20250728122328266" style="zoom:50%;" />
 
                 
             </div>
