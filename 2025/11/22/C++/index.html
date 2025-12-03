@@ -456,21 +456,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-11-25
+                    2025-12-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    40.8k
+                    42.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    169 分
+                    175 分
                 </div>
                 
 
@@ -494,95 +494,6 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="C-三-五-零法则"><a class="header-anchor" href="#C-三-五-零法则"></a>C++三/五/零法则</h1>
-<p>…</p>
-<h1 id="STL"><a class="header-anchor" href="#STL"></a>STL</h1>
-<table>
-<thead>
-<tr>
-<th>特性/容器</th>
-<th>set</th>
-<th>map</th>
-<th>unordered_set</th>
-<th>unordered_map</th>
-<th>vector</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>底层数据结构</td>
-<td>红黑树</td>
-<td>红黑树</td>
-<td>哈希表</td>
-<td>哈希表</td>
-<td>动态数组</td>
-</tr>
-<tr>
-<td>元素顺序</td>
-<td>有序</td>
-<td>有序</td>
-<td>无序</td>
-<td>无序</td>
-<td>插入顺序</td>
-</tr>
-<tr>
-<td>查找效率</td>
-<td>O(log n)</td>
-<td>O(log n)</td>
-<td>平均 O(1)，最坏 O(n)</td>
-<td>平均 O(1)，最坏 O(n)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>插入效率</td>
-<td>O(log n)</td>
-<td>O(log n)</td>
-<td>平均 O(1)，最坏 O(n)</td>
-<td>平均 O(1)，最坏 O(n)</td>
-<td>平均 O(1)，最坏 O(n)</td>
-</tr>
-<tr>
-<td>元素唯一性</td>
-<td>是</td>
-<td>键是，值否</td>
-<td>是</td>
-<td>键是，值否</td>
-<td>否</td>
-</tr>
-<tr>
-<td>元素类型</td>
-<td>单一值</td>
-<td>键值对</td>
-<td>单一值</td>
-<td>键值对</td>
-<td>单一值</td>
-</tr>
-<tr>
-<td>支持随机访问</td>
-<td>否</td>
-<td>否</td>
-<td>否</td>
-<td>否</td>
-<td>是</td>
-</tr>
-</tbody>
-</table>
-<h2 id="set系列"><a class="header-anchor" href="#set系列"></a>set系列</h2>
-<h3 id="set"><a class="header-anchor" href="#set"></a>set</h3>
-<h3 id="介绍"><a class="header-anchor" href="#介绍"></a>介绍</h3>
-<p>​	<code>set</code>是<code>c++</code>标准模板库中的一部分，可以存储<strong>唯一</strong>的元素（即set中的元素不允许重复，都是唯一的）,而这些元素按照<strong>某种顺序排列</strong>（顺序可以自定义，默认是从小到大排列）。<code>set</code>的底层是使用红黑树实现的，所以即使在大量数据面前，操作（如插入、删除、查找）的效率也非常高，时间复杂度保持在 <code>O(log n)</code>。</p>
-<p>​	<code>set</code>的应用场景非常广泛，从<strong>数据去重</strong>，到<strong>构建有序元素集</strong>，再到支持<strong>快速查找</strong>操作，<code>set</code> 在很多方面都展示了其独特的价值。当我们想让数据唯一且有序的时候，<code>set</code>是一个很好的选择。</p>
-<h3 id="底层原理"><a class="header-anchor" href="#底层原理"></a>底层原理</h3>
-<p>​	前面已经说过，set的底层是使用红黑树实现的，</p>
-<h3 id="时间复杂度分析"><a class="header-anchor" href="#时间复杂度分析"></a>时间复杂度分析</h3>
-<p>…</p>
-<h3 id="使用"><a class="header-anchor" href="#使用"></a>使用</h3>
-<p>…</p>
-<h3 id="unordered-set"><a class="header-anchor" href="#unordered-set"></a>unordered_set</h3>
-<p>…</p>
-<h2 id="map系列"><a class="header-anchor" href="#map系列"></a>map系列</h2>
-<h3 id="map"><a class="header-anchor" href="#map"></a>map</h3>
-<p>…</p>
-<h3 id="unordered-map"><a class="header-anchor" href="#unordered-map"></a>unordered_map</h3>
 <p>…</p>
 <h1 id="关键字"><a class="header-anchor" href="#关键字"></a>关键字</h1>
 <h2 id="using"><a class="header-anchor" href="#using"></a>using</h2>
@@ -853,10 +764,74 @@ auto y &#x3D; l(1, 2);    &#x2F;&#x2F;传入的为int和int，最后返回类型
 <p>…</p>
 <h2 id="noexpect"><a class="header-anchor" href="#noexpect"></a>noexpect</h2>
 <p>…</p>
-<h2 id="const-常量-、mutable-可变-和volatile-易变"><a class="header-anchor" href="#const-常量-、mutable-可变-和volatile-易变"></a>const(常量)、mutable(可变)和volatile(易变)</h2>
+<h2 id="extern"><a class="header-anchor" href="#extern"></a>extern</h2>
+<p>​	<code>extern</code>是<code>C++</code>引入的关键字，它可以应用于一个<strong>全局变量，函数或模板声明</strong>，表面这个符号在其他文件中定义。</p>
+<h3 id="声明和定义"><a class="header-anchor" href="#声明和定义"></a>声明和定义</h3>
+<p>​	首先要弄清楚的就是声明和定义：</p>
+<ul>
+<li>声明：引入一个名称，表明其类型和存在，但<strong>不分配内存</strong>，<code>extern</code>就是用来<strong>声明</strong>的。</li>
+<li>定义：<strong>分配内存空间</strong>，同时可以<strong>指定初始值</strong>。</li>
+</ul>
+<p>​	对于<strong>变量</strong>来说：<br>
+​	<strong>1.</strong><code>extern</code>关键字标识的才是声明，其余都是定义。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">extern int a; &#x2F;&#x2F;声明
+int b; &#x2F;&#x2F;定义(因为会分配内存给变量b)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>​	**2.**定义也可以是声明。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int a; &#x2F;&#x2F;声明并定义
+int b &#x3D; 10; &#x2F;&#x2F;声明定义并初始化为10<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>​	3.如过 <code>extern</code>声明提供了初始化式，它就变成了定义</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">extern int a &#x3D; 10; &#x2F;&#x2F;定义，因为指定了初始值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>​	对于<strong>函数</strong>来说：</p>
+<p>​	只有带{ }的才是函数定义，函数声明就是返回值、函数名和参数列表那一堆东西。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int add(int a, int b); &#x2F;&#x2F;函数声明
+extern int add(int a, int b); &#x2F;&#x2F;函数声明
+
+
+&#x2F;&#x2F;函数定义
+int add(int a, int b)
+&#123;
+    return a + b;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	切记，<strong>声明可以有多个</strong>，但是<strong>定义只能有一个</strong>。</p>
+<h3 id="声明外部变量"><a class="header-anchor" href="#声明外部变量"></a>声明外部变量</h3>
+<h3 id="声明外部函数"><a class="header-anchor" href="#声明外部函数"></a>声明外部函数</h3>
+<h3 id="extern-“C”"><a class="header-anchor" href="#extern-“C”"></a>extern “C”</h3>
+<h2 id="const、mutable和volatile"><a class="header-anchor" href="#const、mutable和volatile"></a>const、mutable和volatile</h2>
 <h3 id="const"><a class="header-anchor" href="#const"></a>const</h3>
 <p>​	<code>	const</code> 是 <code>constant</code> 的缩写，本意是不变的，不易改变的意思。在 C++ 中是用来修饰内置类型变量，自定义对象，成员函数，返回值，函数参数。</p>
 <p>​	C++ <code>const</code> 允许指定一个语义约束，允许程序员<strong>告诉编译器某值是保持不变的</strong>。如果在编程中确实有某个值保持不变，就应该明确使用<code>const</code>，这样可以获得编译器的帮助。</p>
+<h4 id="底层const和顶层const"><a class="header-anchor" href="#底层const和顶层const"></a>底层const和顶层const</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">顶层 <code>const</code></th>
+<th style="text-align:left">底层 <code>const</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>核心含义</strong></td>
+<td style="text-align:left">对象<strong>本身</strong>存储的值是常量，不可修改。</td>
+<td style="text-align:left"><strong>指针或引用</strong>所指向/绑定的<strong>对象</strong>是常量，不可通过该指针/引用修改。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>作用对象</strong></td>
+<td style="text-align:left">任意类型（内置类型、类、指针等）。</td>
+<td style="text-align:left">主要与指针和引用相关。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>典型示例</strong></td>
+<td style="text-align:left"><code>const int a = 10;</code> <code>int *const p = &amp;x;</code>（常量指针）</td>
+<td style="text-align:left"><code>const int *p = &amp;a;</code>（指向常量的指针） <code>const int &amp;r = a;</code>（常量引用）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>拷贝操作影响</strong></td>
+<td style="text-align:left"><strong>可忽略</strong>。一个拥有顶层<code>const</code>的对象可以被拷贝给非<code>const</code>对象。（这个变量本身存储的值不可以被改变，但是可以把值赋值给其他变量）</td>
+<td style="text-align:left"><strong>不可忽略</strong>。进行拷贝时，双方必须具有相同的底层<code>const</code>资格，或者能将非常量转换为常量。（因为要保证不能通过指针或引用改变指向内容的值，所以拷贝的对象也不能通过指针或引用的方式修改值）</td>
+</tr>
+</tbody>
+</table>
 <h4 id="const修饰普通变量"><a class="header-anchor" href="#const修饰普通变量"></a>const修饰普通变量</h4>
 <p>​	当const修饰普通变量时，这个变量就会被编译器当作常量，且必须在定义时就给与初始化的值。而且修改一个常量的值是违法操作，编译器不允许常量的值被修改。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;const int t; &#x2F;&#x2F;不允许，const修饰的变量必须给予初始值
@@ -894,7 +869,12 @@ int* const pca2 &#x3D; &a2;
 
 const int* const cpca2 &#x3D; &a2;
 &#x2F;&#x2F;*cpca2 &#x3D; 12;  &#x2F;&#x2F;不允许修改所指向内存的值
-&#x2F;&#x2F;cpca2 &#x3D; &b2; &#x2F;&#x2F;不允许修改指针所存储的内存地址<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#x2F;&#x2F;cpca2 &#x3D; &b2; &#x2F;&#x2F;不允许修改指针所存储的内存地址
+
+
+const int x &#x3D; 10;
+&#x2F;&#x2F;int* p &#x3D; &x; const修饰的常量的地址只能使用const int*接收
+const int* p &#x3D; &x;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="const与函数"><a class="header-anchor" href="#const与函数"></a>const与函数</h4>
 <p>​	<code>const</code>与函数搭配时共有三种情况：</p>
 <ul>
@@ -902,7 +882,7 @@ const int* const cpca2 &#x3D; &a2;
 <li><code>const</code>修饰<strong>函数返回值</strong></li>
 <li><code>const</code>修饰<strong>类成员函数</strong></li>
 </ul>
-<p>​	当函数参数使用const修饰后，函数内部就不能修改该参数的值了。对于基本数据类型(<code>int</code>、<code>float</code>等)不需要使用<code>const</code>修饰，但<strong>对于自定义类型或者类的对象</strong>来说，<strong>常常需要传递其指针或者引用</strong>，为了<strong>防止函数内部修改值</strong>，往往需要用<code>const</code>修饰。</p>
+<p>​	当<strong>函数参数使用const修饰</strong>后，函数内部就不能修改该参数的值了。对于基本数据类型(<code>int</code>、<code>float</code>等)常常是按值传递的，不需要使用<code>const</code>修饰，但<strong>对于自定义类型或者类的对象</strong>来说，<strong>常常需要传递其指针或者引用</strong>，为了<strong>防止函数内部修改值</strong>，往往需要用<code>const</code>修饰。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void func(const int a)
 &#123;
 	std::cout &lt;&lt; a &lt;&lt; std::endl;
@@ -924,9 +904,38 @@ void func(const MyStruct&amp; p)
 &#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="const修饰函数返回值"><a class="header-anchor" href="#const修饰函数返回值"></a>const修饰函数返回值</h4>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​	const也可修饰类的成员函数，当成员函数使用<code>const</code>修饰后，那么<strong>函数体内就不能修改类的成员变量</strong>。而且<code>const</code>修饰的类的实例对象只能调用<code>const</code>修饰的成员函数，这是为了保证const修饰的对象不能改变内部成员变量的值。</p>
+<p>​	<strong>const修饰函数返回值</strong>可以保护返回的数据不被修改，但只对返回类型为指针或者引用时才有效，对于内置类型和类的对象来说，按值返回的话也只会得到返回的一个副本，对其提供保护没有什么意义。所以一般<strong>返回的是引用或指针类型</strong>时如果<strong>不希望外界拿到指针或者引用后修改内部的数据</strong>就需要给返回类型添加<code>const</code>修饰；而<strong>返回的是值类型时，返回的本身就是一个副本</strong>，所以用不用<code>const</code>修饰没什么区别。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Test
+&#123;
+public:
+	Test(int a)
+		:val(a)
+	&#123;
+
+	&#125;
+
+	const int* GetValPtr() const &#123; return &val; &#125;
+	const int&amp; GetValRef() const &#123; return val; &#125;
+	const int  GetVal() const &#123; return val; &#125;
+	void SetVal(int a) &#123; val &#x3D; a; &#125;
+private:
+	int val;
+&#125;;
+
+int main()
+&#123;
+	Test t(10);
+	&#x2F;&#x2F;int* p1 &#x3D; t.GetValPtr(); 底层const在复制的时候不能被忽略，所以只能用 const int* 接收
+	const int* p1 &#x3D; t.GetValPtr();
+
+	&#x2F;&#x2F;int&amp; r1 &#x3D; t.GetValRef(); 底层const在复制的时候不能被忽略，所以只能用 const int&amp; 接收
+	const int&amp; r1 &#x3D; t.GetValRef();
+
+	&#x2F;&#x2F;返回的是值类型，顶层const拷贝时会被忽略，可以复制给int，也可以赋值给const int
+	int a1 &#x3D; t.GetVal();
+	const int a1 &#x3D; t.GetVal();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	<strong>const也可修饰类的成员函数</strong>，当成员函数使用<code>const</code>修饰后，那么<strong>函数体内就不能修改类的成员变量</strong>。而且<code>const</code>修饰的类的实例对象只能调用<code>const</code>修饰的成员函数，这是为了保证const修饰的对象不能改变内部成员变量的值。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class MyClass
 &#123;
 public:
@@ -979,38 +988,7 @@ int main()
 	&#x2F;&#x2F;mc2.Print(); &#x2F;&#x2F;const修饰的实例对象只能调用const修饰的成员函数
 	mc2.PrintConst();
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="底层const和顶层const"><a class="header-anchor" href="#底层const和顶层const"></a>底层const和顶层const</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">特性</th>
-<th style="text-align:left">顶层 <code>const</code></th>
-<th style="text-align:left">底层 <code>const</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>核心含义</strong></td>
-<td style="text-align:left">对象<strong>本身</strong>存储的值是常量，不可修改。</td>
-<td style="text-align:left"><strong>指针或引用</strong>所指向/绑定的<strong>对象</strong>是常量，不可通过该指针/引用修改。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>作用对象</strong></td>
-<td style="text-align:left">任意类型（内置类型、类、指针等）。</td>
-<td style="text-align:left">主要与指针和引用相关。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>典型示例</strong></td>
-<td style="text-align:left"><code>const int a = 10;</code> <code>int *const p = &amp;x;</code>（常量指针）</td>
-<td style="text-align:left"><code>const int *p = &amp;a;</code>（指向常量的指针） <code>const int &amp;r = a;</code>（常量引用）</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>拷贝操作影响</strong></td>
-<td style="text-align:left"><strong>可忽略</strong>。一个拥有顶层<code>const</code>的对象可以被拷贝给非<code>const</code>对象。（这个变量本身存储的值不可以被改变，但是可以把值赋值给其他变量）</td>
-<td style="text-align:left"><strong>不可忽略</strong>。进行拷贝时，双方必须具有相同的底层<code>const</code>资格，或者能将非常量转换为常量。（因为要保证不能通过指针或引用改变指向内容的值，所以拷贝的对象也不能通过指针或引用的方式修改值）</td>
-</tr>
-</tbody>
-</table>
+<h3 id="mutable"><a class="header-anchor" href="#mutable"></a>mutable</h3>
 <h3 id="volatile"><a class="header-anchor" href="#volatile"></a>volatile</h3>
 <p>…</p>
 <h2 id="constexpr"><a class="header-anchor" href="#constexpr"></a>constexpr</h2>
@@ -1228,7 +1206,7 @@ sizeof(Data4) &#x2F;&#x2F;此时Data4是6字节<span aria-hidden="true" class="l
 <h2 id="RTTI"><a class="header-anchor" href="#RTTI"></a>RTTI</h2>
 <p>…</p>
 <h1 id="多态"><a class="header-anchor" href="#多态"></a>多态</h1>
-<h2 id="介绍-k2"><a class="header-anchor" href="#介绍-k2"></a>介绍</h2>
+<h2 id="介绍"><a class="header-anchor" href="#介绍"></a>介绍</h2>
 <p>​	<code>C++</code>的多态有<strong>静态多态</strong>和<strong>动态多态</strong>。静态多态通过<strong>函数重载</strong>和<strong>模板</strong>实现；动态多态通过<strong>虚函数</strong>实现，下面所介绍的多态都是动态多态。下面举个例子说明一些多态的使用（<strong>基类的指针或引用指向子类对象</strong>）。</p>
 <p>​	先来看下面的一个案例，三个类都可以执行<code>Say()</code>函数，如果我想让每个类说的内容不一样，就必须在子类中也实现<code>Say()</code>函数才可以，并且只能用符合各自类型的对象、指针或引用才能调用正确的函数。<code>C++</code>中使用<code>virtual</code>关键字声明一个成员函数为虚函数，并且<strong>只能修饰普通的成员函数</strong>，<strong>静态成员函数和友元函数都不能声明为虚函数</strong>。当基类中声明一个虚函数之后，子类可以重写这个虚函数，此时使用<strong>基类的指针或引用指向子类对象</strong>，调用该虚函数时，会自动根据上下文信息找到正确类型的虚函数调用，也就是说一个函数接口在运行时可以有不同的功能。</p>
 <p>​	从下面的例子也能看出，只能用<strong>基类的指针</strong>或<strong>引用</strong>指向子类对象，如果直接用一个基类对象接收子类对象，会发生类型阶段，就完全变成了基类对象了。</p>
@@ -1904,6 +1882,7 @@ int main()
     int* b &#x3D; new int[100000000000000];
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="new-delete和malloc-free的区别"><a class="header-anchor" href="#new-delete和malloc-free的区别"></a>new,delete和malloc,free的区别</h2>
+<p>…</p>
 <h1 id="异常"><a class="header-anchor" href="#异常"></a>异常</h1>
 <p>…</p>
 <h1 id="数据类型"><a class="header-anchor" href="#数据类型"></a>数据类型</h1>
@@ -1928,6 +1907,143 @@ int byteNum &#x3D; sizeof(size_t);<span aria-hidden="true" class="line-numbers-r
 </ul>
 <h2 id="int32-t"><a class="header-anchor" href="#int32-t"></a>int32_t</h2>
 <p>​	<code>int32_t</code>是C99标准引入的<strong>固定宽度整数类型</strong>，明确表示<strong>32位有符号整数</strong>，其<strong>大小与平台无关</strong>，不论在32位平台还是64位平台，<code>int32_t</code>始终占用4个字节。只是相比于<code>uint32_t</code>来说，<code>int32_t</code>是有符号整数，可以表示正负。</p>
+<h1 id="枚举类型"><a class="header-anchor" href="#枚举类型"></a>枚举类型</h1>
+<p>​	枚举类型共有两种，一种是<code>C++11</code><strong>之前</strong>的<strong>普通枚举类型</strong>，使用<code>enum</code>声明；第二种就是<code>C++11</code>提出的<strong>加强版的枚举类型</strong>，使用<code>enum class</code>声明。下面的介绍中会将使用<code>enum</code>声明的传统枚举类型称为<strong>枚举类型</strong>，而使用<code>enum class</code>声明的加强版枚举类型称为<strong>强枚举类型</strong>。</p>
+<h2 id="enum"><a class="header-anchor" href="#enum"></a>enum</h2>
+<p>​	虽然枚举类型存在一定的安全检查功能，一个枚举类型不允许分配到另外一种枚举类型，而且整型也无法隐式转换成枚举类型。但是<strong>枚举类型却可以隐式转换为整型</strong>。而且枚举类型会把内部声明的枚举标识符导出到枚举定义的作用域下，这就意味着如果同一作用域下两个枚举类型内有同名的枚举标识符，就会出现命名冲突。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum Animal
+&#123;
+	Dog, Cat, Fish
+&#125;;
+
+&#x2F;&#x2F;编译失败，和Animal中的Dog出现命名冲突
+&#x2F;&#x2F;enum Test1
+&#x2F;&#x2F;&#123;
+&#x2F;&#x2F;	Dog
+&#x2F;&#x2F;&#125;;
+
+enum Test2
+&#123;
+	Test
+&#125;;
+
+int main()
+&#123;
+    	&#x2F;&#x2F;可以直接使用Animal内部的枚举标识符
+		Animal a1 &#x3D; Dog;
+    
+		&#x2F;&#x2F;a1 &#x3D; 1; 不允许接收整型
+		&#x2F;&#x2F;a1 &#x3D; Test; 不允许接收其他枚举类型
+		&#x2F;&#x2F;强转后才可以接收
+		a1 &#x3D; (Animal)1;
+		a1 &#x3D; (Animal)Test;
+
+		a1 &#x3D; Cat; &#x2F;&#x2F;枚举类型只允许接收和自己同类型的
+    
+    	int x &#x3D; a1; &#x2F;&#x2F;但是枚举类型会隐式转换为整型
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	枚举类型会很容易造成命名冲突，而且其可以隐式转换为整型的特性也会带来一些问题。如下面例子所示，<code>Print</code>函数接收的是一个<code>double</code>类型形参，但是却可以传递一个枚举类型的变量，还可以调用成功。原因就是编译器会先把枚举类型隐式转换为整型，再转为<code>double</code>类型，这不仅容易出错，还会给后期维护带来困难。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum Animal
+&#123;
+	Dog, Cat, Fish
+&#125;;
+void Print(double x)
+&#123;
+	std::cout &lt;&lt; x &lt;&lt; std::endl;
+&#125;
+
+int main()
+&#123;
+    &#x2F;&#x2F;枚举类型会先隐式转为int，再转为double
+    Print(a1);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="enum-class"><a class="header-anchor" href="#enum-class"></a>enum class</h2>
+<p>​	<code>C++11</code>提出的强枚举类型在保留了枚举类型特性的基础上，新增了一些新特性：</p>
+<ul>
+<li>枚举标识符属于强枚举类型的作用域</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum class Color
+&#123;
+	Red, Green, Blue
+&#125;;
+&#x2F;&#x2F;由于枚举标识符在枚举类型名作用域下，不会出现命名冲突
+enum class Color2
+&#123;
+	Red, Green, Blue
+&#125;;
+
+int main()
+&#123;
+    &#x2F;&#x2F;强枚举类型访问枚举标识符时必须加上枚举类型名，否则会编译失败
+    &#x2F;&#x2F;Color c &#x3D; Red; 编译失败
+    Color c &#x3D; Color::Red;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>枚举标识符不会<strong>隐式</strong>转换为整型</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum class Color
+&#123;
+	Red, Green, Blue
+&#125;;
+
+int main()
+&#123;
+    Color c &#x3D; Color::Red;
+    
+    &#x2F;&#x2F;强枚举类型不能隐式转为整型
+    &#x2F;&#x2F;int a &#x3D; c;
+    int a &#x3D; (int)c; &#x2F;&#x2F;强转才可以
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>能指定强枚举类型的底层类型，底层类型默认为<code>int</code>类型</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;不指定底层类型，默认为int
+enum class ECI
+&#123;
+	e1 &#x3D; 1,
+	e2 &#x3D; 2,
+	e3 &#x3D; 0xff000000
+&#125;;
+
+enum class ECU : unsigned int
+&#123;
+	e1 &#x3D; 1,
+	e2 &#x3D; 2,
+	e3 &#x3D; 0xff000000
+&#125;;
+
+int main()
+&#123;
+    &#x2F;&#x2F;因为默认底层类型为int, e3是一个负数
+    std::cout &lt;&lt; (ECI::e1 &lt; ECI::e3) &lt;&lt; std::endl; &#x2F;&#x2F;输出0
+    
+    &#x2F;&#x2F;指定其底层类型为unsigned int, e3是一个大的正数
+    std::cout &lt;&lt; (ECU::e1 &lt; ECU::e3) &lt;&lt; std::endl; &#x2F;&#x2F;输出1
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意：</strong></p>
+<ol>
+<li>强枚举类型不允许匿名，必须要有<strong>枚举名称</strong>，否则会编译失败；枚举类型则没有此限制。</li>
+</ol>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum
+&#123;
+	AAA
+&#125;;
+
+&#x2F;&#x2F;编译失败，强枚举类型必须要有枚举名称，不能匿名
+&#x2F;&#x2F;enum class
+&#x2F;&#x2F;&#123;
+&#x2F;&#x2F;	BBB
+&#x2F;&#x2F;&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><code>C++11</code>中除了可以给强枚举类型指定底层类型外，也可以给枚举类型指定底层类型。但是对于强枚举类型来说，不指定就默认为int；枚举类型不指定底层类型时，底层类型通常为int，但标准并未规定，编译器可能自动选择。</li>
+</ol>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum Test: unsigned int
+&#123;
+    A &#x3D; 0,
+    B &#x3D; 1,
+    C &#x3D; 0xff000000
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="左值、右值和移动语义"><a class="header-anchor" href="#左值、右值和移动语义"></a>左值、右值和移动语义</h1>
 <p>​	在大部分情况下，我们可以<strong>简单理解</strong>为赋值操作中，<code>=</code>左侧的为左值，<code>=</code>右侧的为右值。例如<code>int i = 10;</code>中左侧的<code>i</code>就是左值，右侧的<code>10</code>就是右值，下面就详细说明一下二者的区别。</p>
 <h2 id="左值和右值"><a class="header-anchor" href="#左值和右值"></a>左值和右值</h2>
@@ -2115,7 +2231,7 @@ int main()
     PrintString(str1 + str2);&#x2F;&#x2F;传入右值，调用第二个函数
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="移动语义-std-move"><a class="header-anchor" href="#移动语义-std-move"></a>移动语义(std::move)</h2>
-<h3 id="介绍-k3"><a class="header-anchor" href="#介绍-k3"></a>介绍</h3>
+<h3 id="介绍-k2"><a class="header-anchor" href="#介绍-k2"></a>介绍</h3>
 <p>​	对于下面的例子来说，创建了一个<code>Entity</code>对象<code>e</code>，并传入了一个<code>String</code>对象，首先会调用<code>String</code>类的构造函数创建一个临时变量，然后该临时变量会赋值给<code>Entity</code>构造函数的形参，其形参也是一个<code>String</code>类，所以会触发<code>String</code>的拷贝构造函数。</p>
 <p>​	可以看到这一个简单的过程调用了<code>String</code>的普通构造函数和拷贝构造函数，使用new在堆区创建了两次内存。但是我们明明都在栈区创建了一个对象了，传到函数里却还要再进行一次深拷贝，这种开销是没有必要的。</p>
 <p>​	所以c++11引入了移动语义，可以解决这一问题。</p>
@@ -2503,10 +2619,10 @@ constexpr T&amp;&amp; forward(remove_reference_t&lt;T&gt;&amp;&amp; _Arg) noexce
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="函数指针、Lambda表达式和std-functional、std-bind"><a class="header-anchor" href="#函数指针、Lambda表达式和std-functional、std-bind"></a>函数指针、Lambda表达式和std::functional、std::bind</h1>
 <h2 id="函数指针"><a class="header-anchor" href="#函数指针"></a>函数指针</h2>
-<h3 id="介绍-k4"><a class="header-anchor" href="#介绍-k4"></a>介绍</h3>
+<h3 id="介绍-k3"><a class="header-anchor" href="#介绍-k3"></a>介绍</h3>
 <p>​	<strong>函数指针</strong>是<strong>指向函数的指针</strong>，它可以保存某个函数的地址，使得程序可以通过函数指针调用对应的函数。尤其在回调函数，事件处理函数等场景中会经常用到。或者将函数作为返回值，或者在不同的上下文中动态地调用不同的函数。</p>
 <p>​	计算机中，所有高级语言的代码最终都会编译转换为CPU可以执行的机器语言的指令。函数由一系列的指令组成，这些指令告诉CPU该如何执行该函数的任务。<strong>这些指令序列必须存储在内存中</strong>，以便CPU可以按照程序的流程来执行它们。<strong>函数的内存地址</strong>就是<strong>这些指令序列在存中开始的地方</strong>。</p>
-<h3 id="使用-k2"><a class="header-anchor" href="#使用-k2"></a>使用</h3>
+<h3 id="使用"><a class="header-anchor" href="#使用"></a>使用</h3>
 <p>​	声明一个函数指针：</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">返回类型(* 函数指针名)(参数类型)
 &#x2F;&#x2F;返回int类型，指针名叫addPtr，接受两个为int类型的参数
@@ -3032,7 +3148,7 @@ int main()
 <h4 id="关键成员函数"><a class="header-anchor" href="#关键成员函数"></a>关键成员函数</h4>
 <p>…</p>
 <h2 id="std-bind"><a class="header-anchor" href="#std-bind"></a>std::bind</h2>
-<h3 id="介绍-k5"><a class="header-anchor" href="#介绍-k5"></a>介绍</h3>
+<h3 id="介绍-k4"><a class="header-anchor" href="#介绍-k4"></a>介绍</h3>
 <p>​	<code>std::bind</code>是 <strong>C++11</strong> 引入的一个函数适配器，定义在 <code>&lt;functional&gt;</code>头文件中，用于 <strong>绑定函数参数</strong> 或 <strong>调整函数调用方式</strong>。它可以将一个可调用对象（函数、<code>Lambda</code>、成员函数等）与<strong>部分参数绑定</strong>，返回一个新的可调用对象。</p>
 <p>​	<code>std::bind</code>将可调用对象与其参数一起进行绑定，绑定后的结果可以使用<code>std::function</code>保存。<code>std::bind</code>主要有以下两个作用：</p>
 <ul>
@@ -3444,7 +3560,7 @@ int main()
     &#x2F;&#x2F;Test t3 &#x3D; &#123;1.0f, 1.0f&#125;; 隐式调用列表初始化构造函数，但是不允许隐式缩窄转换，所以会报错
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="委托构造函数"><a class="header-anchor" href="#委托构造函数"></a>委托构造函数</h1>
-<h2 id="使用-k3"><a class="header-anchor" href="#使用-k3"></a>使用</h2>
+<h2 id="使用-k2"><a class="header-anchor" href="#使用-k2"></a>使用</h2>
 <p>​	对于一个有多个参数的类来说，我们可以需要编写不同版本的构造函数，以适应各种初始化参数的情况，像下面的代码那样。而且这么多构造函数的初始化操作的代码也都一样，虽然我们可以编写一个<code>CommonInit</code>来执行最终的成员初始化和初始化逻辑，但是这样仍然也会存在大量的代码冗余，不便于后期的维护。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class X1
 &#123;
@@ -3596,7 +3712,7 @@ int main()
 </ol>
 <h2 id="std-unique-ptr"><a class="header-anchor" href="#std-unique-ptr"></a>std::unique_ptr</h2>
 <p>​	在我们使用裸指针的时候，使用<code>new</code>在堆区申请了空间后，非常容易忘记<code>delete</code>释放掉，会造成内存泄漏。当我们相对资源进行独享时，就可以使用<code>std::unique_ptr</code>进行管理，当离开变量的作用域时会自动释放掉资源。是很基本的<strong>RAII</strong>(<strong>Resource Acquisition Is Initialization，资源获取即初始化</strong>)思想，简单来说就是对象创建时获取资源，对象离开作用域被销毁时释放资源，从而保证申请的内存一定会被释放。</p>
-<h3 id="使用-k4"><a class="header-anchor" href="#使用-k4"></a>使用</h3>
+<h3 id="使用-k3"><a class="header-anchor" href="#使用-k3"></a>使用</h3>
 <p>​	首先，<code>std::unique_ptr</code>的定位非常明确，就是独占资源，保证了同时只能有一个指针指向一块内存。为此其内部删除了拷贝构造和拷贝赋值，但可以使用移动构造和移动赋值，也就是说内部的资源<strong>不能复制</strong>，<strong>只能移动</strong>。</p>
 <p>​	下面看一下具体用法：</p>
 <p>​	<code>std::unique_ptr</code>是只能移动，不可复制的；他重载了<code>*</code>和<code>-&gt;</code>运算符，我们可以像使用原始指针那样使用他；同时也提供了<code>get()</code>函数获取原始指针；使用<code>release()</code>函数放弃自己的拥有权，返回原始指针；使用<code>reset()</code>函数释放自己的资源并置空，也就是手动释放资源。</p>
@@ -3775,7 +3891,7 @@ private:
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="std-shared-ptr"><a class="header-anchor" href="#std-shared-ptr"></a>std::shared_ptr</h2>
 <p>​	<code>std::shared_ptr</code>也可以管理资源，被销毁时自动释放管理的空间。但是与<code>unique_ptr</code>的独占资源不同的是，<code>shared_ptr</code>是<strong>允许共享资源</strong>的。其内部维护一个引用计数，表示所指向的内存当前同时有多少人共享。只有当引用计数为0时才能释放所指向的内存，也因此<code>std::shared_ptr</code>是<strong>可复制、可移动</strong>的。</p>
-<h3 id="使用-k5"><a class="header-anchor" href="#使用-k5"></a>使用</h3>
+<h3 id="使用-k4"><a class="header-anchor" href="#使用-k4"></a>使用</h3>
 <p>​	很多<code>unique_ptr</code>支持的<code>shared_ptr</code>也同样支持。但是后者没有<code>release()</code>函数，有独特的<code>use_count()</code>函数返回引用计数；而且shared_ptr允许复制，并且他的自定义删除器也比<code>unique_ptr</code>写起来要简单，不用在模板中指明构造器的类型，直接把构造器当作形参传进去即可。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;自定义删除器基本语法(T为管理资源的类型)
 std::unique_ptr&lt;T&gt; ptr(raw_ptr, deleter);
@@ -4115,7 +4231,7 @@ Derived* derived_ptr2 &#x3D; static_cast&lt;Derived*&gt;(base2);<span aria-hidde
 <li>指针 → 返回 <code>nullptr</code>。</li>
 <li>引用 → 抛出 <code>std::bad_cast</code>异常。</li>
 </ul>
-<p>​	<code>dynamic_cast</code>也可用来处理<strong>向上转换</strong>（子类 → 基类 ），<strong>向上转换不要求基类有虚函数</strong>，但<strong>向下转换基类必须要有虚函数</strong>（多态）。</p>
+<p>​	<code>dynamic_cast</code>也可用来处理<strong>向上转换</strong>（子类 → 基类 ），<strong>向上转换时不要求基类有虚函数</strong>，但<strong>向下转换时基类必须要有虚函数</strong>（多态）。</p>
 <p>运行时需要 <strong>运行时类型信息（RTTI）</strong>，可能影响性能。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Base
 &#123;
@@ -4149,7 +4265,7 @@ int main()
     Base* b1 &#x3D; dynamic_cast&lt;Base*&gt;(derive1);
 	Base* b2 &#x3D; static_cast&lt;Base*&gt;(derive1);
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​	<code>static_cast</code>只能在编译时检查，但是<code>Base*</code> 转换为<code>Derive*</code> 操作是被编译器允许的，所以并不能检测出能不能进行转换，因为很可能出现<code>Base*</code>并<strong>不是由多态基类指针指向子类对象而创建的</strong>，就是一个单纯的基类指针，这种转换显然是不合理的。而<code>dynamic_cast</code>可以在允许时检查这种转换是否正确，以此提升安全性。</p>
+<p>​	<code>static_cast</code>只能在编译时检查，但是<code>Base*</code> 转换为<code>Derive*</code> 操作是被编译器允许的，所以并不能检测出能不能进行转换，因为很可能出现<code>Base*</code>并<strong>不是由多态基类指针指向子类对象而创建的</strong>，就是一个单纯的基类指针，这种转换显然是不合理的。而<code>dynamic_cast</code>可以在允许时检查这种转换是否正确，以此提升安全性，但需要检查RTTI，性能会有所下降。</p>
 <h2 id="const-cast"><a class="header-anchor" href="#const-cast"></a>const_cast</h2>
 <p>​	<strong><code>const_cast</code></strong> 是 C++ 中专门用于 <strong>常量属性</strong> 的类型转换操作符。它的主要作用是 <strong>移除</strong> 或 <strong>添加</strong> 对象的 <strong><code>const</code></strong> 或 <strong><code>volatile</code></strong> 修饰符。与其他类型转换操作符不同，<strong><code>const_cast</code></strong> <strong>只能用于修改对象的常量性</strong>，而<strong>不能用于在不同类型之间进行转换</strong>。</p>
 <p>​	用法：</p>
@@ -4211,7 +4327,7 @@ int main()
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20250928204356691.png" alt="image-20250928204356691"></p>
 <h1 id="模板"><a class="header-anchor" href="#模板"></a>模板</h1>
-<h2 id="介绍-k6"><a class="header-anchor" href="#介绍-k6"></a>介绍</h2>
+<h2 id="介绍-k5"><a class="header-anchor" href="#介绍-k5"></a>介绍</h2>
 <p>​	模板是现代 C++ 的一项强大特性，初衷是为了实现泛型编程。可以编写一次代码，然后使用不同的数据类型，不用为每种类型编写单独的函数或类。现代C<ins>中功能强大的STL就是基于模板实现的，同时模板也是实现静态多态的方法之一。C</ins>中的模板主要分为<strong>类模板</strong>和<strong>函数模板</strong>，这两种类型的模板都很容易理解，运行时编程差异不算大，后面再各自详细介绍一下。</p>
 <p>​	如果没有模板的话，我们怎么才能实现一个函数适配各种类型的数据呢？可以使用宏定义来实现。但是正如Effective C++所说的那样，我们应该尽量避免使用宏。宏本质上就是预处理时进行字符串替换，没有类型检查，调试时也不会进入到宏内部，这显然是不行的。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define ADD(T) T add(T a, T b)\
@@ -4791,7 +4907,7 @@ int main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">106.6k</span>
+                        class="white-color">109.1k</span>
             
             
             
