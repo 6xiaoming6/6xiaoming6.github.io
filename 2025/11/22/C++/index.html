@@ -463,7 +463,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    40.6k
+                    40.7k
                 </div>
                 
 
@@ -4308,6 +4308,7 @@ struct A
     class B control
     class D object</pre>
 <p>​	但是当我们使用<code>std::make_shared&lt;Base&gt;();</code>创建时，会直接申请一个足够容纳控制块的管理对象的空间，控制块内存内同时也包含了管理对象的那一部分。也即只申请了一块较大的内存容纳控制块和对象，不仅减少了内存分配的次数，还提高了缓存局部性。</p>
+<p>​	在 <code>make_shared</code> 创建<code>shared_ptr</code>的情况下，<code>shared_ptr</code> 自身的内存和用户分配的内存在一起，所以就不能通过传 <code>deleter</code> 的方式实现自定义析构了。同时由于控制块和对象都在一块内存中，只有当最后一个 <code>shared_ptr</code> 和最后一个 <code>weak_ptr</code> 都被销毁时（强引用计数和弱引用计数都为0），内存才会一起被释放。这意味着，即使对象不再需要（所有 <code>shared_ptr</code> 都已销毁），只要还有 <code>weak_ptr</code> 引用控制块，对象占用的内存也不会被释放。</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">  shared_ptr
 +-----------------+             +--------------+
 |                 |     +-----> |      对象     | &lt;-+
@@ -4839,7 +4840,7 @@ int main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">110.3k</span>
+                        class="white-color">110.4k</span>
             
             
             
