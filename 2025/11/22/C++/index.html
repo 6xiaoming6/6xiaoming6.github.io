@@ -463,14 +463,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    39.6k
+                    40.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    165 分
+                    169 分
                 </div>
                 
 
@@ -4034,9 +4034,9 @@ private:
 <h2 id="std-shared-ptr"><a class="header-anchor" href="#std-shared-ptr"></a>std::shared_ptr</h2>
 <p>​	<code>std::shared_ptr</code>也可以管理资源，被销毁时自动释放管理的空间。但是与<code>unique_ptr</code>的独占资源不同的是，<code>shared_ptr</code>是<strong>允许共享资源</strong>的。其内部维护一个引用计数，表示所指向的内存当前同时有多少人共享。只有当引用计数为0时才能释放所指向的内存，也因此<code>std::shared_ptr</code>是<strong>可复制、可移动</strong>的。</p>
 <h3 id="使用-k4"><a class="header-anchor" href="#使用-k4"></a>使用</h3>
-<p>​	很多<code>unique_ptr</code>支持的<code>shared_ptr</code>也同样支持。但是后者没有<code>release()</code>函数，有独特的<code>use_count()</code>函数返回引用计数；而且shared_ptr允许复制，并且他的自定义删除器也比<code>unique_ptr</code>写起来要简单，不用在模板中指明构造器的类型，直接把构造器当作形参传进去即可。</p>
+<p>​	很多<code>unique_ptr</code>支持的<code>shared_ptr</code>也同样支持。但是后者没有<code>release()</code>函数，有独特的<code>use_count()</code>函数返回引用计数；而且<code>shared_ptr</code>允许复制，并且他的自定义删除器也比<code>unique_ptr</code>写起来要简单，不用在模板中指明构造器的类型，直接把构造器当作形参传进去即可。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;自定义删除器基本语法(T为管理资源的类型)
-std::unique_ptr&lt;T&gt; ptr(raw_ptr, deleter);
+std::shared_ptr&lt;T&gt; ptr(raw_ptr, deleter);
 
 
 int main()
@@ -4071,13 +4071,14 @@ int main()
     &#125;
 
     &#123;
+        &#x2F;&#x2F;自定义删除器
         auto f &#x3D; [](Data* d) &#123;
             if (d)delete d;
             &#125;;
         std::shared_ptr&lt;Data&gt; p4(new Data(10), f);
     &#125;
     
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="循环引用"><a class="header-anchor" href="#循环引用"></a>循环引用</h3>
 <p>​	使用<code>shared_ptr</code>很容易陷入循环引用问题中，一旦陷入循环引用中，当<code>shared_ptr</code>超出作用域销毁时因为<strong>引用计数不为0</strong>，就不会释放所管理的资源，就造成了<strong>内存泄漏</strong>。为了解决这一问题，<code>std::weak_ptr</code>应运而生，下面会介绍。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">struct B
@@ -4117,7 +4118,7 @@ int main()
     &#125;&#x2F;&#x2F;当a和b退出作用域时，a和b的引用计数都会减一，但减一后仍不为0，所以内存没有被释放，造成内存泄漏
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="原理-k3"><a class="header-anchor" href="#原理-k3"></a>原理</h3>
-<p>​	实现和<code>unique_ptr</code>类似，但是需要注意<strong>维护引用计数的值</strong>，每次析构、复制的时候都要注意维护正确的引用计数的值，只有当引用计数为0时才能删除所管理的内存。这里实现的只是简化版本的，只有强引用计数，没有把考虑弱引用进来。由于<code>shared_ptr</code>内部需要维护引用计数和其他的相关数据，所以会<strong>产生一定的开销</strong>。</p>
+<p>​	实现和<code>unique_ptr</code>类似，但是需要注意<strong>维护引用计数的值</strong>，每次析构、复制的时候都要注意维护正确的引用计数的值，只有当引用计数为0时才能删除所管理的内存。这里实现的只是简化版本的，只有强引用计数，没有把考虑弱引用进来，也没有考虑线程安全问题。由于<code>shared_ptr</code>内部需要维护引用计数和其他的相关数据，所以会<strong>产生一定的开销</strong>。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template&lt;typename T&gt;
 class SimpleSharedPtr
 &#123;
@@ -4268,48 +4269,123 @@ struct A
     &#125;
     
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="shared-ptr和weak-ptr"><a class="header-anchor" href="#shared-ptr和weak-ptr"></a>shared_ptr和weak_ptr</h2>
+<h2 id="shared-ptr的控制块"><a class="header-anchor" href="#shared-ptr的控制块"></a>shared_ptr的控制块</h2>
 <p>​	现在为了解决循环引用问题引入了<code>weak_ptr</code>，所以<code>shared_ptr</code>就必须能兼容<code>weak_ptr</code>了，下面具体讲一下底层的原理。</p>
-<p>​	如下图所示，<code>shared_ptr</code>内有一个指向其管理对象的指针和指向控制块的指针，控制块内目前只关注<strong>强引用计数</strong>和<strong>弱引用计数</strong>。其中<strong>强引用计数</strong>表示当前有多少个 <code>shared_ptr</code>实例拥有该对象的所有权，<strong>弱引用计数</strong>表示当前有多少个 <code>weak_ptr</code>实例正在<strong>观察</strong>该对象，但<strong>不拥有所有权</strong>。</p>
+<p>​	<code>shared_ptr</code>内有一个指向其管理对象的指针和指向控制块的指针，控制块内目前只关注<strong>强引用计数</strong>和<strong>弱引用计数</strong>。其中<strong>强引用计数</strong>表示当前有多少个 <code>shared_ptr</code>实例拥有该对象的所有权，<strong>弱引用计数</strong>表示当前有多少个 <code>weak_ptr</code>实例正在<strong>观察</strong>该对象，但<strong>不拥有所有权</strong>。</p>
 <p>​	当强引用计数为0时，会释放掉所管理对象的内存；如果此时弱引用计数不为0，控制块指针指向的内存不会被释放，只有当弱引用也为0时才会释放控制块指针指向的内存。</p>
-<p>​	前面说过的<code>lock()</code>函数和<code>expired()</code>函数就是根据控制块内的强引用计数判断的，如果<strong>强引用计数为0，就表面该对象已经被销毁了</strong>，所以此时<code>lock()</code>会返回<code>nullptr</code>而不会返回一个<code>shared_ptr</code>；<code>expired()</code>函数返回<code>true</code>，表面该对象已经被销毁了。</p>
+<p>​	前面说过的<code>lock()</code>函数和<code>expired()</code>函数就是根据控制块内的强引用计数判断的，如果<strong>强引用计数为0，就表面该对象已经被销毁了</strong>，所以此时<code>lock()</code>会返回<code>nullptr</code>而不会返回一个<code>shared_ptr</code>；<code>expired()</code>函数会返回<code>true</code>，表面该对象已经被销毁了。</p>
+<p>​	当我们使用<code>std::shared_ptr&lt;Base&gt; pDerive(new Base());</code>的方式创建<code>shared_ptr</code>时，由于外部已经动态创建一个对象了，所以<code>shared_ptr</code>内部只需要再创建一个控制块即可。控制块和对象是分别创建的，共需要申请两次内存。</p>
 <pre class="mermaid">graph TD
     %% 更简洁专业的版本
-    A1[ctrlPtr]:::pointer
+    A1[controlBlockPtr]:::pointer
     A2[objPtr]:::pointer
     
-    B[控制块<br/>use_count: 强引用计数<br/>weak_count: 弱引用计数<br/>deleter: 删除器函数<br/>allocator: 内存分配器]:::control
+    B[控制块<br/>origin_ptr: 原始对象指针<br/>use_count: 强引用计数<br/>weak_count: 弱引用计数<br/>deleter: 删除器函数<br/>allocator: 内存分配器]:::control
     
-    C1[ctrlPtr]:::pointer
-    D[动态分配的对象<br/>存储实际数据]:::object
+    D[动态分配的对象]:::object
 
     %% 虚线框表示智能指针实例
     subgraph SP["std::shared_ptr"]
         A1
         A2
     end
-    
-    subgraph WP["std::weak_ptr"]
-        C1
-    end
 
     %% 连接关系
     A1 --> B
     A2 --> D
-    C1 --> B
+    B -. "origin_ptr" .-> D
+
 
     %% 样式定义
     classDef pointer fill:#f5f5f5,stroke:#333,stroke-width:1.5px
     classDef control fill:#fff3e0,stroke:#ff9800,stroke-width:2px
     classDef object fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    classDef shared fill:#e3f2fd,stroke:#2196f3,stroke-width:1px,stroke-dasharray: 3 3,width:280px
-    classDef weak fill:#f3e5f5,stroke:#9c27b0,stroke-width:1px,stroke-dasharray: 3 3,width:140px
+    classDef shared fill:#e3f2fd,stroke:#2196f3,stroke-width:1px,stroke-dasharray: 3 3,width:360px
     
     class SP shared
     class WP weak
     class A1,A2,C1 pointer
     class B control
     class D object</pre>
+<p>​	但是当我们使用<code>std::make_shared&lt;Base&gt;();</code>创建时，会直接申请一个足够容纳控制块的管理对象的空间，控制块内存内同时也包含了管理对象的那一部分。也即只申请了一块较大的内存容纳控制块和对象，不仅减少了内存分配的次数，还提高了缓存局部性。</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">  shared_ptr
++-----------------+             +--------------+
+|                 |     +-----> |      对象     | &lt;-+
+|      objPtr     |-----+       +--------------+   |(origin_ptr)
+| controlBlockPtr |---------->  |     控制块    | --+   
++-----------------+             +--------------+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	不难发现，在<code>shared_ptr</code>的成员变量中有一个指针指向分配的对象，但是控制块中也有一个指针指向该对象，会让人有点摸不着头脑。类中实际拥有和操作的是作为类成员变量的指针，也就是上图中的<code>objPtr</code>，我们通过<code>get()</code>、<code>oprtator*()</code>和<code>operator-&gt;()</code>函数操控的都是这个指针；而控制块中的是存储的<code>origin_ptr</code>是分配时拿到的最原始的指针，我们不能对其进行操作，当强引用计数为0时会通过这个指针是否对象的内存空间。</p>
+<p>​	这两个指针通常情况下是相等的，但是也有一些特殊情况会导致两个指针不相等，这时候就需要通过控制块内存储的原始指针释放内存空间。下面以<code>C++</code>中的多继承为例，举例说明一下两个指针不等的情况。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Base
+&#123;
+public:
+	Base()
+	&#123;
+		std::cout &lt;&lt; &quot;Base Create&quot; &lt;&lt; std::endl;
+	&#125;
+	~Base()
+	&#123;
+		std::cout &lt;&lt; &quot;Base Destory&quot; &lt;&lt; std::endl;
+	&#125;
+private:
+	int a;
+    int val;
+&#125;;
+
+class Base2
+&#123;
+public:
+	Base2()
+	&#123;
+		std::cout &lt;&lt; &quot;Base2 Create&quot; &lt;&lt; std::endl;
+	&#125;
+	~Base2()
+	&#123;
+		std::cout &lt;&lt; &quot;Base2 Destory&quot; &lt;&lt; std::endl;
+	&#125;
+private:
+	int b;
+
+&#125;;
+
+class Derive : public Base, public Base2
+&#123;
+public:
+	Derive()
+	&#123;
+		std::cout &lt;&lt; &quot;Derive Create&quot; &lt;&lt; std::endl;
+	&#125;
+	~Derive()
+	&#123;
+		std::cout &lt;&lt; &quot;Derive Destory&quot; &lt;&lt; std::endl;
+	&#125;
+private:
+	int c;
+&#125;;
+
+int main()
+&#123;
+    std::cout &lt;&lt; sizeof(Base) &lt;&lt; std::endl; &#x2F;&#x2F;大小为8字节
+	std::cout &lt;&lt; sizeof(Base2) &lt;&lt; std::endl; &#x2F;&#x2F;大小为4字节
+    
+    &#x2F;&#x2F;objPtr存储地址:0x0000017ca7f53280, origin_ptr存储地址:0x0000017ca7f53280
+    std::shared_ptr&lt;Derive&gt; pDerive(new Derive());
+    
+    &#x2F;&#x2F;objPtr存储地址:0x0000017ca7f53288, origin_ptr存储地址:0x0000017ca7f53280
+	std::shared_ptr&lt;Base2&gt; pBase2 &#x3D; pDerive;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	可以看到当存储类型为<code>Derive</code>的<code>shared_ptr</code>赋值给了存储类型为<code>Base2</code>的<code>shared_ptr</code>后。两个<code>shared_ptr</code>中<code>objPtr</code>存储的地址是不同的，二者有一个大小为<strong>8</strong>字节的偏移（这个偏移量和<code>sizeof(Base)</code>相等），但是<code>origin_ptr</code>存储的地址都是一样的。这是因为多继承中把<code>Derive*</code> 转为<code>Base2*</code>类型后指针会有一个偏移，从而指向<code>Base2</code>部分的首地址。但<code>origin_ptr</code>存储的就是最原始的分配得到的内存地址，显然当两个<code>shared_ptr</code>都退出作用域时不能通过<code>objPtr</code>来释放内存，而是要通过<code>origin_ptr</code>来释放内存。</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">    Derive 对象    
+|----------------|
+| Base部分        |
+|----------------|
+| Base2部分       |
+|----------------|
+| Derive部分      |
+|----------------|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	下面引用两段<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/memory/shared_ptr.html">cppreference</a>中的原文：</p>
+<p>​	1. When shared_ptr is <strong>created by calling</strong> <code>std::make_shared</code> or <code>std::allocate_shared</code>, the memory for both the control block and the managed object is <strong>created with a single allocation</strong>. The managed object is constructed in-place in a data member of the control block. When shared_ptr is <strong>created via one of the shared_ptr constructors</strong>, the managed object and the control block <strong>must be allocated separately</strong>. In this case, the control block stores a pointer to the managed object.</p>
+<p>​	2. The <strong>pointer held by the shared_ptr directly</strong> is the one <strong>returned by get()</strong>, while <strong>the pointer/object held by the control block</strong> is the one that <strong>will be deleted</strong> when the number of shared owners reaches zero. These pointers are <strong>not necessarily equal</strong>.</p>
 <h1 id="迭代器"><a class="header-anchor" href="#迭代器"></a>迭代器</h1>
 <p>…</p>
 <h1 id="类型转换"><a class="header-anchor" href="#类型转换"></a>类型转换</h1>
@@ -4763,7 +4839,7 @@ int main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">109.3k</span>
+                        class="white-color">110.3k</span>
             
             
             
