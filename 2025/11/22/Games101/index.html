@@ -460,14 +460,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-11-25
+                    2025-12-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    21.3k
+                    21.2k
                 </div>
                 
 
@@ -1214,103 +1214,103 @@
 <h2 id="作业2"><a class="header-anchor" href="#作业2"></a>作业2</h2>
 <h3 id="正常"><a class="header-anchor" href="#正常"></a>正常</h3>
 <p>最普通的情况下没有进行任何的反走样，只是单纯的判断某个像素中心点在不在三角形内，再使用z-buffer算法更新frame_buffer中各像素的颜色值。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;Screen space rasterization
-void rst::rasterizer::rasterize_triangle(const Triangle&amp; t) &#123;
-    auto v &#x3D; t.toVector4();
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//Screen space rasterization</span>
+<span class="token keyword">void</span> rst<span class="token double-colon punctuation">::</span>rasterizer<span class="token double-colon punctuation">::</span><span class="token function">rasterize_triangle</span><span class="token punctuation">(</span><span class="token keyword">const</span> Triangle<span class="token operator">&amp;</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">auto</span> v <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">toVector4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     
-    Vector3f triangleVector[3];
+    Vector3f triangleVector<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    triangleVector[0] &#x3D; &#123; v[0].x(), v[0].y(), v[0].z() &#125;;
-    triangleVector[1] &#x3D; &#123; v[1].x(), v[1].y(), v[1].z() &#125;;
-    triangleVector[2] &#x3D; &#123; v[2].x(), v[2].y(), v[2].z() &#125;;
+    triangleVector<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    triangleVector<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    triangleVector<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
-    &#x2F;&#x2F;计算三角形的包围盒，加速光栅化
-    float minX &#x3D; INFINITY, minY &#x3D; INFINITY;
-    float maxX &#x3D; 0.0f, maxY &#x3D; 0.0f;
-    for (auto p : v)
-    &#123;
-        minX &#x3D; std::min(minX, p.x());
-        minY &#x3D; std::min(minY, p.y());
+    <span class="token comment">//计算三角形的包围盒，加速光栅化</span>
+    <span class="token keyword">float</span> minX <span class="token operator">=</span> INFINITY<span class="token punctuation">,</span> minY <span class="token operator">=</span> INFINITY<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> maxX <span class="token operator">=</span> <span class="token number">0.0f</span><span class="token punctuation">,</span> maxY <span class="token operator">=</span> <span class="token number">0.0f</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> p <span class="token operator">:</span> v<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        minX <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token function">min</span><span class="token punctuation">(</span>minX<span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        minY <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token function">min</span><span class="token punctuation">(</span>minY<span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        maxX &#x3D; std::max(maxX, p.x());
-        maxY &#x3D; std::max(maxY, p.y());
-    &#125;
-    &#x2F;&#x2F;使用z-buffer算法正常采样
-    for (int x &#x3D; (int)minX; x &lt;&#x3D; (int)maxX; x++)
-        for (int y &#x3D; (int)minY; y &lt;&#x3D; (int)maxY; y++)
-        &#123;
-            if (insideTriangle(x + 0.5f, y + 0.5f, triangleVector))
-            &#123;
-                auto[alpha, beta, gamma] &#x3D; computeBarycentric2D(x, y, t.v);
-                float w_reciprocal &#x3D; 1.0&#x2F;(alpha &#x2F; v[0].w() + beta &#x2F; v[1].w() + gamma &#x2F; v[2].w());
-                float z_interpolated &#x3D; alpha * v[0].z() &#x2F; v[0].w() + beta * v[1].z() &#x2F; v[1].w() + gamma * v[2].z() &#x2F; v[2].w();
-                z_interpolated *&#x3D; w_reciprocal;
-                &#x2F;&#x2F;如果当前像素深度值小于该像素的深度缓冲，则更新该像素的颜色缓冲
-                if (z_interpolated &lt; depth_buf[get_index(x,y)])
-                &#123;
-                    depth_buf[get_index(x, y)] &#x3D; z_interpolated;
-                    Vector3f point &#x3D; &#123; (float)x, (float)y, z_interpolated &#125;;
-                    Vector3f color &#x3D; t.getColor();
-                    set_pixel(point, color);
-   	            &#125;
-            &#125;
-        &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        maxX <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token function">max</span><span class="token punctuation">(</span>maxX<span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        maxY <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token function">max</span><span class="token punctuation">(</span>maxY<span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//使用z-buffer算法正常采样</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>minX<span class="token punctuation">;</span> x <span class="token operator">&lt;=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>maxX<span class="token punctuation">;</span> x<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>minY<span class="token punctuation">;</span> y <span class="token operator">&lt;=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>maxY<span class="token punctuation">;</span> y<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">insideTriangle</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">0.5f</span><span class="token punctuation">,</span> y <span class="token operator">+</span> <span class="token number">0.5f</span><span class="token punctuation">,</span> triangleVector<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token keyword">auto</span><span class="token punctuation">[</span>alpha<span class="token punctuation">,</span> beta<span class="token punctuation">,</span> gamma<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">computeBarycentric2D</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> t<span class="token punctuation">.</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">float</span> w_reciprocal <span class="token operator">=</span> <span class="token number">1.0</span><span class="token operator">/</span><span class="token punctuation">(</span>alpha <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> beta <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> gamma <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">float</span> z_interpolated <span class="token operator">=</span> alpha <span class="token operator">*</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> beta <span class="token operator">*</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> gamma <span class="token operator">*</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                z_interpolated <span class="token operator">*=</span> w_reciprocal<span class="token punctuation">;</span>
+                <span class="token comment">//如果当前像素深度值小于该像素的深度缓冲，则更新该像素的颜色缓冲</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>z_interpolated <span class="token operator">&lt;</span> depth_buf<span class="token punctuation">[</span><span class="token function">get_index</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">&#123;</span>
+                    depth_buf<span class="token punctuation">[</span><span class="token function">get_index</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> z_interpolated<span class="token punctuation">;</span>
+                    Vector3f point <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>x<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>y<span class="token punctuation">,</span> z_interpolated <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+                    Vector3f color <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">set_pixel</span><span class="token punctuation">(</span>point<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   	            <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>虽然可以正确绘制出来并且遮挡关系也正确，但是当我们放大图片后就会发现锯齿效果明显，所以需要反走样。</p>
 <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20250910234354624.png" alt="image-20250910234354624" style="zoom: 40%;" />
 <h3 id="MSAA2X"><a class="header-anchor" href="#MSAA2X"></a>MSAA2X</h3>
 <p>为了实现抗锯齿，这里使用MSAA2X，即使用每个像素4倍采样，以此实现抗锯齿。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;分别存放每个像素的4个采样块的深度缓冲和颜色缓冲，且大小是原来的4倍
-std::vector&lt;Eigen::Vector3f&gt; sup_frame_buf;
-std::vector&lt;float&gt; sup_depth_buf;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//分别存放每个像素的4个采样块的深度缓冲和颜色缓冲，且大小是原来的4倍</span>
+std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span>Eigen<span class="token double-colon punctuation">::</span>Vector3f<span class="token operator">></span> sup_frame_buf<span class="token punctuation">;</span>
+std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">></span> sup_depth_buf<span class="token punctuation">;</span>
 
-&#x2F;&#x2F;传入正常的像素坐标和第i个采样块的标号，计算该采样块的序号（像素内4个采样块的序号从左到右，从上到下依次为0 1 2 3）
-int rst::rasterizer::get_supre_index(int x, int y, int i)
-&#123;
-    int row &#x3D; 2 * y + i &#x2F; 2;
-    int col &#x3D; 2 * x + i % 2;
-    return (height * 2 - 1 - row) * width * 2 + col;
-&#125;
+<span class="token comment">//传入正常的像素坐标和第i个采样块的标号，计算该采样块的序号（像素内4个采样块的序号从左到右，从上到下依次为0 1 2 3）</span>
+<span class="token keyword">int</span> rst<span class="token double-colon punctuation">::</span>rasterizer<span class="token double-colon punctuation">::</span><span class="token function">get_supre_index</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> y <span class="token operator">+</span> i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x <span class="token operator">+</span> i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>height <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> row<span class="token punctuation">)</span> <span class="token operator">*</span> width <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> col<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F;MSAA2x超采样
-float offets[4][2] &#x3D; &#123;
-    &#123;0.25,0.75&#125;,
-    &#123;0.75,0.75&#125;,
-    &#123;0.25,0.25&#125;,
-    &#123;0.75,0.25&#125;,
-&#125;;
-for(int x &#x3D; (int)minX; x &lt;&#x3D; (int)maxX; x++)
-    for (int y &#x3D; (int)minY; y &lt;&#x3D; (int)maxY; y++)
-    &#123;
-        &#x2F;&#x2F;遍历所有像素时，将每个像素的四个采样块也都看做单独的像素，记录每个采样块最终的颜色
-        int cnt &#x3D; 0;
-        for (int i &#x3D; 0; i &lt; 4; i++)
-        &#123;
-            if (insideTriangle(x + offets[i][0], y + offets[i][1], triangleVector))
-            &#123;
-                cnt++;
+<span class="token comment">//MSAA2x超采样</span>
+<span class="token keyword">float</span> offets<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#123;</span><span class="token number">0.25</span><span class="token punctuation">,</span><span class="token number">0.75</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span><span class="token number">0.75</span><span class="token punctuation">,</span><span class="token number">0.75</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span><span class="token number">0.25</span><span class="token punctuation">,</span><span class="token number">0.25</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span><span class="token number">0.75</span><span class="token punctuation">,</span><span class="token number">0.25</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>minX<span class="token punctuation">;</span> x <span class="token operator">&lt;=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>maxX<span class="token punctuation">;</span> x<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>minY<span class="token punctuation">;</span> y <span class="token operator">&lt;=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>maxY<span class="token punctuation">;</span> y<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">//遍历所有像素时，将每个像素的四个采样块也都看做单独的像素，记录每个采样块最终的颜色</span>
+        <span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">insideTriangle</span><span class="token punctuation">(</span>x <span class="token operator">+</span> offets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y <span class="token operator">+</span> offets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> triangleVector<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                cnt<span class="token operator">++</span><span class="token punctuation">;</span>
                 
-                auto [alpha, beta, gamma] &#x3D; computeBarycentric2D(x, y, t.v);
-                float w_reciprocal &#x3D; 1.0 &#x2F; (alpha &#x2F; v[0].w() + beta &#x2F; v[1].w() + gamma &#x2F; v[2].w());
-                float z_interpolated &#x3D; alpha * v[0].z() &#x2F; v[0].w() + beta * v[1].z() &#x2F; v[1].w() + gamma * v[2].z() &#x2F; v[2].w();
-                z_interpolated *&#x3D; w_reciprocal;
+                <span class="token keyword">auto</span> <span class="token punctuation">[</span>alpha<span class="token punctuation">,</span> beta<span class="token punctuation">,</span> gamma<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">computeBarycentric2D</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> t<span class="token punctuation">.</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">float</span> w_reciprocal <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token operator">/</span> <span class="token punctuation">(</span>alpha <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> beta <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> gamma <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">float</span> z_interpolated <span class="token operator">=</span> alpha <span class="token operator">*</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> beta <span class="token operator">*</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> gamma <span class="token operator">*</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                z_interpolated <span class="token operator">*=</span> w_reciprocal<span class="token punctuation">;</span>
 
-                if (z_interpolated &lt; sup_depth_buf[get_supre_index(x, y ,i)])
-                &#123;
-                    sup_depth_buf[get_supre_index(x, y, i)] &#x3D; z_interpolated;
-                    sup_frame_buf[get_supre_index(x, y, i)] &#x3D; t.getColor();
-                &#125;
-            &#125;
-        &#125;
-        &#x2F;&#x2F;如果有一个采样块的颜色更新了，那么这个大像素的颜色就需要更新
-        if (cnt)
-        &#123;
-            Vector3f color &#x3D; Vector3f::Zero();
-            for (int i &#x3D; 0; i &lt; 4; i++) color +&#x3D; 0.25 * sup_frame_buf[get_supre_index(x, y, i)];
-            set_pixel(Vector3f&#123;(float)x, (float)y ,1.0&#125;, color);
-        &#125;
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>z_interpolated <span class="token operator">&lt;</span> sup_depth_buf<span class="token punctuation">[</span><span class="token function">get_supre_index</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">&#123;</span>
+                    sup_depth_buf<span class="token punctuation">[</span><span class="token function">get_supre_index</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> z_interpolated<span class="token punctuation">;</span>
+                    sup_frame_buf<span class="token punctuation">[</span><span class="token function">get_supre_index</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">//如果有一个采样块的颜色更新了，那么这个大像素的颜色就需要更新</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            Vector3f color <span class="token operator">=</span> <span class="token class-name">Vector3f</span><span class="token double-colon punctuation">::</span><span class="token function">Zero</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> color <span class="token operator">+=</span> <span class="token number">0.25</span> <span class="token operator">*</span> sup_frame_buf<span class="token punctuation">[</span><span class="token function">get_supre_index</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token function">set_pixel</span><span class="token punctuation">(</span>Vector3f<span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>x<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>y <span class="token punctuation">,</span><span class="token number">1.0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>最终得到的图片即使放大同样的倍数也不会有明显的锯齿。</p>
 <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20250910235144201.png" alt="image-20250910235144201" style="zoom: 67%;" />
 
@@ -1616,7 +1616,7 @@ for(int x &#x3D; (int)minX; x &lt;&#x3D; (int)maxX; x++)
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">111.4k</span>
+                        class="white-color">107.4k</span>
             
             
             
