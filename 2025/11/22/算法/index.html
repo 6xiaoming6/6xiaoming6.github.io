@@ -456,21 +456,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-11-30
+                    2025-12-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    4.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    19 分
                 </div>
                 
 
@@ -848,8 +848,73 @@ int main()
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="高精度减"><a class="header-anchor" href="#高精度减"></a>高精度减</h2>
+<p>…</p>
 <h2 id="高精度乘"><a class="header-anchor" href="#高精度乘"></a>高精度乘</h2>
+<p>…</p>
 <h2 id="高精度除"><a class="header-anchor" href="#高精度除"></a>高精度除</h2>
+<p>…</p>
+<h1 id="矩阵对角线"><a class="header-anchor" href="#矩阵对角线"></a>矩阵对角线</h1>
+<p>​	使用该模板可以快速遍历矩阵的对角线，假设我们的矩阵大小为<strong>m x n</strong>，即<strong>m</strong>行<strong>n</strong>列。</p>
+<p>​	首先来看第一种情况，<strong>对角线是左上到右下方向的</strong>。对于每一条对角线上的元素<code>mat[ i ] [ j ]</code>，<code>i - j</code>都是相同的值，于是我们可以发现这样一个式子：</p>
+<p><code>k = i - j + n</code>，这个 <code>k</code> 表示<strong>从右上到左下方向上第 k 条对角线</strong>（下图中红色数字就是k的值），<code>k</code>的取值是<code>[1, m + n - 1]</code>，所以我们只需要遍历<code>k</code>的所有取值就能遍历所有的对角线。</p>
+<p><img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251205150310963.png" alt="image-20251205150310963"></p>
+<p>​	对于第<code>k</code>条对角线来说，我们只需要确定元素的列坐标 <code>j</code> ，也就能根据等式 <code>k = i - j + n</code> 求出行坐标 <code>i</code> ，根据等式可以判断，<code>i</code>最小时<code>j</code>最小，<code>i</code>最大时<code>j</code>最大：</p>
+<ul>
+<li><code>i</code> <strong>最小值为0</strong>时， <code>minj = n - k</code>。但是要保证<code>minj &gt;= 0</code>，所以 <code>minj = max(n - k, 0)</code></li>
+<li><code>i</code> <strong>最大值为m - 1</strong>时， <code>maxj = m - 1 - k + n</code>。但要保证 <code>maxj &lt;= n - 1</code>，所以<code>maxj = min(m - 1 - k + n, n - 1)</code></li>
+</ul>
+<p>​	这样以来我们就可以在遍历每条对角线的时候求出 <code>j</code> 的取值范围，进而根据 <code>k = i - j + n</code> 求出 <code>i</code> ，从而找到该对角线上的所有元素<code>mat[ i ] [ j ]</code>。下面看看代码怎么写：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void matDiagonal(vector&lt;vector&lt;int&gt;&gt;&amp; mat)
+&#123;
+    &#x2F;&#x2F;确定行数和列数
+    int m &#x3D; mat.size(), n &#x3D; mat[0].size();
+    
+    &#x2F;&#x2F;遍历所有对角线，k的取值范围为[1, m + n - 1]
+    for(int k &#x3D; 1; k &lt; m + n; k++)
+    &#123;
+        &#x2F;&#x2F;根据 j &#x3D; i - k + n 确定该对角线上 j 的取值范围
+        int minj &#x3D; max(n - k, 0); &#x2F;&#x2F;i &#x3D; 0时j最小，但时不能小于0
+        int maxj &#x3D; min(m - 1 - k + n, n - 1); &#x2F;&#x2F;i &#x3D; m - 1时j最大，但是不能大于n - 1
+        
+        &#x2F;&#x2F;遍历对角线上的所有元素
+        for(int j &#x3D; minj; j &lt;&#x3D; maxj; j++)
+        &#123;
+            int x &#x3D; mat[j + k - n][j]; &#x2F;&#x2F;根据公式 i &#x3D; j + k - n 求出对应的行坐标 i
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	下面介绍第二种情况，对角线是右上到左下方向的。对于每一条对角线上的元素<code>mat[ i ] [ j ]</code>，<code>i + j</code>都是相同的值，于是我们可以发现这样一个式子：</p>
+<p><code>k = i + j</code>，这个 <code>k</code> 表示<strong>从左上到右下方向上第 k 条对角线</strong>（下图中红色数字就是k的值），和上面一种情况不同的是，此时<code>k</code>的取值是<code>[0, m + n - 2]</code>，所以我们只需要遍历<code>k</code>的所有取值就能遍历所有的对角线。</p>
+<p><img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251205213308574.png" alt="image-20251205213308574"></p>
+<p>​	对于第<code>k</code>条对角线来说，我们只需要确定元素的列坐标 <code>j</code> ，也就能根据等式 <code>k = i + j</code> 求出行坐标 <code>i</code> ，根据等式可以判断，<code>i</code>最小时<code>j</code>最大，<code>i</code>最大时<code>j</code>最小：</p>
+<ul>
+<li>
+<p><code>i</code> <strong>最大值为m - 1</strong>时， <code>minj = k - m + 1</code>。但要保证 <code>minj &gt;= 0</code>，所以<code>minj = max(k - m + 1, 0)</code></p>
+</li>
+<li>
+<p><code>i</code> <strong>最小值为0</strong>时， <code>maxj = k</code>。但是要保证<code>minj &lt;= n - 1</code>，所以 <code>maxj = min(k, n - 1)</code></p>
+</li>
+</ul>
+<p>​	这样以来我们就可以在遍历每条对角线的时候求出 <code>j</code> 的取值范围，进而根据 <code>k = i + j</code> 求出 <code>i</code> ，从而找到该对角线上的所有元素<code>mat[ i ] [ j ]</code>。下面看看代码怎么写：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void matDiagonal(vector&lt;vector&lt;int&gt;&gt;&amp; mat)
+&#123;
+    &#x2F;&#x2F;确定行数和列数
+    int m &#x3D; mat.size(), n &#x3D; mat[0].size();
+    
+    &#x2F;&#x2F;遍历所有对角线，k的取值范围为[0, m + n - 2]
+    for(int k &#x3D; 0; k &lt; m + n - 1; k++)
+    &#123;
+        &#x2F;&#x2F;根据 j &#x3D; k - i 确定该对角线上 j 的取值范围
+        int minj &#x3D; max(k - m + 1, 0); &#x2F;&#x2F;i &#x3D; m - 1时j最小，但时不能小于0
+        int maxj &#x3D; min(k, n - 1); &#x2F;&#x2F;i &#x3D; 0时j最大，但是不能大于n - 1
+        
+        &#x2F;&#x2F;遍历对角线上的所有元素
+        for(int j &#x3D; minj; j &lt;&#x3D; maxj; j++)
+        &#123;
+            int x &#x3D; mat[k - j][j]; &#x2F;&#x2F;根据公式 i &#x3D; k - j 求出对应的行坐标 i
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1145,7 +1210,7 @@ int main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">110.4k</span>
+                        class="white-color">111.4k</span>
             
             
             
