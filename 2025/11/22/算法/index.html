@@ -456,21 +456,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-12-05
+                    2025-12-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.2k
+                    5.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    23 分
                 </div>
                 
 
@@ -493,7 +493,31 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="整数二分"><a class="header-anchor" href="#整数二分"></a>整数二分</h1>
+                <h1 id="模运算"><a class="header-anchor" href="#模运算"></a>模运算</h1>
+<p>最终的各种计算时取模的代码如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">MOD <span class="token operator">=</span> <span class="token number">1</span>_000_000_007
+
+<span class="token comment">// 加</span>
+<span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> MOD
+
+<span class="token comment">// 减，b 在 [0,MOD-1] 中</span>
+<span class="token punctuation">(</span>a <span class="token operator">-</span> b <span class="token operator">+</span> MOD<span class="token punctuation">)</span> <span class="token operator">%</span> MOD
+
+<span class="token comment">// 把任意整数 a 取模到 [0,MOD-1] 中，无论 a 是正是负</span>
+<span class="token punctuation">(</span>a <span class="token operator">%</span> MOD <span class="token operator">+</span> MOD<span class="token punctuation">)</span> <span class="token operator">%</span> MOD
+
+<span class="token comment">// 乘（注意使用 64 位整数）</span>
+a <span class="token operator">*</span> b <span class="token operator">%</span> MOD
+
+<span class="token comment">// 多个数相乘，要步步取模，防止溢出</span>
+a <span class="token operator">*</span> b <span class="token operator">%</span> MOD <span class="token operator">*</span> c <span class="token operator">%</span> MOD
+
+<span class="token comment">// 除（MOD 是质数且 b 不是 MOD 的倍数），qpow是快速幂</span>
+a <span class="token operator">*</span> <span class="token function">qpow</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> MOD <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> MOD<span class="token punctuation">)</span> <span class="token operator">%</span> MOD<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="位运算"><a class="header-anchor" href="#位运算"></a>位运算</h1>
+<p>…</p>
+<h1 id="各种排序"><a class="header-anchor" href="#各种排序"></a>各种排序</h1>
+<h1 id="整数二分"><a class="header-anchor" href="#整数二分"></a>整数二分</h1>
 <p>二分法用于在有序序列中快速查找，由于每次都会跳过一半的数据，所以时间复杂度为O(logn)。下面写一个通用的整数二分模板，该模板会返回序列中第一个<code>&gt;=</code>目标数<code>target</code>的数据的位置。</p>
 <p>所以这是一个万能模板，会返回序列中第一个<code>&gt;=</code>目标<code>target</code>的数的索引值，查找不到就返回数组长度。不论是找唯一数据的索引值、重复数据的左边界、大于<code>target</code>的第一个数的索引值（<code>target</code>不是数组的的某个值，但在数组的最大最小值之间），都可以直接用这个模板。</p>
 <table>
@@ -651,27 +675,6 @@ nums <span class="token operator">=</span> <span class="token punctuation">[</sp
 lowerBound（nums<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token comment">//target=3，lowerBound(nums, 4)会找到nums[2]=5的位置，该位置减一为1，就是最后一个小于target的数的索引</span>
 lowerBound（nums<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="最终结果取模"><a class="header-anchor" href="#最终结果取模"></a>最终结果取模</h1>
-<p>最终的各种计算时取模的代码如下：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">MOD <span class="token operator">=</span> <span class="token number">1</span>_000_000_007
-
-<span class="token comment">// 加</span>
-<span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> MOD
-
-<span class="token comment">// 减，b 在 [0,MOD-1] 中</span>
-<span class="token punctuation">(</span>a <span class="token operator">-</span> b <span class="token operator">+</span> MOD<span class="token punctuation">)</span> <span class="token operator">%</span> MOD
-
-<span class="token comment">// 把任意整数 a 取模到 [0,MOD-1] 中，无论 a 是正是负</span>
-<span class="token punctuation">(</span>a <span class="token operator">%</span> MOD <span class="token operator">+</span> MOD<span class="token punctuation">)</span> <span class="token operator">%</span> MOD
-
-<span class="token comment">// 乘（注意使用 64 位整数）</span>
-a <span class="token operator">*</span> b <span class="token operator">%</span> MOD
-
-<span class="token comment">// 多个数相乘，要步步取模，防止溢出</span>
-a <span class="token operator">*</span> b <span class="token operator">%</span> MOD <span class="token operator">*</span> c <span class="token operator">%</span> MOD
-
-<span class="token comment">// 除（MOD 是质数且 b 不是 MOD 的倍数），qpow是快速幂</span>
-a <span class="token operator">*</span> <span class="token function">qpow</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> MOD <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> MOD<span class="token punctuation">)</span> <span class="token operator">%</span> MOD<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="质数"><a class="header-anchor" href="#质数"></a>质数</h1>
 <p>质数是指一个<strong>大于1的自然数</strong>，<strong>除了1和自身外</strong>，不能被自然数整除的数叫做质数。比如2，3，5，7，11，13等都是质数。</p>
 <h2 id="判断质数"><a class="header-anchor" href="#判断质数"></a>判断质数</h2>
@@ -916,6 +919,98 @@ a <span class="token operator">*</span> <span class="token function">qpow</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="前缀和"><a class="header-anchor" href="#前缀和"></a>前缀和</h1>
+<p>​	前缀和可以在**O(1)**的时间复杂求出子数组<code>nums[left, right]</code>的和，常见的有一维前缀和跟二维前缀和，下面分别看一下两种情况的算法模板：</p>
+<h2 id="一维前缀和"><a class="header-anchor" href="#一维前缀和"></a>一维前缀和</h2>
+<p>​	设长度为n的数组<code>nums</code>（数组下标从0开始），存储前缀和的数组为<code>preSum</code>。规定：</p>
+<ul>
+<li>
+<p><code>preSum[0] = 0</code></p>
+</li>
+<li>
+<p><code>preSum[1] = preSum[0] + nums[0] == nums[0]</code></p>
+</li>
+<li>
+<p><code>preSum[2] = preSum[1] + nums[1] == nums[0] + nums[1]</code></p>
+</li>
+<li>
+<p><code>preSum[3] = preSum[2] + nums[2] == nums[0] + nums[1] + nums[2]</code></p>
+</li>
+<li>
+<p>…</p>
+</li>
+<li>
+<p><code>preSum[n] = preSum[n - 1] + nums[n - 1] == nums[0] + nums[1] + nums[2] + ... + nums[n - 1]</code></p>
+</li>
+</ul>
+<p>​	即<code>preSum[i + 1]</code>是<code>nums</code>数组中<code>[0, i]</code>范围内的元素之和。于是我们可以推导出<code>nums</code>的子数组<code>nums[left, right]</code>的元素之和为：</p>
+<p><code>preSum[right + 1] - preSum[left]</code>。</p>
+<p>​	假设我们要求子数组为<code>nums[2, 4]</code>的和，对应值为<code>preSum[5] - preSum[2]</code>。</p>
+<p>​	其中<code>preSum[5] = nums[0] + nums[1] + nums[2] + nums[3] + nums[4]</code>。</p>
+<p>​		<code>preSum[2] = nums[0] + nums[1]</code> 。</p>
+<p>​	可以清晰的看到，将二者相减便可得到<code>nums[2] + nums[3] + nums[4]</code>范围的子数组之和。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">subarraySum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> 
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//nums数组长度为n，前缀和数组长度就要为n + 1，且preSum[0] = 0</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">preSum</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">//根据公式preSum[i + 1] = preSum[i] + nums[i]计算前缀和</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        preSum<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> preSum<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	
+    <span class="token comment">//直接根据公式求出子数组的和</span>
+    <span class="token keyword">return</span> preSum<span class="token punctuation">[</span>right <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> preSum<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	其实前缀和数组也可以定义为如下形式：</p>
+<ul>
+<li>
+<p><code>preSum[0] = nums[0]</code></p>
+</li>
+<li>
+<p><code>preSum[1] = preSum[0] + nums[1] == nums[0] + nums[1]</code></p>
+</li>
+<li>
+<p><code>preSum[2] = preSum[1] + nums[2] == nums[0] + nums[1] + nums[2]</code></p>
+</li>
+<li>
+<p><code>preSum[3] = preSum[2] + nums[3] == nums[0] + nums[1] + nums[2] + nums[3]</code></p>
+</li>
+</ul>
+<p>​	即<code>preSum[i]</code>是<code>nums</code>数组中<code>[0, i]</code>范围内的元素之和，此时子数组<code>nums[left, right]</code>的元素之和为：<code>preSum[right] - preSum[left - 1]</code>。但是由于出现了<code>left - 1</code>，但是<strong>left是可能为0</strong>的，所以这种写法需要特殊处理一下<code>left == 0</code>的情况。所以还是推荐使用上面的写法，不需要特殊判断<code>left == 0</code>的情况。</p>
+<h2 id="二维前缀和"><a class="header-anchor" href="#二维前缀和"></a>二维前缀和</h2>
+<p>​	二维的整体思路和一维是类似的，但是情况稍微会复杂一点，但是也可以找到对应的公式运算。二维前缀和要求的是一个二维矩阵中由左上角顶点(r1, c1)和右下角顶点(r2, c2)所组成的矩形内的元素之和，就是下图中蓝色区域内的元素之和。</p>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251209182415084.png" alt="image-20251209182415084" style="zoom:67%;" />
+<p>​	于是我们定义sum[r + 1] [c + 1]为左上角为(0, 0)，右下角为(r, c)的矩形区域的元素和，这样定义的原因和一维前缀和一样。如果使用sum[r] [c]表示该区域的元素和时，当左上角为(0, 0)时需要特殊处理，否则会出现负数坐标，我们这样定义就省去了特殊判断(0, 0)的麻烦。</p>
+<h3 id="求任意矩形区域的前缀和"><a class="header-anchor" href="#求任意矩形区域的前缀和"></a>求任意矩形区域的前缀和</h3>
+<p>​	下面看一下怎么求左上角为(r1,c1)，右下角为(r2,c2)的任意矩形的区域元素和。绿色和蓝色区域分别是左上角顶点和右下角顶点所表示的前缀和，我们要求的就是中间的红色部分：</p>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251209184005083.png" alt="image-20251209184005083" style="zoom:67%;" />
+<p>​	单独把我们要求的部分提取出来，可以发现要求的部分可以看作蓝色部分减去下图中两个黑色的区域，这两个区域分别可以用坐标为(r2,c1-1)、(r1-1,c2)的前缀和表示出来，但是要注意左上角红色部分被减了两次，所以要加回来，不能多减。</p>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251209184224637.png" alt="image-20251209184224637" style="zoom:67%;" />
+<p>​	所以(r1,c1)和(r2,c2)所表示的矩形区域的前缀和公式为：</p>
+<p>​	<code>target = sum[r2+1] [c2+1] -  sum[r2+1] [c1]  -  sum[r1] [c2+1]  +  sum[r1] [c1]</code></p>
+<p>​                                      蓝色区域                  黑色区域                          黑色区域             左上角被减了两次，要再加回来</p>
+<h3 id="二维前缀和数组的初始化"><a class="header-anchor" href="#二维前缀和数组的初始化"></a>二维前缀和数组的初始化</h3>
+<p>​	我们要求的是坐标(r,c)的二维前缀和，可以利用前面已经求出过的前缀和来求解。如下图所示，我们要求的是红色区域，但是蓝色区域和绿色区域是已知的。所以我们可以把蓝色区域和绿色区域先相加，再减去重复的部分，最后再加上(r,c)本身的值，就能得到红色区域的元素和。</p>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251209185140241.png" alt="image-20251209185140241" style="zoom:67%;" />
+<p>​	公式为（不要忘记sum[r+1] [c+1]表示的才是(r,c)的前缀和）：</p>
+<p>​	<code>sum[r+1] [c+1] = sum[r+1] [c]  + sum[r] [c+1]  - sum[r] [c] + mat[r] [c]</code></p>
+<p>​					 蓝色区域            绿色区域        重复加的       (r,c)格子本身</p>
+<p>​	下面看一下代码实现：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">sumRegion</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> row1<span class="token punctuation">,</span> <span class="token keyword">int</span> col1<span class="token punctuation">,</span> <span class="token keyword">int</span> row2<span class="token punctuation">,</span> <span class="token keyword">int</span> col2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> m <span class="token operator">=</span> matrix<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> n <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//获得矩阵大小</span>
+    vector <span class="token function">sum</span><span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//构建二维前缀和数组，注意原数组是m x n的，前缀和数组要是(m+1)x(n+1)的</span>
+    
+    sum<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//(0,0)位置初始化为0，和一维中令sum[0]=0原理一样</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+            sum<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> sum<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> sum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> sum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//用公式初始化</span>
+    <span class="token comment">//按公式直接返回</span>
+    <span class="token keyword">return</span> sum<span class="token punctuation">[</span>row2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>col2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> sum<span class="token punctuation">[</span>row2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>col1<span class="token punctuation">]</span> <span class="token operator">-</span> sum<span class="token punctuation">[</span>row1<span class="token punctuation">]</span><span class="token punctuation">[</span>col2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> sum<span class="token punctuation">[</span>row1<span class="token punctuation">]</span><span class="token punctuation">[</span>col1<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="差分"><a class="header-anchor" href="#差分"></a>差分</h1>
+<p>​	前缀和可以用<strong>O(1)<strong>的时间复杂度求出</strong>任意子区域的和</strong>；而差分可以实现用<strong>O(1)<strong>的时间复杂度将</strong>任意子区域内的元素都加上一个常数c</strong>，实现对象数组整体的修改。差分和前缀和是存在某种联系的，即数组 <em>a</em> <strong>差分的前缀和</strong>就是数组 <em>a</em>，这么说肯看起来有点困惑，下面会详细讲一下。和前缀和类似，差分一分为一维差分和二维差分，前者是修改子数组，后者则是修改矩阵的子区域。</p>
+<h2 id="一维差分"><a class="header-anchor" href="#一维差分"></a>一维差分</h2>
 
                 
             </div>
@@ -1218,7 +1313,7 @@ a <span class="token operator">*</span> <span class="token function">qpow</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">107.5k</span>
+                        class="white-color">110.8k</span>
             
             
             
