@@ -456,21 +456,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-12-09
+                    2025-12-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.7k
+                    8.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    23 分
+                    35 分
                 </div>
                 
 
@@ -515,8 +515,38 @@ a <span class="token operator">*</span> b <span class="token operator">%</span> 
 <span class="token comment">// 除（MOD 是质数且 b 不是 MOD 的倍数），qpow是快速幂</span>
 a <span class="token operator">*</span> <span class="token function">qpow</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> MOD <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> MOD<span class="token punctuation">)</span> <span class="token operator">%</span> MOD<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="位运算"><a class="header-anchor" href="#位运算"></a>位运算</h1>
-<p>…</p>
+<p>​	在计算机中，一切数据都是以二进制存储的，所以计算机很擅长处理二进制的数据，而位运算就是直接对整数在内存中的二进制位进行操作，因此其执行效率非常高。本章节会对常用到位运算进行一些总结，下面涉及到的代码均为C++代码。</p>
+<h2 id="lowbit操作"><a class="header-anchor" href="#lowbit操作"></a>lowbit操作</h2>
+<p>​	lowbit操作可以快速求出数字x的二进制的最低位的1所表示的数，下面举个例子：</p>
+<ul>
+<li>001010011000 —&gt; 对应lowbit(x) == 1000</li>
+<li>001010011010 —&gt; 对应lowbit(x) == 10</li>
+</ul>
+<p>​	这个操作的实现也非常简单：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">lowbit</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> x <span class="token operator">&amp;</span> <span class="token operator">-</span>x<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	在计算机中，通常使用补码来表示有符号整数，对于数字x来说，他的负数-x的补码是将x的二进制位取反后再加一得到的，这样以来x和-x的二进制形式只有从最低位的1到低位的0是相等的，其余高位都是相反的，因此二者进行与操作就会得到最低位的1。</p>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251210182425569.png" alt="image-20251210182425569" style="zoom:50%;" />
+<p>​	有了lowbit这样一个快速找到最低位1的操作后，我们也可以用来快速求数字x的二进制表示中有多少个1：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">lowbit</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> x <span class="token operator">&amp;</span> <span class="token operator">-</span>x<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">getOneNum</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">//x每次减去最右侧的1，直到变成0位置，使用lowbit可以快速求出1的个数</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> x<span class="token punctuation">;</span> i <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">-=</span> <span class="token function">lowbit</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        cnt<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> cnt<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="各种排序"><a class="header-anchor" href="#各种排序"></a>各种排序</h1>
+<p>…</p>
+<h1 id="离散化"><a class="header-anchor" href="#离散化"></a>离散化</h1>
+<p>…</p>
 <h1 id="整数二分"><a class="header-anchor" href="#整数二分"></a>整数二分</h1>
 <p>二分法用于在有序序列中快速查找，由于每次都会跳过一半的数据，所以时间复杂度为O(logn)。下面写一个通用的整数二分模板，该模板会返回序列中第一个<code>&gt;=</code>目标数<code>target</code>的数据的位置。</p>
 <p>所以这是一个万能模板，会返回序列中第一个<code>&gt;=</code>目标<code>target</code>的数的索引值，查找不到就返回数组长度。不论是找唯一数据的索引值、重复数据的左边界、大于<code>target</code>的第一个数的索引值（<code>target</code>不是数组的的某个值，但在数组的最大最小值之间），都可以直接用这个模板。</p>
@@ -989,13 +1019,12 @@ lowerBound（nums<span class="token punctuation">,</span> <span class="token num
 <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251209184224637.png" alt="image-20251209184224637" style="zoom:67%;" />
 <p>​	所以(r1,c1)和(r2,c2)所表示的矩形区域的前缀和公式为：</p>
 <p>​	<code>target = sum[r2+1] [c2+1] -  sum[r2+1] [c1]  -  sum[r1] [c2+1]  +  sum[r1] [c1]</code></p>
-<p>​                                      蓝色区域                  黑色区域                          黑色区域             左上角被减了两次，要再加回来</p>
 <h3 id="二维前缀和数组的初始化"><a class="header-anchor" href="#二维前缀和数组的初始化"></a>二维前缀和数组的初始化</h3>
 <p>​	我们要求的是坐标(r,c)的二维前缀和，可以利用前面已经求出过的前缀和来求解。如下图所示，我们要求的是红色区域，但是蓝色区域和绿色区域是已知的。所以我们可以把蓝色区域和绿色区域先相加，再减去重复的部分，最后再加上(r,c)本身的值，就能得到红色区域的元素和。</p>
 <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251209185140241.png" alt="image-20251209185140241" style="zoom:67%;" />
 <p>​	公式为（不要忘记sum[r+1] [c+1]表示的才是(r,c)的前缀和）：</p>
 <p>​	<code>sum[r+1] [c+1] = sum[r+1] [c]  + sum[r] [c+1]  - sum[r] [c] + mat[r] [c]</code></p>
-<p>​					 蓝色区域            绿色区域        重复加的       (r,c)格子本身</p>
+<h3 id="代码"><a class="header-anchor" href="#代码"></a>代码</h3>
 <p>​	下面看一下代码实现：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">sumRegion</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> row1<span class="token punctuation">,</span> <span class="token keyword">int</span> col1<span class="token punctuation">,</span> <span class="token keyword">int</span> row2<span class="token punctuation">,</span> <span class="token keyword">int</span> col2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> m <span class="token operator">=</span> matrix<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> n <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//获得矩阵大小</span>
@@ -1009,8 +1038,182 @@ lowerBound（nums<span class="token punctuation">,</span> <span class="token num
     <span class="token keyword">return</span> sum<span class="token punctuation">[</span>row2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>col2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> sum<span class="token punctuation">[</span>row2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>col1<span class="token punctuation">]</span> <span class="token operator">-</span> sum<span class="token punctuation">[</span>row1<span class="token punctuation">]</span><span class="token punctuation">[</span>col2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> sum<span class="token punctuation">[</span>row1<span class="token punctuation">]</span><span class="token punctuation">[</span>col1<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="差分"><a class="header-anchor" href="#差分"></a>差分</h1>
-<p>​	前缀和可以用<strong>O(1)<strong>的时间复杂度求出</strong>任意子区域的和</strong>；而差分可以实现用<strong>O(1)<strong>的时间复杂度将</strong>任意子区域内的元素都加上一个常数c</strong>，实现对象数组整体的修改。差分和前缀和是存在某种联系的，即数组 <em>a</em> <strong>差分的前缀和</strong>就是数组 <em>a</em>，这么说肯看起来有点困惑，下面会详细讲一下。和前缀和类似，差分一分为一维差分和二维差分，前者是修改子数组，后者则是修改矩阵的子区域。</p>
+<p>​	前缀和可以用<strong>O(1)<strong>的时间复杂度求出</strong>任意子区域的和</strong>；而差分可以实现用<strong>O(1)<strong>的时间复杂度将</strong>任意子区域内的元素都加上一个常数c</strong>，实现对象数组整体的修改。差分和前缀和是存在某种联系的，即数组 <em>a</em> 的<strong>差分的前缀和</strong>就是数组 <em>a</em>，这么说肯看起来有点困惑，下面会详细讲一下。和前缀和类似，差分一分为一维差分和二维差分，前者是修改子数组，后者则是修改二维矩阵的子区域。</p>
 <h2 id="一维差分"><a class="header-anchor" href="#一维差分"></a>一维差分</h2>
+<p>​	首先我们定义长度为n的原数组a（下标从0开始），及其差分数组d，前面已经说过差分数组的前缀和是原数组a，所以规定差分数组d满足下面的式子：</p>
+<ul>
+<li>d[0] = a[0]</li>
+<li>d[1] = a[1] - a[0]</li>
+<li>d[2] = a[2] - a[1]</li>
+<li>d[3] = a[3] - a[2]</li>
+<li>…</li>
+<li>d[n - 1] = a[n - 1] - a[n - 2]</li>
+</ul>
+<p>​	下面我们对差分数组d求一下前缀和看看会怎么样：</p>
+<ul>
+<li>d[0] = a[0]</li>
+<li>d[0] + d[1] = a[1]</li>
+<li>d[0] + d[1] + d[2] = a[2]</li>
+<li>…</li>
+<li>d[0] + d[1] + … + d[n - 1] = a[n - 1]</li>
+</ul>
+<p>​	可以神奇的发现对差分数组求前缀和就能得到对应原数组的内容。根据式子发现，如果我们对差分数组中的d[i]进行修改，那么这个改动会影响a[i] ~ a[n]，因为a[i] ~ a[n]的值都依赖d[i]求出来的。如果d[i] = d[i] + c，那么a[i] ~ a[n]也都会加c，这就是差分数组实现修改范围的值的关键所在了。</p>
+<p>​	假设我们想实现将原数组a的[left, right]范围内的数都加上常数c的修改，经过多轮操作后返回最终的数组。如果每次操作都遍历一遍的话，那么每次时间复杂度就是O(n)，我们使用差分的话，就能把遍历操作优化为对差分数组修改两个值，这样就能将操作的时间复杂度将为O(1)。</p>
+<p>​	不卖关子，我们要做的操作就是：</p>
+<ul>
+<li>d[left] += c</li>
+<li>d[right + 1] -= c</li>
+</ul>
+<p>​	具体原理如下图所示，前面已经说过，对d[left]加c，会使得原数组中a[left] ~ a[n - 1]都加c；但是我们只想要a[left] ~ a[right]加c，于是就再让d[right + 1]减去c，消除对a[right + 1] ~ a[n -1]的影响，这样操作后得出的原数组a就是符合要求的原数组。</p>
+<p><img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251210113316634.png" alt="image-20251210113316634"></p>
+<h3 id="差分数组的初始化"><a class="header-anchor" href="#差分数组的初始化"></a>差分数组的初始化</h3>
+<p>​	因为对差分数组的操作会出现right + 1，所以创建差分数组时要比原数组多分配一个空间，这样就不用特殊处理边界问题了。</p>
+<p>​	差分数组的创建方法有很多，首先最直观的创建方式就是根据前面提到的公式创建。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//根据差分数组的定义用公式求</span>
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">d</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//比原数组多分配一个空间</span>
+    d<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//0位置特殊处理一下</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> a<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//直接套公式求出差分数组</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	第二中创建的方式更方便一些，就是将差分数组d视作一个都为0的数组，然后再依次将a[i]添加到[i, i]位置，代码如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//对差分数组操作</span>
+<span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> d<span class="token punctuation">,</span> <span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">//直接用结论对差分数组操作即可</span>
+    d<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-=</span> c<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">d</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//比原数组多分配一个空间</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">add</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> i<span class="token punctuation">,</span> i<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//直接将a[i]加到[i,i]位置</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	前面介绍的两种创建方式得到的结果是一样的，个人更喜欢使用第二种方式。</p>
+<h3 id="代码-k2"><a class="header-anchor" href="#代码-k2"></a>代码</h3>
+<p>​	下面看一下整体的代码实现：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//这个函数的效果等价于将原数组a的[l, r]范围内都加上c</span>
+<span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> d<span class="token punctuation">,</span> <span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    d<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-=</span> c<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+
+<span class="token comment">//第i个操作就把原数组a在[lefts[i], rights[i]]范围内的数都加一，返回对原数组多次操作后的最终数组</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">solution</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> lefts<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> rights<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> q <span class="token operator">=</span> lefts<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//获取数组长度和查询次数</span>
+    <span class="token comment">//构建差分数组</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">d</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">add</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> i<span class="token punctuation">,</span> i<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//依次对原数组操作</span>
+   	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> q<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    	<span class="token function">add</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> lefts<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> rights<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//对差分数组求前缀和得到修改后的数组</span>
+    <span class="token keyword">int</span> s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">ans</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        s <span class="token operator">+=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> s<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> s<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二维差分"><a class="header-anchor" href="#二维差分"></a>二维差分</h2>
+<p>​	和一维差分类似，二维差分数组d（下标从0开始）的二维前缀和能得到对应修改后的二维数组a。现在假设要使用二维差分实现对左上角(r1,c1)和右下角(r2,c2)组成的矩形内都加上常数c，分析方法和一维一样：首先对d[r1] [c1]加c，会影响其右下角所有格子，即下图中蓝色区域；但是我们只想让红色区域加c，所以就可以把下边和右边的橙色区域都减c，以抵消影响；同时会发现右下角区域减了两次，所以最后要再把右下角多减的加回来。</p>
+<p>​	对应更新公式为：</p>
+<ul>
+<li>d[r1] [c1] += c                  //蓝色区域都加c</li>
+<li>d[r2 + 1] [c1] -= c            //下侧橙色区域减c</li>
+<li>d[r1] [c2 + 1] -= c            //右侧橙色区域减c</li>
+<li>d[r2 + 1] [c2 + 1] += c     //右下角多减了一次，要加回来</li>
+</ul>
+<p>​	对应代码如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> d<span class="token punctuation">,</span> <span class="token keyword">int</span> r1<span class="token punctuation">,</span> <span class="token keyword">int</span> c1<span class="token punctuation">,</span> <span class="token keyword">int</span> r2<span class="token punctuation">,</span> <span class="token keyword">int</span> c2<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    d<span class="token punctuation">[</span>r1<span class="token punctuation">]</span> <span class="token punctuation">[</span>c1<span class="token punctuation">]</span> <span class="token operator">+=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>c1<span class="token punctuation">]</span> <span class="token operator">-=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r1<span class="token punctuation">]</span> <span class="token punctuation">[</span>c2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>c2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+=</span> c<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20251210152904624.png" alt="image-20251210152904624" style="zoom:50%;" />
+<p>​		下面看一下代码怎么写：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> d<span class="token punctuation">,</span> <span class="token keyword">int</span> r1<span class="token punctuation">,</span> <span class="token keyword">int</span> c1<span class="token punctuation">,</span> <span class="token keyword">int</span> r2<span class="token punctuation">,</span> <span class="token keyword">int</span> c2<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    d<span class="token punctuation">[</span>r1<span class="token punctuation">]</span> <span class="token punctuation">[</span>c1<span class="token punctuation">]</span> <span class="token operator">+=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>c1<span class="token punctuation">]</span> <span class="token operator">-=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r1<span class="token punctuation">]</span> <span class="token punctuation">[</span>c2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>c2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+=</span> c<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//每次修改都让(leftTops[0], leftTops[1])和(rightBottoms[0], rightBottoms[1])矩阵范围内加1</span>
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">solution</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> leftTops<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> rightBottoms<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> m <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> n <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> q <span class="token operator">=</span> leftTops<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//构建初始二维差分数组</span>
+    vector <span class="token function">d</span><span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token function">add</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   	
+    <span class="token comment">//在二维差分数组上进行修改操作</span>
+   	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> q<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">add</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> leftTops<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> leftTops<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rightBottoms<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rightBottoms<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//操作</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">//用二维前缀和的方法还原二维差分数组</span>
+    vector <span class="token function">preSum</span><span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">//preSum[i+1][j+1]就是修改后的a[i][j]</span>
+    		preSum<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> preSum<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> preSum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> preSum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	前面的写法在计算二维差分数组的时候需要再开辟一个数组存储前缀和，但是如果我们在二维前缀和外围加上一圈0，就能够直接在差分数组上原地修改，不用额外使用一个数组了。这个和前缀和的存储方式类似，前缀和中preSum[i + 1] [j + 1]对应的是(i, j)位置；于是我们也让差分数组中d[i + 1] [j + 1]对应(i, j)位置，这样可以少处理很多边界条件，写起来比较方便。代码和前一种整体相同，只是在二维差分数组的插入位置有点改变。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> d<span class="token punctuation">,</span> <span class="token keyword">int</span> r1<span class="token punctuation">,</span> <span class="token keyword">int</span> c1<span class="token punctuation">,</span> <span class="token keyword">int</span> r2<span class="token punctuation">,</span> <span class="token keyword">int</span> c2<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    d<span class="token punctuation">[</span>r1<span class="token punctuation">]</span> <span class="token punctuation">[</span>c1<span class="token punctuation">]</span> <span class="token operator">+=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>c1<span class="token punctuation">]</span> <span class="token operator">-=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r1<span class="token punctuation">]</span> <span class="token punctuation">[</span>c2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-=</span> c<span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span>r2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>c2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+=</span> c<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">solution</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> leftTops<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> rightBottoms<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> m <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> n <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> q <span class="token operator">=</span> leftTops<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">//此处有改动，(m-1,n-1)对应差分数组中(m, n)，add操作会出现(m+1,n+1)，所以大小为(m+2) x (n+2)避免数组越界</span>
+    vector <span class="token function">d</span><span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token function">add</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//此处有改动，(i,j)坐标对应到差分数组中的位置是(i+1,j+1)所以要加一</span>
+   	
+    
+   	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> q<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">//此处有改动，(i,j)坐标对应到差分数组中的位置是(i+1,j+1)所以位置要加一</span>
+        <span class="token function">add</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> leftTops<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> leftTops<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> rightBottoms<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> rightBottoms<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">&#125;</span>
+    
+    vector <span class="token function">preSum</span><span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">//preSum[i+1][j+1]就是修改后的a[i][j]</span>
+    		preSum<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> preSum<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> preSum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> preSum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="树状数组"><a class="header-anchor" href="#树状数组"></a>树状数组</h1>
+<p>​	假设一种情况，如果有n次操作，每次操作都会有两种情况，一个操作是修改某一个数的值，第二个操作是查询某一范围内的和。如果使用前缀和来解决的话，每次修改过后就需要更新前缀和数组，这样最坏情况下时间复杂度是O(n^2)的。如果使用树状数组的话，可以以O(logn)的时间复杂度在修改某个值后更新维护的数组，以O(logn)的时间复杂度查询某一范围内的和，这样时间复杂度就变为了O(nlogn)。</p>
 
                 
             </div>
@@ -1313,7 +1516,7 @@ lowerBound（nums<span class="token punctuation">,</span> <span class="token num
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">110.8k</span>
+                        class="white-color">113.4k</span>
             
             
             
