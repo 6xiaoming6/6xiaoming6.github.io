@@ -456,21 +456,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-04
+                    2026-01-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    16k
+                    16.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    66 分
+                    69 分
                 </div>
                 
 
@@ -1568,6 +1568,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
     end<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="并查集"><a class="header-anchor" href="#并查集"></a>并查集</h2>
+<h3 id="简单使用"><a class="header-anchor" href="#简单使用"></a>简单使用</h3>
 <p>​	当出现求连通块（或者集合）个数或者每个连通块里有多少点的类似问题中，都可以用并查集结构解决。</p>
 <p>​	通过一个<strong>father</strong>数组记录每个点的父节点（或者叫做代表节点），最终一个连通块的所有点的最终父节点都会指向一个节点，初始化时每个节点的父节点都是自己，每当链接一条边时，就把<strong>终点的父亲设为起点</strong>。</p>
 <p>​	当两<strong>个连通块（集合）合并</strong>时，就把<strong>一个连通块的最终父节点的父亲设为另一个连通块的最终父节点</strong>，这样就实现了连通块的合并。</p>
@@ -1605,6 +1606,52 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
         size<span class="token punctuation">[</span>fa<span class="token punctuation">]</span><span class="token operator">+=</span>size<span class="token punctuation">[</span>fb<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="数组排序的最少交换次数"><a class="header-anchor" href="#数组排序的最少交换次数"></a>数组排序的最少交换次数</h3>
+<p>​	使用并查集也可以很快的求出是一个数组（无重复值）变得有序的最少交换次数是多少。</p>
+<p>​	如下图所示：如果我们想通过交换原数组得到排序后的数组，需要将0位置移动到3位置，即0和3位置交换、随后依次是0和2位置交换、0和4位置交换，可以发现只需要交换三次即可。如果我们将交换前和交换后数组的下标去向组成一个图，如下图中最下面所示。可以发现会形成一个环，而且<strong>交换的次数就是环的边数 - 1</strong>，<strong>或者说是环内的节点数 - 1</strong>。</p>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20260107005114236.png" alt="image-20260107005114236" style="zoom: 40%;" />
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20260107005730070.png" alt="image-20260107005730070" style="zoom:40%;" />
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20260107005840803.png" alt="image-20260107005840803" style="zoom:40%;" />
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20260107005937574.png" alt="image-20260107005937574" style="zoom:40%;" />
+<p>​	可以发现，随着每次交换，环中的节点数都会减一。这个数据比较简单，只有一个环，如果数据比较复杂，会出现多个这样的环。不难发只有环中的这些下标需要交换，而且交换的次数就是环中节点数减一。</p>
+<p>​	因此问题就得到了转换：使数组有序的最小交换次数 ----&gt; 按照上述过程构建的所有环的节点数 - 1的和 ----&gt;  节点总个数 n - 环的数量 m</p>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20260107010510275.png" alt="image-20260107010510275" style="zoom:50%;" />
+<p>​	使用并查集可以很方便的求出共有多少个环或者说连通块的个数，下面是代码：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//定义并查集所需要的东西</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">1e5</span> <span class="token operator">+</span> <span class="token number">9</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> father<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>father<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">==</span> a<span class="token punctuation">)</span> <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> father<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>father<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">join</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> fa <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> fb <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    father<span class="token punctuation">[</span>fa<span class="token punctuation">]</span> <span class="token operator">=</span> fb<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">minSwapNum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> record<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        father<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token comment">//初始化father数组</span>
+        record<span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token comment">//记录数组中每个数原来的位置</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//排序数组，每个数字会去新的位置</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token function">join</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> record<span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//新位置和旧位置连接</span>
+    
+    <span class="token comment">//统计连通块(环)的数量，最终结果为n - m(m为连通块的数量)</span>
+    <span class="token keyword">int</span> ans <span class="token operator">=</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>father<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> i<span class="token punctuation">)</span>
+            ans<span class="token operator">--</span><span class="token punctuation">;</span>
+   	
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="链式前向星"><a class="header-anchor" href="#链式前向星"></a>链式前向星</h2>
 <h2 id="实现LRU（最近最少未使用，least-recently-used）结构"><a class="header-anchor" href="#实现LRU（最近最少未使用，least-recently-used）结构"></a>实现LRU（最近最少未使用，least recently used）结构</h2>
 <p>​	这是操作系统里的一个比较经典的缓存置换算法，这里就来看看我们使用什么样的数据结构才能实现这个功能。</p>
@@ -2250,7 +2297,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">121.7k</span>
+                        class="white-color">122.3k</span>
             
             
             
