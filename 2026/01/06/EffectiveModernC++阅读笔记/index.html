@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="日历, 小明茶馆">
-    <meta name="description" content="每天都要比昨天优秀一点">
+    <meta name="keywords" content="EffectiveModernC++阅读笔记, 小明茶馆">
+    <meta name="description" content="阅读EffectiveModernC++中的一些学习记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>日历 | 小明茶馆</title>
+    <title>EffectiveModernC++阅读笔记 | 小明茶馆</title>
     <link rel="icon" type="image/svg+xml" href="/myfavicon.svg">
     
 
@@ -395,12 +395,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/feature_map/8.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/feature_map/10.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">日历</h1>
+                    <h1 class="description center-align post-title">EffectiveModernC++阅读笔记</h1>
                 </div>
             </div>
         </div>
@@ -422,12 +422,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/EffectiveModernC/">
+                                <span class="chip bg-color">EffectiveModernC++</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-category">
+                                阅读笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -436,28 +453,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-11-22
+                    2026-01-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-11-22
+                    2026-01-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    547
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -480,7 +497,76 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="条款22：使用Pimpl习惯用法时，将特殊成员函数的定义放到实现文件中"><a class="header-anchor" href="#条款22：使用Pimpl习惯用法时，将特殊成员函数的定义放到实现文件中"></a>条款22：使用Pimpl习惯用法时，将特殊成员函数的定义放到实现文件中</h1>
+<h2 id="Pimpl-pointer-to-implementation"><a class="header-anchor" href="#Pimpl-pointer-to-implementation"></a>Pimpl(pointer to implementation)</h2>
+<p>​	Pimpl是C++的一种编程技巧，可以降低编译依赖。就是把某个类的数据成员使用一个指向某实现类（或结构体）的指针代替，把类中的数据成员放到实现类中，通过指针间接访问这些数据成员。简单概括来说就是将类的私有成员变量封装在一个独立的实现类中，通过一个指向该实现类的指针间接访问数据成员。</p>
+<p>​	以下面的代码为例，<code>Widget</code>类的数据成员有<code>string</code>、<code>MyVector</code>和<code>MyString</code>三个类型，为了保证程序可以编译通过，必须将这三个类的头文件引入。但是这样一来就会增加编译时间，并且<code>Widget</code>会依赖这些头文件的内容，如果其他文件中引入了<code>Widget.h</code>，同样会把它所依赖头文件引入到其他文件中。例如，<code>Widget.cpp</code>和<code>App.cpp</code>都引入了<code>Widget.h</code>文件，如果此时<code>MyString.h</code>的内容发生了修改，不仅<code>Widget.cpp</code>会重新编译，引入了<code>Widget.h</code>的<code>App.cpp</code>也会重新编译。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//---------------------------Widget.h</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"MyString.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"MyVector.h"</span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">Widget</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">Widget</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">default</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    MyVector mv<span class="token punctuation">;</span>
+    MyString ms<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	而使用<strong>Pimpl</strong>技巧则不会有这些问题，如下面代码所示。可以看到，这样实现就把对那些所用到的头文件的依赖引入到了cpp文件中，这样当<code>MyString.h</code>或者<code>MyVector.h</code>修改后，其他引入了<code>Widget.h</code>的cpp文件也不会重新编译，可以加快编译速度。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//---------------------------Widget.h</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">once</span></span>
+<span class="token comment">//头文件中只做声明</span>
+<span class="token keyword">class</span> <span class="token class-name">Widget</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">Widget</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">~</span><span class="token function">Widget</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>string <span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token comment">//将成员变量都放在Widget.cpp中的Impl结构体中</span>
+    <span class="token keyword">struct</span> <span class="token class-name">Impl</span><span class="token punctuation">;</span>
+    Impl<span class="token operator">*</span> pimpl<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+
+
+<span class="token comment">//---------------------------Widget.cpp</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"MyString.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"MyVector.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"Widget.h"</span></span>
+
+<span class="token keyword">struct</span> <span class="token class-name">Widget</span><span class="token operator">:</span><span class="token base-clause"><span class="token operator">:</span><span class="token class-name">Impl</span></span>
+<span class="token punctuation">&#123;</span>
+    MyVector mv<span class="token punctuation">;</span>
+    MyString ms<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Widget</span><span class="token double-colon punctuation">::</span><span class="token function">Widget</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token operator">:</span><span class="token function">pimpl</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">Impl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Create Impl"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span> endl<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token class-name">Widget</span><span class="token double-colon punctuation">::</span><span class="token operator">~</span><span class="token function">Widget</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">delete</span> pimpl<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Delete Impl"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span> endl<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+std<span class="token double-colon punctuation">::</span>string <span class="token class-name">Widget</span><span class="token double-colon punctuation">::</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> pimpl<span class="token operator">-></span>name<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="注意事项"><a class="header-anchor" href="#注意事项"></a>注意事项</h2>
+
                 
             </div>
             <hr/>
@@ -493,7 +579,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/EffectiveModernC/">
+                                    <span class="chip bg-color">EffectiveModernC++</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -542,34 +636,50 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/schedule/index.html">
+                <a href="/2026/01/06/EffectiveModernC++%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/feature_map/8.png" class="responsive-img" alt="日历">
+                        <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/feature_map/10.png" class="responsive-img" alt="EffectiveModernC++阅读笔记">
                         
-                        <span class="card-title">日历</span>
+                        <span class="card-title">EffectiveModernC++阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            阅读EffectiveModernC++中的一些学习记录
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-06
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            小明
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    阅读笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/EffectiveModernC/">
+                        <span class="chip bg-color">EffectiveModernC++</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -577,37 +687,48 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/schedule/index.html">
+                <a href="/2025/12/05/C++/">
                     <div class="card-image">
                         
                         
-                        <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/feature_map/8.png" class="responsive-img" alt="日历">
+                        <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/feature_map/6.png" class="responsive-img" alt="C++学习">
                         
-                        <span class="card-title">日历</span>
+                        <span class="card-title">C++学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            C++的一些语法知识和原理
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-05
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            小明
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
