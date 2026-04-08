@@ -460,21 +460,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-03-19
+                    2026-03-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.4k
+                    9.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    30 分
+                    40 分
                 </div>
                 
 
@@ -712,7 +712,7 @@ rope_scaling <span class="token operator">=</span> <span class="token punctuatio
 <p>​	假设一个模型中有 n 层注意力层，那么 KV Cache 的实现就可以用一个长度为 n 的数组来实现，存储每一层的 K 和 V。数组内的元素一个元组 <code>(past_key, past_value)</code> ，分别存储了 K 和 V 的历史缓存。并且 K 和 V 的形状为 <code>(batch_size, num_heads, past_length, head_dim)</code>，其中 past_length 就是历史序列的长度，当计算出新的 K 和 V 的时候，就在历史长度维度进行拼接将新的值加入到缓存中。</p>
 <h2 id="GQA-Gruop-Query-Attention"><a class="header-anchor" href="#GQA-Gruop-Query-Attention"></a>GQA(Gruop-Query Attention)</h2>
 <p>​	GQA中文翻译过来叫做分组查询注意力。不过在说明GQA之前，先介绍一下它的前辈们：MHA和MQA。</p>
-<h3 id="MHA-Multi-Head-Attention"><a class="header-anchor" href="#MHA-Multi-Head-Attention"></a>MHA(<strong>M</strong>ulti-<strong>H</strong>ead <strong>A</strong>ttention)</h3>
+<h3 id="MHA-Multi-Head-Attention"><a class="header-anchor" href="#MHA-Multi-Head-Attention"></a>MHA(Multi-Head Attention)</h3>
 <p>​	MHA（<strong>M</strong>ulti-<strong>H</strong>ead <strong>A</strong>ttention），也就是多头注意力，是开山之作<a href="https://link.zhihu.com/?target=https%3A//kexue.fm/archives/4765">《Attention is all you need》</a>所提出的一种Attention形式。多头注意力的结果就是多个独立的注意力头结果的拼接。</p>
 <ul>
 <li>输入序列的每个 token 的隐状态 h<em>h</em> 分别通过三组投影矩阵 W_Q, W_K, W_V得到 Query、Key、Value。</li>
@@ -877,8 +877,6 @@ rope_scaling <span class="token operator">=</span> <span class="token punctuatio
 <hr>
 <p>​	MOE在大语言模型的使用中，通常都是将传统Transformer中的每层的前馈网络（FFN）层替换为MOE层，其中 MoE 层由两个核心部分组成: 一个门控网络和若干数量的专家。</p>
 <p>​	虽然使用MOE带来了一些显著的优势，例如更高效的预训练和与稠密模型相比更快的推理速度，但是使用MOE后也同样会带来一些问题和挑战等待解决，后序有机会会再补充一下MOE的问题以及解决方案。</p>
-<h1 id="整体梳理"><a class="header-anchor" href="#整体梳理"></a>整体梳理</h1>
-<h1 id="模型预训练"><a class="header-anchor" href="#模型预训练"></a>模型预训练</h1>
 <h2 id="余弦退火算法"><a class="header-anchor" href="#余弦退火算法"></a>余弦退火算法</h2>
 <p>​	在模型的训练中，学习率是很重要的一个超参数。如果训练中是一个固定学习率的话，如果学习率过大会导致模型震荡，难以收敛；如果学习率过小会导致收敛速度缓慢，甚至陷入局部最优。</p>
 <p>​	而学习率调度的核心思想是：在训练过程中<strong>动态调整学习率</strong>—— 前期用较大的学习率快速探索参数空间，后期用较小的学习率精细优化。合适的学习率调度策略能帮助模型更快收敛、避开局部最优解。下面就介绍一下MiniMind预训练时使用的学习率调整策略—余弦退火（Cosine Annealing）。</p>
@@ -904,6 +902,120 @@ $$</p>
 <p>​	通关余弦退火就可以让学习率在训练过程中动态的根据余弦曲线平滑的调整。下面是一段应用余弦退火调整学习率的代码，通关余弦退火计算出缩放因子，将学习率在 [1.0 --&gt; 0.1]内进行缩放调整，平滑减小学习率。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_lr</span><span class="token punctuation">(</span>current_step<span class="token punctuation">,</span> total_steps<span class="token punctuation">,</span> lr<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> lr<span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">0.1</span> <span class="token operator">+</span> <span class="token number">0.45</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> math<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi <span class="token operator">*</span> current_step <span class="token operator">/</span> total_steps<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="交叉熵损失-Cross-Entropy-Loss"><a class="header-anchor" href="#交叉熵损失-Cross-Entropy-Loss"></a>交叉熵损失(Cross-Entropy Loss)</h2>
+<p>​	交叉熵源自于信息论，用于衡量两个概率分布之间的差异。在机器学习中，常作为分类任务的损失函数，度量模型预测的概率分布与真实标签分布之间的“距离”。现在的大语言模型做的事情本质上也是一个多分类问题，所谓的预测下一个token其实就是输出所有token的概率分布，从中选择概率最高的token作为预测结果输出，因此交叉熵很适合作为损失函数来训练模型。</p>
+<p>​	对于分类问题可以将其简单的分为二分类问题和多分类问题，二者的损失函数也是有所不同的。</p>
+<h3 id="二分类问题"><a class="header-anchor" href="#二分类问题"></a>二分类问题</h3>
+<p>​	顾名思义，二分类问题就是答案只有两种可能，一般用0和1表示两种不同的类别。那么对于二分类问题来说，每个样本的交叉熵损失 ${L}$ 为：<br>
+$$<br>
+L = -[y \log(\hat{y}) + (1 - y) \log(1 - \hat{y})]<br>
+$$<br>
+​	其中：</p>
+<ul>
+<li>$y \in {0, 1}$ 是真实标签。</li>
+<li>$\hat{y} \in [0, 1]$ 是模型预测样本属于类别 1 的概率（通常经过 Sigmoid 函数输出）。</li>
+</ul>
+<hr>
+<ul>
+<li>当真实标签 $y$ 为类别0时，我们期望输出的概率 $\hat{y}$ 越小越好。此时如果 $\hat{y}$ 趋近于0，则损失也趋近于0；如果 $\hat{y}$ 趋近于1，则损失趋近于无穷大，符合我们的要求</li>
+<li>当真实标签 $y$ 为类别1时，我们期望输出的概率 $\hat{y}$ 越大越好。此时如果 $\hat{y}$ 趋近于0，则损失趋近于无穷大；如果 $\hat{y}$ 趋近于1，则损失趋近于0，也符合我们的要求</li>
+</ul>
+<hr>
+<p>​	整个数据集上的平均损失则为所有样本的损失之和的均值：<br>
+$$<br>
+L_{\text{total}} = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i) \right]<br>
+$$</p>
+<h3 id="多分类问题"><a class="header-anchor" href="#多分类问题"></a>多分类问题</h3>
+<p>​	对于 $K$ 个类别的分类问题，每个样本的损失 ${L}$ 为：<br>
+$$<br>
+L = -\sum_{k=1}^{K} y_k \log(\hat{y}_k)<br>
+$$<br>
+​	其中：</p>
+<ul>
+<li>$y_k$ 是真实标签的 one-hot 编码（若类别为 $c$，则 $y_c = 1$，其余为 0）。</li>
+<li>$\hat{y}_k$ 是模型预测样本属于类别 $k$ 的概率，通常由 Softmax 函数得到。</li>
+</ul>
+<h1 id="整体梳理"><a class="header-anchor" href="#整体梳理"></a>整体梳理</h1>
+<p>​</p>
+<h1 id="SFT-Supervised-Fine-Tuning"><a class="header-anchor" href="#SFT-Supervised-Fine-Tuning"></a>SFT(Supervised Fine-Tuning)</h1>
+<p>​	模型预训练完成之后并不能直接用来对话，因为预训练的任务是 next token prediction，就是预测下一个token是什么。所以预训练完成的模型只能进行简单的文本续写任务，并不能用来对话。要想让模型能正常的对话，还需要进行有监督微调，这一步的目的就是为了训练模型的对话能力。可以理解为预训练就是为了让模型大量的学习各种知识，而 sft 就是有针对性的让模型学会如何更好的进行对话。</p>
+<p>​	实现有监督微调的方法有很多，早期的SFT常常使用全量微调（<strong>Full Fine-Tuning</strong>）。但是全量微调成本过高，于是便有了PEFT（<strong>Parameter-Efficient Fine-Tuning，参数高效微调</strong>），下面就介绍一下。</p>
+<h2 id="Full-Fine-Tuning"><a class="header-anchor" href="#Full-Fine-Tuning"></a>Full Fine-Tuning</h2>
+<p>​	全量微调比较好理解，就是在构建好的高质量指定任务的数据集上用一个较小的学习率进行训练，让模型能更好的完成相应的任务。之所以叫全量微调，是因为微调时会更新模型的所有参数，但是一般大模型的参数非常多，全量微调也是非常的贵的。</p>
+<h2 id="PEFT-Parameter-Efficient-Fine-Tuning"><a class="header-anchor" href="#PEFT-Parameter-Efficient-Fine-Tuning"></a>PEFT(Parameter-Efficient Fine-Tuning)</h2>
+<p>​	随着模型参数的不断增大，模型在下游数据集上进行全量微调的成本也越来越高。如果针对每一个下任务都单独训练、存储一个模型的话，那么模型的训练和存储成本是很高的，限制了各种大模型应用的落地。</p>
+<p>​	PEFT（Parameter-Efficient Fine-Tuning，参数高效微调），可以帮助预训练大模型高效适配到各种下游任务。PEFT的核心做法是微调时将预训练大模型的参数冻结，只需要调整少量额外引入的参数，往往可以取得和全量微调相接近的性能。由于预训练模型的参数没有变化，只是额外引入的参数不同，因此面对各种下游任务时只需要保存哪些引入的参与训练的参数即可，处理不同任务时就加载对应的额外参数即可，类似于热插拔那种即插即用的感觉。</p>
+<p>​	PEFT的方法有很多，除了项目中用到的LoRA外，还有Prompt Tuning、Adapter Tuning、Prefix Tuning等。下面将重点介绍一下LoRA，其他方法有时间再进一步学习。</p>
+<h3 id="LoRA-Low-Rank-Adaptation"><a class="header-anchor" href="#LoRA-Low-Rank-Adaptation"></a>LoRA(Low-Rank Adaptation)</h3>
+<p>​	假设预训练模型的权重矩阵为 $W_0$ ，全量微调后权重矩阵更新为 $W$ ，则微调后权重矩阵的增量为 $\Delta W$ ，可以看作这个权重增量矩阵就是微调后学习到的内容。</p>
+<p>​	相关工作表明， 训练学到的过度参数化的模型实际上存在于一个较低的内在维度上（高维数据实际是在低维子空间中）。LoRA就假设LLM在下游任务上微调得到的增量参数矩阵 $\Delta W$ 是低秩的（肯定不是满秩），即存在冗余参数或高度相关的参数矩阵，但实际有效参数是更低维度的。于是LoRA就想对全参数微调得到的增量参数矩阵 $\Delta W$ 进行低秩分解，训练 $\Delta W$ 低秩分解的近似参数矩阵，效果不会太差，训练时的开销也大大减少。</p>
+<p>​	预训练权重矩阵 $\mathbf{W}<em>{0} \in \mathbb{R}^{d \times d}$ ，秩为 $r$ 的全量微调参数增量矩阵 $\Delta W \in \mathbb{R}^{d \times d}$  分解为两个参数量更小的矩阵 $\mathbf{B} \in \mathbb{R}^{d \times r}$ 和 $\mathbf{A} \in \mathbb{R}^{r \times d}$ 的低秩近似，于是有：<br>
+$$<br>
+\mathbf{W} = \mathbf{W}</em>{0} + \Delta \mathbf{W} = \mathbf{W}_{0}+ \mathbf{B}\mathbf{A} \ r &lt;&lt; d<br>
+$$<br>
+​	LoRA使用两个参数量更小的矩阵来近似全量微调参数增量矩阵，在训练时只需要给特定层的参数矩阵加上额外的近似矩阵训练即可，保证高效训练的同时也不会破坏模型原本的结构。</p>
+<img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/posts/picgo/image-20260323201414598.png" alt="image-20260323201414598" style="zoom: 67%;" />
+$$
+给定输入\mathbf{x} \in \mathbb{R}^{d}，添加LoRA后的输出\mathbf{h} \in \mathbb{R}^{d}:
+<p>\mathbf{h} = (\mathbf{W}<em>{0} + \Delta \mathbf{W} ) \mathbf{x} = \mathbf{W}</em>{0}\mathbf{x} + \mathbf{B}\mathbf{A} \mathbf{x}<br>
+$$<br>
+​	在训练时，原始参数 $\mathbf{W}_{0}$ 被冻结，意味着虽然会参与前向传播和反向传播，但是不会计算其对应梯度，更不会更新其参数，因此可以大大节省训练时的开销。在推理时，只需要按照式子将 $BA$ 合并到 $W_0$ 中即可。</p>
+<p>​	一般LoRA在参数初始化时，常常将矩阵 $A$ 使用高斯分布初始化，而矩阵 $B$ 全部初始化为0。这使得训练开始前，LoRA的旁路 $BA = 0$，那么微调就能从预训练权重 $W_0$ 开始。这样就能和全参数微调时一样，能有相同的开始。</p>
+<p>​	LoRA在针对不同的下游任务进行训练时，只需要保存每层额外加入的 $BA$ 即可，而矩阵低秩分解选择的秩 $r$ 是远远小于权重矩阵的高和宽的，训练和保存的参数量会大大的减少。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># minimind中LoRA的实现代码</span>
+
+<span class="token keyword">import</span> torch
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+
+<span class="token keyword">class</span> <span class="token class-name">LoRA</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_features<span class="token punctuation">,</span> out_features<span class="token punctuation">,</span> rank<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 创建LoRA所需要的A矩阵和B矩阵</span>
+        self<span class="token punctuation">.</span>A <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>in_features<span class="token punctuation">,</span> rank<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>B <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>rank<span class="token punctuation">,</span> out_features<span class="token punctuation">)</span>
+        <span class="token comment"># 参数初始化(A矩阵采用高斯随机初始化，B矩阵设为0)，因为要保证还没开始训练的适合新增的矩阵不会影响到模型的输出，将B初始化为0可以保证模型刚开始训练时AB不会影响模型</span>
+        self<span class="token punctuation">.</span>A<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>data<span class="token punctuation">.</span>normal_<span class="token punctuation">(</span>mean<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> std<span class="token operator">=</span><span class="token number">0.02</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>B<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>data<span class="token punctuation">.</span>zero_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>B<span class="token punctuation">(</span>self<span class="token punctuation">.</span>A<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 将lora的参数矩阵加入到模型中</span>
+<span class="token keyword">def</span> <span class="token function">apply_lora</span><span class="token punctuation">(</span>model<span class="token punctuation">:</span> nn<span class="token punctuation">.</span>Module<span class="token punctuation">,</span> rank<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> name<span class="token punctuation">,</span> module <span class="token keyword">in</span> model<span class="token punctuation">.</span>named_modules<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">)</span> <span class="token keyword">and</span> module<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> module<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            lora <span class="token operator">=</span> LoRA<span class="token punctuation">(</span>module<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> module<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rank<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>model<span class="token punctuation">.</span>device<span class="token punctuation">)</span>
+            <span class="token builtin">setattr</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> <span class="token string">'lora'</span><span class="token punctuation">,</span> lora<span class="token punctuation">)</span>
+            oririn_forward <span class="token operator">=</span> module<span class="token punctuation">.</span>forward
+            
+            <span class="token keyword">def</span> <span class="token function">forward_with_lora</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> layer1<span class="token operator">=</span>oririn_forward<span class="token punctuation">,</span> layer2<span class="token operator">=</span>lora<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> layer1<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">+</span> layer2<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+            module<span class="token punctuation">.</span>forward <span class="token operator">=</span> forward_with_lora
+
+
+<span class="token keyword">def</span> <span class="token function">load_lora</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    state_dict <span class="token operator">=</span> torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span>path<span class="token punctuation">,</span> map_location<span class="token operator">=</span>model<span class="token punctuation">.</span>device<span class="token punctuation">)</span>
+    state_dict <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">(</span>k<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token keyword">if</span> k<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'module.'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span> v <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> state_dict<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">for</span> name<span class="token punctuation">,</span> module <span class="token keyword">in</span> model<span class="token punctuation">.</span>named_modules<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> <span class="token string">'lora'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            lora_state <span class="token operator">=</span> <span class="token punctuation">&#123;</span>k<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">&#123;</span>name<span class="token punctuation">&#125;</span></span><span class="token string">.lora.'</span></span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">:</span> v <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> state_dict<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">&#123;</span>name<span class="token punctuation">&#125;</span></span><span class="token string">.lora.'</span></span> <span class="token keyword">in</span> k<span class="token punctuation">&#125;</span>
+            module<span class="token punctuation">.</span>lora<span class="token punctuation">.</span>load_state_dict<span class="token punctuation">(</span>lora_state<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">save_lora</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    raw_model <span class="token operator">=</span> <span class="token builtin">getattr</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">'_orig_mod'</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span>
+    state_dict <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> name<span class="token punctuation">,</span> module <span class="token keyword">in</span> raw_model<span class="token punctuation">.</span>named_modules<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> <span class="token string">'lora'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            clean_name <span class="token operator">=</span> name<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token keyword">if</span> name<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">"module."</span><span class="token punctuation">)</span> <span class="token keyword">else</span> name
+            lora_state <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">&#123;</span>clean_name<span class="token punctuation">&#125;</span></span><span class="token string">.lora.</span><span class="token interpolation"><span class="token punctuation">&#123;</span>k<span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token punctuation">:</span> v <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> module<span class="token punctuation">.</span>lora<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+            state_dict<span class="token punctuation">.</span>update<span class="token punctuation">(</span>lora_state<span class="token punctuation">)</span>
+    torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>state_dict<span class="token punctuation">,</span> path<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="RLHF-Reinforcement-Learning-from-Human-Feedback"><a class="header-anchor" href="#RLHF-Reinforcement-Learning-from-Human-Feedback"></a>RLHF(Reinforcement Learning from Human Feedback)</h2>
+<p>​	RLHF中文翻译过来叫做：基于人类反馈的强化学习。</p>
 
                 
             </div>
@@ -969,54 +1081,36 @@ $$</p>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/03/19/MiniMind%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <a href="/2026/04/08/llm%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/feature_map/4.png" class="responsive-img" alt="MimiMind项目学习笔记">
+                        <img src="https://pub-afa265e5b09847ed9cfbc292d8a9fd94.r2.dev/hexo/feature_map/1.png" class="responsive-img" alt="">
                         
-                        <span class="card-title">MimiMind项目学习笔记</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            跟着官方代码从零实现MiniMind
+                            
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-04-08
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            小明
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/AI/">
-                        <span class="chip bg-color">AI</span>
-                    </a>
-                    
-                    <a href="/tags/LLM/">
-                        <span class="chip bg-color">LLM</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1213,7 +1307,7 @@ $$</p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">133.8k</span>
+                        class="white-color">137.5k</span>
             
             
             
