@@ -5,3 +5,91 @@
 :active{
     cursor: url("/medias/DiamondSword.cur"),auto!important;
 }
+
+:root {
+    --hm-card-radius: 16px;
+    --hm-card-border: rgba(15, 23, 42, 0.06);
+    --hm-card-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+    --hm-card-shadow-hover: 0 24px 56px rgba(15, 23, 42, 0.12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header nav {
+    backdrop-filter: saturate(145%) blur(12px);
+    transition: background-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+}
+
+header .nav-transparent {
+    backdrop-filter: none;
+}
+
+.card,
+#artDetail .card,
+.toc-widget.card,
+.prev-next .card,
+.recommend .post-card {
+    border: 1px solid var(--hm-card-border);
+    border-radius: var(--hm-card-radius);
+    box-shadow: var(--hm-card-shadow) !important;
+}
+
+article .card,
+.recommend .post-card {
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+article .card:hover,
+.recommend .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hm-card-shadow-hover) !important;
+}
+
+article .card-image img {
+    opacity: .84;
+    transform: scale(1);
+    transition: transform .45s ease, opacity .25s ease;
+}
+
+article .card:hover .card-image img {
+    opacity: .93;
+    transform: scale(1.04);
+}
+
+article .article-content .summary {
+    color: rgba(43, 53, 70, 0.76);
+    line-height: 1.82;
+    word-break: break-word;
+}
+
+.bg-color {
+    background-image: linear-gradient(135deg, #efc27c, #f29d7b);
+}
+
+article .article-tags .chip,
+#artDetail .article-tag .chip,
+#artDetail .tag_share .article-tag .chip {
+    border-radius: 999px;
+    box-shadow: none;
+}
+
+#artDetail .article-card-content,
+.post-container {
+    color: rgba(38, 46, 58, 0.9);
+}
+
+.post-container p,
+.post-container li {
+    line-height: 1.95;
+}
+
+.post-container img {
+    border-radius: 16px;
+}
+
+.post-container blockquote {
+    border-left-width: 4px;
+    border-radius: 0 14px 14px 0;
+}
