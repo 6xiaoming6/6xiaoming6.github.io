@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="rainSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#19395f"/>
+      <stop offset="100%" stop-color="#9ab9d7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#rainSky)"/>
+  <rect x="0" y="610" width="1600" height="390" fill="#2b4660"/>
+  <rect x="0" y="740" width="1600" height="260" fill="#173149"/>
+  <rect x="240" y="250" width="310" height="370" rx="10" fill="#d8e6ef" opacity="0.35"/>
+  <rect x="950" y="220" width="410" height="400" rx="10" fill="#dbe9f2" opacity="0.28"/>
+  <path d="M0 740 L1600 660" stroke="#d7f0ff" stroke-width="6" opacity="0.38"/>
+  <path d="M0 804 L1600 724" stroke="#d7f0ff" stroke-width="4" opacity="0.24"/>
+  <g stroke="#d7f0ff" stroke-width="6" opacity="0.28">
+    <line x1="190" y1="0" x2="150" y2="250"/>
+    <line x1="360" y1="0" x2="320" y2="260"/>
+    <line x1="680" y1="0" x2="640" y2="280"/>
+    <line x1="1020" y1="0" x2="980" y2="310"/>
+    <line x1="1310" y1="0" x2="1270" y2="270"/>
+  </g>
+  <circle cx="790" cy="700" r="28" fill="#ffdca8"/>
+  <rect x="780" y="720" width="20" height="110" fill="#243a50"/>
+</svg>

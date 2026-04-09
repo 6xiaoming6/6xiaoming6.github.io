@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#25305a"/>
+      <stop offset="55%" stop-color="#6d6d9e"/>
+      <stop offset="100%" stop-color="#f3b47d"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#574247"/>
+      <stop offset="100%" stop-color="#1a1d2c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1240" cy="250" r="86" fill="#ffd9a0" opacity="0.88"/>
+  <path d="M0 580 C210 520 420 540 610 590 C800 640 1020 660 1600 550 L1600 1000 L0 1000 Z" fill="#394160"/>
+  <path d="M0 660 C220 620 470 680 720 720 C970 760 1220 760 1600 670 L1600 1000 L0 1000 Z" fill="#23293f"/>
+  <path d="M650 1000 L850 1000 L1015 610 L485 610 Z" fill="url(#road)"/>
+  <rect x="300" y="560" width="16" height="160" rx="8" fill="#2f3348"/>
+  <circle cx="308" cy="550" r="22" fill="#ffcf91"/>
+  <rect x="1220" y="530" width="16" height="190" rx="8" fill="#2f3348"/>
+  <circle cx="1228" cy="520" r="22" fill="#ffd7ab"/>
+  <path d="M180 640 C220 520 300 520 340 640" fill="none" stroke="#1d2336" stroke-width="28" stroke-linecap="round"/>
+  <path d="M1290 650 C1330 520 1410 520 1450 650" fill="none" stroke="#1d2336" stroke-width="28" stroke-linecap="round"/>
+</svg>

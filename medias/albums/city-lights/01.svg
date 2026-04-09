@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#081226"/>
+      <stop offset="100%" stop-color="#27356f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#night)"/>
+  <circle cx="1280" cy="180" r="78" fill="#b6cfff" opacity="0.86"/>
+  <rect x="0" y="720" width="1600" height="280" fill="#0b1530"/>
+  <rect x="110" y="430" width="120" height="290" fill="#18244e"/>
+  <rect x="260" y="350" width="140" height="370" fill="#13204a"/>
+  <rect x="450" y="300" width="160" height="420" fill="#1a2756"/>
+  <rect x="660" y="420" width="120" height="300" fill="#13204a"/>
+  <rect x="860" y="280" width="180" height="440" fill="#1b2a62"/>
+  <rect x="1080" y="380" width="140" height="340" fill="#172451"/>
+  <rect x="1270" y="320" width="180" height="400" fill="#1b2859"/>
+  <g fill="#7ec7ff">
+    <rect x="292" y="400" width="20" height="20"/>
+    <rect x="490" y="360" width="20" height="20"/>
+    <rect x="920" y="340" width="22" height="22"/>
+    <rect x="1320" y="370" width="20" height="20"/>
+  </g>
+  <g fill="#ff7ab8">
+    <rect x="326" y="448" width="20" height="20"/>
+    <rect x="530" y="410" width="20" height="20"/>
+    <rect x="960" y="390" width="22" height="22"/>
+    <rect x="1360" y="420" width="20" height="20"/>
+  </g>
+  <rect x="0" y="770" width="1600" height="10" fill="#84b4ff" opacity="0.35"/>
+</svg>
