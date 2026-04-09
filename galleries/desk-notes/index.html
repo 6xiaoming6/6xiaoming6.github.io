@@ -391,48 +391,56 @@
 
 </header>
 
-    <link rel="stylesheet" href="/css/gallery.css">
-
+    <link rel="stylesheet" href="/css/leisure.css">
 <link type="text/css" href="/libs/fancybox/jquery.fancybox.css" rel="stylesheet">
-<link type="text/css" href="/libs/justifiedGallery/justifiedGallery.min.css" rel="stylesheet">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/albums/desk-notes/01.svg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">桌面小景</h1>
+<main class="content gallery-page">
+    <div class="gallery-sheet">
+        <section class="gallery-hero">
+            <div>
+                <a class="gallery-back" href="/galleries/">Back To Albums</a>
+                <h1 class="gallery-title">桌面小景</h1>
+                <p class="gallery-summary">书页、杯子、键盘和光线落下来的角落，这种生活切片比大场景更适合长期累积。</p>
+                <div class="gallery-tags">
+                    <span>静物</span>
+                    <span>桌面日常</span>
+                    <span>3 张照片</span>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-  
+            <aside class="gallery-preview-stack">
+                
+                <img src="/medias/albums/desk-notes/01.svg" alt="桌面小景">
+                
+                <img src="/medias/albums/desk-notes/02.svg" alt="桌面小景">
+                
+            </aside>
+        </section>
 
-<div class="container">
-    <div class="photo-wrapper">
-        
-            <div class="waterfall" id="encrypt-blog">
-                <a href="/medias/albums/desk-notes/01.svg"     class="photo-item" rel="example_group"     data-fancybox="images">      <img src="/medias/albums/desk-notes/01.svg"       alt=/medias/albums/desk-notes/01.svg>
-    </a><a href="/medias/albums/desk-notes/02.svg"     class="photo-item" rel="example_group"     data-fancybox="images">      <img src="/medias/albums/desk-notes/02.svg"       alt=/medias/albums/desk-notes/02.svg>
-    </a><a href="/medias/albums/desk-notes/03.svg"     class="photo-item" rel="example_group"     data-fancybox="images">      <img src="/medias/albums/desk-notes/03.svg"       alt=/medias/albums/desk-notes/03.svg>
-    </a>
+        <section class="gallery-block">
+            <div class="gallery-section-head">
+                <div>
+                    <span class="gallery-mark">Photos</span>
+                    <h2>相册内容</h2>
+                </div>
             </div>
-        
+
+            
+            <div class="photo-grid" id="encrypt-blog">
+                <a href="/medias/albums/desk-notes/01.svg" class="photo-item" rel="example_group" data-fancybox="images"><img src="/medias/albums/desk-notes/01.svg" alt="桌面小景"></a><a href="/medias/albums/desk-notes/02.svg" class="photo-item" rel="example_group" data-fancybox="images"><img src="/medias/albums/desk-notes/02.svg" alt="桌面小景"></a><a href="/medias/albums/desk-notes/03.svg" class="photo-item" rel="example_group" data-fancybox="images"><img src="/medias/albums/desk-notes/03.svg" alt="桌面小景"></a>
+            </div>
+            
+        </section>
     </div>
-</div>
+</main>
 
 <script src="/libs/fancybox/fancybox.js"></script>
-<script src="/libs/justifiedGallery/justifiedGallery.min.js"></script>
 <script>
-
     $("a[rel=example_group]").fancybox();
-    $("#encrypt-blog").justifiedGallery({margins: 5, rowHeight: 150});
-
 </script>
+
 
     <footer class="page-footer bg-color">
     

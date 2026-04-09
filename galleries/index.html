@@ -395,59 +395,74 @@
 
 
 
-<main class="content leisure-page leisure-galleries">
-    <div class="leisure-shell">
-        <section class="leisure-hero">
-            <div class="hero-copy">
-                <span class="hero-kicker">Albums / Covers / Photo Pages</span>
-                <h1 class="hero-title">相册入口页</h1>
-                <p class="hero-subtitle">
-                    相册部分这次重点突出“相册功能”本身。
-                    入口页负责像一本本相册封面那样把主题收起来，点进去之后再进入真正的照片页。
+<main class="content leisure-scene leisure-galleries">
+    <div class="scene-wrap">
+        <section class="scene-hero">
+            <div>
+                <span class="scene-mark">Album Index</span>
+                <h1 class="scene-title">相册集</h1>
+                <p class="scene-summary">
+                    相册板块这次完全按“相册入口页”的思路重做。
+                    首页只负责展示相册主题、封面和预览，点进去之后再进入真正的照片页，结构更清楚，也更适合你后面持续补图。
                 </p>
-                <div class="hero-tags">
-                    <span>相册封面</span>
-                    <span>可点击进入</span>
-                    <span>照片预览条</span>
+                <div class="scene-signals">
+                    <span>相册入口</span>
+                    <span>封面预览</span>
                     <span>子相册页</span>
+                    <span>持续补图</span>
                 </div>
             </div>
 
-            <div class="hero-stage">
-                <div class="stage-copy">
-                    <span>Album Mood</span>
-                    <strong>像翻一本本拍立得相册</strong>
-                    <p>入口页先把相册主题、数量和预览图立住，真正的照片展示则留给每一本相册自己的页面。</p>
+            <aside class="scene-index">
+                <span class="scene-index-title">页面结构</span>
+                <ul class="scene-index-list">
+                    <li><span>封面预览</span><strong>Preview</strong></li>
+                    <li><span>相册列表</span><strong>Albums</strong></li>
+                    <li><span>维护说明</span><strong>Guide</strong></li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="scene-block">
+            <div class="scene-section-head">
+                <div>
+                    <span class="section-kicker">Preview</span>
+                    <h2>入口页只需要把点开的欲望立住</h2>
                 </div>
-                <div class="album-stage-stack">
-                    <div class="photo-polaroid left">
-                        <img src="/medias/albums/dusk-walk/01.svg" alt="黄昏散步">
-                        <strong>黄昏散步</strong>
-                        <small>黄昏</small>
-                    </div>
-                    <div class="photo-polaroid right">
-                        <img src="/medias/albums/rainy-campus/01.svg" alt="雨后校园">
-                        <strong>雨后校园</strong>
-                        <small>雨后</small>
-                    </div>
+                <p>当前共 4 本相册，每一本都能继续进入独立相册页。</p>
+            </div>
+
+            <div class="gallery-preview">
+                <div class="gallery-preview-main">
+                    <img src="/medias/albums/dusk-walk/01.svg" alt="黄昏散步">
+                </div>
+                <div class="gallery-preview-thumbs">
+                    
+                    <img src="/medias/albums/dusk-walk/02.svg" alt="黄昏散步">
+                    
+                    <img src="/medias/albums/dusk-walk/03.svg" alt="黄昏散步">
+                    
                 </div>
             </div>
         </section>
 
-        <section class="leisure-panel">
-            <div class="section-head">
-                <h2>相册列表</h2>
-                <span>点开封面就进入对应相册页</span>
+        <section class="scene-block">
+            <div class="scene-section-head">
+                <div>
+                    <span class="section-kicker">Albums</span>
+                    <h2>相册列表</h2>
+                </div>
+                <p>点击封面直接进入相册页。</p>
             </div>
 
-            <div class="album-grid">
+            <div class="album-wall">
                 
-                <a class="album-card" href="/galleries/dusk-walk/">
-                    <div class="album-cover">
-                        <div class="album-main-shot">
+                <a class="album-link" href="/galleries/dusk-walk/">
+                    <div class="album-visual">
+                        <div class="album-cover-frame">
                             <img src="/medias/albums/dusk-walk/01.svg" alt="黄昏散步">
                         </div>
-                        <div class="album-strip">
+                        <div class="album-thumbs">
                             
                             <img src="/medias/albums/dusk-walk/01.svg" alt="黄昏散步">
                             
@@ -457,25 +472,24 @@
                             
                         </div>
                     </div>
-                    <div class="album-body">
-                        <div class="album-title-row">
-                            <h3>黄昏散步</h3>
-                            <span class="meta-pill">黄昏</span>
-                        </div>
+
+                    <div class="album-copy">
+                        <h3>黄昏散步</h3>
                         <p>暖色天光、街角树影和傍晚慢慢落下来的速度，适合做成一本偏安静的城市相册。</p>
-                        <div class="album-tag-row">
-                            <span>3 张示例图</span>
+                        <div class="album-note-tags">
+                            <span>黄昏</span>
                             <span>慢行时刻</span>
+                            <span>3 张</span>
                         </div>
                     </div>
                 </a>
                 
-                <a class="album-card" href="/galleries/rainy-campus/">
-                    <div class="album-cover">
-                        <div class="album-main-shot">
+                <a class="album-link" href="/galleries/rainy-campus/">
+                    <div class="album-visual">
+                        <div class="album-cover-frame">
                             <img src="/medias/albums/rainy-campus/01.svg" alt="雨后校园">
                         </div>
-                        <div class="album-strip">
+                        <div class="album-thumbs">
                             
                             <img src="/medias/albums/rainy-campus/01.svg" alt="雨后校园">
                             
@@ -485,25 +499,24 @@
                             
                         </div>
                     </div>
-                    <div class="album-body">
-                        <div class="album-title-row">
-                            <h3>雨后校园</h3>
-                            <span class="meta-pill">雨后</span>
-                        </div>
+
+                    <div class="album-copy">
+                        <h3>雨后校园</h3>
                         <p>偏冷的空气感、反光地面和雨停之后的空旷，非常适合做成一册情绪统一的相册。</p>
-                        <div class="album-tag-row">
-                            <span>3 张示例图</span>
+                        <div class="album-note-tags">
+                            <span>雨后</span>
                             <span>安静蓝调</span>
+                            <span>3 张</span>
                         </div>
                     </div>
                 </a>
                 
-                <a class="album-card" href="/galleries/desk-notes/">
-                    <div class="album-cover">
-                        <div class="album-main-shot">
+                <a class="album-link" href="/galleries/desk-notes/">
+                    <div class="album-visual">
+                        <div class="album-cover-frame">
                             <img src="/medias/albums/desk-notes/01.svg" alt="桌面小景">
                         </div>
-                        <div class="album-strip">
+                        <div class="album-thumbs">
                             
                             <img src="/medias/albums/desk-notes/01.svg" alt="桌面小景">
                             
@@ -513,25 +526,24 @@
                             
                         </div>
                     </div>
-                    <div class="album-body">
-                        <div class="album-title-row">
-                            <h3>桌面小景</h3>
-                            <span class="meta-pill">静物</span>
-                        </div>
+
+                    <div class="album-copy">
+                        <h3>桌面小景</h3>
                         <p>书页、杯子、键盘和光线落下来的角落，这种生活切片比大场景更适合长期累积。</p>
-                        <div class="album-tag-row">
-                            <span>3 张示例图</span>
+                        <div class="album-note-tags">
+                            <span>静物</span>
                             <span>桌面日常</span>
+                            <span>3 张</span>
                         </div>
                     </div>
                 </a>
                 
-                <a class="album-card" href="/galleries/city-lights/">
-                    <div class="album-cover">
-                        <div class="album-main-shot">
+                <a class="album-link" href="/galleries/city-lights/">
+                    <div class="album-visual">
+                        <div class="album-cover-frame">
                             <img src="/medias/albums/city-lights/01.svg" alt="城市夜色">
                         </div>
-                        <div class="album-strip">
+                        <div class="album-thumbs">
                             
                             <img src="/medias/albums/city-lights/01.svg" alt="城市夜色">
                             
@@ -541,15 +553,14 @@
                             
                         </div>
                     </div>
-                    <div class="album-body">
-                        <div class="album-title-row">
-                            <h3>城市夜色</h3>
-                            <span class="meta-pill">夜景</span>
-                        </div>
+
+                    <div class="album-copy">
+                        <h3>城市夜色</h3>
                         <p>霓虹、车流和窗户亮起来的瞬间，更适合做成对比强一点、情绪更明确的夜间相册。</p>
-                        <div class="album-tag-row">
-                            <span>3 张示例图</span>
+                        <div class="album-note-tags">
+                            <span>夜景</span>
                             <span>城市光影</span>
+                            <span>3 张</span>
                         </div>
                     </div>
                 </a>
@@ -557,30 +568,65 @@
             </div>
         </section>
 
-        <section class="leisure-panel">
-            <div class="section-head">
-                <h3>相册页现在怎么工作</h3>
-                <span>更像真正的相册系统</span>
+        <section class="scene-block">
+            <div class="scene-section-head">
+                <div>
+                    <span class="section-kicker">Guide</span>
+                    <h2>这样改以后更容易继续维护</h2>
+                </div>
             </div>
-            <div class="note-list">
+
+            <div class="scene-columns scene-columns--two">
                 
-                <div class="note-card">
-                    <strong>这页重点是“相册功能”</strong>
-                    <p>相册入口现在是可点击的，每一本册子都可以继续进入子页面，用真正的相册页去展示照片，而不是只停留在封面卡片。</p>
-                    <em>Album Hub</em>
-                </div>
+                <section class="scene-panel">
+                    <h3>相册页应该负责什么</h3>
+                    <ul class="scene-note-list">
+                        
+                        <li class="scene-note">
+                            <strong>先把主题立住</strong>
+                            <p>入口页只负责告诉人这里有什么相册、每本相册是什么气质。</p>
+                            <small>结构</small>
+                        </li>
+                        
+                        <li class="scene-note">
+                            <strong>封面先于细节</strong>
+                            <p>先让人想点开，再在子相册页里看照片。</p>
+                            <small>结构</small>
+                        </li>
+                        
+                        <li class="scene-note">
+                            <strong>每本相册都可独立维护</strong>
+                            <p>后面你补图时，只需要往对应相册里继续加照片。</p>
+                            <small>维护</small>
+                        </li>
+                        
+                    </ul>
+                </section>
                 
-                <div class="note-card">
-                    <strong>后续怎么继续扩</strong>
-                    <p>你可以继续新增相册条目、补图片，或者把同一主题按时间继续往下累积。这个入口页会保持一种“翻相册”的感觉。</p>
-                    <em>Scalable</em>
-                </div>
-                
-                <div class="note-card">
-                    <strong>适合收什么内容</strong>
-                    <p>旅行、校园、桌面、天气、城市夜景都适合做成独立的小相册，因为它们天然有统一的视觉气质。</p>
-                    <em>Photo Themes</em>
-                </div>
+                <section class="scene-panel">
+                    <h3>适合长期扩展的主题</h3>
+                    <ul class="scene-note-list">
+                        
+                        <li class="scene-note">
+                            <strong>城市散步</strong>
+                            <p>黄昏、夜色、街角、天气变化都很适合拆成独立小册。</p>
+                            <small>主题</small>
+                        </li>
+                        
+                        <li class="scene-note">
+                            <strong>桌面日常</strong>
+                            <p>静物、书页、杯子、键盘，很适合持续累积。</p>
+                            <small>主题</small>
+                        </li>
+                        
+                        <li class="scene-note">
+                            <strong>校园与旅行</strong>
+                            <p>这两类内容天然有叙事感，也很适合做成相册。</p>
+                            <small>主题</small>
+                        </li>
+                        
+                    </ul>
+                </section>
                 
             </div>
         </section>
